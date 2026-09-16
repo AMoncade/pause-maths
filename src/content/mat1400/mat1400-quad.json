@@ -43,5 +43,74 @@
       { "text": "Une sphère de rayon $2$", "correct": false, "why": "Une sphère aurait un terme $z^2$ dans son équation, par exemple $x^2+y^2+z^2=4$." },
       { "text": "Un cylindre elliptique (non circulaire)", "correct": false, "why": "Les coefficients de $x^2$ et $y^2$ sont égaux, donc les sections sont des cercles, pas des ellipses non circulaires." }
     ]
+  },
+  {
+    "id": "mat1400-quad-004",
+    "course": "MAT1400",
+    "topic": "mat1400-quad",
+    "difficulty": 1,
+    "prompt": "L'équation $\\dfrac{x^2}{4}+\\dfrac{y^2}{9}+z^2=1$ décrit quelle surface ?",
+    "explanation": "Les trois termes sont positifs et la somme vaut $1$ : c'est un ellipsoïde. Les dénominateurs $4$, $9$ et $1$ étant différents, ce n'est pas une sphère.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Ellipsoïde", "correct": true },
+      { "text": "Sphère", "correct": false, "why": "Une sphère exige les trois dénominateurs égaux (même rayon dans les trois directions) ; ici $4\\ne9\\ne1$." },
+      { "text": "Hyperboloïde à une nappe", "correct": false, "why": "Il faudrait un signe négatif devant un des termes ; ici les trois sont positifs." },
+      { "text": "Paraboloïde elliptique", "correct": false, "why": "Un paraboloïde a un terme de degré 1 (comme $z$), pas trois termes tous au carré." }
+    ]
+  },
+  {
+    "id": "mat1400-quad-005",
+    "course": "MAT1400",
+    "topic": "mat1400-quad",
+    "difficulty": 2,
+    "prompt": "L'équation $z^2=x^2+y^2$ décrit quelle surface ?",
+    "explanation": "Les trois variables apparaissent au carré et le membre de droite est nul : c'est un cône (elliptique, ici circulaire). Un hyperboloïde nécessite un membre de droite non nul.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Cône elliptique", "correct": true },
+      { "text": "Hyperboloïde à une nappe", "correct": false, "why": "Il faudrait un membre de droite non nul, par exemple $x^2+y^2-z^2=1$ ; ici il vaut $0$." },
+      { "text": "Cylindre", "correct": false, "why": "Les trois variables $x,y,z$ apparaissent toutes au carré dans l'équation : ce n'est pas le cas d'un cylindre, où une variable est absente." },
+      { "text": "Paraboloïde", "correct": false, "why": "Un paraboloïde a un terme de degré 1, pas $z$ au carré des deux côtés." }
+    ]
+  },
+  {
+    "id": "mat1400-quad-006",
+    "course": "MAT1400",
+    "topic": "mat1400-quad",
+    "difficulty": 2,
+    "prompt": "La surface $z=x^2-y^2$ est appelée...",
+    "explanation": "Un signe négatif entre les deux termes quadratiques (l'un positif, l'autre négatif) donne une selle de cheval : le paraboloïde hyperbolique.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Paraboloïde hyperbolique (selle de cheval)", "correct": true },
+      { "text": "Paraboloïde elliptique", "correct": false, "why": "L'elliptique a les deux termes quadratiques de MÊME signe (ex. $z=x^2+y^2$) ; ici les signes sont opposés." },
+      { "text": "Hyperboloïde à une nappe", "correct": false, "why": "Un hyperboloïde a les trois variables au carré des deux côtés d'une équation à constante non nulle ; ici $z$ est linéaire, pas au carré." },
+      { "text": "Cylindre parabolique", "correct": false, "why": "Un cylindre parabolique n'a qu'une seule variable au carré (l'autre est absente) ; ici $x$ et $y$ sont tous deux au carré." }
+    ]
+  },
+  {
+    "id": "mat1400-quad-007",
+    "course": "MAT1400",
+    "topic": "mat1400-quad",
+    "difficulty": 2,
+    "prompt": "Trace du paraboloïde $z=x^2+y^2$ dans le plan vertical $y=0$ ?",
+    "explanation": "En posant $y=0$ : $z=x^2$, une parabole dans le plan $xz$. Contrairement à la trace horizontale (un cercle), une trace verticale d'un paraboloïde circulaire est une parabole.",
+    "type": "flash",
+    "answer": "$z=x^2$ (une parabole)",
+    "keyPoints": [
+      "Substituer $y=0$ dans l'équation de la surface",
+      "Trace horizontale = cercle, trace verticale = parabole : ne pas confondre les deux"
+    ]
+  },
+  {
+    "id": "mat1400-quad-008",
+    "course": "MAT1400",
+    "topic": "mat1400-quad",
+    "difficulty": 1,
+    "prompt": "L'équation $x^2+y^2+z^2=9$ décrit un ellipsoïde qui n'est PAS une sphère.",
+    "explanation": "C'est faux : les trois coefficients sont égaux ($1,1,1$), donc il s'agit précisément du cas particulier où l'ellipsoïde EST une sphère, ici de rayon $3$.",
+    "type": "vf",
+    "answer": false
   }
 ]

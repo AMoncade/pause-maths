@@ -38,5 +38,74 @@
       "Des valeurs différentes selon le chemin $\\Rightarrow$ la limite n'existe pas",
       "Un seul chemin cohérent ne prouve jamais qu'une limite existe"
     ]
+  },
+  {
+    "id": "mat1400-fonc-004",
+    "course": "MAT1400",
+    "topic": "mat1400-fonc",
+    "difficulty": 2,
+    "prompt": "Les courbes de niveau de $f(x,y)=x^2+y^2$ pour $f=k>0$ sont...",
+    "explanation": "$x^2+y^2=k \\Rightarrow$ cercle de rayon $\\sqrt{k}$ (pas $k$). Même piège que pour une trace de surface : il faut prendre la racine carrée du niveau.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Des cercles de rayon $\\sqrt{k}$", "correct": true },
+      { "text": "Des cercles de rayon $k$", "correct": false, "why": "$x^2+y^2=k$ donne un rayon $\\sqrt{k}$, pas $k$ : la racine carrée a été oubliée." },
+      { "text": "Des droites", "correct": false, "why": "Ce serait le cas pour une fonction linéaire comme $f(x,y)=x+y$, pas pour une somme de carrés." },
+      { "text": "Des paraboles", "correct": false, "why": "C'est la trace verticale (ex. dans $y=0$) du graphe de $f$, pas une courbe de niveau (qui se lit dans le plan $xy$ à $z$ fixé)." }
+    ]
+  },
+  {
+    "id": "mat1400-fonc-005",
+    "course": "MAT1400",
+    "topic": "mat1400-fonc",
+    "difficulty": 2,
+    "prompt": "Quel est le domaine de $f(x,y)=\\ln(x-y)$ ?",
+    "explanation": "Le logarithme exige un argument strictement positif : $x-y>0$, donc $x>y$. Contrairement à une racine carrée, l'égalité (argument nul) n'est jamais acceptée.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$x>y$", "correct": true },
+      { "text": "$x\\ge y$", "correct": false, "why": "À $x=y$, l'argument du log est $0$ et $\\ln(0)$ n'est pas défini : l'inégalité doit être stricte." },
+      { "text": "$x\\le y$", "correct": false, "why": "Le sens de l'inégalité est inversé : il faut un argument positif, pas négatif." },
+      { "text": "$x\\ne y$", "correct": false, "why": "Il ne suffit pas que l'argument soit non nul, il doit être strictement positif : $x<y$ donne aussi un argument négatif, donc exclu." }
+    ]
+  },
+  {
+    "id": "mat1400-fonc-006",
+    "course": "MAT1400",
+    "topic": "mat1400-fonc",
+    "difficulty": 2,
+    "prompt": "La limite $\\lim_{(x,y)\\to(0,0)} \\dfrac{x^2y}{x^2+y^2}$ vaut...",
+    "explanation": "Comme $\\dfrac{x^2}{x^2+y^2}\\le1$, on a $\\left|\\dfrac{x^2y}{x^2+y^2}\\right|\\le|y|\\to0$ : par le théorème d'encadrement, la limite existe et vaut $0$. Contrairement à $\\frac{xy}{x^2+y^2}$ (qui n'a pas de limite), le facteur $x^2$ supplémentaire au numérateur change tout : il ne faut jamais généraliser d'une expression à une autre qui se ressemble.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$0$", "correct": true },
+      { "text": "$\\dfrac12$", "correct": false, "why": "C'est la valeur obtenue pour $\\dfrac{xy}{x^2+y^2}$ le long de $y=x$ — une expression différente, sans le facteur $x^2$ au numérateur." },
+      { "text": "N'existe pas", "correct": false, "why": "Cette expression ressemble à $\\dfrac{xy}{x^2+y^2}$ (dont la limite n'existe pas), mais le facteur $x^2$ supplémentaire la borne : ici la limite existe bel et bien, par encadrement." },
+      { "text": "$1$", "correct": false, "why": "Aucun chemin standard (ni l'encadrement) ne donne cette valeur." }
+    ]
+  },
+  {
+    "id": "mat1400-fonc-007",
+    "course": "MAT1400",
+    "topic": "mat1400-fonc",
+    "difficulty": 1,
+    "prompt": "Une fonction $f(x,y)$ est continue en $(a,b)$ si $f(a,b)$ existe et que $\\lim_{(x,y)\\to(a,b)} f(x,y)$ existe (peu importe si les deux valeurs sont égales).",
+    "explanation": "Il manque la condition essentielle : la limite doit être ÉGALE à $f(a,b)$, pas seulement exister séparément. Une fonction peut avoir une limite en un point sans que $f$ y soit continue.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1400-fonc-008",
+    "course": "MAT1400",
+    "topic": "mat1400-fonc",
+    "difficulty": 2,
+    "prompt": "Domaine de $f(x,y)=\\dfrac{1}{x^2-y}$ ?",
+    "explanation": "Il faut exclure où le dénominateur s'annule : $x^2-y=0 \\Leftrightarrow y=x^2$. C'est une parabole ENTIÈRE à retirer du plan, pas un seul point.",
+    "type": "flash",
+    "answer": "Tous les $(x,y)$ tels que $y\\ne x^2$",
+    "keyPoints": [
+      "Exclure où le dénominateur s'annule",
+      "$x^2-y=0 \\Leftrightarrow y=x^2$ : toute une parabole est exclue, pas juste un point"
+    ]
   }
 ]
