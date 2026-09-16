@@ -3,35 +3,104 @@ import {
   BACKUP_PREFIX,
   dayKey,
   emptyProgress,
+  isTopicOn,
   level,
   levelProgress,
   loadProgress,
   markActive,
   mastery,
   migrate,
+  resetProgress,
   saveProgress,
+  setTopic,
   STORAGE_KEY,
   streak,
   toggleFlag,
   xp,
 } from '@/lib/progress';
 import { ProgressSchema } from '@/lib/schema';
+import type { Topic } from '@/lib/types';
 import { testCourses } from './fixtures/courses';
-import { card, deepFreeze, makeQuestion, MemoryStorage, local, progressWith } from './helpers';
+import { card, DAY, deepFreeze, makeQuestion, MemoryStorage, local, progressWith } from './helpers';
 
 const NOW = local(2026, 9, 16, 18, 30);
 
 describe('emptyProgress', () => {
-  it('tous les cours, thèmes cochés par défaut, Défi désactivé, valide pour Zod', () => {
+  it('tous les cours, aucun choix de thème explicite, Défi désactivé, valide pour Zod', () => {
     const p = emptyProgress(NOW, testCourses);
     expect(p).toEqual({
       v: 1,
       cards: {},
       activeDays: [],
-      settings: { courses: ['MAT1600', 'STT1700'], topics: ['mat1600-syst', 'stt1700-desc'], challenge: false, updatedAt: NOW },
+      settings: { courses: ['MAT1600', 'STT1700'], topicOverrides: {}, challenge: false, updatedAt: NOW },
       flagged: [],
     });
     expect(ProgressSchema.safeParse(p).success).toBe(true);
+  });
+
+  it('les thèmes cochés sont ceux à defaultOn', () => {
+    const p = emptyProgress(NOW, testCourses);
+    const on = testCourses.flatMap((c) => c.topics.filter((t) => isTopicOn(p.settings, t)).map((t) => t.id));
+    expect(on).toEqual(['mat1600-syst', 'stt1700-desc']);
+  });
+});
+
+describe('thèmes cochés : isTopicOn / setTopic', () => {
+  const [syst, det] = testCourses[0]!.topics as [Topic, Topic];
+
+  it('sans choix explicite, suit defaultOn — un thème qui passe à defaultOn plus tard devient coché', () => {
+    const p = emptyProgress(NOW, testCourses);
+    expect(isTopicOn(p.settings, syst)).toBe(true);
+    expect(isTopicOn(p.settings, det)).toBe(false);
+    expect(isTopicOn(p.settings, { ...det, defaultOn: true })).toBe(true);
+  });
+
+  it('un choix explicite l\'emporte sur defaultOn, dans les deux sens', () => {
+    const p = deepFreeze(emptyProgress(NOW, testCourses));
+    const q = setTopic(setTopic(p, syst.id, false, NOW + 1), det.id, true, NOW + 2);
+    expect(q.settings.topicOverrides).toEqual({ [syst.id]: false, [det.id]: true });
+    expect(isTopicOn(q.settings, syst)).toBe(false);
+    expect(isTopicOn(q.settings, det)).toBe(true);
+    expect(isTopicOn(q.settings, { ...syst, defaultOn: false })).toBe(false);
+  });
+
+  it('setTopic met à jour settings.updatedAt (pour merge) sans muter l\'entrée', () => {
+    const p = deepFreeze(emptyProgress(NOW, testCourses));
+    const q = setTopic(p, det.id, true, NOW + 5);
+    expect(q.settings.updatedAt).toBe(NOW + 5);
+    expect(p.settings.topicOverrides).toEqual({});
+    expect(setTopic(q, det.id, false, NOW + 6).settings.topicOverrides).toEqual({ [det.id]: false });
+  });
+});
+
+describe('resetProgress', () => {
+  it('efface cartes et jours actifs, garde réglages, signalements et code, pose resetAt', () => {
+    const p = deepFreeze(
+      progressWith({
+        cards: { 'mat1600-syst-001': card({ box: 4, k: 3, n: 3, at: NOW - DAY }) },
+        activeDays: ['2026-09-15', '2026-09-16'],
+        settings: { courses: ['MAT1600'], topicOverrides: { 'mat1600-det': true }, challenge: true, updatedAt: 7 },
+        flagged: ['mat1600-syst-002'],
+        syncCode: 'K7F2-9QXD-M3PA',
+        resetAt: NOW - 30 * DAY,
+      }),
+    );
+    const r = resetProgress(p, NOW);
+    expect(r).toEqual({
+      v: 1,
+      cards: {},
+      activeDays: [],
+      settings: p.settings,
+      flagged: ['mat1600-syst-002'],
+      syncCode: 'K7F2-9QXD-M3PA',
+      resetAt: NOW,
+    });
+    expect(ProgressSchema.safeParse(r).success).toBe(true);
+    expect(xp(r, [makeQuestion('mat1600-syst-001')])).toBe(0);
+  });
+
+  it('sans code de synchro : pas de clé syncCode', () => {
+    expect('syncCode' in resetProgress(progressWith(), NOW)).toBe(false);
   });
 });
 

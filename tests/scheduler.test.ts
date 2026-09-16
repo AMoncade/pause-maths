@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { applyAnswer, INTERVAL_MS, mulberry32, nextQuestion, SANS_FIN_KEEP } from '@/lib/scheduler';
-import type { GameSession, Mode, Progress, Question } from '@/lib/types';
+import type { Course, CourseCode, GameSession, Mode, Progress, Question, Rng } from '@/lib/types';
 import { card, DAY, deepFreeze, local, makeQuestion, MIN, progressWith } from './helpers';
 
 const NOW = local(2026, 9, 16, 18, 30);
@@ -8,13 +8,27 @@ const SEEDS = [1, 2, 3, 42, 1234, 99999];
 
 const ALL_TOPICS = ['mat1400-vect', 'mat1500-logic', 'mat1600-syst', 'mat1600-det', 'stt1700-desc', 'stt1700-prob'];
 
-/** Progression où tous les cours et `topics` sont cochés. */
+/** Cours de test : tous les thèmes de ALL_TOPICS, décochés par défaut (chaque test coche explicitement). */
+const COURSES: Course[] = (['MAT1400', 'MAT1500', 'MAT1600', 'STT1700'] as CourseCode[]).map((code) => ({
+  code,
+  title: code,
+  color: '#000',
+  topics: ALL_TOPICS.filter((t) => t.startsWith(code.toLowerCase())).map((id) => ({ id, label: id, exam: 'intra' as const, defaultOn: false })),
+}));
+
+const on = (topics: string[]) => Object.fromEntries(topics.map((t) => [t, true]));
+
+/** nextQuestion avec les cours de test. */
+const next = (bank: Question[], p: Progress, session: GameSession, mode: Mode, now: number, rng: Rng) =>
+  nextQuestion(bank, p, session, mode, now, rng, COURSES);
+
+/** Progression où tous les cours et `topics` sont cochés explicitement. */
 const settingsFor = (cards: Progress['cards'] = {}, opts: { topics?: string[]; challenge?: boolean } = {}) =>
   progressWith({
     cards,
     settings: {
       courses: ['MAT1400', 'MAT1500', 'MAT1600', 'STT1700'],
-      topics: opts.topics ?? ALL_TOPICS,
+      topicOverrides: on(opts.topics ?? ALL_TOPICS),
       challenge: opts.challenge ?? false,
       updatedAt: 0,
     },
@@ -29,7 +43,7 @@ function play(bank: Question[], p: Progress, mode: Mode, seed: number, steps: nu
   const session: GameSession = { shown: [] };
   const picked: Question[] = [];
   for (let i = 0; i < steps; i++) {
-    const q = nextQuestion(bank, p, session, mode, now, rng);
+    const q = next(bank, p, session, mode, now, rng);
     if (q === null) break;
     picked.push(q);
     session.shown.push(q.id);
@@ -103,8 +117,8 @@ describe('nextQuestion — paliers', () => {
     const big = [...ids('mat1600-syst', 400).map((id) => makeQuestion(id)), makeQuestion('mat1600-syst-999')];
     const missed = applyAnswer(settingsFor(), 'mat1600-syst-999', false, NOW);
     const rng = mulberry32(7);
-    expect(nextQuestion(big, missed, { shown: [] }, 'rafale', NOW + 5 * MIN, rng)?.id).not.toBe('mat1600-syst-999');
-    expect(nextQuestion(big, missed, { shown: [] }, 'rafale', NOW + 11 * MIN, rng)?.id).toBe('mat1600-syst-999');
+    expect(next(big, missed, { shown: [] }, 'rafale', NOW + 5 * MIN, rng)?.id).not.toBe('mat1600-syst-999');
+    expect(next(big, missed, { shown: [] }, 'rafale', NOW + 11 * MIN, rng)?.id).toBe('mat1600-syst-999');
   });
 
   it('dans un palier : tri (box, due, difficulté)', () => {
@@ -154,7 +168,7 @@ describe('nextQuestion — session et sélection', () => {
 
   it('Rafale épuisée : null sans toucher session.shown', () => {
     const session: GameSession = { shown: deepFreeze(bank.map((q) => q.id)) };
-    expect(nextQuestion(bank, settingsFor(), session, 'rafale', NOW, mulberry32(1))).toBeNull();
+    expect(next(bank, settingsFor(), session, 'rafale', NOW, mulberry32(1))).toBeNull();
     expect(session.shown).toHaveLength(bank.length);
   });
 
@@ -176,21 +190,51 @@ describe('nextQuestion — session et sélection', () => {
   it('évite lastCourse s\'il y a un autre cours, le garde sinon', () => {
     const p = settingsFor();
     for (const seed of SEEDS) {
-      expect(nextQuestion(bank, p, { shown: [], lastCourse: 'MAT1600' }, 'rafale', NOW, mulberry32(seed))?.course).not.toBe('MAT1600');
+      expect(next(bank, p, { shown: [], lastCourse: 'MAT1600' }, 'rafale', NOW, mulberry32(seed))?.course).not.toBe('MAT1600');
     }
     const only1600 = bank.filter((q) => q.course === 'MAT1600');
-    expect(nextQuestion(only1600, p, { shown: [], lastCourse: 'MAT1600', lastTopic: 'mat1600-syst' }, 'rafale', NOW, mulberry32(1))?.topic).toBe(
+    expect(next(only1600, p, { shown: [], lastCourse: 'MAT1600', lastTopic: 'mat1600-syst' }, 'rafale', NOW, mulberry32(1))?.topic).toBe(
       'mat1600-det',
     );
   });
 
   it('respecte les cours et thèmes cochés', () => {
-    const p = progressWith({ settings: { courses: ['MAT1600', 'MAT1400'], topics: ['mat1600-det', 'stt1700-desc', 'mat1400-vect'], challenge: false, updatedAt: 0 } });
+    const p = progressWith({ settings: { courses: ['MAT1600', 'MAT1400'], topicOverrides: on(['mat1600-det', 'stt1700-desc', 'mat1400-vect']), challenge: false, updatedAt: 0 } });
     for (const seed of SEEDS) {
       const topics = new Set(play(bank, p, 'rafale', seed, 100).picked.map((q) => q.topic));
       expect([...topics].sort()).toEqual(['mat1400-vect', 'mat1600-det']);
     }
-    expect(nextQuestion(bank, progressWith(), { shown: [] }, 'sansFin', NOW, mulberry32(1))).toBeNull();
+    expect(next(bank, progressWith(), { shown: [] }, 'sansFin', NOW, mulberry32(1))).toBeNull();
+  });
+
+  it('thèmes via isTopicOn : defaultOn sans choix, choix explicite prioritaire, thème absent des cours = décoché', () => {
+    const courses: Course[] = [
+      {
+        code: 'MAT1600',
+        title: 'MAT1600',
+        color: '#000',
+        topics: [
+          { id: 'mat1600-syst', label: 's', exam: 'intra', defaultOn: true },
+          { id: 'mat1600-det', label: 'd', exam: 'intra', defaultOn: false },
+        ],
+      },
+      { code: 'STT1700', title: 'STT1700', color: '#000', topics: [{ id: 'stt1700-desc', label: 'd', exam: 'intra', defaultOn: true }] },
+    ];
+    const withGhost = [...bank, makeQuestion('mat1600-zzz-001')];
+    const topicsPicked = (overrides: Record<string, boolean>) => {
+      const p = progressWith({ settings: { courses: ['MAT1600', 'STT1700'], topicOverrides: overrides, challenge: false, updatedAt: 0 } });
+      const session: GameSession = { shown: [] };
+      const rng = mulberry32(9);
+      const topics = new Set<string>();
+      for (let q = nextQuestion(withGhost, p, session, 'rafale', NOW, rng, courses); q; q = nextQuestion(withGhost, p, session, 'rafale', NOW, rng, courses)) {
+        topics.add(q.topic);
+        session.shown.push(q.id);
+      }
+      return [...topics].sort();
+    };
+    expect(topicsPicked({})).toEqual(['mat1600-syst', 'stt1700-desc']);
+    expect(topicsPicked({ 'mat1600-syst': false, 'mat1600-det': true })).toEqual(['mat1600-det', 'stt1700-desc']);
+    expect(topicsPicked({ 'mat1600-zzz': true, 'mat1400-vect': true })).toEqual(['mat1600-syst', 'stt1700-desc']);
   });
 
   it('questions Défi seulement si le Défi est activé', () => {
@@ -218,7 +262,7 @@ describe('nextQuestion — pondération weak', () => {
     let hits = 0;
     const runs = 4000;
     for (let seed = 0; seed < runs; seed++) {
-      if (nextQuestion(bank, p, { shown: [] }, 'rafale', NOW, mulberry32(seed))?.course === course) hits++;
+      if (next(bank, p, { shown: [] }, 'rafale', NOW, mulberry32(seed))?.course === course) hits++;
     }
     return hits / runs;
   };
@@ -255,7 +299,7 @@ describe('nextQuestion — pondération weak', () => {
     const p = settingsFor({ [seen.id]: card({ wrongLast: true, due: NOW + DAY }) }, { topics: ['mat1600-syst', 'mat1600-det'] });
     let det = 0;
     for (let seed = 0; seed < 4000; seed++) {
-      if (nextQuestion([...oneCourse, seen], p, { shown: [] }, 'rafale', NOW, mulberry32(seed))?.topic === 'mat1600-det') det++;
+      if (next([...oneCourse, seen], p, { shown: [] }, 'rafale', NOW, mulberry32(seed))?.topic === 'mat1600-det') det++;
     }
     expect(det / 4000).toBeGreaterThan(0.72);
     expect(det / 4000).toBeLessThan(0.78);
@@ -277,7 +321,7 @@ describe('nextQuestion — Sans fin', () => {
     const rng = mulberry32(5);
     const shown = bank.map((q) => q.id);
     const session: GameSession = { shown };
-    const q = nextQuestion(bank, settingsFor(), session, 'sansFin', NOW, rng);
+    const q = next(bank, settingsFor(), session, 'sansFin', NOW, rng);
     expect(session.shown).toBe(shown);
     expect(shown).toEqual(bank.slice(-SANS_FIN_KEEP).map((x) => x.id));
     expect(shown).not.toContain(q!.id);
@@ -298,7 +342,7 @@ describe('nextQuestion — Sans fin', () => {
 
   it('sélection vide : null, session.shown intact', () => {
     const session: GameSession = { shown: ['x'] };
-    expect(nextQuestion(bank, settingsFor({}, { topics: [] }), session, 'sansFin', NOW, mulberry32(1))).toBeNull();
+    expect(next(bank, settingsFor({}, { topics: [] }), session, 'sansFin', NOW, mulberry32(1))).toBeNull();
     expect(session.shown).toEqual(['x']);
   });
 });
@@ -327,7 +371,7 @@ describe('nextQuestion — À revoir', () => {
   });
 
   it('aucune erreur : null', () => {
-    expect(nextQuestion(bank, settingsFor(), { shown: [] }, 'aRevoir', NOW, mulberry32(1))).toBeNull();
+    expect(next(bank, settingsFor(), { shown: [] }, 'aRevoir', NOW, mulberry32(1))).toBeNull();
   });
 });
 

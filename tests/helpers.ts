@@ -26,7 +26,7 @@ export function progressWith(partial: Partial<Progress> = {}): Progress {
     v: 1,
     cards: {},
     activeDays: [],
-    settings: { courses: ['MAT1400', 'MAT1500', 'MAT1600', 'STT1700'], topics: [], challenge: false, updatedAt: 0 },
+    settings: { courses: ['MAT1400', 'MAT1500', 'MAT1600', 'STT1700'], topicOverrides: {}, challenge: false, updatedAt: 0 },
     flagged: [],
     ...partial,
   };

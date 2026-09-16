@@ -1,7 +1,7 @@
 // Propriété du lot Engine. Répétition espacée (boîtes de Leitner) et choix de la prochaine question.
 // Pur : `now` et `rng` sont injectés. Seule exception documentée : le redémarrage Sans fin tronque session.shown.
-import { markActive } from './progress';
-import type { Box, CardState, GameSession, Mode, Progress, Question, Rng } from './types';
+import { isTopicOn, markActive } from './progress';
+import type { Box, CardState, Course, GameSession, Mode, Progress, Question, Rng } from './types';
 
 const MIN = 60_000;
 const DAY = 86_400_000;
@@ -87,14 +87,14 @@ function pickGroup(options: string[], last: string | undefined, weak: (x: string
   return weightedPick(pool, pool.map((x) => 1 + 2 * weak(x)), rng);
 }
 
-/** Questions permises par les réglages et le mode, sans tenir compte de session.shown. */
-function selection(bank: Question[], p: Progress, mode: Mode): Question[] {
-  const courses = new Set(p.settings.courses);
-  const topics = new Set(p.settings.topics);
+/** Questions permises par les réglages et le mode, sans tenir compte de session.shown. Thème absent de `courses` = décoché. */
+function selection(bank: Question[], p: Progress, mode: Mode, courses: Course[]): Question[] {
+  const selectedCourses = new Set(p.settings.courses);
+  const onTopics = new Set(courses.flatMap((c) => c.topics.filter((t) => isTopicOn(p.settings, t)).map((t) => t.id)));
   return bank.filter(
     (q) =>
-      courses.has(q.course) &&
-      topics.has(q.topic) &&
+      selectedCourses.has(q.course) &&
+      onTopics.has(q.topic) &&
       (q.challenge !== true || p.settings.challenge) &&
       (mode !== 'aRevoir' || p.cards[q.id]?.wrongLast === true),
   );
@@ -153,7 +153,8 @@ function pick(
 /**
  * Prochaine question, ou null s'il n'y en a plus.
  *
- * Sélection = cours et thèmes cochés dans p.settings, questions Défi seulement si le Défi est activé,
+ * Sélection = cours cochés dans p.settings, thèmes cochés selon isTopicOn (choix explicite, sinon defaultOn ;
+ * un thème absent de `courses` est décoché), questions Défi seulement si le Défi est activé,
  * moins session.shown. Mode aRevoir : seulement les cartes dont la dernière réponse était fausse, en un seul palier.
  * Sinon, premier palier non vide : A (dues, box 1) → B (jamais vues) → C (dues, box ≥ 2) → D (pas dues).
  * Cours puis thème tirés au sort avec w = 1 + 2·weak, en évitant session.lastCourse / lastTopic s'il y a une autre option ;
@@ -171,8 +172,9 @@ export function nextQuestion(
   mode: Mode,
   now: number,
   rng: Rng,
+  courses: Course[],
 ): Question | null {
-  const eligible = selection(bank, p, mode);
+  const eligible = selection(bank, p, mode, courses);
   const q = pick(eligible, bank, p, session, mode, now, rng);
   if (q !== null || mode !== 'sansFin' || eligible.length === 0) return q;
 

@@ -1,7 +1,7 @@
 // Propriété du lot Engine. Progression locale : chargement sûr, sauvegarde, données dérivées.
 // Fonctions pures : `now` (epoch ms) est toujours passé en paramètre.
 import { ProgressSchema } from './schema';
-import type { Course, CourseCode, Progress, Question } from './types';
+import type { Course, CourseCode, Progress, Question, Settings, Topic } from './types';
 
 export const STORAGE_KEY = 'pause-maths:progress';
 export const BACKUP_PREFIX = 'pause-maths:backup-';
@@ -23,7 +23,7 @@ export interface LoadResult {
 
 const isRecord = (x: unknown): x is Record<string, unknown> => typeof x === 'object' && x !== null && !Array.isArray(x);
 
-/** État neuf : tous les cours, thèmes cochés par défaut, Défi désactivé. */
+/** État neuf : tous les cours, aucun choix de thème explicite (chacun suit son defaultOn), Défi désactivé. */
 export function emptyProgress(now: number, courses: Course[]): Progress {
   return {
     v: 1,
@@ -31,12 +31,42 @@ export function emptyProgress(now: number, courses: Course[]): Progress {
     activeDays: [],
     settings: {
       courses: courses.map((c) => c.code),
-      topics: courses.flatMap((c) => c.topics.filter((t) => t.defaultOn).map((t) => t.id)),
+      topicOverrides: {},
       challenge: false,
       updatedAt: now,
     },
     flagged: [],
   };
+}
+
+/** Thème coché : choix explicite de l'utilisateur, sinon Topic.defaultOn (un thème passé à defaultOn plus tard devient coché). */
+export function isTopicOn(settings: Settings, topic: Topic): boolean {
+  return settings.topicOverrides[topic.id] ?? topic.defaultOn;
+}
+
+/** Enregistre le choix explicite de cocher ou décocher un thème ; settings.updatedAt = now. */
+export function setTopic(p: Progress, topicId: string, on: boolean, now: number): Progress {
+  return {
+    ...p,
+    settings: { ...p.settings, topicOverrides: { ...p.settings.topicOverrides, [topicId]: on }, updatedAt: now },
+  };
+}
+
+/**
+ * Remise à zéro : cartes et jours actifs effacés, resetAt = now. Réglages, signalements et code de synchro conservés.
+ * merge écarte ensuite toute carte antérieure à resetAt, pour que la synchro ne ramène pas l'ancienne progression.
+ */
+export function resetProgress(p: Progress, now: number): Progress {
+  const out: Progress = {
+    v: 1,
+    cards: {},
+    activeDays: [],
+    settings: p.settings,
+    flagged: p.flagged,
+    resetAt: now,
+  };
+  if (p.syncCode !== undefined) out.syncCode = p.syncCode;
+  return out;
 }
 
 /**

@@ -88,7 +88,7 @@ export const CardStateSchema: z.ZodType<CardState> = z.object({
 
 export const SettingsSchema: z.ZodType<Settings> = z.object({
   courses: z.array(CourseCodeSchema),
-  topics: z.array(z.string()),
+  topicOverrides: z.record(z.string(), z.boolean()),
   challenge: z.boolean(),
   updatedAt: epochMs,
 });
@@ -100,4 +100,5 @@ export const ProgressSchema: z.ZodType<Progress> = z.object({
   settings: SettingsSchema,
   flagged: z.array(z.string()),
   syncCode: z.string().optional(),
+  resetAt: epochMs.optional(),
 });

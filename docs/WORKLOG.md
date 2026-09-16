@@ -65,6 +65,16 @@ Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute
 - `D:\Math\MAT1400` toujours vide (lot StudiUM pas encore terminé) : contenu tiré de `Downloads` (lecture seule), sources consignées dans `docs/sources/mat1400.md`.
 - Gate officiel (`npm test`, 76 tests) passe après rebase sur main (26c884f). Écart assumé : j'avais d'abord écrit un script de validation local (scratchpad, hors dépôt) en attendant le gate réel — abandonné dès que `tests/content.test.ts` a été disponible, comme demandé par l'admin.
 - Suite : Jalon 2, ~10-13 questions par thème sur les 8 thèmes intra (~100 au total, un thème à la fois, gate + relecture aveugle + SymPy pour chaque).
+## 2026-09-16 — Engine jalon 3 : thèmes par choix explicite, remise à zéro synchronisée, gate.ts lisible (lot Engine)
+
+- `src/lib/types.ts` (autorisation exceptionnelle de l'admin, patch exact) : `Settings.topics` → `topicOverrides: Record<string, boolean>` ; `Progress.resetAt?` ; JSDoc de `flagged` (union assumée).
+- `schema.ts` à jour. `progress.ts` : `isTopicOn`, `setTopic` (met `settings.updatedAt`), `resetProgress` (cartes et jours actifs effacés ; réglages, signalements et code gardés ; `resetAt = now`) ; `emptyProgress` sans choix de thème.
+- `merge.ts` : `resetAt` = max des deux côtés, cartes avec `at < resetAt` écartées ; toujours commutatif, associatif, idempotent (testé avec des remises à zéro).
+- `scheduler.ts` : signature validée par l'admin `nextQuestion(bank, p, session, mode, now, rng, courses)` ; thèmes via `isTopicOn`, thème absent de `courses` = décoché.
+- `gate.ts` contenait deux regex avec des octets de contrôle BRUTS (NUL…) : git le traitait comme binaire. Remplacées par une comparaison de codes ; `tests/source-hygiene.test.ts` vérifie qu'aucun source Engine n'en contient (contrôle : il trouve 6 octets dans l'ancienne version).
+- `tests/api/sync.test.ts` (lot PWA) : 2 littéraux `topics: []` → `topicOverrides: {}` pour suivre le type, rien d'autre.
+- `npm test` : 253 verts ; `tsc --noEmit` et `npm run build` : OK.
+
 ## 2026-09-16 — Engine jalon 2 : progress, merge, scheduler, import (lot Engine, branche lot/engine)
 
 - `src/lib/progress.ts` : `loadProgress` (JSON → `migrate` pas à pas → Zod ; échec ou version inconnue = copie brute `pause-maths:backup-<ts>` puis état neuf ; l'original n'est retiré qu'après la copie, et reste si la copie échoue), `saveProgress`, `dayKey`, `markActive`, `streak` (sûr aux changements d'heure), `xp`, `level`, `levelProgress`, `mastery`, `toggleFlag`.

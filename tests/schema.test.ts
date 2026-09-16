@@ -81,7 +81,7 @@ describe('ProgressSchema / SettingsSchema', () => {
     v: 1,
     cards: { 'mat1600-syst-001': { box: 3, due: 1_790_000_000_000, n: 4, k: 3, wrongLast: false, at: 1_789_000_000_000 } },
     activeDays: ['2026-09-15', '2026-09-16'],
-    settings: { courses: ['MAT1600', 'STT1700'], topics: ['mat1600-syst'], challenge: false, updatedAt: 1_789_000_000_000 },
+    settings: { courses: ['MAT1600', 'STT1700'], topicOverrides: { 'mat1600-syst': true, 'mat1600-det': false }, challenge: false, updatedAt: 1_789_000_000_000 },
     flagged: ['mat1600-syst-001'],
     syncCode: 'K7F2-9QXD-M3PA',
   };
@@ -101,7 +101,16 @@ describe('ProgressSchema / SettingsSchema', () => {
     expect(ProgressSchema.safeParse({ ...progress, activeDays: ['16/09/2026'] }).success).toBe(false);
   });
 
-  it('SettingsSchema refuse un cours inconnu', () => {
+  it('SettingsSchema refuse un cours inconnu, un choix de thème non booléen et l\'ancienne forme topics[]', () => {
     expect(SettingsSchema.safeParse({ ...progress.settings, courses: ['MAT1700'] }).success).toBe(false);
+    expect(SettingsSchema.safeParse({ ...progress.settings, topicOverrides: { 'mat1600-syst': 'oui' } }).success).toBe(false);
+    const { topicOverrides: _o, ...old } = progress.settings;
+    expect(SettingsSchema.safeParse({ ...old, topics: ['mat1600-syst'] }).success).toBe(false);
+  });
+
+  it('resetAt optionnel, entier positif', () => {
+    expect(ProgressSchema.parse({ ...progress, resetAt: 1_789_000_000_000 })).toEqual({ ...progress, resetAt: 1_789_000_000_000 });
+    expect(ProgressSchema.safeParse({ ...progress, resetAt: -1 }).success).toBe(false);
+    expect(ProgressSchema.safeParse({ ...progress, resetAt: '2026-09-16' }).success).toBe(false);
   });
 });

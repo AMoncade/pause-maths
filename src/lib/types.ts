@@ -96,8 +96,11 @@ export interface CardState {
 
 export interface Settings {
   courses: CourseCode[];
-  /** ids de thèmes cochés */
-  topics: string[];
+  /**
+   * Choix explicites id de thème → coché. Un thème absent suit Topic.defaultOn.
+   * Effectif = topicOverrides[id] ?? topic.defaultOn.
+   */
+  topicOverrides: Record<string, boolean>;
   challenge: boolean;
   /** epoch ms */
   updatedAt: number;
@@ -109,9 +112,11 @@ export interface Progress {
   /** jours actifs "YYYY-MM-DD" (heure locale); le streak en est dérivé */
   activeDays: string[];
   settings: Settings;
-  /** ids de questions signalées par l'utilisateur */
+  /** ids de questions signalées par l'utilisateur ; union à la synchro : un dé-signalement n'est pas propagé, limite assumée */
   flagged: string[];
   syncCode?: string;
+  /** epoch ms de la dernière remise à zéro ; merge garde le plus grand et écarte toute carte dont at lui est antérieur */
+  resetAt?: number;
 }
 
 // ---------- Session de jeu (mémoire seulement) ----------

@@ -80,7 +80,7 @@ function progress(over: Partial<Progress> = {}): Progress {
     v: 1,
     cards: {},
     activeDays: [],
-    settings: { courses: ['MAT1400'], topics: [], challenge: false, updatedAt: 1 },
+    settings: { courses: ['MAT1400'], topicOverrides: {}, challenge: false, updatedAt: 1 },
     flagged: [],
     ...over,
   };
@@ -170,7 +170,7 @@ describe('api/sync', () => {
     let last = makeRes();
     for (let i = 0; i < 25; i++) {
       last = makeRes();
-      await handler(makeReq({ method: 'PUT', key, body: progress({ settings: { courses: [], topics: [], challenge: false, updatedAt: i } }) }), last);
+      await handler(makeReq({ method: 'PUT', key, body: progress({ settings: { courses: [], topicOverrides: {}, challenge: false, updatedAt: i } }) }), last);
     }
     expect(last.statusCode).toBe(429);
   });

@@ -21,9 +21,15 @@ function pickCard(a: CardState, b: CardState): CardState {
 
 /** Les réglages au `updatedAt` le plus récent gagnent ; à égalité, un ordre total fixe tranche. */
 function pickSettings(a: Settings, b: Settings): Settings {
-  const key = (s: Settings) => [s.updatedAt, JSON.stringify([s.courses, s.topics, s.challenge])];
+  const overrides = (s: Settings) => Object.entries(s.topicOverrides).sort(([x], [y]) => (x < y ? -1 : x > y ? 1 : 0));
+  const key = (s: Settings) => [s.updatedAt, JSON.stringify([s.courses, overrides(s), s.challenge])];
   const s = compareTuples(key(a), key(b)) >= 0 ? a : b;
-  return { courses: [...s.courses], topics: [...s.topics], challenge: s.challenge, updatedAt: s.updatedAt };
+  return {
+    courses: [...s.courses],
+    topicOverrides: Object.fromEntries(overrides(s)),
+    challenge: s.challenge,
+    updatedAt: s.updatedAt,
+  };
 }
 
 const union = (a: string[], b: string[]) => [...new Set([...a, ...b])].sort();
@@ -35,12 +41,22 @@ function pickCode(a?: string, b?: string): string | undefined {
   return a <= b ? a : b;
 }
 
+/** resetAt le plus récent des deux côtés, ou undefined si aucun n'a été remis à zéro. */
+function pickReset(a?: number, b?: number): number | undefined {
+  if (a === undefined) return b;
+  if (b === undefined) return a;
+  return Math.max(a, b);
+}
+
 export function merge(a: Progress, b: Progress): Progress {
+  const resetAt = pickReset(a.resetAt, b.resetAt);
   const cards: Record<string, CardState> = {};
   for (const id of union(Object.keys(a.cards), Object.keys(b.cards))) {
     const x = a.cards[id] ?? b.cards[id]!;
     const y = b.cards[id] ?? x;
-    cards[id] = pickCard(x, y);
+    const card = pickCard(x, y);
+    // une réponse antérieure à la dernière remise à zéro n'existe plus, d'où qu'elle vienne
+    if (resetAt === undefined || card.at >= resetAt) cards[id] = card;
   }
   const out: Progress = {
     v: 1,
@@ -51,5 +67,6 @@ export function merge(a: Progress, b: Progress): Progress {
   };
   const syncCode = pickCode(a.syncCode, b.syncCode);
   if (syncCode !== undefined) out.syncCode = syncCode;
+  if (resetAt !== undefined) out.resetAt = resetAt;
   return out;
 }
