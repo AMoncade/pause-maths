@@ -1,0 +1,111 @@
+[
+  {
+    "id": "mat1400-part-001",
+    "course": "MAT1400",
+    "topic": "mat1400-part",
+    "difficulty": 1,
+    "prompt": "Pour $f(x,y)=3x^2y-2y^3$, que vaut $f_y$ ?",
+    "explanation": "En traitant $x$ comme une constante : $f_y=3x^2-6y^2$. Dériver par rapport à $y$ veut dire que tout ce qui ne dépend que de $x$ est traité comme une constante.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$3x^2-6y^2$", "correct": true },
+      { "text": "$6xy$", "correct": false, "why": "C'est $f_x$ : les rôles de $x$ et $y$ ont été inversés." },
+      { "text": "$3x^2-2y^3$", "correct": false, "why": "Le second terme $-2y^3$ n'a pas été dérivé du tout, il a été recopié tel quel." },
+      { "text": "$6x-6y^2$", "correct": false, "why": "Le terme $3x^2y$ a été dérivé comme si $x$ variait aussi (donnant $6x$), alors qu'il doit être traité comme une constante pour $f_y$." }
+    ]
+  },
+  {
+    "id": "mat1400-part-002",
+    "course": "MAT1400",
+    "topic": "mat1400-part",
+    "difficulty": 2,
+    "prompt": "Équation du plan tangent à $z=x^2+y^2$ en $(1,2,5)$ ?",
+    "explanation": "$f_x=2x$, $f_y=2y$, donc au point $(1,2)$ : $f_x=2$, $f_y=4$. Plan tangent : $z=f(1,2)+f_x(x-1)+f_y(y-2)=5+2(x-1)+4(y-2)=2x+4y-5$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$z=2x+4y-5$", "correct": true },
+      { "text": "$z=2x+4y+5$", "correct": false, "why": "Erreur de signe en combinant les constantes : $5-2-8=-5$, pas $+5$." },
+      { "text": "$z=x^2+y^2$", "correct": false, "why": "C'est l'équation de la surface elle-même, pas celle du plan tangent (qui doit être LINÉAIRE en $x,y$)." },
+      { "text": "$z=2(x-1)+4(y-2)$", "correct": false, "why": "La valeur de la fonction au point, $f(1,2)=5$, a été oubliée : il manque la constante de hauteur." }
+    ]
+  },
+  {
+    "id": "mat1400-part-003",
+    "course": "MAT1400",
+    "topic": "mat1400-part",
+    "difficulty": 2,
+    "prompt": "Pour une fonction assez régulière (dérivées partielles secondes continues), $f_{xy}=f_{yx}$.",
+    "explanation": "C'est le théorème de Clairaut (ou Schwarz) : sous des conditions de continuité usuelles, l'ordre de dérivation partielle n'a pas d'importance.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1400-part-004",
+    "course": "MAT1400",
+    "topic": "mat1400-part",
+    "difficulty": 1,
+    "prompt": "Comment définit-on $f_x(a,b)$ comme une limite ?",
+    "explanation": "Cette définition généralise la dérivée d'une variable : on fige $y=b$ et on fait varier seulement $x$ autour de $a$.",
+    "type": "flash",
+    "answer": "$f_x(a,b)=\\lim_{h\\to0}\\dfrac{f(a+h,b)-f(a,b)}{h}$",
+    "keyPoints": [
+      "Seule la variable $x$ varie, $y=b$ reste fixe",
+      "C'est la pente de la courbe obtenue en fixant $y=b$"
+    ]
+  },
+  {
+    "id": "mat1400-part-005",
+    "course": "MAT1400",
+    "topic": "mat1400-part",
+    "difficulty": 2,
+    "prompt": "Pour $f(x,y)=x^2y^3$, que vaut $f_x$ à $(1,2)$ ?",
+    "explanation": "$f_x=2xy^3$. À $(1,2)$ : $2(1)(2^3)=2\\cdot8=16$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$16$", "correct": true },
+      { "text": "$12$", "correct": false, "why": "C'est $f_y=3x^2y^2$ évalué en $(1,2)$, pas $f_x$ : mauvaise dérivée partielle." },
+      { "text": "$8$", "correct": false, "why": "Le coefficient $2$ de $f_x=2xy^3$ a été oublié : $xy^3=8$ au lieu de $2xy^3=16$." },
+      { "text": "$4$", "correct": false, "why": "Les coordonnées du point ont été substituées dans le mauvais ordre : $f_x(2,1)=2(2)(1)^3=4$ au lieu de $f_x(1,2)$." }
+    ]
+  },
+  {
+    "id": "mat1400-part-006",
+    "course": "MAT1400",
+    "topic": "mat1400-part",
+    "difficulty": 2,
+    "prompt": "Le plan tangent à $z=f(x,y)$ en $(a,b)$ est horizontal (parallèle au plan $xy$) exactement quand...",
+    "explanation": "Le plan tangent est $z=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)$ : il est horizontal (sans termes en $x,y$) exactement quand les DEUX pentes $f_x$ et $f_y$ s'annulent.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$f_x(a,b)=f_y(a,b)=0$", "correct": true },
+      { "text": "$f_x(a,b)=0$ seulement", "correct": false, "why": "Il faut aussi $f_y(a,b)=0$ : une seule pente nulle laisse le plan incliné dans l'autre direction." },
+      { "text": "$f(a,b)=0$", "correct": false, "why": "Ceci fixe seulement la HAUTEUR du plan tangent (il passerait par $z=0$), pas son inclinaison." },
+      { "text": "$f_{xy}(a,b)=0$", "correct": false, "why": "La dérivée seconde mixte ne détermine pas l'inclinaison du plan tangent, seules les dérivées premières $f_x,f_y$ le font." }
+    ]
+  },
+  {
+    "id": "mat1400-part-007",
+    "course": "MAT1400",
+    "topic": "mat1400-part",
+    "difficulty": 2,
+    "prompt": "Si $f_x(a,b)$ et $f_y(a,b)$ existent toutes les deux, alors $f$ est automatiquement différentiable en $(a,b)$.",
+    "explanation": "Faux : l'existence des deux dérivées partielles ne garantit PAS la différentiabilité (il faut en plus, par exemple, qu'elles soient continues près du point). C'est un piège conceptuel classique du chapitre.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1400-part-008",
+    "course": "MAT1400",
+    "topic": "mat1400-part",
+    "difficulty": 1,
+    "prompt": "$\\dfrac{\\partial f}{\\partial x}$ se note aussi...",
+    "explanation": "$f_x$ est la notation indicielle standard pour $\\partial f/\\partial x$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$f_x$", "correct": true },
+      { "text": "$f'$", "correct": false, "why": "La notation prime $f'$ est réservée aux fonctions d'UNE seule variable ; pour plusieurs variables elle est ambiguë (dérivée par rapport à laquelle ?)." },
+      { "text": "$\\nabla f$", "correct": false, "why": "C'est le vecteur gradient COMPLET $(f_x,f_y)$, pas une seule dérivée partielle." },
+      { "text": "$df$", "correct": false, "why": "C'est la différentielle totale de $f$, une combinaison de toutes les dérivées partielles, pas une seule d'entre elles." }
+    ]
+  }
+]

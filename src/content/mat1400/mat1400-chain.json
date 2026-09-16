@@ -1,0 +1,111 @@
+[
+  {
+    "id": "mat1400-chain-001",
+    "course": "MAT1400",
+    "topic": "mat1400-chain",
+    "difficulty": 2,
+    "prompt": "Si $z=xy$, $x=t^2$, $y=t+1$, que vaut $\\dfrac{dz}{dt}$ par la règle de chaîne ?",
+    "explanation": "$\\dfrac{dz}{dt}=f_x\\dfrac{dx}{dt}+f_y\\dfrac{dy}{dt}=y(2t)+x(1)=(t+1)(2t)+t^2=3t^2+2t$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$3t^2+2t$", "correct": true },
+      { "text": "$2t^2+2t$", "correct": false, "why": "Un seul terme de la règle de chaîne a été gardé ($y\\cdot dx/dt$), l'autre terme $x\\cdot dy/dt$ a été oublié." },
+      { "text": "$2t$", "correct": false, "why": "$dx/dt$ et $dy/dt$ ont été multipliés directement entre eux, en oubliant complètement les dérivées partielles $f_x,f_y$ de la formule." },
+      { "text": "$t^2+t+1$", "correct": false, "why": "C'est $x+y$ : les dérivées partielles $f_x,f_y$ ont été remplacées par $x,y$ eux-mêmes, sans les multiplier par $dx/dt,dy/dt$." }
+    ]
+  },
+  {
+    "id": "mat1400-chain-002",
+    "course": "MAT1400",
+    "topic": "mat1400-chain",
+    "difficulty": 2,
+    "prompt": "Si $x=s+t$ et $y=s-t$, que vaut $\\dfrac{\\partial z}{\\partial s}$ en fonction de $f_x,f_y$ ?",
+    "explanation": "$\\partial x/\\partial s=1$ et $\\partial y/\\partial s=1$, donc $\\partial z/\\partial s=f_x\\cdot1+f_y\\cdot1=f_x+f_y$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$f_x+f_y$", "correct": true },
+      { "text": "$f_x-f_y$", "correct": false, "why": "C'est $\\partial z/\\partial t$ (car $\\partial y/\\partial t=-1$) : le signe correspond à $t$, pas à $s$." },
+      { "text": "$f_x\\cdot f_y$", "correct": false, "why": "La règle de chaîne additionne les contributions de chaque variable intermédiaire, elle ne les multiplie pas." },
+      { "text": "$2f_x$", "correct": false, "why": "La contribution de $y$ (via $f_y\\cdot\\partial y/\\partial s$) a été complètement oubliée." }
+    ]
+  },
+  {
+    "id": "mat1400-chain-003",
+    "course": "MAT1400",
+    "topic": "mat1400-chain",
+    "difficulty": 2,
+    "prompt": "Pour une courbe $F(x,y)=0$, on a $\\dfrac{dy}{dx}=-\\dfrac{F_x}{F_y}$ (si $F_y\\ne0$).",
+    "explanation": "C'est la formule de dérivation implicite obtenue par la règle de chaîne : en dérivant $F(x,y(x))=0$ par rapport à $x$, $F_x+F_y\\dfrac{dy}{dx}=0$, d'où le résultat.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1400-chain-004",
+    "course": "MAT1400",
+    "topic": "mat1400-chain",
+    "difficulty": 2,
+    "prompt": "Combien de termes comporte $\\dfrac{\\partial z}{\\partial s}$ si $z=f(x,y,w)$ et que $x,y,w$ dépendent toutes les trois de $s$ (et $t$) ?",
+    "explanation": "La règle de chaîne donne un terme par variable intermédiaire dont $z$ dépend : ici $x,y,w$, donc 3 termes.",
+    "type": "flash",
+    "answer": "3 termes : $f_x\\dfrac{\\partial x}{\\partial s}+f_y\\dfrac{\\partial y}{\\partial s}+f_w\\dfrac{\\partial w}{\\partial s}$",
+    "keyPoints": [
+      "Un terme par variable intermédiaire dont $z$ dépend",
+      "Chaque terme = dérivée partielle de $f$ fois la dérivée de cette variable par rapport à $s$"
+    ]
+  },
+  {
+    "id": "mat1400-chain-005",
+    "course": "MAT1400",
+    "topic": "mat1400-chain",
+    "difficulty": 2,
+    "prompt": "Pour le cercle $x^2+y^2=1$, la dérivation implicite donne $\\dfrac{dy}{dx}=$...",
+    "explanation": "$F(x,y)=x^2+y^2-1$, $F_x=2x$, $F_y=2y$. $\\dfrac{dy}{dx}=-\\dfrac{F_x}{F_y}=-\\dfrac{2x}{2y}=-\\dfrac{x}{y}$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$-x/y$", "correct": true },
+      { "text": "$x/y$", "correct": false, "why": "Le signe négatif de la formule $-F_x/F_y$ a été oublié." },
+      { "text": "$-y/x$", "correct": false, "why": "$F_x$ et $F_y$ ont été inversés dans la formule." },
+      { "text": "$-2x$", "correct": false, "why": "Seul $-F_x$ a été calculé, la division par $F_y$ a été oubliée." }
+    ]
+  },
+  {
+    "id": "mat1400-chain-006",
+    "course": "MAT1400",
+    "topic": "mat1400-chain",
+    "difficulty": 1,
+    "prompt": "Si $z=f(x,y)$ où $x$ et $y$ dépendent toutes deux d'une seule variable $t$, la règle de chaîne s'écrit...",
+    "explanation": "Chaque variable intermédiaire contribue un terme : la dérivée partielle de $f$ par rapport à elle, multipliée par sa propre dérivée par rapport à $t$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$\\dfrac{dz}{dt}=f_x\\dfrac{dx}{dt}+f_y\\dfrac{dy}{dt}$", "correct": true },
+      { "text": "$\\dfrac{dz}{dt}=f_x+f_y$", "correct": false, "why": "Les facteurs $dx/dt$ et $dy/dt$, essentiels à la règle de chaîne, ont été oubliés." },
+      { "text": "$\\dfrac{dz}{dt}=f_x\\cdot f_y$", "correct": false, "why": "La règle de chaîne additionne les contributions, elle ne multiplie pas les dérivées partielles entre elles." },
+      { "text": "$\\dfrac{dz}{dt}=\\dfrac{dx}{dt}\\cdot\\dfrac{dy}{dt}$", "correct": false, "why": "Les dérivées partielles de $f$ (l'information sur la fonction elle-même) ont complètement disparu de cette expression." }
+    ]
+  },
+  {
+    "id": "mat1400-chain-007",
+    "course": "MAT1400",
+    "topic": "mat1400-chain",
+    "difficulty": 2,
+    "prompt": "Dans $\\partial z/\\partial t$ (avec $x=g(s,t)$, $y=h(s,t)$), on utilise $\\partial x/\\partial s$ (pas $\\partial x/\\partial t$).",
+    "explanation": "Faux : pour $\\partial z/\\partial t$, il faut utiliser $\\partial x/\\partial t$ et $\\partial y/\\partial t$, pas les dérivées par rapport à $s$. Chaque dérivée cible sa propre variable.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1400-chain-008",
+    "course": "MAT1400",
+    "topic": "mat1400-chain",
+    "difficulty": 2,
+    "prompt": "Pour $z=x^2+y^2$, $x=st$, $y=s+t$, que vaut $\\partial z/\\partial s$ en $(s,t)=(1,2)$ ?",
+    "explanation": "$x=2$, $y=3$ donc $f_x=2x=4$, $f_y=2y=6$. $\\partial x/\\partial s=t=2$, $\\partial y/\\partial s=1$. $\\partial z/\\partial s=4(2)+6(1)=8+6=14$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$14$", "correct": true },
+      { "text": "$8$", "correct": false, "why": "Le terme $f_y\\cdot\\partial y/\\partial s=6$ a été oublié : il ne reste que $f_x\\cdot\\partial x/\\partial s=8$." },
+      { "text": "$6$", "correct": false, "why": "Le terme $f_x\\cdot\\partial x/\\partial s=8$ a été oublié : il ne reste que $f_y\\cdot\\partial y/\\partial s=6$." },
+      { "text": "$10$", "correct": false, "why": "$\\partial x/\\partial t=s=1$ a été utilisé à la place de $\\partial x/\\partial s=t=2$ : mauvaise dérivée de $x$." }
+    ]
+  }
+]
