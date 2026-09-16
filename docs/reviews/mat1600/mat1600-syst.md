@@ -56,4 +56,19 @@ chaque choix confirme que seule cette forme vaut $3$ pour tout $t$ ; `linsolve` 
 $\{(2x_2+3,x_2)\}$. Réfutations correctes pour les 3 distracteurs.
 Verdict : **OK**.
 
-**Résultat : 8/8 publiables, 0 correction nécessaire, 0 désaccord.**
+**Résultat (jalon 2, 4-20) : 8/8 publiables, 0 correction nécessaire, 0 désaccord.**
+
+## mat1600-syst-009 à 020 (extension ~20/thème)
+
+Relecture aveugle (seed 101) : 12/12 confirmées, 0 désaccord. Points vérifiés par
+SymPy : $h=2$ donne une infinité de solutions pour {009} ; $h=6$ rend {010}
+incompatible ; comptage de variables libres correct pour {011} ; solution $(1,2,3)$
+confirmée pour le système 3×3 de {015}, chaque distracteur échoue à une équation
+précise ; solution $(-6,3,2)$ confirmée par substitution arrière pour {019}, chaque
+distracteur isolé à une seule erreur (oubli du $-z$, oubli de la division par 2, copie
+brute de la colonne de droite). Concepts (012, 013, 014, 016, 017, 018, 020)
+confirmés par raisonnement, aucun désaccord. Note du relecteur : {012} suppose que
+« forme échelonnée réduite du système » réfère à la matrice augmentée (convention
+standard) — pas un défaut.
+
+**Résultat final : 20/20 publiables, 0 correction nécessaire, 0 désaccord.**

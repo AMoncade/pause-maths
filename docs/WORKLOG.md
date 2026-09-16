@@ -36,6 +36,22 @@ Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute
 - **Revue de design** (agent impeccable-finish-reviewer, sur 17 captures) → corrigé : titres de cours sur 2 lignes, XP par cours sur les tuiles, boutons Pas su / Je savais et tuiles Vrai/Faux (plus grandes) dans la zone du pouce, « Déjà vues » dans Stats, bandeau de niveau à rebord. Vérifié ensuite par captures : flamme de combo en jeu, confettis aux couleurs des cours joués.
 - **Vérifié** : `npm run typecheck`, `npm test` et `npm run build` verts ; 59 tests dans `tests/ui/` (logique, composants, parcours App en jsdom avec `pwa.ts` et `syncNow`/`checkSyncCode` simulés). Rendu contrôlé en Edge headless (pas Chrome) sur le serveur dev via un harnais jetable non commité, 390 px et 1280 px, clair et sombre.
 - **Pas vérifié** : checklist §11 « App in Chrome » (Chrome réservé au lot A) ; comportement réel sur iPhone (safe areas, installation, vibrate absent) ; synchro contre le vrai `api/sync`.
+## 2026-09-16 — MAT1600 jalon 2 étendu : thème syst à 20 (lot mat1600)
+
+- Décision de l'admin : cible ~100/cours confirmée (pas 8/thème) — le scheduler
+  épuiserait le palier « jamais vues » en 2 jours avec seulement 40 questions. Nouvelle
+  cible : ~20/thème intra × 5 thèmes ≈ 100, ~10 % Défi, variété exigée (angle différent
+  par question : calcul, vrai/faux conceptuel, flash de définition, lecture d'une
+  matrice donnée).
+- `mat1600-syst` étendu de 8 à 20 questions (+12) : paramètre $h$ pour infinité/aucune
+  solution, lecture d'une matrice échelonnée (variables libres, ligne contradictoire
+  hors ordre), système équivalent (VF), Gauss vs Gauss-Jordan (flash), système
+  sous-déterminé jamais unique, élimination complète 3×3 (Défi), variables libres ≠
+  nombre de solutions, substitution arrière (flash + calcul).
+- Gate `npm test` vert. Relecture aveugle (`scripts/blind-review.ts`, seed 101) + SymPy
+  (venv hors dépôt) : 12/12 confirmées, 0 désaccord. Journal mis à jour dans
+  `docs/reviews/mat1600/mat1600-syst.md`.
+- Suite : `vect` en relecture, puis `matr`, `det`, `esp` à étendre à ~20 chacun.
 
 ## 2026-09-16 — MAT1600 : calibration des 40 questions (lot mat1600)
 

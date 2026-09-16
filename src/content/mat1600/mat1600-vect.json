@@ -110,5 +110,172 @@
       { "text": "Oui, car il y a exactement 3 vecteurs dans $\\mathbb R^3$", "correct": false, "why": "Avoir autant de vecteurs que la dimension ne garantit pas l'indépendance : ça borne seulement le nombre maximal de vecteurs indépendants possibles." },
       { "text": "Non, car ils ne sont pas orthogonaux entre eux", "correct": false, "why": "L'orthogonalité n'a aucun rapport avec l'indépendance linéaire : des vecteurs non orthogonaux peuvent très bien être indépendants." }
     ]
+  },
+  {
+    "id": "mat1600-vect-009",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 2,
+    "prompt": "Le vecteur $b=(1,0,1)$ appartient-il à $\\text{Vect}(v_1,v_2)$ avec $v_1=(1,1,0)$, $v_2=(0,1,1)$ ?",
+    "explanation": "La première composante impose $c_1=1$, la troisième impose $c_2=1$, mais alors la deuxième composante donnerait $c_1+c_2=2\\ne0$ : le système est incompatible, donc $b\\notin\\text{Vect}(v_1,v_2)$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Non : le système pour $c_1,c_2$ est incompatible", "correct": true },
+      { "text": "Oui, avec $c_1=1,\\ c_2=-1$", "correct": false, "why": "Ces valeurs donnent $1\\cdot v_1-1\\cdot v_2=(1,0,-1)\\ne(1,0,1)$ : la troisième composante ne correspond pas." },
+      { "text": "Oui, car $b$ est visiblement une combinaison de $v_1$ et $v_2$", "correct": false, "why": "Une affirmation sans résoudre le système ne suffit pas : ici le système est justement incompatible." },
+      { "text": "On ne peut pas savoir sans connaître $\\dim(\\text{Vect}(v_1,v_2))$", "correct": false, "why": "La dimension de $\\text{Vect}(v_1,v_2)$ ne dit rien sur l'appartenance d'un $b$ particulier : il faut résoudre le système $c_1v_1+c_2v_2=b$." }
+    ]
+  },
+  {
+    "id": "mat1600-vect-010",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 1,
+    "prompt": "Le vecteur nul appartient toujours à $\\text{Vect}(v_1,\\dots,v_k)$, peu importe les vecteurs.",
+    "explanation": "Vrai : poser tous les coefficients à $0$ donne toujours $0\\cdot v_1+\\cdots+0\\cdot v_k=0$, donc $0\\in\\text{Vect}(v_1,\\dots,v_k)$.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1600-vect-011",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 2,
+    "prompt": "La forme échelonnée réduite de $\\begin{pmatrix}1&2\\\\2&4\\end{pmatrix}$ a un pivot dans une seule colonne. Que peut-on en conclure sur les deux colonnes de cette matrice ?",
+    "explanation": "Une colonne sans pivot correspond à une variable libre dans $Ax=0$ : il existe donc une combinaison non triviale des colonnes qui donne $0$, donc elles sont liées.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Elles sont liées (dépendantes)", "correct": true },
+      { "text": "Elles sont indépendantes, car la matrice n'est pas nulle", "correct": false, "why": "Une matrice non nulle peut très bien avoir des colonnes dépendantes : ce n'est pas parce que des entrées sont non nulles que les colonnes le sont." },
+      { "text": "On ne peut rien conclure sans calculer le déterminant", "correct": false, "why": "Le nombre de colonnes pivots dans la forme échelonnée suffit déjà à conclure sur l'indépendance : inutile de calculer un déterminant." },
+      { "text": "Elles engendrent $\\mathbb R^2$", "correct": false, "why": "Des colonnes dépendantes n'engendrent qu'une droite, pas tout $\\mathbb R^2$." }
+    ]
+  },
+  {
+    "id": "mat1600-vect-012",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 2,
+    "prompt": "Comment vérifier l'indépendance linéaire des colonnes d'une matrice à partir de sa forme échelonnée ?",
+    "explanation": "Les colonnes sont indépendantes exactement quand chaque colonne contient un pivot (aucune variable libre dans $Ax=0$).",
+    "type": "flash",
+    "answer": "Les colonnes d'une matrice sont linéairement indépendantes si et seulement si chaque colonne de sa forme échelonnée contient un pivot (aucune colonne libre).",
+    "keyPoints": [
+      "Une colonne sans pivot ⇒ une variable libre ⇒ une combinaison non triviale donnant $0$ ⇒ colonnes liées",
+      "S'il y a plus de colonnes que de lignes, il ne peut pas y avoir de pivot dans chaque colonne : les colonnes sont automatiquement liées",
+      "Ce test est équivalent à résoudre $Ax=0$ et vérifier que seule $x=0$ fonctionne"
+    ]
+  },
+  {
+    "id": "mat1600-vect-013",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 2,
+    "challenge": true,
+    "solution": "On résout $c_1v_1+c_2v_2+c_3v_3=0$ composante par composante.\n\n1) Première composante : $c_1=0$.\n\n2) Deuxième composante : $c_2=0$.\n\n3) Troisième composante : $c_3=0$.\n\n4) La quatrième composante ($c_1+c_2+c_3=0$) est automatiquement satisfaite.\n\nSeule la solution triviale existe : les trois vecteurs sont indépendants.",
+    "prompt": "Les vecteurs $v_1=(1,0,0,1)$, $v_2=(0,1,0,1)$, $v_3=(0,0,1,1)$ dans $\\mathbb R^4$ sont-ils linéairement indépendants ?",
+    "explanation": "Les trois premières composantes de $c_1v_1+c_2v_2+c_3v_3=0$ forcent directement $c_1=c_2=c_3=0$ : seule la solution triviale existe.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Oui : seule la solution triviale résout $c_1v_1+c_2v_2+c_3v_3=0$", "correct": true },
+      { "text": "Non, car $\\mathbb R^4$ nécessite 4 vecteurs pour être indépendants", "correct": false, "why": "L'indépendance de 3 vecteurs ne dépend que de leur propre relation, pas du nombre de vecteurs nécessaire pour engendrer tout $\\mathbb R^4$." },
+      { "text": "Non, car ils partagent tous une composante égale à $1$", "correct": false, "why": "Partager une valeur dans une composante ne crée pas automatiquement une dépendance : il faut vérifier la combinaison linéaire complète." },
+      { "text": "On ne peut pas savoir sans calculer un déterminant $4\\times4$", "correct": false, "why": "Il n'y a que 3 vecteurs : on ne peut pas former de déterminant carré $4\\times4$ avec eux. Il faut résoudre le système homogène associé." }
+    ]
+  },
+  {
+    "id": "mat1600-vect-014",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 1,
+    "prompt": "Tout ensemble de vecteurs contenant le vecteur nul est linéairement dépendant.",
+    "explanation": "Vrai : le coefficient $1$ sur le vecteur nul (et $0$ sur les autres) donne une combinaison non triviale qui vaut $0$.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1600-vect-015",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 1,
+    "prompt": "Que représente géométriquement $\\text{Vect}\\{v\\}$ pour un vecteur $v\\ne0$ de $\\mathbb R^3$ ?",
+    "explanation": "$\\text{Vect}\\{v\\}=\\{tv:t\\in\\mathbb R\\}$ est l'ensemble de tous les multiples scalaires de $v$, ce qui forme une droite passant par l'origine.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Une droite passant par l'origine, dans la direction de $v$", "correct": true },
+      { "text": "Un plan passant par l'origine", "correct": false, "why": "Un seul vecteur non nul n'engendre qu'une droite ; il faut 2 vecteurs indépendants pour engendrer un plan." },
+      { "text": "Tout $\\mathbb R^3$", "correct": false, "why": "Un seul vecteur ne peut engendrer qu'un espace de dimension au plus 1, jamais tout $\\mathbb R^3$ (dimension 3)." },
+      { "text": "Seulement le vecteur $v$ lui-même", "correct": false, "why": "$\\text{Vect}\\{v\\}$ contient tous les multiples scalaires de $v$ (comme $2v$, $-v$, $0$), pas seulement $v$." }
+    ]
+  },
+  {
+    "id": "mat1600-vect-016",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 1,
+    "prompt": "Que représente géométriquement $\\text{Vect}\\{v_1,v_2\\}$ pour deux vecteurs indépendants de $\\mathbb R^3$ ?",
+    "explanation": "Deux vecteurs indépendants engendrent un plan passant par l'origine (une droite ne suffirait qu'avec un seul vecteur, et il faudrait 3 vecteurs indépendants pour engendrer tout $\\mathbb R^3$).",
+    "type": "flash",
+    "answer": "Un plan passant par l'origine, contenant $v_1$ et $v_2$.",
+    "keyPoints": [
+      "Il faut que $v_1$ et $v_2$ soient indépendants (non colinéaires) pour obtenir un plan, sinon on retombe sur une droite",
+      "Le plan passe toujours par l'origine, car $0\\cdot v_1+0\\cdot v_2=0$",
+      "Il faudrait un troisième vecteur indépendant des deux premiers pour engendrer tout $\\mathbb R^3$"
+    ]
+  },
+  {
+    "id": "mat1600-vect-017",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 2,
+    "prompt": "Quels scalaires $c_1,c_2,c_3$ vérifient $c_1(1,0,0)+c_2(1,1,0)+c_3(1,1,1)=(2,3,-1)$ ?",
+    "explanation": "La troisième composante donne $c_3=-1$. La deuxième donne $c_2+c_3=3$, donc $c_2=4$. La première donne $c_1+c_2+c_3=2$, donc $c_1=2-4-(-1)=-1$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$c_1=-1,\\ c_2=4,\\ c_3=-1$", "correct": true },
+      { "text": "$c_1=2,\\ c_2=3,\\ c_3=-1$", "correct": false, "why": "Ceci recopie directement les composantes de $b$ sans résoudre le système d'équations couplées." },
+      { "text": "$c_1=-1,\\ c_2=-1,\\ c_3=4$", "correct": false, "why": "Les rôles de $c_2$ et $c_3$ sont inversés : c'est la troisième composante qui isole directement $c_3$, pas $c_2$." },
+      { "text": "$c_1=1,\\ c_2=4,\\ c_3=-1$", "correct": false, "why": "$c_1$ a le mauvais signe : $c_1+c_2+c_3=2$ avec $c_2=4,c_3=-1$ donne $c_1=2-4+1=-1$, pas $1$." }
+    ]
+  },
+  {
+    "id": "mat1600-vect-018",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 1,
+    "prompt": "Combien de vecteurs, au maximum, peuvent être linéairement indépendants dans $\\mathbb R^n$ ?",
+    "explanation": "On ne peut jamais avoir plus de $n$ vecteurs indépendants dans $\\mathbb R^n$ : au-delà, une dépendance apparaît nécessairement.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$n$", "correct": true },
+      { "text": "$n+1$", "correct": false, "why": "Dès $n+1$ vecteurs dans $\\mathbb R^n$, une dépendance apparaît toujours : la limite est exactement $n$, pas $n+1$." },
+      { "text": "$n-1$", "correct": false, "why": "On peut avoir exactement $n$ vecteurs indépendants (par exemple les vecteurs de la base canonique), pas seulement $n-1$." },
+      { "text": "Il n'y a pas de limite", "correct": false, "why": "La dimension de l'espace borne toujours le nombre maximal de vecteurs indépendants possibles." }
+    ]
+  },
+  {
+    "id": "mat1600-vect-019",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 2,
+    "prompt": "Si $b\\in\\text{Vect}(v_1,\\dots,v_k)$, les coefficients de la combinaison linéaire exprimant $b$ sont toujours uniques.",
+    "explanation": "Faux en général : l'unicité n'est garantie que si $\\{v_1,\\dots,v_k\\}$ est une famille libre. Si les vecteurs sont liés, plusieurs combinaisons différentes peuvent donner le même $b$.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1600-vect-020",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 1,
+    "prompt": "Calculer $2v_1-3v_2$ pour $v_1=(1,-2,3)$ et $v_2=(0,1,-1)$.",
+    "explanation": "$2v_1=(2,-4,6)$ et $3v_2=(0,3,-3)$, donc $2v_1-3v_2=(2,-4-3,6-(-3))=(2,-7,9)$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$(2,-7,9)$", "correct": true },
+      { "text": "$(2,-1,3)$", "correct": false, "why": "Ceci additionne $v_2$ au lieu de soustraire $3v_2$ : il faut bien $2v_1-3v_2$, pas $2v_1+v_2$." },
+      { "text": "$(2,1,3)$", "correct": false, "why": "Le facteur $3$ devant $v_2$ a été oublié : c'est $3v_2=(0,3,-3)$ qu'il faut soustraire, pas $v_2$ seul." },
+      { "text": "$(-1,-7,9)$", "correct": false, "why": "Erreur sur la première composante : $2\\cdot1-3\\cdot0=2$, pas $-1$." }
+    ]
   }
 ]
