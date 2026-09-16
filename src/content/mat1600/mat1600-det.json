@@ -1,0 +1,114 @@
+[
+  {
+    "id": "mat1600-det-001",
+    "course": "MAT1600",
+    "topic": "mat1600-det",
+    "difficulty": 1,
+    "prompt": "Quel est le déterminant de $A=\\begin{pmatrix}3&1\\\\2&4\\end{pmatrix}$ ?",
+    "explanation": "Pour une matrice $2\\times2$, $\\det A=ad-bc=3\\cdot4-1\\cdot2=10$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$10$", "correct": true },
+      { "text": "$14$", "correct": false, "why": "C'est $ad+bc=3\\cdot4+1\\cdot2$ : il faut soustraire le produit des termes hors diagonale, pas l'additionner." },
+      { "text": "$-10$", "correct": false, "why": "C'est $bc-ad$ : les deux termes sont inversés. La formule est $ad-bc$, pas $bc-ad$." },
+      { "text": "$2$", "correct": false, "why": "Ce calcul utilise les mauvaises entrées ($3\\cdot2-1\\cdot4$) : $a,d$ sont sur la diagonale principale, $b,c$ hors diagonale." }
+    ]
+  },
+  {
+    "id": "mat1600-det-002",
+    "course": "MAT1600",
+    "topic": "mat1600-det",
+    "difficulty": 2,
+    "prompt": "En développant selon la première rangée (qui contient deux zéros), quel est $\\det\\begin{pmatrix}0&3&0\\\\2&1&-1\\\\4&0&5\\end{pmatrix}$ ?",
+    "explanation": "Seul le terme $a_{12}=3$ est non nul sur la première ligne. Son cofacteur est $C_{12}=(-1)^{1+2}\\det\\begin{pmatrix}2&-1\\\\4&5\\end{pmatrix}=-(10+4)=-14$, donc $\\det A=3\\cdot(-14)=-42$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$-42$", "correct": true },
+      { "text": "$42$", "correct": false, "why": "Le signe $(-1)^{1+2}=-1$ du cofacteur a été oublié : la position $(1,2)$ porte un signe négatif." },
+      { "text": "$-14$", "correct": false, "why": "C'est le cofacteur $C_{12}$ seul : il manque la multiplication par l'entrée $a_{12}=3$ de la matrice." },
+      { "text": "$14$", "correct": false, "why": "C'est le mineur $M_{12}$ seul, sans le signe $(-1)^{1+2}$ ni la multiplication par $a_{12}=3$ : mineur et cofacteur sont confondus." }
+    ]
+  },
+  {
+    "id": "mat1600-det-003",
+    "course": "MAT1600",
+    "topic": "mat1600-det",
+    "difficulty": 1,
+    "prompt": "Si $A$ est une matrice $3\\times3$ avec $\\det A=5$, que vaut $\\det(2A)$ ?",
+    "explanation": "Multiplier une matrice $n\\times n$ par un scalaire $k$ multiplie chacune de ses $n$ lignes par $k$, donc $\\det(kA)=k^n\\det A$. Ici $\\det(2A)=2^3\\cdot5=40$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$40$", "correct": true },
+      { "text": "$10$", "correct": false, "why": "C'est $2\\cdot\\det A$ : l'exposant $n=3$ (taille de la matrice) a été oublié. La bonne formule est $\\det(kA)=k^n\\det A$." },
+      { "text": "$5$", "correct": false, "why": "Multiplier une matrice par un scalaire change bel et bien son déterminant, sauf si $k=1$." },
+      { "text": "$20$", "correct": false, "why": "C'est $2^2\\cdot5$ : l'exposant doit être la taille $n=3$ de la matrice, pas $2$." }
+    ]
+  },
+  {
+    "id": "mat1600-det-004",
+    "course": "MAT1600",
+    "topic": "mat1600-det",
+    "difficulty": 1,
+    "prompt": "Pour toutes matrices carrées $A,B$ de même taille, $\\det(A+B)=\\det A+\\det B$.",
+    "explanation": "Le déterminant n'est pas distributif sur l'addition. Contre-exemple : $A=B=I_2$ donne $\\det(A+B)=\\det(2I_2)=4$, alors que $\\det A+\\det B=1+1=2$.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1600-det-005",
+    "course": "MAT1600",
+    "topic": "mat1600-det",
+    "difficulty": 2,
+    "prompt": "Quel est $\\det\\begin{pmatrix}2&7&-3\\\\0&-1&5\\\\0&0&4\\end{pmatrix}$ ?",
+    "explanation": "Pour une matrice triangulaire (supérieure ou inférieure), le déterminant est le produit des entrées de la diagonale principale : $2\\cdot(-1)\\cdot4=-8$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$-8$", "correct": true },
+      { "text": "$5$", "correct": false, "why": "C'est la somme de la diagonale (la trace), $2+(-1)+4=5$ : ce n'est pas le déterminant, qui est le produit des entrées diagonales." },
+      { "text": "$8$", "correct": false, "why": "Le signe négatif de l'entrée diagonale $-1$ a été oublié dans le produit $2\\cdot(-1)\\cdot4$." },
+      { "text": "$56$", "correct": false, "why": "Ce calcul utilise l'entrée $7$ (hors diagonale) au lieu de $a_{22}=-1$. Seules les entrées de la diagonale principale comptent ici." }
+    ]
+  },
+  {
+    "id": "mat1600-det-006",
+    "course": "MAT1600",
+    "topic": "mat1600-det",
+    "difficulty": 2,
+    "challenge": true,
+    "solution": "On part de $\\det A=6$.\n\n1) Échanger $L_1$ et $L_2$ change le signe du déterminant : la nouvelle matrice a un déterminant de $-6$.\n\n2) Remplacer $L_2$ par $L_2+3L_1$ est une opération d'addition d'un multiple d'une ligne à une autre : elle ne change jamais le déterminant.\n\n3) Le déterminant final reste donc $-6$.",
+    "prompt": "On échange $L_1$ et $L_2$ d'une matrice $A$ telle que $\\det A=6$, puis on remplace $L_2$ par $L_2+3L_1$. Quel est le déterminant de la matrice finale ?",
+    "explanation": "Un échange de deux rangées multiplie le déterminant par $-1$ (donne $-6$), tandis qu'ajouter un multiple d'une rangée à une autre ne change jamais le déterminant : le résultat final reste $-6$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$-6$", "correct": true },
+      { "text": "$6$", "correct": false, "why": "L'échange de deux rangées inverse toujours le signe du déterminant : cet effet a été oublié ici." },
+      { "text": "$-18$", "correct": false, "why": "Ajouter un multiple d'une rangée à une autre (ici $L_2+3L_1$) ne change jamais le déterminant : ce n'est pas comme multiplier une rangée par $3$." },
+      { "text": "$18$", "correct": false, "why": "Ni l'échange de rangées (qui inverse le signe) ni l'addition d'un multiple de rangée (qui ne change rien) ne justifient une multiplication par $3$ : les deux effets sont mal appliqués ici." }
+    ]
+  },
+  {
+    "id": "mat1600-det-007",
+    "course": "MAT1600",
+    "topic": "mat1600-det",
+    "difficulty": 1,
+    "prompt": "Une matrice carrée est inversible si et seulement si son déterminant est différent de $0$.",
+    "explanation": "C'est un théorème central du chapitre : $\\det A=0$ équivaut à une matrice singulière (non inversible), et $\\det A\\ne0$ équivaut à une matrice inversible.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1600-det-008",
+    "course": "MAT1600",
+    "topic": "mat1600-det",
+    "difficulty": 2,
+    "prompt": "En quoi consiste le développement d'un déterminant par cofacteurs le long d'une rangée ?",
+    "explanation": "On somme, pour chaque entrée de la rangée choisie, le produit de cette entrée par son cofacteur; choisir la rangée avec le plus de zéros réduit le nombre de termes à calculer.",
+    "type": "flash",
+    "answer": "On choisit une ligne (ou colonne) $i$, puis $\\det A=\\sum_j a_{ij}C_{ij}$ où $C_{ij}=(-1)^{i+j}M_{ij}$ est le cofacteur (le mineur $M_{ij}$ signé). Le résultat est le même quelle que soit la rangée choisie.",
+    "keyPoints": [
+      "Chaque terme est le produit de l'entrée $a_{ij}$ par son cofacteur $C_{ij}$, jamais le mineur seul",
+      "Le signe $(-1)^{i+j}$ alterne en damier à partir de $+$ en position $(1,1)$",
+      "Choisir la rangée avec le plus de zéros élimine des termes et simplifie le calcul, sans changer le résultat"
+    ]
+  }
+]

@@ -7,6 +7,17 @@ Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute
 - `src/lib/sync.ts` et `api/sync.ts` : `tempMerge` retiré des deux côtés, remplacé par `import { merge } from '@/lib/merge'` (client) / `'../src/lib/merge'` (serveur).
 - Validation du JSON reçu (GET distant côté client, corps du PUT côté serveur) : `isProgress` (duck-typing) retiré, remplacé par `ProgressSchema.safeParse` de `src/lib/schema.ts` des deux côtés — pas seulement le PUT server comme demandé, le même risque existait côté client sur la réponse GET, corrigé par cohérence.
 - `npm run typecheck`, `npm test` (234 tests), `npm run build` : verts après le rebase sur main@d546614.
+## 2026-09-16 — MAT1600 jalon 2, thème det (lot mat1600)
+
+- `src/content/mat1600/mat1600-det.json` : 8 questions (5 qcm / 2 vf / 1 flash, 1 Défi).
+  Distracteurs sourcés des PDF `3.3`-`3.6` de Downloads (cf. `docs/sources/mat1600.md`) :
+  mineur confondu avec cofacteur, signe $(-1)^{i+j}$ oublié, $\det(kA)=k\det A$ au lieu de
+  $k^n\det A$, $\det(A+B)=\det A+\det B$, trace confondue avec déterminant d'une
+  triangulaire, effet d'un échange de lignes vs remplacement de ligne.
+- Gate `npm test` : 0 erreur. Relecture aveugle via `scripts/blind-review.ts` (seed 42) par
+  un sous-agent frais + vérification SymPy (venv hors dépôt) : 8/8 confirmées, 0 désaccord.
+  Journal dans `docs/reviews/mat1600/mat1600-det.md`.
+- Suite : thème `esp` en relecture ; puis compléter `syst`/`vect`/`matr` à ~8 questions.
 
 ## 2026-09-16 — MAT1500 Jalon 1 (lot mat1500)
 
