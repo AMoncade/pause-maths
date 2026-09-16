@@ -1,5 +1,6 @@
 // État d'une partie (mémoire seulement) — logique pure, testée dans tests/ui/ui-game.test.ts.
-import type { CourseCode, GameSession, Mode, Progress, Question, Rng } from './types';
+import { isTopicOn } from './progress';
+import type { Course, CourseCode, GameSession, Mode, Progress, Question, Rng } from './types';
 
 export const RAFALE_LENGTH = 5;
 
@@ -25,6 +26,8 @@ export interface Round {
   combo: number;
   maxCombo: number;
   results: RoundResult[];
+  /** fin de manche : « quit » = quittée par l'utilisateur avant la fin */
+  ended?: 'done' | 'quit';
 }
 
 export function newRound(mode: Mode): Round {
@@ -117,8 +120,14 @@ export function score(round: Round): { correct: number; total: number } {
   return { correct: round.results.filter((r) => r.ok).length, total: round.results.length };
 }
 
+/** Rafale menée à son terme (5 réponses, ou plus de question disponible) sans aucune erreur. */
 export function isPerfect(round: Round): boolean {
-  return roundOver(round) && round.results.every((r) => r.ok);
+  return (
+    round.mode === 'rafale' &&
+    round.ended === 'done' &&
+    round.results.length > 0 &&
+    round.results.every((r) => r.ok)
+  );
 }
 
 /** 0 : pas de flamme ; 1 : 2–4 ; 2 : 5–9 ; 3 : 10 et plus. */
@@ -135,16 +144,17 @@ export function missedIds(round: Round): string[] {
 }
 
 /** Questions jouables avec les réglages actuels (même filtre que le pool du scheduler). */
-export function playable(bank: Question[], p: Progress): Question[] {
-  const { courses, topics, challenge } = p.settings;
+export function playable(bank: Question[], p: Progress, courses: Course[]): Question[] {
+  const selected = new Set(p.settings.courses);
+  const onTopics = new Set(courses.flatMap((c) => c.topics.filter((t) => isTopicOn(p.settings, t)).map((t) => t.id)));
   return bank.filter(
-    (q) => courses.includes(q.course) && topics.includes(q.topic) && (challenge || !q.challenge),
+    (q) => selected.has(q.course) && onTopics.has(q.topic) && (p.settings.challenge || q.challenge !== true),
   );
 }
 
 /** Nombre de questions « À revoir » (dernière réponse fausse) dans la sélection. */
-export function reviewCount(bank: Question[], p: Progress): number {
-  return playable(bank, p).filter((q) => p.cards[q.id]?.wrongLast === true).length;
+export function reviewCount(bank: Question[], p: Progress, courses: Course[]): number {
+  return playable(bank, p, courses).filter((q) => p.cards[q.id]?.wrongLast === true).length;
 }
 
 /** Choix du titre de feedback, stable pour une question donnée. */

@@ -188,4 +188,8 @@
     gap: 1.5rem;
     padding-top: max(env(safe-area-inset-top), 1.5rem);
   }
+
+  .home-spacer {
+    flex: 0 0 0;
+  }
 }

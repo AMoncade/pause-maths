@@ -1,4 +1,5 @@
 // Sélection des cours et des thèmes — logique pure, testée dans tests/ui/ui-select.test.ts.
+import { setTopic } from './progress';
 import type { Course, CourseCode, Progress } from './types';
 
 export function isAll(selected: readonly CourseCode[], all: readonly CourseCode[]): boolean {
@@ -20,14 +21,9 @@ export function toggleCourse(
   return all.filter((c) => next.includes(c));
 }
 
-export function toggleTopic(topics: readonly string[], id: string): string[] {
-  return topics.includes(id) ? topics.filter((t) => t !== id) : [...topics, id];
-}
-
-export function setCourseTopics(topics: readonly string[], course: Course, on: boolean): string[] {
-  const ids = course.topics.map((t) => t.id);
-  const rest = topics.filter((t) => !ids.includes(t));
-  return on ? [...rest, ...ids] : rest;
+/** « Tout cocher / Tout décocher » d'un cours : un choix explicite par thème. */
+export function setCourseTopics(p: Progress, course: Course, on: boolean, now: number): Progress {
+  return course.topics.reduce((acc, t) => setTopic(acc, t.id, on, now), p);
 }
 
 /** Nouveau Progress avec des réglages modifiés et `updatedAt` à jour (fusion de synchro). */

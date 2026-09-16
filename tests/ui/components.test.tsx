@@ -152,7 +152,7 @@ describe('Recap', () => {
       r = withQuestion(r, { ...vf, id: `mat1600-det-10${i}` }, mulberry32(1));
       r = answer(r, ok ? vf.answer : !vf.answer);
     });
-    return r;
+    return { ...r, ended: 'done' as const };
   };
 
   it('score, combo max, XP, cartes à revoir, « Encore 5 »', () => {
@@ -168,6 +168,15 @@ describe('Recap', () => {
     expect(root.querySelector('.confetti')).toBeNull();
     click(button(root, 'Encore 5'));
     expect(onAgain).toHaveBeenCalledOnce();
+  });
+
+  it('Rafale quittée avant la fin : « Pause terminée », jamais parfaite', () => {
+    const r = { ...play([true, true]), ended: 'quit' as const };
+    const { root } = mount(
+      <Recap round={r} questionById={() => undefined} courseByCode={courseByCode} xpGained={20} levelUps={[]} onAgain={noop} onHome={noop} />,
+    );
+    expect(root.querySelector('.recap__title')!.textContent).toBe('Pause terminée');
+    expect(root.querySelector('.confetti')).toBeNull();
   });
 
   it('Rafale parfaite : titre et confettis (mouvement non réduit)', () => {

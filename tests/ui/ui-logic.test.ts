@@ -15,11 +15,11 @@ import {
   withQuestion,
 } from '@/lib/ui-game';
 import { keyAction, type KeyContext } from '@/lib/ui-keys';
-import { isAll, setCourseTopics, toggleCourse, toggleTopic, withSettings } from '@/lib/ui-select';
+import { isAll, setCourseTopics, toggleCourse, withSettings } from '@/lib/ui-select';
 import { parseInline, parseMarkdown } from '@/lib/ui-markdown';
 import type { CourseCode } from '@/lib/types';
 import { defi, flash, qcm, uiCourses, vf } from './fixtures';
-import { emptyProgress } from '@/lib/progress';
+import { emptyProgress, isTopicOn } from '@/lib/progress';
 
 const rng = () => mulberry32(42);
 
@@ -86,7 +86,9 @@ describe('ui-game', () => {
       r = answer(withQuestion(r, { ...vf, id: `v${i}` }, rng()), false);
     }
     expect(roundOver(r)).toBe(true);
-    expect(isPerfect(r)).toBe(true);
+    expect(isPerfect(r)).toBe(false); // pas encore marquée finie
+    expect(isPerfect({ ...r, ended: 'done' })).toBe(true);
+    expect(isPerfect({ ...r, ended: 'quit' })).toBe(false);
     expect(r.maxCombo).toBe(5);
     expect(score(r)).toEqual({ correct: 5, total: 5 });
   });
@@ -172,12 +174,14 @@ describe('ui-select', () => {
     expect(isAll(next, all)).toBe(true);
   });
 
-  it('thèmes : bascule un thème, coche ou décoche un cours entier', () => {
-    expect(toggleTopic(['a', 'b'], 'a')).toEqual(['b']);
-    expect(toggleTopic(['b'], 'a')).toEqual(['b', 'a']);
+  it('thèmes : « Tout décocher / Tout cocher » pose un choix explicite par thème', () => {
     const course = uiCourses[0]!;
-    expect(setCourseTopics(['x'], course, true)).toEqual(['x', 'mat1400-part', 'mat1400-lagr']);
-    expect(setCourseTopics(['x', 'mat1400-part'], course, false)).toEqual(['x']);
+    const off = setCourseTopics(emptyProgress(1, uiCourses), course, false, 5);
+    expect(off.settings.topicOverrides).toEqual({ 'mat1400-part': false, 'mat1400-lagr': false });
+    expect(course.topics.some((t) => isTopicOn(off.settings, t))).toBe(false);
+    expect(off.settings.updatedAt).toBe(5);
+    const on = setCourseTopics(off, course, true, 6);
+    expect(course.topics.every((t) => isTopicOn(on.settings, t))).toBe(true);
   });
 
   it('withSettings met updatedAt à jour', () => {

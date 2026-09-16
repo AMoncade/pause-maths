@@ -1,5 +1,5 @@
 import { useState } from 'preact/hooks';
-import type { Course } from '@/lib/types';
+import type { Course, Topic } from '@/lib/types';
 import { Icon } from './Icon';
 import { ScreenHeader } from './ScreenHeader';
 
@@ -12,11 +12,11 @@ export type SyncStatus =
 
 interface Props {
   courses: Course[];
-  topics: string[];
+  isTopicOn: (topic: Topic) => boolean;
   syncCode?: string;
   sync: SyncStatus;
   formatCode: (code: string) => string;
-  onToggleTopic: (id: string) => void;
+  onSetTopic: (id: string, on: boolean) => void;
   onCourseTopics: (course: Course, on: boolean) => void;
   onActivateSync: () => void;
   /** résout un message d'erreur, ou null si le code est accepté */
@@ -46,7 +46,7 @@ function syncLine(sync: SyncStatus): { tone: 'muted' | 'good' | 'bad'; text: str
 }
 
 export function Settings(props: Props) {
-  const { courses, topics, syncCode, sync } = props;
+  const { courses, syncCode, sync } = props;
   const [linking, setLinking] = useState(false);
   const [codeInput, setCodeInput] = useState('');
   const [codeError, setCodeError] = useState<string | null>(null);
@@ -80,7 +80,7 @@ export function Settings(props: Props) {
         <p class="hint">Décoche ce que tu n’as pas encore vu : ces questions ne sortiront pas.</p>
 
         {courses.map((course) => {
-          const on = course.topics.filter((t) => topics.includes(t.id)).length;
+          const on = course.topics.filter(props.isTopicOn).length;
           const allOn = course.topics.length > 0 && on === course.topics.length;
           return (
             <fieldset key={course.code} class="topic-group tint" style={{ '--c': course.color }}>
@@ -110,8 +110,8 @@ export function Settings(props: Props) {
                         <label class="check">
                           <input
                             type="checkbox"
-                            checked={topics.includes(t.id)}
-                            onChange={() => props.onToggleTopic(t.id)}
+                            checked={props.isTopicOn(t)}
+                            onChange={(e) => props.onSetTopic(t.id, (e.target as HTMLInputElement).checked)}
                           />
                           <span class="check__box" aria-hidden="true">
                             <Icon name="check" size={16} />
@@ -227,8 +227,8 @@ export function Settings(props: Props) {
           Réinitialiser
         </h2>
         <p class="hint">
-          Efface la progression de cet appareil : cartes, série, XP et signalements. La synchro y est désactivée ; tes
-          autres appareils gardent la leur.
+          Efface tes réponses, ta série et tes XP. Tes réglages et tes signalements sont gardés. Si la synchro est
+          active, tes autres appareils repartent aussi de zéro à leur prochaine synchro.
         </p>
         {confirmReset ? (
           <div class="button-row">

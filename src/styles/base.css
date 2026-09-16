@@ -306,7 +306,10 @@ p {
     border-radius: 8px;
   }
 
-  .key--on-fill {
+  .key--on-fill,
+  .btn--good .key,
+  .btn--bad .key,
+  .btn--accent .key {
     color: inherit;
     background: transparent;
     border-color: color-mix(in oklab, currentColor 45%, transparent);

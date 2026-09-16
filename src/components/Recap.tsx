@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'preact/hooks';
 import type { Course, CourseCode, Question } from '@/lib/types';
-import { isPerfect, missedIds, roundOver, score, type Round } from '@/lib/ui-game';
+import { isPerfect, missedIds, score, type Round } from '@/lib/ui-game';
 import { MathText } from '@/lib/MathText';
 import { Icon } from './Icon';
 import { Confetti } from './Confetti';
@@ -24,7 +24,7 @@ function title(round: Round, perfect: boolean): string {
   switch (round.mode) {
     case 'rafale':
       if (perfect) return 'Rafale parfaite !';
-      return roundOver(round) ? 'Rafale terminée' : 'Pause terminée';
+      return round.ended === 'quit' ? 'Pause terminée' : 'Rafale terminée';
     case 'sansFin':
       return 'Session terminée';
     case 'aRevoir':

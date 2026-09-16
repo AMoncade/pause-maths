@@ -12,11 +12,13 @@ import type { Course, CourseCode, Mode, Progress, Question } from '@/lib/types';
 import { bank as defaultBank, bankVersion as defaultBankVersion } from '@/content/bank';
 import { courses as defaultCourses } from '@/content/courses';
 import {
-  emptyProgress,
+  isTopicOn,
   levelProgress,
   loadProgress,
   mastery,
+  resetProgress,
   saveProgress,
+  setTopic,
   streak,
   toggleFlag,
   xp,
@@ -37,7 +39,7 @@ import {
   type Round,
 } from '@/lib/ui-game';
 import { keyAction, type Screen } from '@/lib/ui-keys';
-import { setCourseTopics, toggleCourse, toggleTopic, withSettings } from '@/lib/ui-select';
+import { setCourseTopics, toggleCourse, withSettings } from '@/lib/ui-select';
 import { copyText, isOnline, isStandalone, requestPersistence, vibrate } from '@/lib/ui-env';
 import { Banner } from '@/components/Banner';
 import type { LevelInfo } from '@/components/CourseChips';
@@ -121,7 +123,7 @@ export function App({
   function startRound(mode: Mode) {
     const p = progressRef.current;
     const r = newRound(mode);
-    const q = nextQuestion(bank, p, r.session, mode, clock(), rng);
+    const q = nextQuestion(bank, p, r.session, mode, clock(), rng, courses);
     if (!q) {
       setEmptyReason(bank.length === 0 ? 'bank' : mode === 'aRevoir' ? 'review' : 'selection');
       setRound(null);
@@ -133,16 +135,16 @@ export function App({
     setScreen('play');
   }
 
-  function finishRound(r: Round) {
+  function finishRound(r: Round, ended: Round['ended']) {
     if (r.results.length === 0) return goHome();
-    setRound(r);
+    setRound({ ...r, ended });
     setScreen('recap');
   }
 
   function advance(r: Round) {
-    if (roundOver(r)) return finishRound(r);
-    const q = nextQuestion(bank, progressRef.current, r.session, r.mode, clock(), rng);
-    if (!q) return finishRound(r);
+    if (roundOver(r)) return finishRound(r, 'done');
+    const q = nextQuestion(bank, progressRef.current, r.session, r.mode, clock(), rng, courses);
+    if (!q) return finishRound(r, 'done');
     setRound(withQuestion(r, q, rng));
   }
 
@@ -173,7 +175,7 @@ export function App({
   }
 
   function onQuit() {
-    if (round) finishRound(round);
+    if (round) finishRound(round, 'quit');
     else goHome();
   }
 
@@ -404,12 +406,12 @@ export function App({
       view = (
         <Settings
           courses={courses}
-          topics={progress.settings.topics}
+          isTopicOn={(topic) => isTopicOn(progress.settings, topic)}
           syncCode={progress.syncCode}
           sync={sync}
           formatCode={formatSyncCode}
-          onToggleTopic={(id) => setSettings({ topics: toggleTopic(progress.settings.topics, id) })}
-          onCourseTopics={(course, on) => setSettings({ topics: setCourseTopics(progress.settings.topics, course, on) })}
+          onSetTopic={(id, on) => updateProgress((p) => setTopic(p, id, on, clock()))}
+          onCourseTopics={(course, on) => updateProgress((p) => setCourseTopics(p, course, on, clock()))}
           onActivateSync={activateSync}
           onLinkCode={linkCode}
           onSyncNow={() => void runSync()}
@@ -418,7 +420,7 @@ export function App({
             setSync({ state: 'idle' });
           }}
           onReset={() => {
-            updateProgress(() => emptyProgress(clock(), courses));
+            updateProgress((p) => resetProgress(p, clock()));
             setSync({ state: 'idle' });
           }}
           onCopy={copyText}
@@ -458,8 +460,8 @@ export function App({
         levels={levels}
         streakDays={streak(progress, clock())}
         challenge={progress.settings.challenge}
-        available={playable(bank, progress).length}
-        review={reviewCount(bank, progress)}
+        available={playable(bank, progress, courses).length}
+        review={reviewCount(bank, progress, courses)}
         bankEmpty={bank.length === 0}
         onToggleCourse={(code) => setSettings({ courses: toggleCourse(progress.settings.courses, code, allCodes) })}
         onAll={() => setSettings({ courses: [...allCodes] })}

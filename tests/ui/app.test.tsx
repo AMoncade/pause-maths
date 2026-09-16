@@ -90,6 +90,39 @@ describe('App', () => {
     expect(root.querySelectorAll('.segment.is-ok, .segment.is-miss')).toHaveLength(0);
   });
 
+  it('Rafale plus courte que 5 (banque épuisée) : bilan « Rafale terminée »', () => {
+    const { root } = app({ bank: [uiBank[1]!, uiBank[2]!] });
+    click(button(root, 'Rafale'));
+    answerCurrent(root);
+    answerCurrent(root);
+    expect(root.querySelector('.recap__title')!.textContent).toMatch(/^Rafale (terminée|parfaite !)$/);
+    expect(root.querySelector('.recap__score')!.getAttribute('aria-label')).toMatch(/sur 2$/);
+  });
+
+  it('quitter une Rafale entamée : bilan « Pause terminée »', () => {
+    const { root } = app();
+    click(button(root, 'Rafale'));
+    answerCurrent(root);
+    click(root.querySelector('[aria-label="Quitter la partie"]'));
+    expect(root.querySelector('.recap__title')!.textContent).toBe('Pause terminée');
+  });
+
+  it('réinitialiser : cartes effacées après confirmation, réglages gardés', () => {
+    const { root, storage } = app();
+    click(root.querySelectorAll('.course-tile')[2]);
+    click(button(root, 'Rafale'));
+    answerCurrent(root);
+    click(root.querySelector('[aria-label="Quitter la partie"]'));
+    click(button(root, 'Accueil'));
+    click(root.querySelector('[aria-label="Réglages"]'));
+    click(button(root, 'Réinitialiser la progression'));
+    click(button(root, 'Oui, tout effacer'));
+    const saved = JSON.parse(storage.map.get(STORAGE_KEY)!) as Progress;
+    expect(saved.cards).toEqual({});
+    expect(saved.resetAt).toBeTypeOf('number');
+    expect(saved.settings.courses).toEqual(['MAT1600']);
+  });
+
   it('raccourcis clavier : 1–4 / V / Espace puis 2, Entrée pour continuer', () => {
     const { root } = app();
     click(button(root, 'Rafale'));
