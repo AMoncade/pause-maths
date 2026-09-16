@@ -28,6 +28,28 @@ Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute
 - Gate officiel (`npm test`, 76 tests) vert après rebase sur main@72b6986.
 - Suite : Jalon 2, ~8 questions par thème sur les 8 thèmes intra (~100 au total), un thème à la
   fois, via `scripts/blind-review.ts` (disponible depuis main@8af2316).
+## 2026-09-16 — MAT1600 Jalon 1 : 10 questions (lot mat1600)
+
+- `docs/sources/mat1600.md` : `D:\Math\MAT1600` encore vide (lot A pas passé) ; matière
+  tirée de `C:\Users\adrie\Downloads` (plan de cours + 4 PDF cofacteurs/déterminants/inverse)
+  en attendant. Écart signalé : `5.4_Representation_matricielle.pdf` ne traite pas des
+  transformations linéaires malgré son nom/sa numérotation (ch. 5 de Lay) — contenu
+  élémentaire (vecteurs en coordonnées, base canonique, relation de Chasles), classé sous
+  `mat1600-vect` plutôt que `mat1600-diag`.
+- 10 questions sur les thèmes déjà enseignés (`mat1600-syst`, `mat1600-vect`,
+  `mat1600-matr`, `defaultOn:true`) : `src/content/mat1600/{mat1600-syst,mat1600-vect,mat1600-matr}.json`.
+  6 qcm / 2 vf / 2 flash, 1 Défi (inverse 2×2 pas à pas, vérifiée $AA^{-1}=I$).
+- Gate : `npm test` (`tests/content.test.ts` + `src/lib/gate.ts`) → 0 erreur.
+- Relecture aveugle (sous-agent, choix mélangés sans `correct`/`explanation`) + vérification
+  SymPy (venv hors dépôt) sur les 10 questions : 0 désaccord, 0 correction. Journal dans
+  `docs/reviews/mat1600/{mat1600-syst,mat1600-vect,mat1600-matr}.md`.
+- Écart assumé (comme le lot mat1400) : script de validation local en attendant le gate réel,
+  abandonné dès `tests/content.test.ts` disponible, comme demandé par l'admin.
+- Convention suivie pour `solution` (Défi) : éviter tout saut de ligne dans une formule
+  (`\nabla`, `\neq`… piègent le JSON) ; étapes numérotées "1) … 2) …" sur une seule ligne
+  quand une formule suit de près.
+- Suite : Jalon 2, ~8 questions/thème sur `syst,vect,matr,det,esp` (~100 au total), un
+  thème à la fois, en commençant par `mat1600-det` (matière la mieux sourcée).
 
 ## 2026-09-16 — MAT1400 Jalon 1 (lot mat1400)
 
