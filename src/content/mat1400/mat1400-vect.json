@@ -1,0 +1,56 @@
+[
+  {
+    "id": "mat1400-vect-001",
+    "course": "MAT1400",
+    "topic": "mat1400-vect",
+    "difficulty": 1,
+    "prompt": "Si $\\vec u=(1,2,-3)$ et $\\vec v=(4,-1,2)$, que vaut $\\vec u \\cdot \\vec v$ ?",
+    "explanation": "$\\vec u \\cdot \\vec v = 1(4)+2(-1)+(-3)(2) = 4-2-6=-4$. Il faut garder le signe de chaque composante tout au long du calcul.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$-4$", "correct": true },
+      { "text": "$0$", "correct": false, "why": "Erreur de signe sur le terme du milieu : $2\\times(-1)=-2$, pas $+2$." },
+      { "text": "$2$", "correct": false, "why": "Le dernier terme $(-3)(2)=-6$ a été oublié dans la somme." },
+      { "text": "$5$", "correct": false, "why": "Ce n'est pas le produit scalaire : les composantes ont été additionnées entre elles plutôt que multipliées terme à terme." }
+    ]
+  },
+  {
+    "id": "mat1400-vect-002",
+    "course": "MAT1400",
+    "topic": "mat1400-vect",
+    "difficulty": 1,
+    "prompt": "Deux vecteurs non nuls sont orthogonaux si et seulement si leur produit vectoriel est nul.",
+    "explanation": "C'est l'inverse : un produit vectoriel nul signifie que les vecteurs sont parallèles. L'orthogonalité se teste avec le produit scalaire, $\\vec u \\cdot \\vec v = 0$.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1400-vect-003",
+    "course": "MAT1400",
+    "topic": "mat1400-vect",
+    "difficulty": 2,
+    "prompt": "Distance du point $(1,2,3)$ au plan d'équation $x+2y-2z=4$ ?",
+    "explanation": "$d=\\dfrac{|1+2(2)-2(3)-4|}{\\sqrt{1^2+2^2+(-2)^2}}=\\dfrac{|-5|}{3}=\\dfrac{5}{3}$. Le piège est d'oublier de soustraire la constante $d$ avant la valeur absolue.",
+    "type": "flash",
+    "answer": "$\\dfrac{5}{3}$",
+    "keyPoints": [
+      "$d=\\dfrac{|ax_0+by_0+cz_0-d|}{\\sqrt{a^2+b^2+c^2}}$",
+      "Ne pas oublier de soustraire la constante du plan avant la valeur absolue"
+    ]
+  },
+  {
+    "id": "mat1400-vect-004",
+    "course": "MAT1400",
+    "topic": "mat1400-vect",
+    "difficulty": 1,
+    "prompt": "Que vaut $\\det\\begin{pmatrix}3 & 1\\\\ 2 & 4\\end{pmatrix}$ ?",
+    "explanation": "$\\det=ad-bc=3(4)-1(2)=12-2=10$. Le déterminant $2\\times2$ soustrait le produit des diagonales, il ne les additionne pas.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$10$", "correct": true },
+      { "text": "$14$", "correct": false, "why": "C'est $ad+bc$ : les deux produits diagonaux ont été additionnés au lieu d'être soustraits." },
+      { "text": "$-10$", "correct": false, "why": "C'est $bc-ad$ : les deux termes ont été inversés, ce qui change le signe." },
+      { "text": "$11$", "correct": false, "why": "Le produit $bc=1\\times2$ n'a pas été multiplié correctement (calculé comme $1$ au lieu de $2$)." }
+    ]
+  }
+]

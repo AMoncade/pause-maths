@@ -1,0 +1,47 @@
+[
+  {
+    "id": "mat1400-quad-001",
+    "course": "MAT1400",
+    "topic": "mat1400-quad",
+    "difficulty": 2,
+    "prompt": "L'équation $x^2+y^2-z^2=1$ décrit quelle surface ?",
+    "explanation": "Un seul signe négatif devant un carré, et le membre de droite est non nul : c'est un hyperboloïde à une nappe (une seule pièce connexe, en forme de tour de refroidissement).",
+    "type": "qcm",
+    "choices": [
+      { "text": "Hyperboloïde à une nappe", "correct": true },
+      { "text": "Hyperboloïde à deux nappes", "correct": false, "why": "Il faudrait deux signes négatifs (un seul terme positif), par exemple $z^2-x^2-y^2=1$." },
+      { "text": "Cône elliptique", "correct": false, "why": "Le cône a un membre de droite nul ($x^2+y^2-z^2=0$), pas $1$." },
+      { "text": "Ellipsoïde", "correct": false, "why": "L'ellipsoïde a les trois termes de même signe (tous positifs), pas un signe négatif." }
+    ]
+  },
+  {
+    "id": "mat1400-quad-002",
+    "course": "MAT1400",
+    "topic": "mat1400-quad",
+    "difficulty": 2,
+    "prompt": "Quelle est la trace du paraboloïde $z=x^2+y^2$ dans le plan horizontal $z=4$ ?",
+    "explanation": "En posant $z=4$ : $x^2+y^2=4$, un cercle de rayon $\\sqrt4=2$ (pas $4$). Il faut prendre la racine carrée du niveau, pas le niveau lui-même.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Un cercle de rayon $2$", "correct": true },
+      { "text": "Un cercle de rayon $4$", "correct": false, "why": "$x^2+y^2=4$ donne un rayon de $\\sqrt4=2$, pas $4$ : la racine carrée a été oubliée." },
+      { "text": "Une parabole", "correct": false, "why": "Une parabole apparaît comme trace dans un plan vertical (ex. $y=0$), pas dans un plan horizontal $z=$ constante." },
+      { "text": "Une ellipse non circulaire", "correct": false, "why": "Les coefficients de $x^2$ et $y^2$ sont égaux ($1$ et $1$), donc la trace est un cercle, un cas particulier d'ellipse." }
+    ]
+  },
+  {
+    "id": "mat1400-quad-003",
+    "course": "MAT1400",
+    "topic": "mat1400-quad",
+    "difficulty": 1,
+    "prompt": "Dans $\\mathbb{R}^3$, l'équation $x^2+y^2=4$ (la variable $z$ est absente) décrit quelle surface ?",
+    "explanation": "Une variable absente signifie que la surface s'étend sans restriction le long de cet axe : c'est un cylindre circulaire de rayon $2$, infini selon $z$, pas seulement le cercle qu'on voit dans le plan $xy$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Un cylindre circulaire de rayon $2$", "correct": true },
+      { "text": "Un cercle de rayon $2$", "correct": false, "why": "Dans $\\mathbb{R}^3$, l'absence de $z$ dans l'équation veut dire qu'elle s'étend le long de tout l'axe des $z$ : c'est une surface, pas seulement une courbe plane." },
+      { "text": "Une sphère de rayon $2$", "correct": false, "why": "Une sphère aurait un terme $z^2$ dans son équation, par exemple $x^2+y^2+z^2=4$." },
+      { "text": "Un cylindre elliptique (non circulaire)", "correct": false, "why": "Les coefficients de $x^2$ et $y^2$ sont égaux, donc les sections sont des cercles, pas des ellipses non circulaires." }
+    ]
+  }
+]

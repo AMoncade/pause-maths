@@ -1,0 +1,42 @@
+[
+  {
+    "id": "mat1400-fonc-001",
+    "course": "MAT1400",
+    "topic": "mat1400-fonc",
+    "difficulty": 1,
+    "prompt": "Quel est le domaine de $f(x,y)=\\sqrt{9-x^2-y^2}$ ?",
+    "explanation": "Il faut $9-x^2-y^2\\ge0$, donc $x^2+y^2\\le9$ : le disque fermé de rayon $3$. Le bord (le cercle) fait partie du domaine, car l'inégalité n'est pas stricte.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$x^2+y^2\\le9$", "correct": true },
+      { "text": "$x^2+y^2<9$", "correct": false, "why": "L'inégalité n'est pas stricte : le bord $x^2+y^2=9$ donne $f=0$, une valeur bien définie, donc il fait partie du domaine." },
+      { "text": "$x^2+y^2\\ge9$", "correct": false, "why": "Le sens de l'inégalité est inversé : il faut que la quantité sous la racine soit positive, pas négative." },
+      { "text": "$x+y\\le3$", "correct": false, "why": "Confond $x^2+y^2$ avec $(x+y)^2$ : ce ne sont pas la même expression." }
+    ]
+  },
+  {
+    "id": "mat1400-fonc-002",
+    "course": "MAT1400",
+    "topic": "mat1400-fonc",
+    "difficulty": 2,
+    "prompt": "La limite $\\lim_{(x,y)\\to(0,0)} \\dfrac{xy}{x^2+y^2}$ existe et vaut $0$.",
+    "explanation": "Le long de $y=0$ la fonction vaut $0$, mais le long de $y=x$ elle vaut $\\dfrac{x^2}{2x^2}=\\dfrac12$. Deux chemins donnent des valeurs différentes, donc la limite n'existe pas. Vérifier un seul chemin ne prouve jamais qu'une limite existe.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1400-fonc-003",
+    "course": "MAT1400",
+    "topic": "mat1400-fonc",
+    "difficulty": 2,
+    "prompt": "Comment montrer qu'une limite à deux variables N'existe PAS en $(0,0)$ ?",
+    "explanation": "Trouver deux chemins vers $(0,0)$ qui donnent des limites différentes suffit à conclure la non-existence. À l'inverse, faire concorder un seul chemin (ou même plusieurs) ne prouve jamais l'existence de la limite.",
+    "type": "flash",
+    "answer": "Trouver deux chemins (ex. $y=0$ et $y=x$) qui donnent des valeurs limites différentes.",
+    "keyPoints": [
+      "Essayer $y=0$, $x=0$, $y=x$, ou $y=mx$",
+      "Des valeurs différentes selon le chemin $\\Rightarrow$ la limite n'existe pas",
+      "Un seul chemin cohérent ne prouve jamais qu'une limite existe"
+    ]
+  }
+]
