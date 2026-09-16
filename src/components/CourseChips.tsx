@@ -12,11 +12,12 @@ interface Props {
   courses: Course[];
   selected: CourseCode[];
   levels: Record<CourseCode, LevelInfo>;
+  xpByCourse: Record<CourseCode, number>;
   onToggle: (code: CourseCode) => void;
   onAll: () => void;
 }
 
-export function CourseChips({ courses, selected, levels, onToggle, onAll }: Props) {
+export function CourseChips({ courses, selected, levels, xpByCourse, onToggle, onAll }: Props) {
   const all = isAll(
     selected,
     courses.map((c) => c.code),
@@ -43,7 +44,7 @@ export function CourseChips({ courses, selected, levels, onToggle, onAll }: Prop
               class="course-tile tint"
               style={{ '--c': c.color }}
               aria-pressed={on}
-              aria-label={`${c.code}, ${c.title}, niveau ${lp.level}`}
+              aria-label={`${c.code}, ${c.title}, niveau ${lp.level}, ${xpByCourse[c.code]} XP`}
               onClick={() => onToggle(c.code)}
             >
               <span class="course-tile__top">
@@ -54,7 +55,10 @@ export function CourseChips({ courses, selected, levels, onToggle, onAll }: Prop
               </span>
               <span class="course-title">{c.title}</span>
               <span class="course-level" aria-hidden="true">
-                <span class="course-level__n">Niv. {lp.level}</span>
+                <span class="course-level__row">
+                  <span class="course-level__n">Niv. {lp.level}</span>
+                  <span class="course-level__xp">{xpByCourse[c.code]} XP</span>
+                </span>
                 <span class="meter">
                   <span class="meter__fill" style={{ width: `${pct}%` }} />
                 </span>

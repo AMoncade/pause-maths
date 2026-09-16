@@ -188,6 +188,20 @@ describe('Recap', () => {
     expect(root.querySelector('.levelup')!.textContent).toContain('passe au niveau 2');
     expect(root.querySelector('.recap__review')).toBeNull();
   });
+
+  it('Rafale parfaite avec prefers-reduced-motion : pas de confettis', () => {
+    const original = window.matchMedia;
+    window.matchMedia = ((q: string) => ({ matches: q === '(prefers-reduced-motion: reduce)' })) as never;
+    try {
+      const { root } = mount(
+        <Recap round={play([true, true, true, true, true])} questionById={() => undefined} courseByCode={courseByCode} xpGained={50} levelUps={[]} onAgain={noop} onHome={noop} />,
+      );
+      expect(root.querySelector('.recap__title')!.textContent).toBe('Rafale parfaite !');
+      expect(root.querySelector('.confetti')).toBeNull();
+    } finally {
+      window.matchMedia = original;
+    }
+  });
 });
 
 describe('Stats', () => {

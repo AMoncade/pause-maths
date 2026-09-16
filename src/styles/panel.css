@@ -374,7 +374,7 @@
 
 .meter--wide {
   grid-column: 1 / -1;
-  height: 0.625rem;
+  height: 0.75rem;
 }
 
 .flag-list {

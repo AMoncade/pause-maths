@@ -120,8 +120,10 @@
   font-weight: 600;
   color: var(--c-ink);
   background: var(--c-soft);
-  border: 2px solid var(--c-line);
+  border: 2px solid var(--c);
   border-radius: var(--radius-l);
+  box-shadow: 0 var(--lip) 0 var(--c);
+  margin-bottom: var(--lip);
 }
 
 .levelup__badge {

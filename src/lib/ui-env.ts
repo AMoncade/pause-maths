@@ -95,3 +95,21 @@ export function requestPersistence(): void {
 export function isOnline(): boolean {
   return typeof navigator === 'undefined' || navigator.onLine !== false;
 }
+
+/**
+ * Accorde <meta name="theme-color"> au fond réel de l'app (clair ou sombre) et suit les changements
+ * de thème du système. Renvoie la fonction de nettoyage.
+ */
+export function followThemeColor(): () => void {
+  if (typeof document === 'undefined' || typeof window.matchMedia !== 'function') return () => {};
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (!meta) return () => {};
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  const apply = () => {
+    const bg = getComputedStyle(document.body).backgroundColor;
+    if (bg) meta.setAttribute('content', bg);
+  };
+  apply();
+  mq.addEventListener('change', apply);
+  return () => mq.removeEventListener('change', apply);
+}

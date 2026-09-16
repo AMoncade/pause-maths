@@ -7,6 +7,13 @@
   padding-bottom: 0;
 }
 
+.play-body,
+.question {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
 .play-bar {
   display: flex;
   align-items: center;
@@ -110,8 +117,6 @@
 
 /* ---------- carte ---------- */
 .question {
-  display: flex;
-  flex-direction: column;
   gap: 1rem;
 }
 
@@ -291,15 +296,16 @@
 .choices--vf {
   flex-direction: row;
   gap: 0.75rem;
+  margin-top: auto;
 }
 
 .choice--vf {
   flex: 1;
   flex-direction: column;
   justify-content: center;
-  gap: 0.25rem;
-  min-height: 5rem;
-  font: 800 1.5rem/1 var(--font-display);
+  gap: 0.375rem;
+  min-height: 7.5rem;
+  font: 800 2rem/1 var(--font-display);
   text-align: center;
 }
 
@@ -376,6 +382,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
+  margin-top: auto;
 }
 
 .grade .btn {

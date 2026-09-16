@@ -40,7 +40,7 @@ import {
 } from '@/lib/ui-game';
 import { keyAction, type Screen } from '@/lib/ui-keys';
 import { setCourseTopics, toggleCourse, withSettings } from '@/lib/ui-select';
-import { copyText, isOnline, isStandalone, requestPersistence, vibrate } from '@/lib/ui-env';
+import { copyText, followThemeColor, isOnline, isStandalone, requestPersistence, vibrate } from '@/lib/ui-env';
 import { Banner } from '@/components/Banner';
 import type { LevelInfo } from '@/components/CourseChips';
 import { Empty, type EmptyReason } from '@/components/Empty';
@@ -111,6 +111,7 @@ export function App({
   }, [progress, storage]);
 
   useEffect(() => requestPersistence(), []);
+  useEffect(() => followThemeColor(), []);
 
   // ---------- écrans et partie ----------
   const [screen, setScreen] = useState<Screen>('home');
@@ -343,6 +344,11 @@ export function App({
     [courses, progress, bank],
   );
 
+  const xpByCourse = useMemo(
+    () => Object.fromEntries(courses.map((c) => [c.code, xp(progress, bank, c.code)])) as Record<CourseCode, number>,
+    [courses, progress, bank],
+  );
+
   const setSettings = (patch: Parameters<typeof withSettings>[1]) => {
     const next = withSettings(progressRef.current, patch, clock());
     progressRef.current = next;
@@ -439,9 +445,7 @@ export function App({
           totalXp={xp(progress, bank)}
           seen={bank.filter((q) => progress.cards[q.id]).length}
           levels={levels}
-          xpByCourse={
-            Object.fromEntries(courses.map((c) => [c.code, xp(progress, bank, c.code)])) as Record<CourseCode, number>
-          }
+          xpByCourse={xpByCourse}
           masteryOf={(id) => mastery(progress, bank, id)}
           bankVersion={bankVersion}
           onUnflag={(id) => updateProgress((p) => toggleFlag(p, id))}
@@ -458,6 +462,7 @@ export function App({
         courses={courses}
         selected={progress.settings.courses}
         levels={levels}
+        xpByCourse={xpByCourse}
         streakDays={streak(progress, clock())}
         challenge={progress.settings.challenge}
         available={playable(bank, progress, courses).length}

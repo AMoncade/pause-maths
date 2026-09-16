@@ -8,6 +8,7 @@ interface Props {
   courses: Course[];
   selected: CourseCode[];
   levels: Record<CourseCode, LevelInfo>;
+  xpByCourse: Record<CourseCode, number>;
   streakDays: number;
   challenge: boolean;
   available: number;
@@ -84,6 +85,7 @@ export function Home(props: Props) {
         courses={courses}
         selected={selected}
         levels={props.levels}
+        xpByCourse={props.xpByCourse}
         onToggle={props.onToggleCourse}
         onAll={props.onAll}
       />

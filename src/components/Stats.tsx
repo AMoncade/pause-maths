@@ -52,7 +52,7 @@ export function Stats(props: Props) {
           <dd>{props.totalXp}</dd>
         </div>
         <div class="summary__item">
-          <dt>Vues</dt>
+          <dt>Déjà vues</dt>
           <dd>
             {props.seen}
             <span class="summary__of">/{bank.length}</span>
