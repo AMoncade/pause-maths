@@ -1,0 +1,114 @@
+[
+  {
+    "id": "mat1600-esp-001",
+    "course": "MAT1600",
+    "topic": "mat1600-esp",
+    "difficulty": 1,
+    "prompt": "L'ensemble $H=\\{(x,y)\\in\\mathbb R^2 : x+y=1\\}$ est-il un sous-espace vectoriel de $\\mathbb R^2$ ?",
+    "explanation": "Un sous-espace doit contenir le vecteur nul. Or $(0,0)$ donne $0+0=0\\ne1$, donc $(0,0)\\notin H$ : $H$ n'est pas un sous-espace.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Non : il ne contient pas le vecteur nul $(0,0)$", "correct": true },
+      { "text": "Oui, car c'est une droite", "correct": false, "why": "Toutes les droites ne sont pas des sous-espaces : seules celles qui passent par l'origine le sont." },
+      { "text": "Oui, car il est fermé sous l'addition", "correct": false, "why": "Il n'est même pas fermé sous l'addition : $(1,0)+(0,1)=(1,1)$ donne $x+y=2\\ne1$, la somme sort de $H$." },
+      { "text": "On ne peut pas savoir sans vérifier la fermeture sous la multiplication scalaire", "correct": false, "why": "Le test du vecteur nul suffit déjà à conclure que $H$ n'est pas un sous-espace ; inutile de vérifier les autres propriétés." }
+    ]
+  },
+  {
+    "id": "mat1600-esp-002",
+    "course": "MAT1600",
+    "topic": "mat1600-esp",
+    "difficulty": 2,
+    "prompt": "Quelle est la dimension de l'ensemble des solutions de l'équation $x+2y-z=0$ dans $\\mathbb R^3$ ?",
+    "explanation": "Une seule équation linéaire indépendante retire une dimension à $\\mathbb R^3$ : $\\dim=3-1=2$ (un plan passant par l'origine).",
+    "type": "qcm",
+    "choices": [
+      { "text": "$2$", "correct": true },
+      { "text": "$3$", "correct": false, "why": "L'équation impose une contrainte : la dimension ne reste pas égale à celle de $\\mathbb R^3$ tout entier." },
+      { "text": "$1$", "correct": false, "why": "Une seule équation indépendante retire une seule dimension : $3-1=2$, pas $3-2=1$." },
+      { "text": "$0$", "correct": false, "why": "L'ensemble solution contient une infinité de vecteurs (un plan passant par l'origine), pas seulement le vecteur nul." }
+    ]
+  },
+  {
+    "id": "mat1600-esp-003",
+    "course": "MAT1600",
+    "topic": "mat1600-esp",
+    "difficulty": 2,
+    "prompt": "Une matrice $A$ de taille $3\\times5$ a un rang de $2$. Quelle est la dimension de son espace nul ?",
+    "explanation": "Théorème du rang : $\\dim\\text{Nul}(A)=n-\\text{rang}(A)$ où $n$ est le nombre de colonnes. Ici $5-2=3$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$3$", "correct": true },
+      { "text": "$2$", "correct": false, "why": "C'est le rang, pas la dimension du noyau : le théorème du rang donne $5-2=3$, pas $2$." },
+      { "text": "$1$", "correct": false, "why": "Il faut soustraire le rang du nombre de colonnes ($n=5$), pas du nombre de lignes ($m=3$) : $5-2=3$." },
+      { "text": "$5$", "correct": false, "why": "C'est le nombre total de colonnes sans tenir compte du rang, qui réduit la dimension du noyau." }
+    ]
+  },
+  {
+    "id": "mat1600-esp-004",
+    "course": "MAT1600",
+    "topic": "mat1600-esp",
+    "difficulty": 1,
+    "prompt": "Un ensemble qui engendre un espace vectoriel $V$ est automatiquement une base de $V$.",
+    "explanation": "Engendrer ne suffit pas : une base doit aussi être une famille libre. Un ensemble générateur peut contenir des vecteurs redondants.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1600-esp-005",
+    "course": "MAT1600",
+    "topic": "mat1600-esp",
+    "difficulty": 2,
+    "prompt": "La forme échelonnée réduite d'une matrice $A$ a des pivots dans les colonnes 1 et 3. Laquelle de ces affirmations sur une base de $\\text{Col}(A)$ est correcte ?",
+    "explanation": "Une base de $\\text{Col}(A)$ est formée des colonnes de $A$ elle-même (pas de sa forme échelonnée) aux positions des colonnes pivots.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Les colonnes 1 et 3 de la matrice originale $A$ forment une base de $\\text{Col}(A)$", "correct": true },
+      { "text": "Les colonnes 1 et 3 de la forme échelonnée réduite forment une base de $\\text{Col}(A)$", "correct": false, "why": "La forme échelonnée réduite n'a en général pas les mêmes colonnes que $A$ : il faut revenir aux colonnes originales de $A$ aux mêmes positions." },
+      { "text": "Toutes les colonnes de $A$ forment une base de $\\text{Col}(A)$", "correct": false, "why": "Une base doit être libre : les colonnes sans pivot sont des combinaisons linéaires des colonnes pivots, donc redondantes." },
+      { "text": "La colonne 2 de $A$, avec les colonnes 1 et 3, forme une base de $\\text{Col}(A)$", "correct": false, "why": "La colonne 2 n'a pas de pivot dans la forme échelonnée : elle est une combinaison linéaire des colonnes 1 et 3, donc redondante dans une base." }
+    ]
+  },
+  {
+    "id": "mat1600-esp-006",
+    "course": "MAT1600",
+    "topic": "mat1600-esp",
+    "difficulty": 2,
+    "challenge": true,
+    "solution": "1) Résoudre $Ax=0$ : la matrice est déjà échelonnée, donc $x_1+2x_2=0$ et $x_3=0$.\n\n2) $x_2$ est la seule variable libre ($x_1,x_3$ sont des variables pivots). On pose $x_2=t$.\n\n3) $x_1=-2t$, $x_3=0$, donc $x=t(-2,1,0)$ pour $t\\in\\mathbb R$.\n\n4) Une base de l'espace nul est donc $\\{(-2,1,0)\\}$, de dimension 1.",
+    "prompt": "Quelle est une base de l'espace nul de $A=\\begin{pmatrix}1&2&0\\\\0&0&1\\end{pmatrix}$ ?",
+    "explanation": "En résolvant $Ax=0$ : $x_3=0$, $x_1=-2x_2$ avec $x_2$ libre, donc $x=x_2(-2,1,0)$ : une base est $\\{(-2,1,0)\\}$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$\\{(-2,1,0)\\}$", "correct": true },
+      { "text": "$\\{(2,1,0)\\}$", "correct": false, "why": "Erreur de signe : isoler $x_1$ dans $x_1+2x_2=0$ donne $x_1=-2x_2$, pas $x_1=2x_2$." },
+      { "text": "$\\{(-2,1,0),(0,0,1)\\}$", "correct": false, "why": "$x_3$ est une variable pivot (fixée à $0$ par la deuxième équation), pas une variable libre : elle ne fournit pas de vecteur supplémentaire pour la base du noyau." },
+      { "text": "$\\{(1,0,0),(0,0,1)\\}$", "correct": false, "why": "Ce sont des colonnes pivots de $A$, utiles pour une base de $\\text{Col}(A)$, pas des vecteurs qui résolvent $Ax=0$." }
+    ]
+  },
+  {
+    "id": "mat1600-esp-007",
+    "course": "MAT1600",
+    "topic": "mat1600-esp",
+    "difficulty": 2,
+    "prompt": "Si $\\dim V=n$ et qu'une famille de $n$ vecteurs de $V$ est libre, alors cette famille est automatiquement une base de $V$.",
+    "explanation": "C'est un théorème utile : dans un espace de dimension $n$, une famille libre de $n$ vecteurs engendre nécessairement tout l'espace, donc c'est une base (pas besoin de vérifier séparément qu'elle engendre).",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1600-esp-008",
+    "course": "MAT1600",
+    "topic": "mat1600-esp",
+    "difficulty": 1,
+    "prompt": "Qu'est-ce que la dimension d'un espace vectoriel $V$ ?",
+    "explanation": "La dimension est le nombre de vecteurs dans une base de $V$ ; ce nombre est le même pour toutes les bases possibles de $V$.",
+    "type": "flash",
+    "answer": "C'est le nombre de vecteurs dans une base de $V$. Toutes les bases d'un même espace ont exactement le même nombre de vecteurs.",
+    "keyPoints": [
+      "Toutes les bases d'un espace vectoriel donné ont le même nombre d'éléments",
+      "$\\dim(\\text{Col}\\,A)=\\text{rang}(A)$ ; $\\dim(\\text{Nul}\\,A)$ = nombre de variables libres",
+      "Théorème du rang : $\\text{rang}(A)+\\dim(\\text{Nul}\\,A)$ = nombre de colonnes de $A$"
+    ]
+  }
+]

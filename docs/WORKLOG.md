@@ -7,6 +7,24 @@ Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute
 - `src/lib/sync.ts` et `api/sync.ts` : `tempMerge` retiré des deux côtés, remplacé par `import { merge } from '@/lib/merge'` (client) / `'../src/lib/merge'` (serveur).
 - Validation du JSON reçu (GET distant côté client, corps du PUT côté serveur) : `isProgress` (duck-typing) retiré, remplacé par `ProgressSchema.safeParse` de `src/lib/schema.ts` des deux côtés — pas seulement le PUT server comme demandé, le même risque existait côté client sur la réponse GET, corrigé par cohérence.
 - `npm run typecheck`, `npm test` (234 tests), `npm run build` : verts après le rebase sur main@d546614.
+## 2026-09-16 — MAT1600 jalon 2, thème esp (lot mat1600)
+
+- `src/content/mat1600/mat1600-esp.json` : 8 questions (5 qcm / 2 vf / 1 flash, 1 Défi)
+  sur sous-espaces, base/dimension, théorème du rang, base de Col(A) vs Nul(A).
+  Distracteurs : contenance du vecteur nul oubliée, ensemble générateur pris pour une
+  base, colonnes de la forme échelonnée confondues avec celles de $A$ originale,
+  variable pivot confondue avec variable libre dans le calcul du noyau.
+- Gate `npm test` : 0 erreur. Relecture aveugle (`scripts/blind-review.ts`, seed 7) par
+  un sous-agent frais + SymPy (venv hors dépôt) : 8/8 confirmées, 0 désaccord. Journal
+  dans `docs/reviews/mat1600/mat1600-esp.md`.
+- `syst` et `vect` complétés à 8 questions chacun (top-up de jalon 1) : homogène non
+  trivial, système sur-déterminé mais compatible, position de pivot, forme vectorielle
+  paramétrique (syst) ; résoudre pour les coefficients $c_1,c_2$, famille libre de taille
+  = dimension ⇒ engendre, indépendance de 3 vecteurs par élimination plutôt que
+  proportionnalité deux à deux (vect). En cours de relecture aveugle.
+- Suite : compléter `matr` à ~8 (actuellement 2), puis considérer `diag`/`orth` (final,
+  hors intra) si le temps le permet.
+
 ## 2026-09-16 — MAT1600 jalon 2, thème det (lot mat1600)
 
 - `src/content/mat1600/mat1600-det.json` : 8 questions (5 qcm / 2 vf / 1 flash, 1 Défi).
