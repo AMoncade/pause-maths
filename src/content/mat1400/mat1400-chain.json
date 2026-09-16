@@ -5,13 +5,13 @@
     "topic": "mat1400-chain",
     "difficulty": 2,
     "prompt": "Si $z=xy$, $x=t^2$, $y=t+1$, que vaut $\\dfrac{dz}{dt}$ par la règle de chaîne ?",
-    "explanation": "$\\dfrac{dz}{dt}=f_x\\dfrac{dx}{dt}+f_y\\dfrac{dy}{dt}=y(2t)+x(1)=(t+1)(2t)+t^2=3t^2+2t$.",
+    "explanation": "$z_x=y$, $z_y=x$ (dérivées partielles de $z=xy$). $\\dfrac{dz}{dt}=z_x\\dfrac{dx}{dt}+z_y\\dfrac{dy}{dt}=y(2t)+x(1)=(t+1)(2t)+t^2=3t^2+2t$.",
     "type": "qcm",
     "choices": [
       { "text": "$3t^2+2t$", "correct": true },
       { "text": "$2t^2+2t$", "correct": false, "why": "Un seul terme de la règle de chaîne a été gardé ($y\\cdot dx/dt$), l'autre terme $x\\cdot dy/dt$ a été oublié." },
-      { "text": "$2t$", "correct": false, "why": "$dx/dt$ et $dy/dt$ ont été multipliés directement entre eux, en oubliant complètement les dérivées partielles $f_x,f_y$ de la formule." },
-      { "text": "$t^2+t+1$", "correct": false, "why": "C'est $x+y$ : les dérivées partielles $f_x,f_y$ ont été remplacées par $x,y$ eux-mêmes, sans les multiplier par $dx/dt,dy/dt$." }
+      { "text": "$2t$", "correct": false, "why": "$dx/dt$ et $dy/dt$ ont été multipliés directement entre eux, en oubliant complètement les dérivées partielles $z_x,z_y$ de la formule." },
+      { "text": "$t^2+t+1$", "correct": false, "why": "C'est $x+y$ : les dérivées partielles $z_x,z_y$ ont été remplacées par $x,y$ eux-mêmes, sans les multiplier par $dx/dt,dy/dt$." }
     ]
   },
   {
@@ -19,7 +19,7 @@
     "course": "MAT1400",
     "topic": "mat1400-chain",
     "difficulty": 2,
-    "prompt": "Si $x=s+t$ et $y=s-t$, que vaut $\\dfrac{\\partial z}{\\partial s}$ en fonction de $f_x,f_y$ ?",
+    "prompt": "Si $z=f(x,y)$ avec $x=s+t$ et $y=s-t$, que vaut $\\dfrac{\\partial z}{\\partial s}$ en fonction de $f_x,f_y$ ?",
     "explanation": "$\\partial x/\\partial s=1$ et $\\partial y/\\partial s=1$, donc $\\partial z/\\partial s=f_x\\cdot1+f_y\\cdot1=f_x+f_y$.",
     "type": "qcm",
     "choices": [
@@ -35,7 +35,7 @@
     "topic": "mat1400-chain",
     "difficulty": 2,
     "prompt": "Pour une courbe $F(x,y)=0$, on a $\\dfrac{dy}{dx}=-\\dfrac{F_x}{F_y}$ (si $F_y\\ne0$).",
-    "explanation": "C'est la formule de dérivation implicite obtenue par la règle de chaîne : en dérivant $F(x,y(x))=0$ par rapport à $x$, $F_x+F_y\\dfrac{dy}{dx}=0$, d'où le résultat.",
+    "explanation": "C'est la formule de dérivation implicite obtenue par la règle de chaîne : en dérivant $F(x,y(x))=0$ par rapport à $x$, $F_x+F_y\\dfrac{dy}{dx}=0$, d'où le résultat. Le piège : oublier le signe moins en isolant $dy/dx$.",
     "type": "vf",
     "answer": true
   },
@@ -45,7 +45,7 @@
     "topic": "mat1400-chain",
     "difficulty": 2,
     "prompt": "Combien de termes comporte $\\dfrac{\\partial z}{\\partial s}$ si $z=f(x,y,w)$ et que $x,y,w$ dépendent toutes les trois de $s$ (et $t$) ?",
-    "explanation": "La règle de chaîne donne un terme par variable intermédiaire dont $z$ dépend : ici $x,y,w$, donc 3 termes.",
+    "explanation": "La règle de chaîne donne un terme par variable intermédiaire dont $z$ dépend : ici $x,y,w$, donc 3 termes. Le piège : compter les variables INDÉPENDANTES ($s,t$, donc 2) au lieu des variables INTERMÉDIAIRES ($x,y,w$, donc 3) dont $z$ dépend directement.",
     "type": "flash",
     "answer": "3 termes : $f_x\\dfrac{\\partial x}{\\partial s}+f_y\\dfrac{\\partial y}{\\partial s}+f_w\\dfrac{\\partial w}{\\partial s}$",
     "keyPoints": [
@@ -88,7 +88,7 @@
     "course": "MAT1400",
     "topic": "mat1400-chain",
     "difficulty": 2,
-    "prompt": "Dans $\\partial z/\\partial t$ (avec $x=g(s,t)$, $y=h(s,t)$), on utilise $\\partial x/\\partial s$ (pas $\\partial x/\\partial t$).",
+    "prompt": "Pour $z=f(x,y)$ avec $x=g(s,t)$, $y=h(s,t)$, la formule de $\\partial z/\\partial t$ contient le facteur $\\partial x/\\partial s$.",
     "explanation": "Faux : pour $\\partial z/\\partial t$, il faut utiliser $\\partial x/\\partial t$ et $\\partial y/\\partial t$, pas les dérivées par rapport à $s$. Chaque dérivée cible sa propre variable.",
     "type": "vf",
     "answer": false
@@ -106,6 +106,62 @@
       { "text": "$8$", "correct": false, "why": "Le terme $f_y\\cdot\\partial y/\\partial s=6$ a été oublié : il ne reste que $f_x\\cdot\\partial x/\\partial s=8$." },
       { "text": "$6$", "correct": false, "why": "Le terme $f_x\\cdot\\partial x/\\partial s=8$ a été oublié : il ne reste que $f_y\\cdot\\partial y/\\partial s=6$." },
       { "text": "$10$", "correct": false, "why": "$\\partial x/\\partial t=s=1$ a été utilisé à la place de $\\partial x/\\partial s=t=2$ : mauvaise dérivée de $x$." }
+    ]
+  },
+  {
+    "id": "mat1400-chain-009",
+    "course": "MAT1400",
+    "topic": "mat1400-chain",
+    "difficulty": 3,
+    "challenge": true,
+    "prompt": "Si $z=f(x,y)$ avec $x=r\\cos\\theta$, $y=r\\sin\\theta$ (coordonnées polaires), que vaut $\\partial z/\\partial r$ en fonction de $f_x,f_y,\\theta$ ?",
+    "explanation": "Il y a DEUX formules de chaîne différentes en coordonnées polaires : une pour $\\partial z/\\partial r$ (avec $\\partial x/\\partial r=\\cos\\theta$, $\\partial y/\\partial r=\\sin\\theta$) et une autre, différente, pour $\\partial z/\\partial\\theta$ (avec $\\partial x/\\partial\\theta=-r\\sin\\theta$, $\\partial y/\\partial\\theta=r\\cos\\theta$). Il ne faut jamais les confondre.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$f_x\\cos\\theta+f_y\\sin\\theta$", "correct": true },
+      { "text": "$f_x\\cos\\theta-f_y\\sin\\theta$", "correct": false, "why": "Erreur de signe : ce signe négatif appartient à la formule de $\\partial x/\\partial\\theta=-r\\sin\\theta$, pas à celle de $\\partial x/\\partial r=\\cos\\theta$." },
+      { "text": "$-f_xr\\sin\\theta+f_yr\\cos\\theta$", "correct": false, "why": "C'est en fait la formule de $\\partial z/\\partial\\theta$, pas de $\\partial z/\\partial r$ : les deux formules de la règle de chaîne en polaire ont été confondues." },
+      { "text": "$f_x+f_y$", "correct": false, "why": "Les facteurs $\\partial x/\\partial r=\\cos\\theta$ et $\\partial y/\\partial r=\\sin\\theta$ ont été complètement oubliés." }
+    ],
+    "solution": "1. $\\partial x/\\partial r=\\cos\\theta$, $\\partial y/\\partial r=\\sin\\theta$.\n2. Règle de chaîne : $\\dfrac{\\partial z}{\\partial r}=f_x\\dfrac{\\partial x}{\\partial r}+f_y\\dfrac{\\partial y}{\\partial r}=f_x\\cos\\theta+f_y\\sin\\theta$.\n3. À ne pas confondre avec $\\partial z/\\partial\\theta=f_x(-r\\sin\\theta)+f_y(r\\cos\\theta)$, qui utilise des dérivées de $x,y$ différentes."
+  },
+  {
+    "id": "mat1400-chain-010",
+    "course": "MAT1400",
+    "topic": "mat1400-chain",
+    "difficulty": 2,
+    "prompt": "$z=\\sin(xy)$, $x=t$, $y=t^2$. Que vaut $dz/dt$ à $t=1$ ?",
+    "explanation": "$z_x=y\\cos(xy)$, $z_y=x\\cos(xy)$. $dz/dt=y\\cos(xy)(1)+x\\cos(xy)(2t)=\\cos(xy)(y+2xt)$. À $t=1$ : $x=1,y=1$, $xy=1$, donc $\\cos(1)(1+2)=3\\cos(1)$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$3\\cos(1)$", "correct": true },
+      { "text": "$\\cos(1)$", "correct": false, "why": "Le facteur $2t$ venant de $dy/dt=2t$ a été oublié : un seul des deux termes du produit a été gardé." },
+      { "text": "$3\\sin(1)$", "correct": false, "why": "La dérivée de $\\sin$ est $\\cos$, pas $\\sin$ : erreur sur la dérivée de base." },
+      { "text": "$\\cos(2)$", "correct": false, "why": "Erreur d'arithmétique dans l'argument : $xy=t\\cdot t^2=t^3$, qui vaut $1$ à $t=1$ (pas $2$)." }
+    ]
+  },
+  {
+    "id": "mat1400-chain-011",
+    "course": "MAT1400",
+    "topic": "mat1400-chain",
+    "difficulty": 2,
+    "prompt": "La règle de chaîne à plusieurs variables suppose que $f$ est différentiable (pas seulement que ses dérivées partielles existent).",
+    "type": "vf",
+    "answer": true,
+    "explanation": "C'est une condition souvent glissée sous le tapis : comme vu au thème des dérivées partielles, l'existence des partielles seules ne suffit pas (contre-exemple $xy/(x^2+y^2)$), donc la règle de chaîne exige explicitement la différentiabilité."
+  },
+  {
+    "id": "mat1400-chain-012",
+    "course": "MAT1400",
+    "topic": "mat1400-chain",
+    "difficulty": 2,
+    "prompt": "Pour une surface $F(x,y,z)=0$ définissant $z$ implicitement comme fonction de $x,y$, formule pour $\\partial z/\\partial x$ ?",
+    "explanation": "C'est l'analogue à deux variables de la dérivation implicite : on isole $z$, donc $F_z$ se retrouve au dénominateur.",
+    "type": "flash",
+    "answer": "$\\dfrac{\\partial z}{\\partial x}=-\\dfrac{F_x}{F_z}$ (si $F_z\\ne0$)",
+    "keyPoints": [
+      "Analogue à $dy/dx=-F_x/F_y$ pour une courbe, mais avec $F_z$ au dénominateur car on isole $z$",
+      "Ne pas confondre avec $\\partial z/\\partial y=-F_y/F_z$"
     ]
   }
 ]
