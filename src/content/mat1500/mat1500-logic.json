@@ -105,5 +105,134 @@
       "De Morgan : $\\neg(\\neg p \\vee q) \\equiv \\neg\\neg p \\wedge \\neg q \\equiv p \\wedge \\neg q$"
     ],
     "solution": "1. Loi du conditionnel : $p \\rightarrow q \\equiv \\neg p \\vee q$.\n2. Donc $\\neg(p \\rightarrow q) \\equiv \\neg(\\neg p \\vee q)$.\n3. De Morgan : $\\neg(\\neg p \\vee q) \\equiv \\neg(\\neg p) \\wedge \\neg q$.\n4. Double négation : $\\neg(\\neg p) \\equiv p$, donc le résultat est $p \\wedge \\neg q$."
+  },
+  {
+    "id": "mat1500-logic-006",
+    "course": "MAT1500",
+    "topic": "mat1500-logic",
+    "difficulty": 2,
+    "prompt": "Quelle est l'inverse (« inverse », pas réciproque ni contraposée) de « si $p$ alors $q$ » ?",
+    "explanation": "L'inverse d'un conditionnel $p \\rightarrow q$ est $\\neg p \\rightarrow \\neg q$ : on nie les deux membres sans les échanger. C'est différent de la réciproque ($q \\rightarrow p$, échange sans négation) et de la contraposée ($\\neg q \\rightarrow \\neg p$, échange **et** négation) — trois transformations souvent confondues entre elles.",
+    "type": "qcm",
+    "choices": [
+      { "text": "si $\\neg p$ alors $\\neg q$", "correct": true },
+      {
+        "text": "si $q$ alors $p$",
+        "correct": false,
+        "why": "C'est la réciproque (échange des membres sans négation), pas l'inverse."
+      },
+      {
+        "text": "si $\\neg q$ alors $\\neg p$",
+        "correct": false,
+        "why": "C'est la contraposée (échange des membres avec négation), pas l'inverse."
+      },
+      {
+        "text": "si $p$ alors $\\neg q$",
+        "correct": false,
+        "why": "Ceci ne nie qu'un seul membre ; l'inverse doit nier les deux membres de l'implication."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-logic-007",
+    "course": "MAT1500",
+    "topic": "mat1500-logic",
+    "difficulty": 1,
+    "prompt": "La proposition $p \\vee \\neg p$ est une tautologie (toujours vraie, peu importe la valeur de $p$).",
+    "explanation": "Vrai : quelle que soit la valeur de vérité de $p$, l'une des deux options ($p$ ou $\\neg p$) est nécessairement vraie. C'est l'exemple le plus simple de tautologie, à ne pas confondre avec une contradiction (toujours fausse, comme $p \\wedge \\neg p$).",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1500-logic-008",
+    "course": "MAT1500",
+    "topic": "mat1500-logic",
+    "difficulty": 1,
+    "prompt": "Explique la différence entre une tautologie et une contradiction.",
+    "explanation": "Ces deux notions sont aux extrêmes opposés : une tautologie est vraie sur toute la table de vérité, une contradiction est fausse sur toute la table de vérité. La plupart des propositions ne sont ni l'une ni l'autre (leur valeur dépend des variables).",
+    "type": "flash",
+    "answer": "Une tautologie est une proposition toujours vraie (ex. $p \\vee \\neg p$) ; une contradiction est toujours fausse (ex. $p \\wedge \\neg p$).",
+    "keyPoints": [
+      "Tautologie = vraie pour toutes les valeurs de vérité des variables",
+      "Contradiction = fausse pour toutes les valeurs de vérité des variables"
+    ]
+  },
+  {
+    "id": "mat1500-logic-009",
+    "course": "MAT1500",
+    "topic": "mat1500-logic",
+    "difficulty": 2,
+    "prompt": "Selon la loi de distributivité, à quoi est équivalent $p \\wedge (q \\vee r)$ ?",
+    "explanation": "$p \\wedge (q \\vee r) \\equiv (p \\wedge q) \\vee (p \\wedge r)$ : le $\\wedge$ se distribue sur le $\\vee$, exactement comme la multiplication se distribue sur l'addition en algèbre ($a(b+c)=ab+ac$). Oublier de répéter $p$ sur chaque terme est l'erreur la plus fréquente.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$(p \\wedge q) \\vee (p \\wedge r)$", "correct": true },
+      {
+        "text": "$(p \\vee q) \\wedge (p \\vee r)$",
+        "correct": false,
+        "why": "C'est la distribution de $\\vee$ sur $\\wedge$ (pour l'énoncé $p \\vee (q \\wedge r)$), pas celle de $\\wedge$ sur $\\vee$ demandée ici."
+      },
+      {
+        "text": "$(p \\wedge q) \\vee r$",
+        "correct": false,
+        "why": "$p$ n'est distribué que sur $q$, pas sur $r$ : cette expression change complètement la structure logique."
+      },
+      {
+        "text": "$(p \\vee q) \\wedge r$",
+        "correct": false,
+        "why": "Cette expression regroupe $p$ et $q$ avec $\\vee$ et applique $\\wedge$ avec $r$ seul : ce n'est pas la distribution voulue et ne préserve pas la structure de l'énoncé de départ."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-logic-010",
+    "course": "MAT1500",
+    "topic": "mat1500-logic",
+    "difficulty": 1,
+    "prompt": "$p \\vee \\text{Vrai}$ est toujours vraie, peu importe la valeur de $p$ (loi de domination).",
+    "explanation": "Vrai : dès qu'un « ou » contient une proposition toujours vraie, le résultat est toujours vrai, sans égard à l'autre membre. C'est le pendant de $p \\wedge \\text{Faux} \\equiv \\text{Faux}$.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1500-logic-011",
+    "course": "MAT1500",
+    "topic": "mat1500-logic",
+    "difficulty": 2,
+    "prompt": "Selon la loi d'exportation, $(p \\wedge q) \\rightarrow r$ est équivalent à...",
+    "explanation": "La loi d'exportation dit $(p \\wedge q) \\rightarrow r \\equiv p \\rightarrow (q \\rightarrow r)$ : avoir deux hypothèses combinées par $\\wedge$ revient à les traiter en cascade, une implication à la fois.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$p \\rightarrow (q \\rightarrow r)$", "correct": true },
+      {
+        "text": "$(p \\rightarrow r) \\wedge (q \\rightarrow r)$",
+        "correct": false,
+        "why": "Ceci exigerait que $p$ seul suffise à impliquer $r$, ce qui est plus fort que l'énoncé original où $p$ et $q$ sont nécessaires ensemble."
+      },
+      {
+        "text": "$p \\rightarrow (q \\wedge r)$",
+        "correct": false,
+        "why": "Ceci place $q$ du mauvais côté : $q$ était une hypothèse dans l'énoncé original, pas une partie de la conclusion."
+      },
+      {
+        "text": "$q \\rightarrow (p \\vee r)$",
+        "correct": false,
+        "why": "Cette expression change à la fois la variable de l'hypothèse externe et le connecteur de la conclusion ; elle n'a aucune justification logique liée à l'énoncé de départ."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-logic-012",
+    "course": "MAT1500",
+    "topic": "mat1500-logic",
+    "difficulty": 2,
+    "prompt": "Simplifie $p \\vee (p \\wedge q)$ à l'aide de la loi d'absorption, en nommant la loi utilisée.",
+    "explanation": "L'erreur fréquente est d'essayer de distribuer d'abord (ce qui complique inutilement l'expression) au lieu de reconnaître directement le motif d'absorption $p \\vee (p \\wedge q) \\equiv p$.",
+    "type": "flash",
+    "answer": "$p \\vee (p \\wedge q) \\equiv p$ (loi d'absorption).",
+    "keyPoints": [
+      "Si $p$ est vrai, toute l'expression est vraie ; si $p$ est faux, $p \\wedge q$ l'est aussi, donc l'expression vaut $p$ dans les deux cas",
+      "À ne pas confondre avec la distributivité, qui ne s'applique pas ici directement"
+    ]
   }
 ]
