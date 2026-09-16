@@ -12,26 +12,18 @@ import type { Course, CourseCode, Mode, Progress, Question } from '@/lib/types';
 import { bank as defaultBank, bankVersion as defaultBankVersion } from '@/content/bank';
 import { courses as defaultCourses } from '@/content/courses';
 import {
-  applyAnswer,
-  applyUpdate,
-  checkSyncCode,
   emptyProgress,
-  formatSyncCode,
-  generateSyncCode,
   levelProgress,
   loadProgress,
-  markActive,
   mastery,
-  mulberry32,
-  nextQuestion,
-  normalizeSyncCode,
-  onUpdateReady,
   saveProgress,
   streak,
-  syncNow,
   toggleFlag,
   xp,
-} from '@/lib/ui-engine';
+} from '@/lib/progress';
+import { applyAnswer, mulberry32, nextQuestion } from '@/lib/scheduler';
+import { checkSyncCode, formatSyncCode, generateSyncCode, normalizeSyncCode, syncNow } from '@/lib/sync';
+import { applyUpdate, onUpdateReady } from '@/lib/pwa';
 import {
   answer,
   isAnswered,
@@ -160,7 +152,7 @@ export function App({
     if (r === round) return;
     const now = clock();
     const id = round.question.id;
-    const next = markActive(applyAnswer(progressRef.current, id, r.ok!, now), now);
+    const next = applyAnswer(progressRef.current, id, r.ok!, now);
     progressRef.current = next;
     setProgress(next);
     if (round.question.type === 'flash') {
