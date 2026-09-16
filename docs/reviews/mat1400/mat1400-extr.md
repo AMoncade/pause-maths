@@ -14,5 +14,9 @@ comparés à la clé : accord total (8/8).
 | mat1400-extr-006 | confirmé | extrema absolus : intérieur ET frontière |
 | mat1400-extr-007 | confirmé | $(0,0)$, $D=8>0,f_{xx}=2>0$ : minimum, malgré le terme croisé $xy$ |
 | mat1400-extr-008 | confirmé | VF=Faux ; un point critique peut être une selle |
+| mat1400-extr-009 (Défi) | confirmé | deux points critiques $(1,2)$ min, $(-1,2)$ selle ; ne pas oublier la racine négative |
+| mat1400-extr-010 | confirmé | max de $x^2+y^2$ sur disque fermé $=4$ sur la frontière |
+| mat1400-extr-011 | confirmé | VF=Faux ; $\mathbb R^2$ non borné, pas de max absolu |
+| mat1400-extr-012 | confirmé | $D=-12<0$ malgré $f_{xx}>0$ : point-selle |
 
 Aucune correction ni retrait.

@@ -124,5 +124,45 @@
       { "text": "Deux points critiques, tous deux des points-selles", "correct": false, "why": "À $(1,2)$, $D=12>0$ et $f_{xx}=6>0$ : c'est un minimum local, pas un point-selle." }
     ],
     "solution": "1. $f_x=3x^2-3=0 \\Rightarrow x^2=1 \\Rightarrow x=\\pm1$. $f_y=2y-4=0 \\Rightarrow y=2$.\n2. Deux points critiques : $(1,2)$ et $(-1,2)$.\n3. $f_{xx}=6x$, $f_{yy}=2$, $f_{xy}=0$.\n4. En $(1,2)$ : $f_{xx}=6$, $D=6\\cdot2-0=12>0$, $f_{xx}>0$ $\\Rightarrow$ minimum local.\n5. En $(-1,2)$ : $f_{xx}=-6$, $D=-6\\cdot2-0=-12<0$ $\\Rightarrow$ point-selle."
+  },
+  {
+    "id": "mat1400-extr-010",
+    "course": "MAT1400",
+    "topic": "mat1400-extr",
+    "difficulty": 2,
+    "prompt": "Quelle est la valeur MAXIMALE de $f(x,y)=x^2+y^2$ sur le disque fermé $x^2+y^2\\le4$ ?",
+    "explanation": "$f(x,y)=x^2+y^2$ mesure le carré de la distance à l'origine : elle est minimale ($0$) au centre et augmente en s'éloignant, donc maximale sur la frontière $x^2+y^2=4$, où $f=4$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$4$, atteint sur la frontière $x^2+y^2=4$", "correct": true },
+      { "text": "$0$, atteint à l'origine", "correct": false, "why": "C'est le MINIMUM de $f$ sur ce disque, pas le maximum : les deux ont été confondus." },
+      { "text": "$2$, atteint sur la frontière", "correct": false, "why": "Sur la frontière, $x^2+y^2=4$ donne directement $f=4$, pas $2$ : $2$ serait le rayon, pas la valeur de $f$." },
+      { "text": "$\\infty$, car $f$ n'est pas bornée", "correct": false, "why": "Le domaine $x^2+y^2\\le4$ est fermé ET borné (compact) ; le théorème des valeurs extrêmes garantit qu'une fonction continue y est bornée et atteint son maximum." }
+    ]
+  },
+  {
+    "id": "mat1400-extr-011",
+    "course": "MAT1400",
+    "topic": "mat1400-extr",
+    "difficulty": 2,
+    "prompt": "La fonction $f(x,y)=x^2-y^2$ définie sur TOUT $\\mathbb R^2$ (non borné) possède un maximum absolu.",
+    "explanation": "Faux : le long de l'axe des $x$ ($y=0$), $f=x^2\\to+\\infty$ : $f$ n'est pas bornée supérieurement sur $\\mathbb R^2$ tout entier. Le théorème des valeurs extrêmes exige un domaine FERMÉ ET BORNÉ, ce que $\\mathbb R^2$ n'est pas.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1400-extr-012",
+    "course": "MAT1400",
+    "topic": "mat1400-extr",
+    "difficulty": 2,
+    "prompt": "Le point critique $(0,0)$ de $f(x,y)=x^2+4xy+y^2$ est classé comme...",
+    "explanation": "$f_{xx}=2$, $f_{yy}=2$, $f_{xy}=4$. $D=f_{xx}f_{yy}-(f_{xy})^2=2(2)-4^2=4-16=-12<0$ : point-selle, MALGRÉ $f_{xx}>0$ (le grand terme croisé $4xy$ change tout).",
+    "type": "qcm",
+    "choices": [
+      { "text": "Point-selle ($D=4-16=-12<0$)", "correct": true },
+      { "text": "Minimum local (car $f_{xx}=2>0$)", "correct": false, "why": "Le signe de $f_{xx}$ seul ne suffit pas : il faut d'abord vérifier le signe de $D$, qui est ici négatif à cause du grand terme croisé $f_{xy}=4$." },
+      { "text": "Minimum local ($D=f_{xx}f_{yy}=4>0$)", "correct": false, "why": "Le terme $(f_{xy})^2=16$ a été oublié dans la formule de $D$ : il faut SOUSTRAIRE $(f_{xy})^2$, pas seulement calculer $f_{xx}f_{yy}$." },
+      { "text": "Non concluant", "correct": false, "why": "$D=-12\\ne0$ : le test EST concluant. Ce n'est pas un cas $D=0$." }
+    ]
   }
 ]
