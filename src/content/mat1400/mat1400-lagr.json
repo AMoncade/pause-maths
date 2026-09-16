@@ -1,0 +1,128 @@
+[
+  {
+    "id": "mat1400-lagr-001",
+    "course": "MAT1400",
+    "topic": "mat1400-lagr",
+    "difficulty": 2,
+    "prompt": "Pour maximiser $f(x,y)=xy$ sous la contrainte $x+y=10$, le système $\\nabla f=\\lambda\\nabla g$ donne...",
+    "explanation": "$\\nabla f=(y,x)$ et $\\nabla g=(1,1)$, donc $y=\\lambda$ et $x=\\lambda$, ce qui force $x=y$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$y=\\lambda,\\ x=\\lambda$ (donc $x=y$)", "correct": true },
+      { "text": "$y=\\lambda x,\\ x=\\lambda y$", "correct": false, "why": "Le gradient de $g(x,y)=x+y$ est $(1,1)$, pas $(y,x)$ : cette version mélange $\\nabla f$ et $\\nabla g$." },
+      { "text": "$x=\\lambda,\\ y=\\lambda$ avec $x\\ne y$ nécessairement", "correct": false, "why": "Le système impose justement $x=y$ (les deux égalent $\\lambda$) : conclure $x\\ne y$ contredit directement les équations." },
+      { "text": "$xy=\\lambda(x+y)$", "correct": false, "why": "Les deux équations du système ($f_x=\\lambda g_x$ et $f_y=\\lambda g_y$) ont été combinées en une seule au lieu d'être traitées séparément." }
+    ]
+  },
+  {
+    "id": "mat1400-lagr-002",
+    "course": "MAT1400",
+    "topic": "mat1400-lagr",
+    "difficulty": 2,
+    "prompt": "Avec $x=y=5$ (issu du système de Lagrange), la valeur maximale de $f(x,y)=xy$ sous $x+y=10$ est...",
+    "explanation": "$f(5,5)=5\\times5=25$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$25$", "correct": true },
+      { "text": "$10$", "correct": false, "why": "C'est la valeur de la contrainte $x+y$, pas de $f(x,y)=xy$." },
+      { "text": "$50$", "correct": false, "why": "Le produit $5\\times5=25$ a été doublé par erreur (confusion possible avec $2xy$)." },
+      { "text": "$5$", "correct": false, "why": "C'est la valeur de $x$ (ou de $y$) seule, pas le produit $xy$." }
+    ]
+  },
+  {
+    "id": "mat1400-lagr-003",
+    "course": "MAT1400",
+    "topic": "mat1400-lagr",
+    "difficulty": 2,
+    "prompt": "Avant d'appliquer les multiplicateurs de Lagrange, il faut vérifier que $\\nabla g\\ne\\vec0$ sur la contrainte, sinon la méthode peut échouer à trouver certains extrema.",
+    "explanation": "Vrai : là où $\\nabla g=\\vec0$, l'équation $\\nabla f=\\lambda\\nabla g$ ne permet pas de détecter un extremum de façon fiable ; ces points doivent être examinés séparément.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1400-lagr-004",
+    "course": "MAT1400",
+    "topic": "mat1400-lagr",
+    "difficulty": 2,
+    "prompt": "En résolvant $2x=\\lambda\\cdot2x$ (venant du système de Lagrange), on ne doit PAS diviser directement les deux côtés par $x$ car...",
+    "explanation": "Si $x=0$ est une solution possible, diviser par $x$ l'élimine silencieusement du système : il faut traiter séparément le cas $x=0$ et le cas $x\\ne0$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$x$ pourrait valoir $0$, un cas à traiter séparément", "correct": true },
+      { "text": "$\\lambda$ est toujours nul de toute façon", "correct": false, "why": "Rien dans l'équation n'impose que $\\lambda=0$ ; c'est une affirmation sans fondement ici." },
+      { "text": "Diviser change la valeur de $f$", "correct": false, "why": "Une manipulation algébrique sur l'équation du système ne change jamais la valeur de $f$, seulement la façon de résoudre le système." },
+      { "text": "Il faut plutôt diviser par $\\lambda$", "correct": false, "why": "Ça ne règle rien : $\\lambda$ pourrait tout aussi bien être nul, et le risque de perdre la solution $x=0$ demeure." }
+    ]
+  },
+  {
+    "id": "mat1400-lagr-005",
+    "course": "MAT1400",
+    "topic": "mat1400-lagr",
+    "difficulty": 1,
+    "prompt": "Quelles sont les étapes de la méthode des multiplicateurs de Lagrange pour optimiser $f(x,y)$ sous $g(x,y)=k$ ?",
+    "explanation": "La comparaison finale des valeurs de $f$ est essentielle : la méthode donne des CANDIDATS, pas directement le classement min/max.",
+    "type": "flash",
+    "answer": "1) Poser $\\nabla f=\\lambda\\nabla g$ et $g(x,y)=k$. 2) Résoudre le système (sans diviser par une variable qui pourrait être nulle). 3) Évaluer $f$ à chaque solution trouvée et comparer.",
+    "keyPoints": [
+      "Le système a autant d'équations que d'inconnues, en comptant $\\lambda$",
+      "Comparer $f$ à TOUS les points candidats : le premier trouvé n'est pas forcément l'extremum cherché"
+    ]
+  },
+  {
+    "id": "mat1400-lagr-006",
+    "course": "MAT1400",
+    "topic": "mat1400-lagr",
+    "difficulty": 2,
+    "prompt": "Pour minimiser $f(x,y)=x^2+y^2$ sous $xy=1$, le système de Lagrange mène à $y=\\pm x$, puis avec $xy=1$ on trouve $(1,1)$ ou $(-1,-1)$. La valeur minimale de $f$ à ces points est...",
+    "explanation": "$f(1,1)=1^2+1^2=2$ (et $f(-1,-1)=2$ aussi, par symétrie).",
+    "type": "qcm",
+    "choices": [
+      { "text": "$2$", "correct": true },
+      { "text": "$1$", "correct": false, "why": "C'est la valeur de la contrainte $xy=1$ évaluée au point, pas celle de $f(x,y)=x^2+y^2$." },
+      { "text": "$4$", "correct": false, "why": "C'est $(x+y)^2=(1+1)^2$, pas $x^2+y^2$ : ce ne sont pas la même expression." },
+      { "text": "$0$", "correct": false, "why": "$(1,1)$ et $(-1,-1)$ ont été combinés à tort comme s'ils s'annulaient ; il faut évaluer $f$ à CHAQUE point séparément." }
+    ]
+  },
+  {
+    "id": "mat1400-lagr-007",
+    "course": "MAT1400",
+    "topic": "mat1400-lagr",
+    "difficulty": 2,
+    "prompt": "Si la méthode de Lagrange donne plusieurs points candidats, le premier trouvé est nécessairement l'extremum cherché, sans besoin de comparer avec les autres.",
+    "explanation": "Faux : la méthode ne fait que produire une LISTE de candidats. Il faut évaluer $f$ à chacun et comparer les valeurs pour identifier lequel est le vrai min ou max.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1400-lagr-008",
+    "course": "MAT1400",
+    "topic": "mat1400-lagr",
+    "difficulty": 1,
+    "prompt": "Au point d'un extremum sous contrainte, la condition $\\nabla f=\\lambda\\nabla g$ signifie géométriquement que...",
+    "explanation": "C'est l'interprétation clé de Lagrange : les courbes de niveau de $f$ et la courbe de contrainte $g=k$ sont tangentes en un extremum, donc leurs gradients (perpendiculaires à ces courbes) sont parallèles.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$\\nabla f$ et $\\nabla g$ sont parallèles (colinéaires) en ce point", "correct": true },
+      { "text": "$\\nabla f$ et $\\nabla g$ sont perpendiculaires en ce point", "correct": false, "why": "C'est l'inverse : la condition de Lagrange dit qu'ils sont PARALLÈLES, pas perpendiculaires." },
+      { "text": "$f$ et $g$ sont égales en ce point", "correct": false, "why": "La condition porte sur les GRADIENTS (proportionnalité), pas sur les valeurs des fonctions elles-mêmes." },
+      { "text": "$\\nabla f=\\vec0$ en ce point", "correct": false, "why": "C'est la condition d'un extremum NON contraint (chapitre précédent) ; sous contrainte, $\\nabla f$ n'a en général pas besoin d'être nul." }
+    ]
+  },
+  {
+    "id": "mat1400-lagr-009",
+    "course": "MAT1400",
+    "topic": "mat1400-lagr",
+    "difficulty": 3,
+    "challenge": true,
+    "prompt": "Extrema de $f(x,y)=x^2+y^2$ sous la contrainte $x^2+4y^2=4$ (une ellipse) ?",
+    "explanation": "Le système de Lagrange se scinde en deux CAS ($x=0$ ou $\\lambda=1$), tous deux à explorer sans en écarter aucun ; il faut ensuite vérifier que chaque candidat satisfait bien la contrainte avant d'évaluer $f$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "min $=1$ en $(0,\\pm1)$, max $=4$ en $(\\pm2,0)$", "correct": true },
+      { "text": "min $=0$ en $(0,0)$, max $=4$ en $(\\pm2,0)$", "correct": false, "why": "$(0,0)$ ne satisfait PAS la contrainte $x^2+4y^2=4$ (elle donnerait $0\\ne4$) : ce point n'est même pas un candidat valide." },
+      { "text": "min $=1$ en $(0,\\pm1)$, max $=16$ en $(\\pm2,0)$", "correct": false, "why": "$f(2,0)=2^2+0^2=4$, pas $16$ : $16$ viendrait de $4^2$, une confusion entre évaluer $f$ et élever la coordonnée au carré une seconde fois." },
+      { "text": "Un seul extremum, en $(2,0)$", "correct": false, "why": "Le cas $x=0$ du système (à ne jamais écarter en divisant par $x$ sans vérifier ce cas séparément) a été oublié, perdant les points $(0,\\pm1)$." }
+    ],
+    "solution": "1. $\\nabla f=(2x,2y)=\\lambda\\nabla g=\\lambda(2x,8y)$.\n2. Composante $x$ : $2x=2\\lambda x \\Rightarrow x(1-\\lambda)=0 \\Rightarrow x=0$ ou $\\lambda=1$ (ne pas diviser par $x$ directement !).\n3. **Cas $x=0$** : la contrainte donne $4y^2=4 \\Rightarrow y=\\pm1$. Points $(0,1)$, $(0,-1)$, $f=1$.\n4. **Cas $\\lambda=1$** : composante $y$ donne $2y=8y \\Rightarrow y=0$. Contrainte : $x^2=4 \\Rightarrow x=\\pm2$. Points $(2,0)$, $(-2,0)$, $f=4$.\n5. Comparer : minimum $=1$ en $(0,\\pm1)$, maximum $=4$ en $(\\pm2,0)$."
+  }
+]

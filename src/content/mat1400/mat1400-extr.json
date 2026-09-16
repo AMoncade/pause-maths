@@ -1,0 +1,128 @@
+[
+  {
+    "id": "mat1400-extr-001",
+    "course": "MAT1400",
+    "topic": "mat1400-extr",
+    "difficulty": 2,
+    "prompt": "Point critique de $f(x,y)=x^2+y^2-4x+2y+5$ ?",
+    "explanation": "$f_x=2x-4=0\\Rightarrow x=2$. $f_y=2y+2=0\\Rightarrow y=-1$. Point critique : $(2,-1)$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$(2,-1)$", "correct": true },
+      { "text": "$(-2,1)$", "correct": false, "why": "Erreur de signe en isolant $x$ et $y$ : $2x=4\\Rightarrow x=2$ (pas $-2$), et $2y=-2\\Rightarrow y=-1$ (pas $1$)." },
+      { "text": "$(4,-2)$", "correct": false, "why": "Le coefficient $2$ n'a pas été divisé : $2x=4$ donne $x=2$, pas $x=4$." },
+      { "text": "$(2,1)$", "correct": false, "why": "Erreur de signe seulement sur $y$ : $2y+2=0$ donne $y=-1$, pas $y=1$." }
+    ]
+  },
+  {
+    "id": "mat1400-extr-002",
+    "course": "MAT1400",
+    "topic": "mat1400-extr",
+    "difficulty": 2,
+    "prompt": "Au point critique (l'origine) de $f(x,y)=x^2-y^2$, le test de la dérivée seconde donne...",
+    "explanation": "$f_{xx}=2$, $f_{yy}=-2$, $f_{xy}=0$. $D=f_{xx}f_{yy}-(f_{xy})^2=2(-2)-0=-4<0$ : point-selle.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Point-selle ($D<0$)", "correct": true },
+      { "text": "Minimum local ($D>0$, $f_{xx}>0$)", "correct": false, "why": "Conclusion tirée en ne regardant que le terme $+x^2$, sans calculer $D$ correctement : ici $D=-4<0$." },
+      { "text": "Maximum local ($D>0$, $f_{xx}<0$)", "correct": false, "why": "Conclusion tirée en ne regardant que le terme $-y^2$, sans calculer $D$ correctement : ici $D=-4<0$." },
+      { "text": "Test non concluant ($D=0$)", "correct": false, "why": "$D$ a été calculé avec la mauvaise formule (ex. $f_{xx}+f_{yy}=2-2=0$ au lieu de $f_{xx}f_{yy}-(f_{xy})^2$)." }
+    ]
+  },
+  {
+    "id": "mat1400-extr-003",
+    "course": "MAT1400",
+    "topic": "mat1400-extr",
+    "difficulty": 2,
+    "prompt": "Si $D=f_{xx}f_{yy}-(f_{xy})^2=0$ en un point critique, le test de la dérivée seconde permet quand même de conclure s'il s'agit d'un minimum, maximum, ou point-selle.",
+    "explanation": "Faux : $D=0$ est précisément le cas où le test NE permet PAS de conclure. Il faut une autre méthode (ex. étudier $f$ directement près du point).",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1400-extr-004",
+    "course": "MAT1400",
+    "topic": "mat1400-extr",
+    "difficulty": 2,
+    "prompt": "Pour $f(x,y)=x^2+y^2$ à l'origine, $D=4>0$ et $f_{xx}=2>0$. Il s'agit donc d'un...",
+    "explanation": "Règle du test : $D>0$ et $f_{xx}>0$ signifient minimum local (la surface se courbe vers le haut dans toutes les directions).",
+    "type": "qcm",
+    "choices": [
+      { "text": "Minimum local", "correct": true },
+      { "text": "Maximum local", "correct": false, "why": "$f_{xx}>0$ indique un minimum, pas un maximum : il faudrait $f_{xx}<0$ pour un maximum." },
+      { "text": "Point-selle", "correct": false, "why": "Un point-selle correspond à $D<0$, pas $D>0$ : le sens de la règle a été inversé." },
+      { "text": "Impossible à déterminer", "correct": false, "why": "$D\\ne0$ ici ($D=4$), donc le test EST concluant : il n'y a pas d'ambiguïté à résoudre." }
+    ]
+  },
+  {
+    "id": "mat1400-extr-005",
+    "course": "MAT1400",
+    "topic": "mat1400-extr",
+    "difficulty": 1,
+    "prompt": "Quelles sont les étapes pour trouver et classer les points critiques d'une fonction $f(x,y)$ ?",
+    "explanation": "Ces trois étapes forment la procédure standard du test de la dérivée seconde en deux variables.",
+    "type": "flash",
+    "answer": "1) Résoudre $f_x=f_y=0$. 2) Calculer $D=f_{xx}f_{yy}-(f_{xy})^2$ en chaque point critique. 3) Classer selon le signe de $D$ et de $f_{xx}$.",
+    "keyPoints": [
+      "Points critiques : $\\nabla f=\\vec0$",
+      "$D>0,f_{xx}>0\\Rightarrow$min ; $D>0,f_{xx}<0\\Rightarrow$max ; $D<0\\Rightarrow$selle ; $D=0\\Rightarrow$non concluant"
+    ]
+  },
+  {
+    "id": "mat1400-extr-006",
+    "course": "MAT1400",
+    "topic": "mat1400-extr",
+    "difficulty": 2,
+    "prompt": "Pour trouver les extrema ABSOLUS de $f$ sur un domaine fermé et borné, il faut évaluer $f$...",
+    "explanation": "Le théorème des valeurs extrêmes garantit que le max/min absolu existe, mais il peut se trouver soit à un point critique intérieur, soit sur la frontière : les deux doivent être examinés.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Aux points critiques de l'intérieur ET sur toute la frontière", "correct": true },
+      { "text": "Seulement aux points critiques de l'intérieur", "correct": false, "why": "L'extremum absolu peut très bien se trouver SUR la frontière, où le test de la dérivée seconde ne s'applique pas directement." },
+      { "text": "Seulement sur la frontière", "correct": false, "why": "L'extremum absolu peut aussi être un point critique à l'intérieur du domaine ; l'ignorer peut faire manquer le vrai maximum ou minimum." },
+      { "text": "Seulement au centre du domaine", "correct": false, "why": "Rien ne garantit qu'un extremum se trouve au centre géométrique du domaine ; il faut examiner intérieur et frontière." }
+    ]
+  },
+  {
+    "id": "mat1400-extr-007",
+    "course": "MAT1400",
+    "topic": "mat1400-extr",
+    "difficulty": 2,
+    "prompt": "Le point critique de $f(x,y)=x^2+2xy+3y^2$ est classé comme...",
+    "explanation": "$f_x=2x+2y=0$, $f_y=2x+6y=0$ donnent $(0,0)$. $f_{xx}=2$, $f_{yy}=6$, $f_{xy}=2$. $D=2(6)-2^2=12-4=8>0$, $f_{xx}=2>0$ : minimum local.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Minimum local ($D=8>0$, $f_{xx}=2>0$)", "correct": true },
+      { "text": "Point-selle", "correct": false, "why": "La présence d'un terme croisé $xy$ ne rend pas automatiquement le point une selle : c'est le signe de $D$ qui décide, et ici $D=8>0$." },
+      { "text": "Maximum local", "correct": false, "why": "$D>0$ est correct, mais $f_{xx}=2>0$ indique un minimum, pas un maximum." },
+      { "text": "Non concluant", "correct": false, "why": "$D=8\\ne0$ : le test est parfaitement concluant, il ne faut pas confondre la présence d'un terme croisé avec un cas $D=0$." }
+    ]
+  },
+  {
+    "id": "mat1400-extr-008",
+    "course": "MAT1400",
+    "topic": "mat1400-extr",
+    "difficulty": 1,
+    "prompt": "Tous les points où $\\nabla f=\\vec0$ sont des extrema locaux (minima ou maxima).",
+    "explanation": "Faux : un point critique peut aussi être un point-selle, qui n'est ni un minimum ni un maximum local. Il faut le test de la dérivée seconde pour trancher.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1400-extr-009",
+    "course": "MAT1400",
+    "topic": "mat1400-extr",
+    "difficulty": 3,
+    "challenge": true,
+    "prompt": "Combien de points critiques admet $f(x,y)=x^3-3x+y^2-4y$, et quelle est leur nature ?",
+    "explanation": "Résoudre $f_x=0$ donne une équation quadratique en $x$ avec DEUX racines : il ne faut jamais en oublier une. Chaque point critique doit ensuite être classé SÉPARÉMENT avec le test de la dérivée seconde — la nature peut différer d'un point à l'autre.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Deux points critiques : $(1,2)$ un minimum local, $(-1,2)$ un point-selle", "correct": true },
+      { "text": "Un seul point critique : $(1,2)$, un minimum local", "correct": false, "why": "$f_x=3x^2-3=0$ donne $x^2=1$, donc $x=1$ OU $x=-1$ : la racine négative a été oubliée." },
+      { "text": "Deux points critiques, tous deux des minima locaux", "correct": false, "why": "Le test de la dérivée seconde doit être appliqué à CHAQUE point séparément ; à $(-1,2)$, $f_{xx}=-6$ et $D<0$ donnent un point-selle, pas un minimum." },
+      { "text": "Deux points critiques, tous deux des points-selles", "correct": false, "why": "À $(1,2)$, $D=12>0$ et $f_{xx}=6>0$ : c'est un minimum local, pas un point-selle." }
+    ],
+    "solution": "1. $f_x=3x^2-3=0 \\Rightarrow x^2=1 \\Rightarrow x=\\pm1$. $f_y=2y-4=0 \\Rightarrow y=2$.\n2. Deux points critiques : $(1,2)$ et $(-1,2)$.\n3. $f_{xx}=6x$, $f_{yy}=2$, $f_{xy}=0$.\n4. En $(1,2)$ : $f_{xx}=6$, $D=6\\cdot2-0=12>0$, $f_{xx}>0$ $\\Rightarrow$ minimum local.\n5. En $(-1,2)$ : $f_{xx}=-6$, $D=-6\\cdot2-0=-12<0$ $\\Rightarrow$ point-selle."
+  }
+]
