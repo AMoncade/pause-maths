@@ -1,0 +1,87 @@
+[
+  {
+    "id": "mat1600-syst-001",
+    "course": "MAT1600",
+    "topic": "mat1600-syst",
+    "difficulty": 1,
+    "type": "qcm",
+    "prompt": "Combien de solutions a le système $x + y = 2$, $x - y = 0$ ?",
+    "explanation": "Les deux droites se coupent au point $(1, 1)$. Le piège : croire que deux équations donnent toujours une infinité de solutions.",
+    "choices": [
+      {
+        "text": "Exactement une",
+        "correct": true
+      },
+      {
+        "text": "Aucune",
+        "correct": false,
+        "why": "Les deux droites ne sont pas parallèles."
+      },
+      {
+        "text": "Une infinité",
+        "correct": false,
+        "why": "Les deux équations ne sont pas proportionnelles."
+      },
+      {
+        "text": "Deux",
+        "correct": false,
+        "why": "Un système linéaire n'a jamais exactement deux solutions."
+      }
+    ]
+  },
+  {
+    "id": "mat1600-det-001",
+    "course": "MAT1600",
+    "topic": "mat1600-det",
+    "difficulty": 2,
+    "type": "vf",
+    "prompt": "Pour $A$ de taille $3 \\times 3$, $\\det(2A) = 2\\det(A)$.",
+    "explanation": "Chaque ligne est multipliée par $2$ : $\\det(2A) = 2^3 \\det(A) = 8\\det(A)$. Le piège : sortir le $k$ une seule fois.",
+    "answer": false
+  },
+  {
+    "id": "stt1700-desc-001",
+    "course": "STT1700",
+    "topic": "stt1700-desc",
+    "difficulty": 1,
+    "type": "flash",
+    "prompt": "Écart type de la moyenne $\\bar{X}$ de $n$ observations indépendantes d'écart type $\\sigma$ ?",
+    "explanation": "La variance de $\\bar{X}$ est $\\sigma^2/n$. Le piège : oublier la racine et écrire $\\sigma/n$.",
+    "answer": "$\\dfrac{\\sigma}{\\sqrt{n}}$",
+    "keyPoints": [
+      "$\\operatorname{Var}(\\bar{X}) = \\sigma^2/n$",
+      "On prend la racine carrée de la variance."
+    ]
+  },
+  {
+    "id": "mat1600-syst-002",
+    "course": "MAT1600",
+    "topic": "mat1600-syst",
+    "difficulty": 3,
+    "type": "qcm",
+    "prompt": "Pour quelle valeur de $k$ le système $x + ky = 1$, $kx + y = 1$ n'a-t-il aucune solution ?",
+    "explanation": "Le déterminant $1 - k^2$ s'annule pour $k = \\pm 1$, mais $k = 1$ donne deux équations identiques. Le piège : oublier de vérifier la compatibilité.",
+    "choices": [
+      {
+        "text": "$k = -1$",
+        "correct": true
+      },
+      {
+        "text": "$k = 1$",
+        "correct": false,
+        "why": "Les deux équations deviennent identiques : une infinité de solutions."
+      },
+      {
+        "text": "$k = \\pm 1$",
+        "correct": false,
+        "why": "Il faut vérifier chaque valeur : $k = 1$ est compatible."
+      },
+      {
+        "text": "$k = 0$",
+        "correct": false
+      }
+    ],
+    "challenge": true,
+    "solution": "1. Déterminant : $$\\det\\begin{pmatrix} 1 & k \\\\ k & 1 \\end{pmatrix} = 1 - k^2$$\n2. Il s'annule pour $k = 1$ ou $k = -1$.\n3. $k = 1$ : deux fois $x + y = 1$, une infinité de solutions ; $k = -1$ : $x - y = 1$ et $-x + y = 1$, incompatibles."
+  }
+]
