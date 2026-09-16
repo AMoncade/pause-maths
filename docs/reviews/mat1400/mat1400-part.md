@@ -14,5 +14,8 @@ Verdicts comparés à la clé : accord total (8/8).
 | mat1400-part-006 | confirmé | plan tangent horizontal $\Leftrightarrow f_x=f_y=0$ |
 | mat1400-part-007 | confirmé | VF=Faux ; contre-exemple SymPy $xy/(x^2+y^2)$ : partielles nulles en $(0,0)$ mais $f$ pas même continue là |
 | mat1400-part-008 | confirmé | $\partial f/\partial x = f_x$ |
+| mat1400-part-009 (Défi) | confirmé | plan tangent implicite à une sphère via $\nabla F$, $2x+2y+z=9$ |
 
 Aucune correction ni retrait.
+
+**Suite à la relecture Opus** (`docs/reviews/relecture-opus/mat1400.md`) : phrase "Le piège : …" ajoutée aux `explanation` de part-003, part-004, part-008 (aucun changement de réponse ni de structure, pas de nouvelle relecture aveugle nécessaire). Voir `reponse-relecture-opus.md`.

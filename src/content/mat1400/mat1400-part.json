@@ -35,7 +35,7 @@
     "topic": "mat1400-part",
     "difficulty": 2,
     "prompt": "Pour une fonction assez régulière (dérivées partielles secondes continues), $f_{xy}=f_{yx}$.",
-    "explanation": "C'est le théorème de Clairaut (ou Schwarz) : sous des conditions de continuité usuelles, l'ordre de dérivation partielle n'a pas d'importance.",
+    "explanation": "C'est le théorème de Clairaut (ou Schwarz) : sous des conditions de continuité usuelles, l'ordre de dérivation partielle n'a pas d'importance. Le piège : appliquer ce résultat sans vérifier l'hypothèse de continuité des dérivées secondes, qui n'est pas automatique.",
     "type": "vf",
     "answer": true
   },
@@ -45,7 +45,7 @@
     "topic": "mat1400-part",
     "difficulty": 1,
     "prompt": "Comment définit-on $f_x(a,b)$ comme une limite ?",
-    "explanation": "Cette définition généralise la dérivée d'une variable : on fige $y=b$ et on fait varier seulement $x$ autour de $a$.",
+    "explanation": "Cette définition généralise la dérivée d'une variable : on fige $y=b$ et on fait varier seulement $x$ autour de $a$. Le piège : faire varier $y$ aussi (ou utiliser $f(a+h,b+h)$), ce qui donnerait une dérivée directionnelle, pas $f_x$.",
     "type": "flash",
     "answer": "$f_x(a,b)=\\lim_{h\\to0}\\dfrac{f(a+h,b)-f(a,b)}{h}$",
     "keyPoints": [
@@ -99,13 +99,74 @@
     "topic": "mat1400-part",
     "difficulty": 1,
     "prompt": "$\\dfrac{\\partial f}{\\partial x}$ se note aussi...",
-    "explanation": "$f_x$ est la notation indicielle standard pour $\\partial f/\\partial x$.",
+    "explanation": "$f_x$ est la notation indicielle standard pour $\\partial f/\\partial x$. Le piège classique : écrire $f'$, une notation réservée aux fonctions d'une seule variable.",
     "type": "qcm",
     "choices": [
       { "text": "$f_x$", "correct": true },
       { "text": "$f'$", "correct": false, "why": "La notation prime $f'$ est réservée aux fonctions d'UNE seule variable ; pour plusieurs variables elle est ambiguë (dérivée par rapport à laquelle ?)." },
       { "text": "$\\nabla f$", "correct": false, "why": "C'est le vecteur gradient COMPLET $(f_x,f_y)$, pas une seule dérivée partielle." },
       { "text": "$df$", "correct": false, "why": "C'est la différentielle totale de $f$, une combinaison de toutes les dérivées partielles, pas une seule d'entre elles." }
+    ]
+  },
+  {
+    "id": "mat1400-part-009",
+    "course": "MAT1400",
+    "topic": "mat1400-part",
+    "difficulty": 3,
+    "challenge": true,
+    "prompt": "Équation du plan tangent à la surface $x^2+y^2+z^2=9$ au point $(2,2,1)$ ?",
+    "explanation": "Pour une surface implicite $F(x,y,z)=0$, la normale au plan tangent est $\\nabla F$ évalué au point ; on simplifie ensuite l'équation obtenue de façon cohérente (coefficients ET constante).",
+    "type": "qcm",
+    "choices": [
+      { "text": "$2x+2y+z=9$", "correct": true },
+      { "text": "$2x+2y+z=18$", "correct": false, "why": "Les coefficients ont été divisés par $2$ mais la constante ($18$) ne l'a pas été : simplification incohérente." },
+      { "text": "$4x+4y+z=18$", "correct": false, "why": "Seul le coefficient de $z$ a été divisé par $2$, pas ceux de $x$ et $y$ : simplification incomplète." },
+      { "text": "$2x+2y-z=9$", "correct": false, "why": "Erreur de signe sur la composante $z$ de $\\nabla F=(2x,2y,2z)$." }
+    ],
+    "solution": "1. Vérifier que le point est sur la surface : $2^2+2^2+1^2=4+4+1=9$. ✓\n2. Poser $F(x,y,z)=x^2+y^2+z^2-9$. $\\nabla F=(2x,2y,2z)$, donc $\\nabla F(2,2,1)=(4,4,2)$.\n3. Plan tangent : $4(x-2)+4(y-2)+2(z-1)=0 \\Rightarrow 4x+4y+2z-18=0 \\Rightarrow 4x+4y+2z=18$.\n4. Simplifier en divisant TOUT par $2$ : $2x+2y+z=9$."
+  },
+  {
+    "id": "mat1400-part-010",
+    "course": "MAT1400",
+    "topic": "mat1400-part",
+    "difficulty": 2,
+    "prompt": "Approximation linéaire de $f(3.02,3.99)$ pour $f(x,y)=\\sqrt{x^2+y^2}$, à partir de $(3,4)$ ?",
+    "explanation": "$f(3,4)=5$. $f_x=x/\\sqrt{x^2+y^2}=3/5$, $f_y=y/\\sqrt{x^2+y^2}=4/5$. Avec $\\Delta x=0.02$, $\\Delta y=-0.01$ : $f\\approx5+0.6(0.02)+0.8(-0.01)=5+0.012-0.008=5.004$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$5.004$", "correct": true },
+      { "text": "$5.02$", "correct": false, "why": "$\\Delta x$ a été ajouté directement sans le multiplier par $f_x$, et la contribution de $y$ a été ignorée." },
+      { "text": "$4.996$", "correct": false, "why": "Erreur de signe sur $\\Delta y$ : traité comme $+0.01$ au lieu de $-0.01$ (le point va de $4$ à $3.99$, donc $\\Delta y$ est NÉGATIF)." },
+      { "text": "$5$", "correct": false, "why": "Les termes de correction $f_x\\Delta x+f_y\\Delta y$ ont été complètement oubliés, gardant seulement $f(3,4)$." }
+    ]
+  },
+  {
+    "id": "mat1400-part-011",
+    "course": "MAT1400",
+    "topic": "mat1400-part",
+    "difficulty": 1,
+    "prompt": "Formule de la différentielle totale $dz$ pour $z=f(x,y)$ ?",
+    "explanation": "La différentielle totale combine linéairement les contributions de chaque variable, chacune pondérée par sa propre dérivée partielle.",
+    "type": "flash",
+    "answer": "$dz=f_x\\,dx+f_y\\,dy$",
+    "keyPoints": [
+      "Chaque variable contribue selon SA propre dérivée partielle",
+      "Sert à estimer $\\Delta z$ pour de petites variations $\\Delta x,\\Delta y$"
+    ]
+  },
+  {
+    "id": "mat1400-part-012",
+    "course": "MAT1400",
+    "topic": "mat1400-part",
+    "difficulty": 2,
+    "prompt": "Pour $f(x,y)=x^3y^2+\\cos y$, que vaut $f_{xx}$ ?",
+    "explanation": "$f_x=3x^2y^2$ (le terme $\\cos y$ disparaît, il ne dépend pas de $x$). $f_{xx}=\\dfrac{\\partial}{\\partial x}(3x^2y^2)=6xy^2$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$6xy^2$", "correct": true },
+      { "text": "$3x^2y^2$", "correct": false, "why": "C'est $f_x$ : une seule dérivation a été effectuée, pas les deux nécessaires pour $f_{xx}$." },
+      { "text": "$6xy^2-\\sin y$", "correct": false, "why": "Le terme $\\cos y$ ne dépend pas de $x$ : il disparaît déjà dans $f_x$ et ne peut pas réapparaître dans $f_{xx}$." },
+      { "text": "$6x^2y$", "correct": false, "why": "C'est $f_{xy}=\\partial_y(f_x)$, pas $f_{xx}=\\partial_x(f_x)$ : mauvaise variable de dérivation pour la seconde étape." }
     ]
   }
 ]
