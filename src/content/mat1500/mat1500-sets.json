@@ -1,0 +1,159 @@
+[
+  {
+    "id": "mat1500-sets-001",
+    "course": "MAT1500",
+    "topic": "mat1500-sets",
+    "difficulty": 2,
+    "prompt": "Soit $A = \\{1, \\{2\\}\\}$. Lequel de ces énoncés est vrai ?",
+    "explanation": "$\\{2\\}$ est un élément de $A$ (il apparaît directement entre les accolades de $A$), donc $\\{2\\} \\in A$. Mais $2$ lui-même n'apparaît pas comme élément de $A$ : le seul élément « lié à 2 » est l'ensemble $\\{2\\}$, pas le nombre 2.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$\\{2\\} \\in A$", "correct": true },
+      {
+        "text": "$2 \\in A$",
+        "correct": false,
+        "why": "$2$ n'est pas un élément de $A$ : l'élément présent est l'ensemble $\\{2\\}$, pas le nombre $2$ lui-même."
+      },
+      {
+        "text": "$\\{2\\} \\subseteq A$",
+        "correct": false,
+        "why": "$\\{2\\}$ est un élément de $A$, pas un sous-ensemble : pour que $\\{2\\} \\subseteq A$, il faudrait que $2 \\in A$, ce qui n'est pas le cas."
+      },
+      {
+        "text": "$1 \\subseteq A$",
+        "correct": false,
+        "why": "$1$ est un nombre, pas un ensemble : la relation $\\subseteq$ ne s'applique qu'entre ensembles. C'est $1 \\in A$ qui est vrai."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-sets-002",
+    "course": "MAT1500",
+    "topic": "mat1500-sets",
+    "difficulty": 2,
+    "prompt": "D'après les lois de De Morgan pour les ensembles, à quoi est égal $\\overline{A \\cup B}$ ?",
+    "explanation": "$\\overline{A \\cup B} = \\overline{A} \\cap \\overline{B}$ : le complément d'une union est l'intersection des compléments, exactement comme en logique où $\\neg(p \\vee q) \\equiv \\neg p \\wedge \\neg q$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$\\overline{A} \\cap \\overline{B}$", "correct": true },
+      {
+        "text": "$\\overline{A} \\cup \\overline{B}$",
+        "correct": false,
+        "why": "C'est la formule de $\\overline{A \\cap B}$, pas de $\\overline{A \\cup B}$ : De Morgan change le connecteur, il faut aussi changer $\\cup$ en $\\cap$."
+      },
+      {
+        "text": "$A \\cap B$",
+        "correct": false,
+        "why": "Il manque le complément sur chacun des deux ensembles ; sans complément, ceci n'est même pas lié à $\\overline{A \\cup B}$."
+      },
+      {
+        "text": "$\\overline{A} \\cap B$",
+        "correct": false,
+        "why": "Les deux ensembles doivent être complémentés, pas seulement $A$."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-sets-003",
+    "course": "MAT1500",
+    "topic": "mat1500-sets",
+    "difficulty": 1,
+    "prompt": "L'ensemble vide $\\emptyset$ et l'ensemble $\\{\\emptyset\\}$ ont la même cardinalité.",
+    "explanation": "Faux : $|\\emptyset| = 0$ (aucun élément), tandis que $|\\{\\emptyset\\}| = 1$ (un seul élément, qui est l'ensemble vide lui-même). C'est un piège classique de confondre « l'ensemble vide » avec « un ensemble contenant l'ensemble vide ».",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1500-sets-004",
+    "course": "MAT1500",
+    "topic": "mat1500-sets",
+    "difficulty": 2,
+    "prompt": "Si $|A| = 3$, combien d'éléments contient l'ensemble des parties $\\mathcal{P}(A)$ ?",
+    "explanation": "$|\\mathcal{P}(A)| = 2^{|A|}$ : chaque élément de $A$ est soit inclus, soit exclu d'un sous-ensemble donné, ce qui donne $2^3 = 8$ sous-ensembles possibles (en comptant $\\emptyset$ et $A$ lui-même).",
+    "type": "qcm",
+    "choices": [
+      { "text": "$8$", "correct": true },
+      {
+        "text": "$3$",
+        "correct": false,
+        "why": "C'est $|A|$ lui-même, pas $|\\mathcal{P}(A)|$ : l'ensemble des parties compte tous les sous-ensembles, pas seulement les éléments."
+      },
+      {
+        "text": "$6$",
+        "correct": false,
+        "why": "Ce n'est ni $2^3$ ni une formule usuelle liée aux ensembles de parties ; $|\\mathcal{P}(A)|$ est toujours une puissance de 2."
+      },
+      {
+        "text": "$9$",
+        "correct": false,
+        "why": "$3^2 = 9$ n'est pas la bonne formule : c'est $2^{|A|}$ (2 choix par élément : inclus ou non), pas $|A|^2$."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-sets-005",
+    "course": "MAT1500",
+    "topic": "mat1500-sets",
+    "difficulty": 1,
+    "prompt": "Pour deux ensembles quelconques $A$ et $B$, on a toujours $A - B = B - A$.",
+    "explanation": "Faux en général : la différence d'ensembles n'est pas commutative. Par exemple avec $A = \\{1, 2\\}$ et $B = \\{2, 3\\}$, on a $A - B = \\{1\\}$ mais $B - A = \\{3\\}$ : les deux résultats diffèrent dès que $A \\ne B$.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1500-sets-006",
+    "course": "MAT1500",
+    "topic": "mat1500-sets",
+    "difficulty": 2,
+    "prompt": "Si $|A| = 2$ et $|B| = 3$, combien d'éléments contient le produit cartésien $A \\times B$ ?",
+    "explanation": "$|A \\times B| = |A| \\cdot |B|$ : chaque paire $(a, b)$ combine un choix parmi les éléments de $A$ avec un choix parmi ceux de $B$, ce qui donne $2 \\times 3 = 6$, et non $2 + 3 = 5$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$6$", "correct": true },
+      {
+        "text": "$5$",
+        "correct": false,
+        "why": "C'est $|A| + |B|$, la taille d'une union disjointe, pas celle d'un produit cartésien : les paires se comptent en multipliant, pas en additionnant."
+      },
+      {
+        "text": "$3$",
+        "correct": false,
+        "why": "Ceci ignore complètement les éléments de $A$ ; chaque élément de $A$ doit être combiné avec chaque élément de $B$."
+      },
+      {
+        "text": "$8$", "correct": false,
+        "why": "Ce serait $2^3$, la formule d'un ensemble des parties, pas celle d'un produit cartésien."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-sets-007",
+    "course": "MAT1500",
+    "topic": "mat1500-sets",
+    "difficulty": 1,
+    "prompt": "Explique la différence entre $A \\subseteq B$ et $A \\subsetneq B$ (sous-ensemble propre).",
+    "explanation": "$A \\subseteq B$ permet $A = B$, tandis que $A \\subsetneq B$ exige en plus qu'il existe au moins un élément de $B$ qui n'est pas dans $A$ — donc $A \\ne B$. Confondre les deux fait accepter $A = B$ comme un cas de sous-ensemble « propre ».",
+    "type": "flash",
+    "answer": "$A \\subseteq B$ autorise $A = B$ ; $A \\subsetneq B$ exige en plus que $A \\ne B$, c'est-à-dire qu'il existe un élément de $B$ absent de $A$.",
+    "keyPoints": [
+      "$\\subseteq$ = « sous-ensemble », égalité permise",
+      "$\\subsetneq$ = « sous-ensemble strict/propre », égalité exclue"
+    ]
+  },
+  {
+    "id": "mat1500-sets-008",
+    "course": "MAT1500",
+    "topic": "mat1500-sets",
+    "difficulty": 3,
+    "prompt": "Prouve, en nommant chaque étape, que $A \\subseteq B$ si et seulement si $A \\cap B = A$.",
+    "explanation": "L'erreur fréquente est de ne prouver qu'un seul sens de l'équivalence (souvent seulement « si $A \\subseteq B$ alors $A \\cap B = A$ ») en oubliant que « si et seulement si » exige les deux implications.",
+    "challenge": true,
+    "type": "flash",
+    "answer": "$A \\subseteq B \\iff A \\cap B = A$.",
+    "keyPoints": [
+      "($\\Rightarrow$) Si $A \\subseteq B$ : tout $x \\in A$ vérifie aussi $x \\in B$, donc $x \\in A \\cap B$ ; comme $A \\cap B \\subseteq A$ toujours, on obtient $A \\cap B = A$.",
+      "($\\Leftarrow$) Si $A \\cap B = A$ : tout $x \\in A$ vérifie $x \\in A \\cap B$, donc $x \\in B$ ; ainsi $A \\subseteq B$."
+    ],
+    "solution": "($\\Rightarrow$) Supposons $A \\subseteq B$. Comme $A \\cap B \\subseteq A$ est toujours vrai, il suffit de montrer $A \\subseteq A \\cap B$. Soit $x \\in A$ : par hypothèse $x \\in B$ aussi, donc $x \\in A \\cap B$. Ainsi $A \\subseteq A \\cap B$, d'où $A \\cap B = A$.\n\n($\\Leftarrow$) Supposons $A \\cap B = A$. Soit $x \\in A$ : alors $x \\in A \\cap B$ (puisque $A = A \\cap B$), donc en particulier $x \\in B$. Ainsi $A \\subseteq B$."
+  }
+]
