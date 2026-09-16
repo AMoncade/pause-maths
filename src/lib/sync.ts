@@ -1,5 +1,7 @@
 // Propriété du lot PWA. Code de synchro, appels réseau vers api/sync, fusion.
 import type { Progress } from '@/lib/types';
+import { ProgressSchema } from '@/lib/schema';
+import { merge } from '@/lib/merge';
 
 const ALPHABET = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ'; // 32 caractères, sans 0/O/1/I
 const CODE_LENGTH = 12;
@@ -33,36 +35,6 @@ async function hashCode(code: string): Promise<string> {
   return Array.from(new Uint8Array(digest))
     .map((b) => b.toString(16).padStart(2, '0'))
     .join('');
-}
-
-/**
- * Fusion temporaire, en attendant `src/lib/merge.ts` (lot Engine, pas encore
- * poussé). Implémente l'algorithme documenté dans HANDOFF.md §7 "merge.ts" :
- * par carte on garde l'entrée avec le `at` le plus récent, `activeDays` et
- * `flagged` sont unis, `settings` est celui avec le `updatedAt` le plus récent.
- * À remplacer par `import { merge } from './merge'` dès que ce fichier existe
- * (une ligne à changer ci-dessous, signature identique).
- */
-function tempMerge(a: Progress, b: Progress): Progress {
-  const cards: Progress['cards'] = { ...a.cards };
-  for (const [id, card] of Object.entries(b.cards)) {
-    const existing = cards[id];
-    if (!existing || card.at >= existing.at) cards[id] = card;
-  }
-  return {
-    v: 1,
-    cards,
-    activeDays: Array.from(new Set([...a.activeDays, ...b.activeDays])).sort(),
-    settings: a.settings.updatedAt >= b.settings.updatedAt ? a.settings : b.settings,
-    flagged: Array.from(new Set([...a.flagged, ...b.flagged])),
-    syncCode: a.syncCode ?? b.syncCode,
-  };
-}
-
-function isProgress(value: unknown): value is Progress {
-  if (typeof value !== 'object' || value === null) return false;
-  const p = value as Record<string, unknown>;
-  return p.v === 1 && typeof p.cards === 'object' && p.cards !== null && Array.isArray(p.activeDays);
 }
 
 type SyncResult = { ok: true; progress: Progress } | { ok: false; error: string };
@@ -110,8 +82,9 @@ export async function syncNow(p: Progress): Promise<SyncResult> {
     const getRes = await fetch(`/api/sync?key=${key}`);
     if (getRes.ok) {
       const remoteJson: unknown = await getRes.json();
-      if (isProgress(remoteJson)) {
-        merged = tempMerge(p, remoteJson);
+      const parsed = ProgressSchema.safeParse(remoteJson);
+      if (parsed.success) {
+        merged = merge(p, parsed.data);
       }
     } else if (getRes.status !== 404) {
       return { ok: false, error: `Erreur serveur (${getRes.status}).` };

@@ -4,6 +4,8 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { get, put } from '@vercel/blob';
 import type { Progress } from '../src/lib/types';
+import { ProgressSchema } from '../src/lib/schema';
+import { merge } from '../src/lib/merge';
 
 const MAX_BODY_BYTES = 200_000;
 const KEY_RE = /^[0-9a-f]{64}$/;
@@ -22,38 +24,13 @@ function isRateLimited(key: string): boolean {
   return recent.length > RATE_LIMIT_MAX;
 }
 
-function isProgress(value: unknown): value is Progress {
-  if (typeof value !== 'object' || value === null) return false;
-  const p = value as Record<string, unknown>;
-  return p.v === 1 && typeof p.cards === 'object' && p.cards !== null && Array.isArray(p.activeDays);
-}
-
-/**
- * Fusion temporaire, dupliquée de src/lib/sync.ts en attendant src/lib/merge.ts
- * (lot Engine). Remplacer les deux copies par un import partagé dès qu'il existe.
- */
-function tempMerge(a: Progress, b: Progress): Progress {
-  const cards: Progress['cards'] = { ...a.cards };
-  for (const [id, card] of Object.entries(b.cards)) {
-    const existing = cards[id];
-    if (!existing || card.at >= existing.at) cards[id] = card;
-  }
-  return {
-    v: 1,
-    cards,
-    activeDays: Array.from(new Set([...a.activeDays, ...b.activeDays])).sort(),
-    settings: a.settings.updatedAt >= b.settings.updatedAt ? a.settings : b.settings,
-    flagged: Array.from(new Set([...a.flagged, ...b.flagged])),
-    syncCode: a.syncCode ?? b.syncCode,
-  };
-}
-
 async function readStoredProgress(pathname: string): Promise<Progress | null> {
   const result = await get(pathname, { access: 'private' });
   if (!result || result.statusCode !== 200) return null;
   const text = await new Response(result.stream).text();
   const parsed: unknown = JSON.parse(text);
-  return isProgress(parsed) ? parsed : null;
+  const validated = ProgressSchema.safeParse(parsed);
+  return validated.success ? validated.data : null;
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -96,14 +73,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       res.status(413).json({ error: 'Progression trop grosse.' });
       return;
     }
-    if (!isProgress(incoming)) {
+    const parsedIncoming = ProgressSchema.safeParse(incoming);
+    if (!parsedIncoming.success) {
       res.status(400).json({ error: 'Corps invalide.' });
       return;
     }
 
     try {
       const stored = await readStoredProgress(pathname);
-      const merged = stored ? tempMerge(stored, incoming) : incoming;
+      const merged = stored ? merge(stored, parsedIncoming.data) : parsedIncoming.data;
       await put(pathname, JSON.stringify(merged), {
         access: 'private',
         addRandomSuffix: false,
