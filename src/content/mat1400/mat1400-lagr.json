@@ -124,5 +124,44 @@
       { "text": "Un seul extremum, en $(2,0)$", "correct": false, "why": "Le cas $x=0$ du système (à ne jamais écarter en divisant par $x$ sans vérifier ce cas séparément) a été oublié, perdant les points $(0,\\pm1)$." }
     ],
     "solution": "1. $\\nabla f=(2x,2y)=\\lambda\\nabla g=\\lambda(2x,8y)$.\n2. Composante $x$ : $2x=2\\lambda x \\Rightarrow x(1-\\lambda)=0 \\Rightarrow x=0$ ou $\\lambda=1$ (ne pas diviser par $x$ directement !).\n3. **Cas $x=0$** : la contrainte donne $4y^2=4 \\Rightarrow y=\\pm1$. Points $(0,1)$, $(0,-1)$, $f=1$.\n4. **Cas $\\lambda=1$** : composante $y$ donne $2y=8y \\Rightarrow y=0$. Contrainte : $x^2=4 \\Rightarrow x=\\pm2$. Points $(2,0)$, $(-2,0)$, $f=4$.\n5. Comparer : minimum $=1$ en $(0,\\pm1)$, maximum $=4$ en $(\\pm2,0)$."
+  },
+  {
+    "id": "mat1400-lagr-010",
+    "course": "MAT1400",
+    "topic": "mat1400-lagr",
+    "difficulty": 2,
+    "prompt": "Pour maximiser $f(x,y,z)=xyz$ sous $x+y+z=12$ (avec $x,y,z>0$), le système $\\nabla f=\\lambda\\nabla g$ donne...",
+    "explanation": "$\\nabla f=(yz,xz,xy)$, $\\nabla g=(1,1,1)$, donc $yz=xz=xy=\\lambda$. Puisque $x,y,z>0$ : de $yz=xz$ on tire $y=x$ ; de $xz=xy$ on tire $z=y$. Donc $x=y=z$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$yz=xz=xy$, ce qui force $x=y=z$", "correct": true },
+      { "text": "$y=x,\\ z=x$, mais seulement si $\\lambda=0$", "correct": false, "why": "L'égalité $x=y=z$ découle du fait que $x,y,z\\ne0$ (donné), pas d'une condition sur la valeur de $\\lambda$." },
+      { "text": "$x+y+z=\\lambda$", "correct": false, "why": "C'est la contrainte elle-même, pas une équation du système $\\nabla f=\\lambda\\nabla g$." },
+      { "text": "$xyz=\\lambda(x+y+z)$", "correct": false, "why": "Les trois équations composantes du système ont été multipliées entre elles au lieu d'être comparées terme à terme." }
+    ]
+  },
+  {
+    "id": "mat1400-lagr-011",
+    "course": "MAT1400",
+    "topic": "mat1400-lagr",
+    "difficulty": 2,
+    "prompt": "Avec $x=y=z=4$ (issu du système précédent), la valeur maximale de $f(x,y,z)=xyz$ sous $x+y+z=12$ est...",
+    "explanation": "$f(4,4,4)=4\\times4\\times4=64$.",
+    "type": "flash",
+    "answer": "$64$",
+    "keyPoints": [
+      "Substituer le point trouvé dans $f$, pas dans la contrainte",
+      "$4\\times4\\times4=64$"
+    ]
+  },
+  {
+    "id": "mat1400-lagr-012",
+    "course": "MAT1400",
+    "topic": "mat1400-lagr",
+    "difficulty": 2,
+    "prompt": "La valeur du multiplicateur $\\lambda$ trouvé n'a pas besoin d'être positive : son signe n'invalide pas la solution.",
+    "explanation": "Vrai : $\\lambda$ peut être positif, négatif ou nul selon le problème. Trouver un $\\lambda$ négatif n'indique pas une erreur de calcul en soi ; ce qui compte, c'est que le point candidat satisfasse bien le système ET la contrainte.",
+    "type": "vf",
+    "answer": true
   }
 ]
