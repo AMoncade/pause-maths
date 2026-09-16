@@ -11,6 +11,23 @@ Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute
   vérification.
 - En attente de la réponse de l'admin sur la portée du jalon 2 (40 vs ~100 questions,
   cf. entrée précédente) avant de continuer.
+## 2026-09-16 — Lot PWA : corrections de la relecture Engine (api/sync.ts, src/lib/sync.ts)
+
+11 points relevés par le lot Engine sur `main@2c50626`. 1 à 9 corrigés, 10 documenté, 11 (OK) sans action.
+
+- **1 (élevée), CAS concurrentielle.** `get(..., { useCache: false })` (plus de lecture CDN périmée) ; `put()` conditionnel sur `ifMatch` (etag lu) ou `allowOverwrite: false` si rien n'existait. Sur `BlobPreconditionFailedError` : relit l'état réel et refusionne, jusqu'à 3 tentatives ; épuisées → 409 « Synchro concurrente, réessaie ». `writeWithRetry()` dans `api/sync.ts`.
+- **2 (élevée), fuite de `syncCode`.** Retiré du corps avant fusion, avant stockage et avant toute réponse (`withoutSyncCode`), des deux côtés. Le client renvoie son propre code sur le résultat final (`{...merged, syncCode}`), jamais celui du serveur (qui n'en a plus).
+- **3 (moyenne), blob illisible.** `readStoredProgress` distingue désormais absent / ok / illisible (JSON invalide ou rejeté par `ProgressSchema` après `migrate()`). GET illisible → 422 explicite (plus de faux 404 « code inexistant »). PUT sur un blob illisible : copie du brut dans `sync/<clé>.backup-<horodatage>.json` avant toute réécriture (rien n'est perdu en silence), écrasé ensuite avec l'etag lu.
+- **4 (moyenne), rate limit incomplet.** GET est désormais limité aussi (pas seulement PUT), par IP en plus de la clé (`x-forwarded-for`/`x-real-ip`) ; création de clé (blob absent) plafonnée à 5/h/IP pour ne pas pouvoir cribler le quota gratuit ; les `Map` de compteurs sont purgées au-delà de 1000 entrées.
+- **5 (moyenne), clé en query string.** Passe désormais en en-tête `X-Sync-Key`, des deux côtés. `Cache-Control: no-store` sur toutes les réponses de `api/sync.ts`.
+- **6 (moyenne), pas de délai réseau.** `AbortSignal.timeout(10_000)` sur les 3 `fetch` du client ; message dédié « Réseau trop lent » sur timeout, distinct de « Hors ligne ».
+- **7 (basse), messages d'erreur.** Messages spécifiques par code (502/400/409/413/429) des deux côtés ; `getRes.json()` qui échoue → « Réponse du serveur illisible » (plus confondu avec Hors ligne) ; un GET 200 refusé par `ProgressSchema` côté client interrompt la synchro avec « Version de l'app périmée » au lieu de fusionner en silence puis d'écraser le serveur.
+- **8 (basse), réponse du PUT ignorée.** Le client valide `putRes.json()` avec `ProgressSchema` et renvoie `merge(merged, serveur)` ; si la réponse est mal formée, il garde `merged` (l'écriture a déjà réussi côté serveur, seule la relecture a échoué).
+- **9 (basse), taille du fusionné non vérifiée.** `writeWithRetry` mesure `JSON.stringify(merged)` avant chaque tentative d'écriture ; trop gros → 413 sans écrire.
+- **10 (info), documenté.** `Content-Length` absent/invalide → `Number()` vaut 0/NaN et ne rejette rien à cette étape ; la mesure réelle du corps parsé juste après est le filet qui compte (commentaire ajouté dans le code).
+- **11 : rien à faire** (code de synchro sans biais, normalisation correcte, pas de `runtimeCaching` sur `/api/sync`, imports serveur sans DOM, `resetAt` pris en compte par `merge()`).
+- Tests obligatoires ajoutés dans `tests/api/sync.test.ts` (mock `@vercel/blob` étendu : etag par écriture, `ifMatch`/`allowOverwrite` conditionnels, file `__getQueue` pour scripter une lecture périmée) : deux PUT entrelacés convergent sans perte après un conflit détecté et une nouvelle tentative ; `syncCode` jamais stocké ni renvoyé (corps de réponse et texte brut du blob vérifiés) ; un blob illisible n'est jamais réécrit sans sauvegarde préalable, et le GET correspondant renvoie 422 plutôt qu'un faux 404. 12 tests dans ce fichier, 256 au total. `npm run typecheck` et `npm run build` : OK.
+- **Non vérifiable sans Vercel :** le comportement réel d'`ifMatch`/`BlobPreconditionFailedError` face au vrai service (le mock reproduit le contrat documenté, pas testé contre l'API réelle) ; le rate limit par IP en présence de plusieurs instances serverless simultanées (best-effort par construction, documenté) ; `curl` en production.
 
 ## 2026-09-16 — Lot PWA : branchement sur merge.ts et ProgressSchema
 
