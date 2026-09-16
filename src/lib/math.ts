@@ -58,7 +58,8 @@ function findClose(text: string, from: number, delim: string): number {
 
 /** Vrai si un `$` non échappé reste dans les morceaux texte après découpage. */
 export function hasStrayDollar(text: string): boolean {
-  return splitMath(text).some((p) => p.kind === 'text' && /(^|[^\\])\$/.test(p.value));
+  // `\$` est retiré d'abord : splitMath l'a déjà converti en `$` littéral, ce qui créait un faux positif.
+  return splitMath(text.replaceAll('\\$', '')).some((p) => p.kind === 'text' && p.value.includes('$'));
 }
 
 /** Toutes les formules (inline + display) d'un texte, pour compilation KaTeX dans le gate. */
