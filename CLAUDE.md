@@ -21,9 +21,9 @@ PWA de quiz rapides (français) sur MAT1400, MAT1500, MAT1600, STT1700 (UdeM, au
 
 | Lot | Fichiers |
 |---|---|
-| Engine | `src/lib/{schema,progress,merge,scheduler,math}.ts`, `tests/`, `vitest.config.ts`, `scripts/import-questions.ts` |
+| Engine | `src/lib/{schema,progress,merge,scheduler}.ts`, `tests/`, `vitest.config.ts`, `scripts/import-questions.ts` |
 | UI | `src/app.tsx`, `src/components/`, `src/styles/`, `src/lib/MathText.tsx`, `src/lib/ui-*.ts` |
 | PWA | `vite.config.ts`, `vercel.json`, `api/`, `public/`, `src/lib/{sync,pwa}.ts`, `index.html` |
-| Contenu ×4 | `src/content/<cours>/`, `docs/reviews/<cours>-*.md`, `docs/sources/<cours>.md` |
+| Contenu ×4 | `src/content/<cours>/`, `docs/reviews/<cours>/`, `docs/sources/<cours>.md` |
 | Part D | `docs/PROCESSUS_QUESTIONS.md`, `.claude/skills/ajouter-questions/` |
-| Admin | `src/lib/types.ts`, `src/content/{courses,bank}.ts`, `src/content/retired-ids.json`, `CLAUDE.md`, `HANDOFF.md`, `package.json` |
+| Admin | `src/lib/types.ts`, `src/lib/math.ts`, `src/content/{courses,bank}.ts`, `src/content/retired-ids.json`, `CLAUDE.md`, `HANDOFF.md`, `package.json` |
