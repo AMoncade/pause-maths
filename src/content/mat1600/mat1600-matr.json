@@ -11,7 +11,7 @@
       { "text": "$B^TA^T$", "correct": true },
       { "text": "$A^TB^T$", "correct": false, "why": "L'ordre s'inverse en transposant un produit : garder le même ordre que dans $AB$ est une erreur fréquente." },
       { "text": "$A^T+B^T$", "correct": false, "why": "La transposée d'un produit n'est pas une somme ; ne pas confondre avec $(A+B)^T=A^T+B^T$." },
-      { "text": "$AB$ (la transposée ne change rien)", "correct": false, "why": "La transposition change généralement la matrice, et elle inverse aussi l'ordre du produit." }
+      { "text": "$B^TA^T$, mais seulement si $A$ et $B$ commutent", "correct": false, "why": "L'identité $(AB)^T=B^TA^T$ est toujours vraie, sans aucune condition sur $A$ et $B$ : la commutativité n'entre pas en jeu ici." }
     ]
   },
   {
@@ -19,16 +19,14 @@
     "course": "MAT1600",
     "topic": "mat1600-matr",
     "difficulty": 2,
-    "prompt": "Quelle est l'inverse de $A=\\begin{pmatrix}2&5\\\\1&3\\end{pmatrix}$ ?",
-    "explanation": "$\\det A=2\\cdot3-5\\cdot1=1$, donc $A^{-1}=\\dfrac{1}{1}\\begin{pmatrix}3&-5\\\\-1&2\\end{pmatrix}=\\begin{pmatrix}3&-5\\\\-1&2\\end{pmatrix}$.",
+    "prompt": "Quel est l'inverse de $A=\\begin{pmatrix}2&5\\\\1&3\\end{pmatrix}$ ?",
+    "explanation": "$\\det A=2\\cdot3-5\\cdot1=1$, donc $A^{-1}=\\dfrac{1}{1}\\begin{pmatrix}3&-5\\\\-1&2\\end{pmatrix}=\\begin{pmatrix}3&-5\\\\-1&2\\end{pmatrix}$. Le piège : oublier d'échanger $a$ et $d$, ou de changer le signe de $b$ et $c$.",
     "type": "qcm",
-    "challenge": true,
-    "solution": "1) Calculer $\\det A=2\\cdot3-5\\cdot1=1$. 2) Comme $\\det A\\ne0$, $A$ est inversible. 3) Formule $2\\times2$ : $A^{-1}=\\dfrac{1}{\\det A}\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}=\\dfrac{1}{1}\\begin{pmatrix}3&-5\\\\-1&2\\end{pmatrix}$. 4) Vérification : $AA^{-1}=\\begin{pmatrix}2&5\\\\1&3\\end{pmatrix}\\begin{pmatrix}3&-5\\\\-1&2\\end{pmatrix}=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$.",
     "choices": [
       { "text": "$\\begin{pmatrix}3&-5\\\\-1&2\\end{pmatrix}$", "correct": true },
       { "text": "$\\begin{pmatrix}3&5\\\\1&2\\end{pmatrix}$", "correct": false, "why": "Il faut changer le signe des termes hors diagonale, pas seulement recopier la matrice après avoir échangé la diagonale." },
       { "text": "$\\begin{pmatrix}2&-5\\\\-1&3\\end{pmatrix}$", "correct": false, "why": "La diagonale principale doit être échangée ($2\\leftrightarrow3$) avant de changer les signes hors diagonale." },
-      { "text": "$\\begin{pmatrix}\\tfrac13&-\\tfrac53\\\\-\\tfrac13&\\tfrac23\\end{pmatrix}$", "correct": false, "why": "Le déterminant de $A$ vaut $2\\cdot3-5\\cdot1=1$, pas $3$ : il ne faut diviser par $\\det A$ que si celui-ci diffère de $1$." }
+      { "text": "$\\begin{pmatrix}-3&5\\\\1&-2\\end{pmatrix}$", "correct": false, "why": "Le déterminant a été calculé comme $bc-ad=5\\cdot1-2\\cdot3=-1$ au lieu de $ad-bc=2\\cdot3-5\\cdot1=1$ : tout le signe du résultat est inversé." }
     ]
   },
   {

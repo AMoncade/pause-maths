@@ -4,14 +4,14 @@
     "course": "MAT1600",
     "topic": "mat1600-vect",
     "difficulty": 2,
-    "prompt": "Soit $v_1=(1,0,0)$, $v_2=(0,1,0)$, $v_3=(0,0,1)$, $v_4=(1,1,1)$ dans $\\mathbb R^3$. L'ensemble $\\{v_1,v_2,v_3,v_4\\}$ engendre $\\mathbb R^3$. Est-ce une base de $\\mathbb R^3$ ?",
-    "explanation": "$v_4=v_1+v_2+v_3$ : les quatre vecteurs sont liés. Engendrer ne suffit pas pour être une base, il faut aussi être une famille libre — et 4 vecteurs dans un espace de dimension 3 sont automatiquement liés.",
+    "prompt": "Soit $v_1=(1,0,0)$, $v_2=(0,1,0)$, $v_3=(0,0,1)$, $v_4=(1,1,1)$ dans $\\mathbb R^3$. La famille $\\{v_1,v_2,v_3,v_4\\}$ est-elle linéairement indépendante (libre) ?",
+    "explanation": "$v_4=v_1+v_2+v_3$ : il existe une combinaison non triviale des quatre vecteurs qui donne le vecteur nul ($v_1+v_2+v_3-v_4=0$), donc la famille est liée.",
     "type": "qcm",
     "choices": [
-      { "text": "Non : ils sont liés ($v_4=v_1+v_2+v_3$), une base doit aussi être libre", "correct": true },
-      { "text": "Oui, puisqu'ils engendrent $\\mathbb R^3$", "correct": false, "why": "Engendrer ne suffit pas : un ensemble générateur peut contenir des vecteurs redondants. Une base doit en plus être linéairement indépendante." },
-      { "text": "Oui, car il y a plus de vecteurs que de dimensions", "correct": false, "why": "C'est l'inverse : dès qu'il y a plus de vecteurs que la dimension de l'espace, l'ensemble est automatiquement lié, donc ce n'est jamais une base." },
-      { "text": "Non, car ils n'engendrent pas $\\mathbb R^3$", "correct": false, "why": "Ils engendrent bien $\\mathbb R^3$ (déjà $v_1,v_2,v_3$ suffiraient) ; le problème est ailleurs : la famille n'est pas libre." }
+      { "text": "Non : $v_4=v_1+v_2+v_3$", "correct": true },
+      { "text": "Oui, car il y a plus de vecteurs que de dimensions", "correct": false, "why": "C'est l'inverse : dès qu'il y a plus de vecteurs que la dimension de l'espace, la famille est automatiquement liée, jamais indépendante." },
+      { "text": "Oui, car $v_1,v_2,v_3$ sont indépendants", "correct": false, "why": "L'indépendance d'une sous-famille ne s'étend pas automatiquement à la famille complète : ajouter $v_4$ introduit une dépendance, même si $v_1,v_2,v_3$ seuls sont indépendants." },
+      { "text": "Non, car $v_1,v_2,v_3$ ne sont pas indépendants", "correct": false, "why": "$v_1,v_2,v_3$ sont en fait indépendants (ce sont les vecteurs de la base canonique) : la conclusion « non » est juste, mais pour la mauvaise raison." }
     ]
   },
   {
@@ -26,7 +26,7 @@
       { "text": "Non : $w=\\tfrac32u$, ils sont colinéaires", "correct": true },
       { "text": "Oui, car $u\\ne w$", "correct": false, "why": "Être différents ne suffit pas : il faut qu'aucun ne soit un multiple scalaire de l'autre. Ici $w=\\tfrac32u$." },
       { "text": "Oui, car aucune de leurs coordonnées n'est nulle", "correct": false, "why": "L'absence de zéro ne garantit rien : la colinéarité dépend du rapport entre les coordonnées, pas de leur nullité." },
-      { "text": "On ne peut pas savoir sans résoudre un système $3\\times3$", "correct": false, "why": "Pour deux vecteurs de $\\mathbb R^2$, il suffit de vérifier s'ils sont proportionnels — inutile de monter un système plus grand." }
+      { "text": "Oui, car $\\tfrac32\\ne\\tfrac64$", "correct": false, "why": "En fait $\\tfrac32=\\tfrac64=1{,}5$ : ces deux rapports sont égaux, ce qui montre au contraire que $u$ et $w$ sont colinéaires (donc liés)." }
     ]
   },
   {
@@ -35,7 +35,7 @@
     "topic": "mat1600-vect",
     "difficulty": 1,
     "prompt": "Trois vecteurs non nuls de $\\mathbb R^2$ sont toujours linéairement dépendants.",
-    "explanation": "Dans un espace de dimension 2, toute famille de plus de 2 vecteurs est automatiquement liée, peu importe lesquels.",
+    "explanation": "Dans un espace de dimension 2, toute famille de plus de 2 vecteurs est automatiquement liée, peu importe lesquels. Le piège : croire que « non nuls » ou « non colinéaires deux à deux » suffit pour l'indépendance.",
     "type": "vf",
     "answer": true
   },
@@ -43,11 +43,11 @@
     "id": "mat1600-vect-004",
     "course": "MAT1600",
     "topic": "mat1600-vect",
-    "difficulty": 2,
+    "difficulty": 1,
     "prompt": "Qu'est-ce qu'une combinaison linéaire des vecteurs $v_1,\\dots,v_k$ ?",
-    "explanation": "Une combinaison linéaire est une somme pondérée par des scalaires; l'ensemble de toutes ces sommes forme $\\text{Vect}(v_1,\\dots,v_k)$.",
+    "explanation": "Une combinaison linéaire est une somme pondérée par des scalaires ; l'ensemble de toutes ces sommes forme $\\text{Vect}(v_1,\\dots,v_k)$. Le piège : oublier que les coefficients peuvent être nuls ou négatifs.",
     "type": "flash",
-    "answer": "C'est toute expression $c_1v_1+c_2v_2+\\cdots+c_kv_k$ où les $c_i$ sont des scalaires; l'ensemble de toutes ces combinaisons forme $\\text{Vect}(v_1,\\dots,v_k)$.",
+    "answer": "C'est toute expression $c_1v_1+c_2v_2+\\cdots+c_kv_k$ où les $c_i$ sont des scalaires ; l'ensemble de toutes ces combinaisons forme $\\text{Vect}(v_1,\\dots,v_k)$.",
     "keyPoints": [
       "Les coefficients $c_i$ peuvent être n'importe quel scalaire, y compris $0$",
       "$\\text{Vect}(v_1,\\dots,v_k)$ = ensemble de toutes les combinaisons linéaires possibles",

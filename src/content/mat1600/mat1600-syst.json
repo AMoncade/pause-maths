@@ -8,7 +8,7 @@
     "explanation": "Substituer $y=2x$ dans la première équation donne $3x=3$, donc $x=1$ et $y=2$ : un point unique, car les deux droites ont des pentes différentes ($-1$ et $2$).",
     "type": "qcm",
     "choices": [
-      { "text": "$(1,2)$, solution unique", "correct": true },
+      { "text": "$(1,2)$", "correct": true },
       { "text": "Le système est incompatible (aucune solution)", "correct": false, "why": "Les deux droites ne sont pas parallèles : substituer $y=2x$ dans la première équation donne une valeur précise de $x$." },
       { "text": "$(2,1)$", "correct": false, "why": "Attention à l'ordre des coordonnées : c'est $x=1$ et $y=2$. Vérifie en remplaçant dans les deux équations." },
       { "text": "Une infinité de solutions (droites confondues)", "correct": false, "why": "Les deux droites ne sont pas confondues : leurs pentes ($-1$ et $2$) diffèrent, donc elles se coupent en un seul point." }
@@ -19,7 +19,7 @@
     "course": "MAT1600",
     "topic": "mat1600-syst",
     "difficulty": 2,
-    "prompt": "Un système à 3 inconnues $x_1,x_2,x_3$ a pour forme échelonnée réduite $$\\begin{pmatrix}1&0&2&|&3\\\\0&1&-1&|&5\\\\0&0&0&|&0\\end{pmatrix}$$ Laquelle des variables est libre ?",
+    "prompt": "Un système à 3 inconnues $x_1,x_2,x_3$ a pour forme échelonnée réduite $$\\left(\\begin{array}{ccc|c}1&0&2&3\\\\0&1&-1&5\\\\0&0&0&0\\end{array}\\right)$$ Laquelle des variables est libre ?",
     "explanation": "Une variable libre correspond à une colonne sans pivot. Les colonnes 1 et 2 ont un pivot (les 1 en tête de ligne), donc $x_3$, sans pivot, est la variable libre.",
     "type": "qcm",
     "choices": [
@@ -44,8 +44,8 @@
     "course": "MAT1600",
     "topic": "mat1600-syst",
     "difficulty": 1,
-    "prompt": "Que signifie une ligne $\\begin{pmatrix}0&0&0&|&5\\end{pmatrix}$ dans une matrice échelonnée d'un système ?",
-    "explanation": "Cette ligne encode l'équation $0=5$, qui est impossible : le système est incompatible.",
+    "prompt": "Que signifie une ligne $\\left(\\begin{array}{ccc|c}0&0&0&5\\end{array}\\right)$ dans une matrice échelonnée d'un système ?",
+    "explanation": "Cette ligne encode l'équation $0=5$, qui est impossible : le système est incompatible. Le piège : confondre avec la ligne $\\left(\\begin{array}{ccc|c}0&0&0&0\\end{array}\\right)$, qui signale seulement une variable libre, pas une incompatibilité.",
     "type": "flash",
     "answer": "Le système est incompatible : cette ligne représente l'équation impossible $0=5$, donc il n'existe aucune solution.",
     "keyPoints": [
@@ -146,7 +146,7 @@
     "course": "MAT1600",
     "topic": "mat1600-syst",
     "difficulty": 1,
-    "prompt": "Un système à 3 inconnues a pour matrice échelonnée (pas nécessairement réduite) $$\\begin{pmatrix}1&2&-1&|&3\\\\0&1&2&|&1\\\\0&0&0&|&0\\end{pmatrix}$$ Combien de variables libres a ce système ?",
+    "prompt": "Un système à 3 inconnues a pour matrice échelonnée (pas nécessairement réduite) $$\\left(\\begin{array}{ccc|c}1&2&-1&3\\\\0&1&2&1\\\\0&0&0&0\\end{array}\\right)$$ Combien de variables libres a ce système ?",
     "explanation": "Les colonnes 1 et 2 ont un pivot ; la colonne 3 n'en a pas. La dernière ligne $0=0$ n'ajoute aucune contrainte. Il y a donc exactement une variable libre ($x_3$).",
     "type": "qcm",
     "choices": [
@@ -218,7 +218,7 @@
     "course": "MAT1600",
     "topic": "mat1600-syst",
     "difficulty": 1,
-    "prompt": "Un logiciel donne la matrice $$\\begin{pmatrix}1&0&|&2\\\\0&0&|&5\\\\0&1&|&3\\end{pmatrix}$$ pour un système (lignes pas nécessairement dans l'ordre habituel). Ce système est-il compatible ?",
+    "prompt": "Un logiciel donne la matrice $$\\left(\\begin{array}{cc|c}1&0&2\\\\0&0&5\\\\0&1&3\\end{array}\\right)$$ pour un système (lignes pas nécessairement dans l'ordre habituel). Ce système est-il compatible ?",
     "explanation": "La deuxième ligne encode $0=5$, une contradiction : peu importe l'ordre des lignes, cette équation à elle seule rend le système incompatible.",
     "type": "qcm",
     "choices": [
@@ -263,7 +263,7 @@
     "course": "MAT1600",
     "topic": "mat1600-syst",
     "difficulty": 2,
-    "prompt": "Par substitution arrière sur $$\\begin{pmatrix}1&2&3&|&6\\\\0&1&-1&|&1\\\\0&0&2&|&4\\end{pmatrix}$$ quelle est la solution $(x,y,z)$ ?",
+    "prompt": "Par substitution arrière sur $$\\left(\\begin{array}{ccc|c}1&2&3&6\\\\0&1&-1&1\\\\0&0&2&4\\end{array}\\right)$$ quelle est la solution $(x,y,z)$ ?",
     "explanation": "De la dernière ligne : $2z=4\\Rightarrow z=2$. De la deuxième : $y-z=1\\Rightarrow y=3$. De la première : $x+2(3)+3(2)=6\\Rightarrow x=-6$.",
     "type": "qcm",
     "choices": [
