@@ -2,6 +2,16 @@
 
 Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute la sienne dans son worktree ; l'admin fusionne.
 
+## 2026-09-16 — MAT1600 : calibration des 40 questions (lot mat1600)
+
+- Vérification de la distribution sur les 5 thèmes intra (40 questions) : 57.5 % qcm /
+  25 % vf / 17.5 % flash (cible ~60/20/20, écart mineur acceptable) ; difficulté 20×1 /
+  20×2 / 0×3 (bien "surtout 1-2") ; 6 Défis / 40 = 15 % (cible ~10 %, légèrement au-dessus
+  mais pas de correction jugée nécessaire). Aucun changement fait suite à cette
+  vérification.
+- En attente de la réponse de l'admin sur la portée du jalon 2 (40 vs ~100 questions,
+  cf. entrée précédente) avant de continuer.
+
 ## 2026-09-16 — Lot PWA : branchement sur merge.ts et ProgressSchema
 
 - `src/lib/sync.ts` et `api/sync.ts` : `tempMerge` retiré des deux côtés, remplacé par `import { merge } from '@/lib/merge'` (client) / `'../src/lib/merge'` (serveur).
