@@ -7,6 +7,29 @@ Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute
 - `src/lib/sync.ts` et `api/sync.ts` : `tempMerge` retiré des deux côtés, remplacé par `import { merge } from '@/lib/merge'` (client) / `'../src/lib/merge'` (serveur).
 - Validation du JSON reçu (GET distant côté client, corps du PUT côté serveur) : `isProgress` (duck-typing) retiré, remplacé par `ProgressSchema.safeParse` de `src/lib/schema.ts` des deux côtés — pas seulement le PUT server comme demandé, le même risque existait côté client sur la réponse GET, corrigé par cohérence.
 - `npm run typecheck`, `npm test` (234 tests), `npm run build` : verts après le rebase sur main@d546614.
+## 2026-09-16 — MAT1600 jalon 2, syst/vect/matr complétés à 8 (lot mat1600)
+
+- `syst` (+4), `vect` (+4), `matr` (+6) : les 5 thèmes intra (`syst`, `vect`, `matr`,
+  `det`, `esp`) sont maintenant à 8 questions chacun, 40 au total.
+- `syst` : système homogène non trivial, système sur-déterminé mais compatible,
+  position de pivot, forme vectorielle paramétrique (Défi).
+- `vect` : résoudre $c_1v_1+c_2v_2=b$, famille libre de taille = dimension ⇒ engendre,
+  indépendance de 3 vecteurs par élimination (Défi, $v_3=v_1-v_2$) plutôt que
+  proportionnalité deux à deux.
+- `matr` : dimensions du produit, non-commutativité $AB\ne BA$, $(AB)^{-1}=B^{-1}A^{-1}$
+  (miroir du piège $(AB)^T=B^TA^T$ déjà fait), $(kA)^{-1}=\tfrac1kA^{-1}$ (pas $kA^{-1}$),
+  matrice identité, vérifier une inverse par multiplication directe (Défi).
+- Gate `npm test` vert à chaque étape. Relecture aveugle (`scripts/blind-review.ts`) +
+  SymPy (venv hors dépôt) pour chaque lot de 4-6 questions : 0 désaccord partout.
+  Journaux mis à jour dans `docs/reviews/mat1600/{mat1600-syst,mat1600-vect,mat1600-matr}.md`.
+- Total jalon 2 à date : 40 questions (8×5 thèmes intra), toutes relues et gate verte.
+- Question posée à l'admin : le brief visait « ~100 » mais avec seulement 5 thèmes
+  intra pour MAT1600 (et les 2 thèmes finaux volontairement sans questions), 8/thème
+  donne 40, pas 100 — comme pour les autres cours, je considère 40 (~8/thème) comme le
+  livrable de ce jalon 2, et j'attends une confirmation avant de pousser au-delà (plus
+  de questions par thème, ou ouvrir `diag`/`orth` malgré le HANDOFF qui dit de les
+  laisser vides avant l'intra).
+
 ## 2026-09-16 — MAT1600 jalon 2, thème esp (lot mat1600)
 
 - `src/content/mat1600/mat1600-esp.json` : 8 questions (5 qcm / 2 vf / 1 flash, 1 Défi)

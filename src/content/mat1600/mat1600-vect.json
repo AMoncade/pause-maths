@@ -53,5 +53,62 @@
       "$\\text{Vect}(v_1,\\dots,v_k)$ = ensemble de toutes les combinaisons linéaires possibles",
       "L'équation vectorielle $x_1v_1+\\cdots+x_kv_k=b$ a une solution ssi $b\\in\\text{Vect}(v_1,\\dots,v_k)$"
     ]
+  },
+  {
+    "id": "mat1600-vect-005",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 2,
+    "prompt": "Quels scalaires $c_1,c_2$ vérifient $c_1v_1+c_2v_2=b$ avec $v_1=(1,0)$, $v_2=(1,1)$, $b=(3,-2)$ ?",
+    "explanation": "La deuxième coordonnée donne $c_2=-2$. La première donne $c_1+c_2=3$, donc $c_1=3-(-2)=5$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$c_1=5,\\ c_2=-2$", "correct": true },
+      { "text": "$c_1=3,\\ c_2=-2$", "correct": false, "why": "Ceci ignore la contribution de $v_2$ à la première coordonnée : il faut résoudre $c_1+c_2=3$, pas juste lire $c_1=3$ directement sur $b$." },
+      { "text": "$c_1=-2,\\ c_2=5$", "correct": false, "why": "Les valeurs de $c_1$ et $c_2$ sont inversées." },
+      { "text": "$c_1=1,\\ c_2=2$", "correct": false, "why": "$c_2$ a le mauvais signe : la deuxième coordonnée de $b$ est $-2$, donc $c_2=-2$, pas $2$." }
+    ]
+  },
+  {
+    "id": "mat1600-vect-006",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 2,
+    "prompt": "Si $\\{v_1,v_2\\}$ est une famille linéairement indépendante dans $\\mathbb R^2$, alors elle engendre nécessairement $\\mathbb R^2$.",
+    "explanation": "Deux vecteurs indépendants dans un espace de dimension 2 engendrent automatiquement tout l'espace : leur nombre égale déjà la dimension.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1600-vect-007",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 1,
+    "prompt": "Que signifie que des vecteurs $v_1,\\dots,v_k$ sont linéairement indépendants ?",
+    "explanation": "L'indépendance signifie que la seule combinaison linéaire donnant le vecteur nul est celle où tous les coefficients sont nuls.",
+    "type": "flash",
+    "answer": "La seule solution de l'équation $c_1v_1+c_2v_2+\\cdots+c_kv_k=0$ est $c_1=c_2=\\cdots=c_k=0$.",
+    "keyPoints": [
+      "S'il existe une solution avec au moins un $c_i\\ne0$, les vecteurs sont liés (dépendants)",
+      "Deux vecteurs sont liés ssi l'un est un multiple scalaire de l'autre",
+      "Un ensemble contenant le vecteur nul est toujours lié"
+    ]
+  },
+  {
+    "id": "mat1600-vect-008",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 2,
+    "challenge": true,
+    "solution": "1) Chercher une relation de dépendance : essayer $v_3=av_1+bv_2$.\n\n2) $v_1-v_2=(1,1,0)-(0,1,1)=(1,0,-1)$, ce qui est exactement $v_3$.\n\n3) Donc $v_3=v_1-v_2$, soit $v_1-v_2-v_3=0$ avec des coefficients non tous nuls : les trois vecteurs sont liés.",
+    "prompt": "Les vecteurs $v_1=(1,1,0)$, $v_2=(0,1,1)$, $v_3=(1,0,-1)$ sont-ils linéairement indépendants ?",
+    "explanation": "$v_3=v_1-v_2$ : il existe une combinaison non triviale qui donne le vecteur nul ($v_1-v_2-v_3=0$), donc les trois vecteurs sont liés.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Non : $v_3=v_1-v_2$", "correct": true },
+      { "text": "Oui, car aucun n'est un multiple scalaire d'un autre", "correct": false, "why": "Vérifier la proportionnalité deux à deux ne suffit qu'avec exactement 2 vecteurs. Avec 3 vecteurs ou plus, une dépendance peut impliquer les trois à la fois, comme ici." },
+      { "text": "Oui, car il y a exactement 3 vecteurs dans $\\mathbb R^3$", "correct": false, "why": "Avoir autant de vecteurs que la dimension ne garantit pas l'indépendance : ça borne seulement le nombre maximal de vecteurs indépendants possibles." },
+      { "text": "Non, car ils ne sont pas orthogonaux entre eux", "correct": false, "why": "L'orthogonalité n'a aucun rapport avec l'indépendance linéaire : des vecteurs non orthogonaux peuvent très bien être indépendants." }
+    ]
   }
 ]

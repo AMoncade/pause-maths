@@ -31,4 +31,30 @@ Réponse attendue du relecteur : combinaison linéaire = $c_1v_1+\cdots+c_kv_k$ 
 scalaires $c_i$. Correspond à la réponse de la banque.
 Verdict : **OK**.
 
-**Résultat : 4/4 publiables, 0 correction nécessaire.**
+## mat1600-vect-005 (qcm, jalon 2)
+
+Réponse : $c_1=5,c_2=-2$ — confiance haute. SymPy `linsolve` confirme $(5,-2)$ ; chaque
+distracteur vérifié par substitution directe, aucun ne redonne $(3,-2)$.
+Verdict : **OK**.
+
+## mat1600-vect-006 (vf, jalon 2)
+
+Réponse : Vrai — confiance haute. Argument de rang : 2 vecteurs indépendants dans
+$\mathbb R^2$ forment une matrice $2\times2$ de rang plein, donc engendrent $\mathbb R^2$.
+Verdict : **OK**.
+
+## mat1600-vect-007 (flash, jalon 2)
+
+Réponse attendue : seule solution de $c_1v_1+\cdots+c_kv_k=0$ est $c_1=\cdots=c_k=0$.
+Correspond à la banque.
+Verdict : **OK**.
+
+## mat1600-vect-008 (qcm, Défi, jalon 2)
+
+Réponse : « Non : $v_3=v_1-v_2$ » — confiance haute. SymPy : rang de la matrice
+$[v_1\,v_2\,v_3]=2<3$, $v_1-v_2=v_3$ confirmé exactement. Réfutations correctes,
+notant que le distracteur « non, car pas orthogonaux » a la bonne conclusion mais un
+raisonnement invalide (piège pédagogique volontaire, pas un défaut de la question).
+Verdict : **OK**.
+
+**Résultat : 8/8 publiables, 0 correction nécessaire, 0 désaccord.**

@@ -30,4 +30,30 @@ Réponse attendue du relecteur : ligne $(0\ 0\ 0\mid5)$ ⇒ équation $0=5$ impo
 système incompatible. Correspond à la réponse de la banque.
 Verdict : **OK**.
 
-**Résultat : 4/4 publiables, 0 correction nécessaire.**
+## mat1600-syst-005 (qcm, jalon 2)
+
+Réponse : « Non : la deuxième équation est un multiple de la première » — confiance
+haute. SymPy : $4x-2y=2(2x-y)$ confirmé, `linsolve` donne $\{(y/2,y)\}$ (infinité de
+solutions). Réfutations correctes pour les 3 autres choix.
+Verdict : **OK**.
+
+## mat1600-syst-006 (vf, jalon 2)
+
+Réponse : Faux — confiance haute. Contre-exemple SymPy : $z=1,2z=2,3z=3$ (3 équations,
+1 inconnue), système compatible et redondant, pas incompatible.
+Verdict : **OK**.
+
+## mat1600-syst-007 (flash, jalon 2)
+
+Réponse attendue : position de pivot = premier coefficient non nul d'une ligne non
+nulle en forme échelonnée ; sa colonne est une colonne pivot. Correspond à la banque.
+Verdict : **OK**.
+
+## mat1600-syst-008 (qcm, Défi, jalon 2)
+
+Réponse : $(3,0)+t(2,1)$ — confiance haute. SymPy : substitution dans $x_1-2x_2$ pour
+chaque choix confirme que seule cette forme vaut $3$ pour tout $t$ ; `linsolve` donne
+$\{(2x_2+3,x_2)\}$. Réfutations correctes pour les 3 distracteurs.
+Verdict : **OK**.
+
+**Résultat : 8/8 publiables, 0 correction nécessaire, 0 désaccord.**

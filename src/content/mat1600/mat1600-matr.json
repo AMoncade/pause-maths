@@ -30,5 +30,87 @@
       { "text": "$\\begin{pmatrix}2&-5\\\\-1&3\\end{pmatrix}$", "correct": false, "why": "La diagonale principale doit être échangée ($2\\leftrightarrow3$) avant de changer les signes hors diagonale." },
       { "text": "$\\begin{pmatrix}\\tfrac13&-\\tfrac53\\\\-\\tfrac13&\\tfrac23\\end{pmatrix}$", "correct": false, "why": "Le déterminant de $A$ vaut $2\\cdot3-5\\cdot1=1$, pas $3$ : il ne faut diviser par $\\det A$ que si celui-ci diffère de $1$." }
     ]
+  },
+  {
+    "id": "mat1600-matr-003",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 1,
+    "prompt": "Si $A$ est de taille $2\\times3$ et $B$ de taille $3\\times4$, quelle est la taille de $AB$ ?",
+    "explanation": "Le produit $AB$ est défini seulement si le nombre de colonnes de $A$ égale le nombre de lignes de $B$ (ici $3=3$), et le résultat a pour taille (lignes de $A$) $\\times$ (colonnes de $B$) : $2\\times4$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$2\\times4$", "correct": true },
+      { "text": "$3\\times3$", "correct": false, "why": "Ce sont les dimensions internes ($3$ et $3$) qui doivent concorder pour que le produit soit défini, elles ne font pas partie de la taille du résultat." },
+      { "text": "$2\\times3$", "correct": false, "why": "C'est la taille de $A$ seule : le nombre de colonnes du résultat vient de $B$ (4 colonnes), pas de $A$." },
+      { "text": "$4\\times2$", "correct": false, "why": "Les dimensions du résultat sont inversées : c'est (lignes de $A$) $\\times$ (colonnes de $B$), soit $2\\times4$, pas $4\\times2$." }
+    ]
+  },
+  {
+    "id": "mat1600-matr-004",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 1,
+    "prompt": "Pour toutes matrices carrées $A,B$ de même taille, $AB=BA$.",
+    "explanation": "Le produit matriciel n'est pas commutatif en général. Contre-exemple : $A=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$, $B=\\begin{pmatrix}1&0\\\\1&1\\end{pmatrix}$ donnent $AB\\ne BA$.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1600-matr-005",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 2,
+    "prompt": "Si $A$ et $B$ sont inversibles et de même taille, que vaut $(AB)^{-1}$ ?",
+    "explanation": "Comme pour la transposée, l'ordre s'inverse : $(AB)^{-1}=B^{-1}A^{-1}$. On peut le vérifier : $(AB)(B^{-1}A^{-1})=A(BB^{-1})A^{-1}=AA^{-1}=I$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$B^{-1}A^{-1}$", "correct": true },
+      { "text": "$A^{-1}B^{-1}$", "correct": false, "why": "L'ordre s'inverse pour l'inverse d'un produit, tout comme pour la transposée : garder le même ordre que dans $AB$ est une erreur fréquente." },
+      { "text": "$A^{-1}+B^{-1}$", "correct": false, "why": "L'inverse d'un produit n'est pas une somme d'inverses ; il n'existe d'ailleurs pas de formule aussi simple pour $(A+B)^{-1}$." },
+      { "text": "$(AB)^T$", "correct": false, "why": "Inverse et transposée sont deux opérations différentes ; rien ne garantit que $(AB)^{-1}=(AB)^T$ en général." }
+    ]
+  },
+  {
+    "id": "mat1600-matr-006",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 1,
+    "prompt": "Pour un scalaire $k\\ne0$ et une matrice inversible $A$, $(kA)^{-1}=kA^{-1}$.",
+    "explanation": "Faux : multiplier une matrice par $k$ multiplie son inverse par $\\tfrac1k$, pas par $k$. La bonne formule est $(kA)^{-1}=\\tfrac1kA^{-1}$.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1600-matr-007",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 1,
+    "prompt": "Qu'est-ce que la matrice identité $I_n$ et quel rôle joue-t-elle dans la multiplication ?",
+    "explanation": "$I_n$ a des $1$ sur la diagonale et des $0$ ailleurs ; elle joue le rôle du nombre $1$ pour la multiplication matricielle.",
+    "type": "flash",
+    "answer": "$I_n$ est la matrice $n\\times n$ avec des $1$ sur la diagonale principale et des $0$ partout ailleurs. Pour toute matrice $A$ de taille compatible, $AI_n=A$ et $I_nA=A$.",
+    "keyPoints": [
+      "$I_n$ est l'élément neutre de la multiplication matricielle",
+      "$AA^{-1}=A^{-1}A=I_n$ définit l'inverse de $A$",
+      "$I_n$ est toujours carrée et inversible (elle est sa propre inverse)"
+    ]
+  },
+  {
+    "id": "mat1600-matr-008",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 2,
+    "challenge": true,
+    "solution": "On calcule $A_2B_2$ ligne par ligne.\n\nLigne 1 : $(2\\cdot1+1\\cdot(-1),\\ 2\\cdot(-1)+1\\cdot2)=(1,0)$.\n\nLigne 2 : $(1\\cdot1+1\\cdot(-1),\\ 1\\cdot(-1)+1\\cdot2)=(0,1)$.\n\nDonc $A_2B_2=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}=I$, ce qui confirme que $B_2=A_2^{-1}$ (pour des matrices carrées, $A_2B_2=I$ suffit à garantir aussi $B_2A_2=I$).",
+    "prompt": "Calculer $A_2B_2$ pour $A_2=\\begin{pmatrix}2&1\\\\1&1\\end{pmatrix}$ et $B_2=\\begin{pmatrix}1&-1\\\\-1&2\\end{pmatrix}$, afin de vérifier si $B_2=A_2^{-1}$.",
+    "explanation": "Le calcul donne $A_2B_2=I$, donc $B_2$ est bien l'inverse de $A_2$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$ : oui, $B_2=A_2^{-1}$", "correct": true },
+      { "text": "$\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$ : non", "correct": false, "why": "Erreur sur l'entrée $(1,2)$ : $2\\cdot(-1)+1\\cdot2=0$, pas $1$." },
+      { "text": "$\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}$ : non", "correct": false, "why": "Erreur sur l'entrée $(2,1)$ : $1\\cdot1+1\\cdot(-1)=0$, pas $2$." },
+      { "text": "$\\begin{pmatrix}0&0\\\\0&0\\end{pmatrix}$ : non, $A_2$ est singulière", "correct": false, "why": "$A_2$ n'est pas singulière : $\\det A_2=2\\cdot1-1\\cdot1=1\\ne0$, donc $A_2B_2$ ne peut pas être la matrice nulle." }
+    ]
   }
 ]

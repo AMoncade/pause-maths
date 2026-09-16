@@ -53,5 +53,62 @@
       "Aucune variable libre ne peut réparer cette contradiction",
       "Une seule ligne de ce type suffit à conclure, peu importe les autres lignes"
     ]
+  },
+  {
+    "id": "mat1600-syst-005",
+    "course": "MAT1600",
+    "topic": "mat1600-syst",
+    "difficulty": 1,
+    "prompt": "Le système homogène $\\begin{cases}2x-y=0\\\\4x-2y=0\\end{cases}$ a-t-il uniquement la solution triviale $(0,0)$ ?",
+    "explanation": "La deuxième équation est le double de la première (redondante) : après réduction, il reste une variable libre, donc une infinité de solutions $(x,2x)$, pas seulement $(0,0)$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Non : la deuxième équation est un multiple de la première, il reste une variable libre", "correct": true },
+      { "text": "Oui, un système homogène n'a toujours que la solution triviale", "correct": false, "why": "C'est faux en général : un système homogène a toujours au moins la solution triviale, mais s'il reste une variable libre après réduction, il y en a une infinité." },
+      { "text": "Non, le système est incompatible", "correct": false, "why": "Un système homogène est toujours compatible : $(0,0)$ est toujours solution, il ne peut jamais être incompatible." },
+      { "text": "Oui, car il y a deux équations pour deux inconnues", "correct": false, "why": "Le nombre d'équations égal au nombre d'inconnues ne garantit pas une solution unique : ici les deux équations sont proportionnelles (redondantes)." }
+    ]
+  },
+  {
+    "id": "mat1600-syst-006",
+    "course": "MAT1600",
+    "topic": "mat1600-syst",
+    "difficulty": 1,
+    "prompt": "Un système avec plus d'équations que d'inconnues est nécessairement incompatible.",
+    "explanation": "Faux : si certaines équations sont redondantes (multiples ou combinaisons des autres), le système peut rester compatible même avec plus d'équations que d'inconnues.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1600-syst-007",
+    "course": "MAT1600",
+    "topic": "mat1600-syst",
+    "difficulty": 1,
+    "prompt": "Qu'est-ce qu'une position de pivot dans une matrice échelonnée ?",
+    "explanation": "C'est la position du premier coefficient non nul de chaque ligne non nulle ; sa colonne est appelée colonne pivot et correspond à une variable pivot (non libre).",
+    "type": "flash",
+    "answer": "Une position de pivot est celle du premier coefficient non nul (le « pivot ») d'une ligne non nulle, une fois la matrice échelonnée. Sa colonne est une colonne pivot.",
+    "keyPoints": [
+      "Chaque ligne non nulle a exactement une position de pivot",
+      "Une colonne pivot correspond à une variable pivot (jamais une variable libre)",
+      "Les colonnes sans pivot correspondent aux variables libres"
+    ]
+  },
+  {
+    "id": "mat1600-syst-008",
+    "course": "MAT1600",
+    "topic": "mat1600-syst",
+    "difficulty": 2,
+    "challenge": true,
+    "solution": "1) Isoler $x_1$ : $x_1=3+2x_2$, avec $x_2$ libre.\n\n2) Solution particulière : poser $x_2=0$ donne le point $(3,0)$.\n\n3) Direction homogène : l'équation associée $x_1-2x_2=0$ donne $x_1=2x_2$, soit la direction $(2,1)$.\n\n4) Solution générale : $(x_1,x_2)=(3,0)+t(2,1)$, $t\\in\\mathbb R$.",
+    "prompt": "Quelle est la solution générale, sous forme vectorielle paramétrique, de l'équation $x_1-2x_2=3$ ?",
+    "explanation": "Une solution particulière $(3,0)$ (en posant $x_2=0$) plus $t$ fois la direction homogène $(2,1)$ (solution de $x_1-2x_2=0$) donne $(3,0)+t(2,1)$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$(3,0)+t(2,1)$", "correct": true },
+      { "text": "$(3,0)+t(-2,1)$", "correct": false, "why": "Erreur de signe sur la direction : la relation homogène $x_1-2x_2=0$ donne $x_1=2x_2$, donc la direction est $(2,1)$, pas $(-2,1)$." },
+      { "text": "$(0,3)+t(2,1)$", "correct": false, "why": "$(0,3)$ n'est pas une solution particulière : $0-2\\cdot3=-6\\ne3$." },
+      { "text": "$t(3,0)$", "correct": false, "why": "Sans le point de départ $(3,0)$ ajouté à une direction homogène, ceci ne vérifie l'équation que pour $t=1$, pas pour tout $t$." }
+    ]
   }
 ]
