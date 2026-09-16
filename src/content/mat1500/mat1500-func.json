@@ -1,0 +1,143 @@
+[
+  {
+    "id": "mat1500-func-001",
+    "course": "MAT1500",
+    "topic": "mat1500-func",
+    "difficulty": 1,
+    "prompt": "Une fonction $f$ est dite injective lorsque...",
+    "explanation": "L'injectivité dit que des entrées distinctes donnent des sorties distinctes : $f(a) = f(b) \\Rightarrow a = b$. C'est différent de la surjectivité, qui parle de couvrir tout le codomaine.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$f(a) = f(b)$ entraîne $a = b$", "correct": true },
+      {
+        "text": "tout élément du codomaine est atteint par $f$",
+        "correct": false,
+        "why": "C'est la définition de la surjectivité, pas de l'injectivité : ces deux notions sont indépendantes."
+      },
+      {
+        "text": "$a = b$ entraîne $f(a) = f(b)$",
+        "correct": false,
+        "why": "Ceci est toujours vrai pour n'importe quelle fonction (c'est juste dire que $f$ est bien définie) ; ce n'est pas ce qui caractérise l'injectivité."
+      },
+      {
+        "text": "$f$ possède une fonction réciproque",
+        "correct": false,
+        "why": "Avoir une réciproque exige d'être bijective (injective **et** surjective), pas seulement injective."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-func-002",
+    "course": "MAT1500",
+    "topic": "mat1500-func",
+    "difficulty": 1,
+    "prompt": "Que vaut $\\lfloor -3.2 \\rfloor$ (la fonction plancher) ?",
+    "explanation": "Le plancher donne le plus grand entier **inférieur ou égal** au nombre. Pour un nombre négatif, cela signifie s'éloigner de zéro : $-4 \\le -3.2$, alors que $-3 > -3.2$ ne convient pas. L'erreur classique est de tronquer vers zéro (donnant $-3$) au lieu d'arrondir vers le bas.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$-4$", "correct": true },
+      {
+        "text": "$-3$",
+        "correct": false,
+        "why": "C'est la troncature vers zéro, pas le plancher : $-3 > -3.2$, donc $-3$ n'est pas inférieur ou égal à $-3.2$."
+      },
+      {
+        "text": "$3$",
+        "correct": false,
+        "why": "Ce résultat ignore le signe négatif du nombre de départ."
+      },
+      {
+        "text": "$-3.2$",
+        "correct": false,
+        "why": "Le plancher renvoie toujours un entier, jamais le nombre lui-même (sauf s'il était déjà entier)."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-func-003",
+    "course": "MAT1500",
+    "topic": "mat1500-func",
+    "difficulty": 2,
+    "prompt": "Toute fonction injective est automatiquement bijective.",
+    "explanation": "Faux : être bijective demande d'être à la fois injective **et** surjective. Une fonction peut être injective sans que tout le codomaine soit atteint — par exemple $f : \\mathbb{Z} \\to \\mathbb{Z}$, $f(x) = 2x$ est injective mais n'atteint jamais les nombres impairs, donc pas surjective.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1500-func-004",
+    "course": "MAT1500",
+    "topic": "mat1500-func",
+    "difficulty": 2,
+    "prompt": "Si $f(x) = x + 1$ et $g(x) = 2x$, que vaut $(f \\circ g)(3)$ ?",
+    "explanation": "$(f \\circ g)(x) = f(g(x))$ : on applique d'abord $g$, puis $f$ sur le résultat. Ici $g(3) = 6$, puis $f(6) = 7$. Confondre l'ordre donnerait $(g \\circ f)(3) = g(4) = 8$, une réponse différente.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$7$", "correct": true },
+      {
+        "text": "$8$",
+        "correct": false,
+        "why": "C'est $(g \\circ f)(3)$, l'ordre inverse : $f$ est appliquée en premier ($f(3)=4$), puis $g$ ($g(4)=8$) — mais ce n'est pas ce qui est demandé."
+      },
+      {
+        "text": "$6$",
+        "correct": false,
+        "why": "C'est seulement $g(3)$ ; il manque l'application de $f$ par-dessus."
+      },
+      {
+        "text": "$9$",
+        "correct": false,
+        "why": "Ceci correspondrait à appliquer $g$ deux fois ($g(g(3))$), pas à composer avec $f$."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-func-005",
+    "course": "MAT1500",
+    "topic": "mat1500-func",
+    "difficulty": 2,
+    "prompt": "Soit $f : \\mathbb{Z} \\rightarrow \\mathbb{Z}$ définie par $f(x) = 2x$. $f$ est-elle surjective ?",
+    "explanation": "Non : le codomaine annoncé est $\\mathbb{Z}$ tout entier, mais l'image de $f$ ne contient que les entiers pairs. Un nombre impair comme $3$ n'a aucun antécédent entier, donc $f$ n'atteint pas tout le codomaine.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1500-func-006",
+    "course": "MAT1500",
+    "topic": "mat1500-func",
+    "difficulty": 2,
+    "prompt": "Pour une fonction $f : A \\rightarrow B$ quelconque, le codomaine $B$ et l'image (l'ensemble des valeurs réellement atteintes) sont toujours égaux.",
+    "explanation": "Faux en général : le codomaine est l'ensemble d'arrivée déclaré, alors que l'image ne contient que les valeurs effectivement atteintes par $f$. Les deux coïncident exactement quand $f$ est surjective.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1500-func-007",
+    "course": "MAT1500",
+    "topic": "mat1500-func",
+    "difficulty": 1,
+    "prompt": "En tes propres mots, que signifie « $f : A \\rightarrow B$ est surjective » ?",
+    "explanation": "La surjectivité porte sur la couverture du codomaine, pas sur l'unicité des antécédents (ça, c'est l'injectivité) : chaque $b \\in B$ doit avoir au moins un antécédent, mais peut en avoir plusieurs.",
+    "type": "flash",
+    "answer": "Pour tout $b \\in B$, il existe au moins un $a \\in A$ tel que $f(a) = b$ : chaque élément du codomaine est atteint.",
+    "keyPoints": [
+      "Chaque élément de $B$ a **au moins un** antécédent dans $A$",
+      "Ne dit rien sur l'unicité de cet antécédent (à ne pas confondre avec l'injectivité)"
+    ]
+  },
+  {
+    "id": "mat1500-func-008",
+    "course": "MAT1500",
+    "topic": "mat1500-func",
+    "difficulty": 3,
+    "prompt": "Prouve que $f : \\mathbb{R} \\rightarrow \\mathbb{R}$, $f(x) = 2x + 1$, est une bijection.",
+    "explanation": "Une preuve de bijection complète doit établir séparément l'injectivité et la surjectivité ; oublier l'une des deux moitiés est l'erreur la plus fréquente.",
+    "challenge": true,
+    "type": "flash",
+    "answer": "$f(x) = 2x + 1$ est bijective sur $\\mathbb{R}$.",
+    "keyPoints": [
+      "Injectivité : $f(a) = f(b) \\Rightarrow 2a+1 = 2b+1 \\Rightarrow a = b$",
+      "Surjectivité : pour tout $y \\in \\mathbb{R}$, poser $x = (y-1)/2 \\in \\mathbb{R}$ donne $f(x) = y$"
+    ],
+    "solution": "**Injectivité.** Supposons $f(a) = f(b)$, c'est-à-dire $2a + 1 = 2b + 1$. En soustrayant 1 puis en divisant par 2, on obtient $a = b$. Donc $f$ est injective.\n\n**Surjectivité.** Soit $y \\in \\mathbb{R}$ quelconque. Posons $x = \\dfrac{y - 1}{2}$, qui est bien un réel. Alors $f(x) = 2 \\cdot \\dfrac{y-1}{2} + 1 = (y - 1) + 1 = y$. Donc tout $y \\in \\mathbb{R}$ a un antécédent : $f$ est surjective.\n\nÉtant injective et surjective, $f$ est bijective."
+  }
+]
