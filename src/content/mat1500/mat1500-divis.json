@@ -1,0 +1,144 @@
+[
+  {
+    "id": "mat1500-divis-001",
+    "course": "MAT1500",
+    "topic": "mat1500-divis",
+    "difficulty": 1,
+    "prompt": "Que signifie $a \\mid b$ (« $a$ divise $b$ ») ?",
+    "explanation": "$a \\mid b$ signifie qu'il existe un entier $k$ tel que $b = ak$ : $a$ est un facteur de $b$. L'erreur fréquente est d'inverser le sens et de lire $a \\mid b$ comme « $a$ est divisé par $b$ ».",
+    "type": "qcm",
+    "choices": [
+      { "text": "il existe un entier $k$ tel que $b = ak$", "correct": true },
+      {
+        "text": "il existe un entier $k$ tel que $a = bk$",
+        "correct": false,
+        "why": "Ceci décrit $b \\mid a$ (le sens inversé), pas $a \\mid b$."
+      },
+      {
+        "text": "$a$ et $b$ ont un diviseur commun",
+        "correct": false,
+        "why": "Ceci décrit une condition beaucoup plus faible (existence d'un pgcd $>1$), pas la relation de divisibilité directe entre $a$ et $b$."
+      },
+      {
+        "text": "$\\dfrac{a}{b}$ est un entier",
+        "correct": false,
+        "why": "Ceci correspond à $b \\mid a$, encore le sens inversé de la notation."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-divis-002",
+    "course": "MAT1500",
+    "topic": "mat1500-divis",
+    "difficulty": 1,
+    "prompt": "Si $3 \\mid 12$, alors $12 \\mid 3$.",
+    "explanation": "Faux : la divisibilité n'est pas symétrique. $3 \\mid 12$ est vrai (car $12 = 3 \\times 4$), mais $12 \\mid 3$ est faux (il n'existe pas d'entier $k$ tel que $3 = 12k$, puisque $|12k| \\ge 12 > 3$ pour tout entier $k \\ne 0$, et $k=0$ donnerait $3=0$).",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1500-divis-003",
+    "course": "MAT1500",
+    "topic": "mat1500-divis",
+    "difficulty": 2,
+    "prompt": "$91 = 7 \\times 13$. L'entier $91$ est-il premier ?",
+    "explanation": "Non : un nombre premier n'a exactement que deux diviseurs positifs (1 et lui-même). Comme $91$ se factorise en $7 \\times 13$ avec $7, 13 > 1$, il a d'autres diviseurs que 1 et 91 : il est composé, pas premier. Le piège est de ne tester que les petits diviseurs évidents (2, 3, 5) et de conclure trop vite à la primalité.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1500-divis-004",
+    "course": "MAT1500",
+    "topic": "mat1500-divis",
+    "difficulty": 2,
+    "prompt": "Quel est le $\\text{pgcd}(24, 18)$ (plus grand commun diviseur) ?",
+    "explanation": "Les diviseurs de 24 sont $\\{1,2,3,4,6,8,12,24\\}$, ceux de 18 sont $\\{1,2,3,6,9,18\\}$ : le plus grand diviseur commun est $6$. Confondre pgcd et ppcm (plus petit commun multiple, qui vaudrait 72 ici) est l'erreur classique.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$6$", "correct": true },
+      {
+        "text": "$72$",
+        "correct": false,
+        "why": "$72$ est le plus petit commun multiple (ppcm) de 24 et 18, pas leur plus grand commun diviseur."
+      },
+      {
+        "text": "$3$",
+        "correct": false,
+        "why": "$3$ est bien un diviseur commun, mais ce n'est pas le plus grand : $6$ divise aussi les deux nombres."
+      },
+      {
+        "text": "$12$",
+        "correct": false,
+        "why": "$12$ divise 24 mais pas 18 ($18 / 12$ n'est pas entier) : ce n'est donc pas un diviseur commun."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-divis-005",
+    "course": "MAT1500",
+    "topic": "mat1500-divis",
+    "difficulty": 1,
+    "prompt": "Le nombre $2$ est le seul nombre premier pair.",
+    "explanation": "Vrai : tout autre entier pair supérieur à 2 est divisible par 2 en plus de lui-même et de 1, donc il a au moins trois diviseurs et n'est pas premier. $2$ échappe à cet argument car ses seuls diviseurs sont 1 et 2.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1500-divis-006",
+    "course": "MAT1500",
+    "topic": "mat1500-divis",
+    "difficulty": 2,
+    "prompt": "Si $a \\mid b$ et $a \\mid c$, quelle affirmation est nécessairement vraie ?",
+    "explanation": "Si $a \\mid b$ et $a \\mid c$, alors $b = ak_1$ et $c = ak_2$ pour des entiers $k_1, k_2$, donc $b + c = a(k_1 + k_2)$ : $a$ divise aussi la somme. C'est une propriété de base souvent utilisée dans les preuves de divisibilité.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$a \\mid (b + c)$", "correct": true },
+      {
+        "text": "$a \\mid (b \\times c \\times a)$ seulement si $a$ est premier",
+        "correct": false,
+        "why": "$a$ divise en fait toujours $b \\times c \\times a$ (il divise n'importe quel multiple de lui-même), que $a$ soit premier ou non : la condition « si $a$ est premier » n'a aucun rapport ici."
+      },
+      {
+        "text": "$b = c$",
+        "correct": false,
+        "why": "Rien n'oblige $b$ et $c$ à être égaux ; par exemple $2 \\mid 4$ et $2 \\mid 6$ sans que $4 = 6$."
+      },
+      {
+        "text": "$a \\ge b$ et $a \\ge c$",
+        "correct": false,
+        "why": "C'est l'inverse : si $a$ divise un entier positif, $a$ est en général plus petit ou égal à celui-ci, pas plus grand."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-divis-007",
+    "course": "MAT1500",
+    "topic": "mat1500-divis",
+    "difficulty": 1,
+    "prompt": "Donne la décomposition de $60$ en facteurs premiers.",
+    "explanation": "$60 = 2^2 \\times 3 \\times 5$ : chaque facteur premier apparaît avec son exposant exact. Un piège fréquent est d'oublier un facteur répété (écrire $2 \\times 3 \\times 5 = 30 \\ne 60$) ou de laisser un facteur composé non décomposé.",
+    "type": "flash",
+    "answer": "$60 = 2^2 \\times 3 \\times 5$",
+    "keyPoints": [
+      "Diviser successivement par les plus petits premiers : $60 = 2 \\times 30 = 2 \\times 2 \\times 15 = 2^2 \\times 3 \\times 5$",
+      "Vérifier en remultipliant : $4 \\times 3 \\times 5 = 60$"
+    ]
+  },
+  {
+    "id": "mat1500-divis-008",
+    "course": "MAT1500",
+    "topic": "mat1500-divis",
+    "difficulty": 3,
+    "prompt": "Prouve que si $a \\mid b$ et $b \\mid c$, alors $a \\mid c$ (transitivité de la divisibilité).",
+    "explanation": "La preuve directe demande d'écrire $b$ et $c$ en fonction des définitions ($b = ak_1$, $c = bk_2$) puis de substituer : l'erreur fréquente est de supposer la conclusion ou de ne pas exhiber explicitement l'entier qui témoigne de $a \\mid c$.",
+    "challenge": true,
+    "type": "flash",
+    "answer": "$a \\mid b$ et $b \\mid c$ impliquent $a \\mid c$.",
+    "keyPoints": [
+      "$a \\mid b$ donne $b = a k_1$ pour un entier $k_1$",
+      "$b \\mid c$ donne $c = b k_2$ pour un entier $k_2$",
+      "Substituer : $c = (a k_1) k_2 = a(k_1 k_2)$, donc $a \\mid c$ avec le témoin $k_1 k_2$"
+    ],
+    "solution": "Par définition, $a \\mid b$ signifie qu'il existe un entier $k_1$ tel que $b = a k_1$. De même, $b \\mid c$ signifie qu'il existe un entier $k_2$ tel que $c = b k_2$.\n\nEn substituant la première égalité dans la seconde : $c = b k_2 = (a k_1) k_2 = a (k_1 k_2)$.\n\nComme $k_1 k_2$ est un entier (produit de deux entiers), on a exhibé un témoin pour $a \\mid c$ : donc $a \\mid c$."
+  }
+]
