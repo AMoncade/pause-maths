@@ -59,6 +59,15 @@ Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute
 - `D:\Math\MAT1400` toujours vide (lot StudiUM pas encore terminé) : contenu tiré de `Downloads` (lecture seule), sources consignées dans `docs/sources/mat1400.md`.
 - Gate officiel (`npm test`, 76 tests) passe après rebase sur main (26c884f). Écart assumé : j'avais d'abord écrit un script de validation local (scratchpad, hors dépôt) en attendant le gate réel — abandonné dès que `tests/content.test.ts` a été disponible, comme demandé par l'admin.
 - Suite : Jalon 2, ~10-13 questions par thème sur les 8 thèmes intra (~100 au total, un thème à la fois, gate + relecture aveugle + SymPy pour chaque).
+## 2026-09-16 — Engine jalon 2 : progress, merge, scheduler, import (lot Engine, branche lot/engine)
+
+- `src/lib/progress.ts` : `loadProgress` (JSON → `migrate` pas à pas → Zod ; échec ou version inconnue = copie brute `pause-maths:backup-<ts>` puis état neuf ; l'original n'est retiré qu'après la copie, et reste si la copie échoue), `saveProgress`, `dayKey`, `markActive`, `streak` (sûr aux changements d'heure), `xp`, `level`, `levelProgress`, `mastery`, `toggleFlag`.
+- `src/lib/merge.ts` : commutatif, associatif, idempotent, égalités comprises (ordre total fixe) ; sans DOM.
+- `src/lib/scheduler.ts` : `INTERVAL_MS`, `mulberry32`, `applyAnswer` (carte neuve = box 1, donc bonne réponse → box 2), `nextQuestion` (paliers A → B → C → D, À revoir en un palier, pondération weak calculée sur toute la banque). Sans fin épuisé : `session.shown` tronqué EN PLACE aux 10 derniers, ou à (sélection − 1) si la sélection est plus petite.
+- `scripts/import-questions.ts` : tout ou rien (gate complet + ids déjà en banque + fichier cible lisible), fusion triée par id, clôture ```json et BOM acceptés, chemin relatif au dossier d'appel (INIT_CWD). Vérifié à la main : `npm run import` sur un vrai fichier écrit `src/content/mat1600/mat1600-syst.json`, `content.test` passe avec, le 2e import est refusé (id-unique) ; fichier retiré ensuite.
+- Contrôle du scheduler : la variante « sans mutation » du redémarrage Sans fin fait échouer 7 tests.
+- `npm test` : 225 verts ; `tsc --noEmit` et `npm run build` : OK.
+- Ouvert (à l'admin) : une remise à zéro serait annulée par la synchro (merge garde les cartes du serveur) ; les thèmes ajoutés plus tard ne sont pas cochés chez un utilisateur existant ; un « dé-signalement » est annulé par l'union de `flagged`.
 
 ## 2026-09-16 — Engine jalon 1 : schema + gate (lot Engine, branche lot/engine)
 
