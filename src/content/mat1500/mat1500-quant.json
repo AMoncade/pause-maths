@@ -1,0 +1,107 @@
+[
+  {
+    "id": "mat1500-quant-001",
+    "course": "MAT1500",
+    "topic": "mat1500-quant",
+    "difficulty": 1,
+    "prompt": "Quelle est la négation correcte de $\\forall x, P(x)$ ?",
+    "explanation": "La négation d'un $\\forall$ est un $\\exists$ portant sur la négation du prédicat : $\\neg \\forall x, P(x) \\equiv \\exists x, \\neg P(x)$. Garder le $\\forall$ en ne niant que $P(x)$ est l'erreur la plus fréquente.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$\\exists x, \\neg P(x)$", "correct": true },
+      {
+        "text": "$\\forall x, \\neg P(x)$",
+        "correct": false,
+        "why": "Le quantificateur doit lui aussi changer : nier un $\\forall$ produit un $\\exists$, pas un autre $\\forall$."
+      },
+      {
+        "text": "$\\exists x, P(x)$",
+        "correct": false,
+        "why": "Le quantificateur a bien changé, mais il faut aussi nier le prédicat $P(x)$."
+      },
+      {
+        "text": "$\\neg \\exists x, P(x)$",
+        "correct": false,
+        "why": "Ceci équivaut à $\\forall x, \\neg P(x)$, ce n'est pas la négation de l'énoncé de départ."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-quant-002",
+    "course": "MAT1500",
+    "topic": "mat1500-quant",
+    "difficulty": 2,
+    "prompt": "Quelle est la négation correcte de $\\forall x \\, \\exists y, P(x, y)$ ?",
+    "explanation": "Chaque quantificateur doit basculer, du plus externe au plus interne : $\\neg(\\forall x \\, \\exists y, P(x,y)) \\equiv \\exists x \\, \\forall y, \\neg P(x,y)$. Ne basculer qu'un seul des deux quantificateurs est une erreur fréquente sur les énoncés imbriqués.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$\\exists x \\, \\forall y, \\neg P(x, y)$", "correct": true },
+      {
+        "text": "$\\exists x \\, \\exists y, \\neg P(x, y)$",
+        "correct": false,
+        "why": "Seul le premier quantificateur a été basculé ; le second $\\exists y$ doit aussi devenir $\\forall y$."
+      },
+      {
+        "text": "$\\forall x \\, \\forall y, \\neg P(x, y)$",
+        "correct": false,
+        "why": "Seul le second quantificateur a été basculé ; le $\\forall x$ initial doit devenir $\\exists x$."
+      },
+      {
+        "text": "$\\exists x \\, \\forall y, P(x, y)$",
+        "correct": false,
+        "why": "Les deux quantificateurs ont bien basculé, mais le prédicat $P(x,y)$ doit aussi être nié."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-quant-003",
+    "course": "MAT1500",
+    "topic": "mat1500-quant",
+    "difficulty": 2,
+    "prompt": "Les énoncés $\\forall x \\, \\exists y, P(x, y)$ et $\\exists y \\, \\forall x, P(x, y)$ disent toujours exactement la même chose.",
+    "explanation": "Faux en général : dans $\\exists y \\, \\forall x, P(x,y)$, le même $y$ doit convenir pour tous les $x$, alors que dans $\\forall x \\, \\exists y, P(x,y)$, $y$ peut dépendre de $x$. Le second énoncé implique le premier, mais pas l'inverse.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1500-quant-004",
+    "course": "MAT1500",
+    "topic": "mat1500-quant",
+    "difficulty": 2,
+    "prompt": "L'énoncé $\\exists! x, P(x)$ (« il existe un unique $x$ tel que $P(x)$ ») est logiquement équivalent à quelle expression ?",
+    "explanation": "$\\exists!$ combine existence et unicité : il faut qu'un $x$ satisfasse $P$, et que tout $y$ satisfaisant $P$ soit égal à ce $x$. Confondre $\\exists!$ avec un simple $\\exists$ oublie la condition d'unicité.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$\\exists x \\, (P(x) \\wedge \\forall y \\, (P(y) \\rightarrow y = x))$", "correct": true },
+      {
+        "text": "$\\exists x, P(x)$",
+        "correct": false,
+        "why": "Ceci affirme seulement l'existence, sans exiger l'unicité : $\\exists!$ exige les deux."
+      },
+      {
+        "text": "$\\forall x, P(x)$",
+        "correct": false,
+        "why": "Ceci affirme que tous les $x$ satisfont $P$, ce qui n'a aucun rapport avec l'unicité d'une solution."
+      },
+      {
+        "text": "$\\exists x \\, \\exists y \\, (P(x) \\wedge P(y))$",
+        "correct": false,
+        "why": "Ceci n'exclut pas que $x$ et $y$ soient distincts ; il manque la condition $y = x$ qui force l'unicité."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-quant-005",
+    "course": "MAT1500",
+    "topic": "mat1500-quant",
+    "difficulty": 2,
+    "prompt": "Comment nier l'énoncé « Tout étudiant a réussi au moins un examen », en gardant la structure logique visible ?",
+    "explanation": "Avec $P(x)$ = « l'étudiant $x$ a réussi l'examen », l'énoncé est $\\forall x \\, \\exists y, P(x, y)$ ; sa négation bascule les deux quantificateurs et nie le prédicat : $\\exists x \\, \\forall y, \\neg P(x, y)$, soit « il existe un étudiant qui n'a réussi aucun examen ».",
+    "type": "flash",
+    "answer": "« Il existe un étudiant qui n'a réussi aucun examen. »",
+    "keyPoints": [
+      "$\\forall$ devient $\\exists$ (et vice versa) à chaque niveau, du plus externe au plus interne",
+      "Le prédicat final est aussi nié : « a réussi » devient « n'a réussi aucun »"
+    ]
+  }
+]
