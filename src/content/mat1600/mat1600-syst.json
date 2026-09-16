@@ -1,0 +1,57 @@
+[
+  {
+    "id": "mat1600-syst-001",
+    "course": "MAT1600",
+    "topic": "mat1600-syst",
+    "difficulty": 1,
+    "prompt": "Quel est l'ensemble solution du système $\\begin{cases}x+y=3\\\\2x-y=0\\end{cases}$ ?",
+    "explanation": "Substituer $y=2x$ dans la première équation donne $3x=3$, donc $x=1$ et $y=2$ : un point unique, car les deux droites ont des pentes différentes ($-1$ et $2$).",
+    "type": "qcm",
+    "choices": [
+      { "text": "$(1,2)$, solution unique", "correct": true },
+      { "text": "Le système est incompatible (aucune solution)", "correct": false, "why": "Les deux droites ne sont pas parallèles : substituer $y=2x$ dans la première équation donne une valeur précise de $x$." },
+      { "text": "$(2,1)$", "correct": false, "why": "Attention à l'ordre des coordonnées : c'est $x=1$ et $y=2$. Vérifie en remplaçant dans les deux équations." },
+      { "text": "Une infinité de solutions (droites confondues)", "correct": false, "why": "Les deux droites ne sont pas confondues : leurs pentes ($-1$ et $2$) diffèrent, donc elles se coupent en un seul point." }
+    ]
+  },
+  {
+    "id": "mat1600-syst-002",
+    "course": "MAT1600",
+    "topic": "mat1600-syst",
+    "difficulty": 2,
+    "prompt": "Un système à 3 inconnues $x_1,x_2,x_3$ a pour forme échelonnée réduite $$\\begin{pmatrix}1&0&2&|&3\\\\0&1&-1&|&5\\\\0&0&0&|&0\\end{pmatrix}$$ Laquelle des variables est libre ?",
+    "explanation": "Une variable libre correspond à une colonne sans pivot. Les colonnes 1 et 2 ont un pivot (les 1 en tête de ligne), donc $x_3$, sans pivot, est la variable libre.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$x_3$", "correct": true },
+      { "text": "$x_1$", "correct": false, "why": "$x_1$ a un pivot : le 1 en tête de la première ligne. Une variable pivot n'est pas libre." },
+      { "text": "$x_2$", "correct": false, "why": "$x_2$ a un pivot : le 1 en tête de la deuxième ligne. Une variable pivot n'est pas libre." },
+      { "text": "Aucune, le système a une solution unique", "correct": false, "why": "La troisième colonne n'a pas de pivot : il reste une variable libre, donc une infinité de solutions, pas une solution unique." }
+    ]
+  },
+  {
+    "id": "mat1600-syst-003",
+    "course": "MAT1600",
+    "topic": "mat1600-syst",
+    "difficulty": 1,
+    "prompt": "Un système linéaire compatible possède toujours exactement une solution.",
+    "explanation": "« Compatible » veut seulement dire qu'il existe au moins une solution. S'il reste une variable libre après réduction, il y a une infinité de solutions, pas une seule.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1600-syst-004",
+    "course": "MAT1600",
+    "topic": "mat1600-syst",
+    "difficulty": 1,
+    "prompt": "Que signifie une ligne $\\begin{pmatrix}0&0&0&|&5\\end{pmatrix}$ dans une matrice échelonnée d'un système ?",
+    "explanation": "Cette ligne encode l'équation $0=5$, qui est impossible : le système est incompatible.",
+    "type": "flash",
+    "answer": "Le système est incompatible : cette ligne représente l'équation impossible $0=5$, donc il n'existe aucune solution.",
+    "keyPoints": [
+      "$0$ égalé à un nombre non nul ⇒ système incompatible",
+      "Aucune variable libre ne peut réparer cette contradiction",
+      "Une seule ligne de ce type suffit à conclure, peu importe les autres lignes"
+    ]
+  }
+]

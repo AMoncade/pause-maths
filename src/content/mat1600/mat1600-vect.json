@@ -1,0 +1,57 @@
+[
+  {
+    "id": "mat1600-vect-001",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 2,
+    "prompt": "Soit $v_1=(1,0,0)$, $v_2=(0,1,0)$, $v_3=(0,0,1)$, $v_4=(1,1,1)$ dans $\\mathbb R^3$. L'ensemble $\\{v_1,v_2,v_3,v_4\\}$ engendre $\\mathbb R^3$. Est-ce une base de $\\mathbb R^3$ ?",
+    "explanation": "$v_4=v_1+v_2+v_3$ : les quatre vecteurs sont liés. Engendrer ne suffit pas pour être une base, il faut aussi être une famille libre — et 4 vecteurs dans un espace de dimension 3 sont automatiquement liés.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Non : ils sont liés ($v_4=v_1+v_2+v_3$), une base doit aussi être libre", "correct": true },
+      { "text": "Oui, puisqu'ils engendrent $\\mathbb R^3$", "correct": false, "why": "Engendrer ne suffit pas : un ensemble générateur peut contenir des vecteurs redondants. Une base doit en plus être linéairement indépendante." },
+      { "text": "Oui, car il y a plus de vecteurs que de dimensions", "correct": false, "why": "C'est l'inverse : dès qu'il y a plus de vecteurs que la dimension de l'espace, l'ensemble est automatiquement lié, donc ce n'est jamais une base." },
+      { "text": "Non, car ils n'engendrent pas $\\mathbb R^3$", "correct": false, "why": "Ils engendrent bien $\\mathbb R^3$ (déjà $v_1,v_2,v_3$ suffiraient) ; le problème est ailleurs : la famille n'est pas libre." }
+    ]
+  },
+  {
+    "id": "mat1600-vect-002",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 1,
+    "prompt": "Les vecteurs $u=(2,4)$ et $w=(3,6)$ sont-ils linéairement indépendants ?",
+    "explanation": "$w=\\tfrac32u$ : les deux vecteurs sont colinéaires (proportionnels), donc liés, pas indépendants.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Non : $w=\\tfrac32u$, ils sont colinéaires", "correct": true },
+      { "text": "Oui, car $u\\ne w$", "correct": false, "why": "Être différents ne suffit pas : il faut qu'aucun ne soit un multiple scalaire de l'autre. Ici $w=\\tfrac32u$." },
+      { "text": "Oui, car aucune de leurs coordonnées n'est nulle", "correct": false, "why": "L'absence de zéro ne garantit rien : la colinéarité dépend du rapport entre les coordonnées, pas de leur nullité." },
+      { "text": "On ne peut pas savoir sans résoudre un système $3\\times3$", "correct": false, "why": "Pour deux vecteurs de $\\mathbb R^2$, il suffit de vérifier s'ils sont proportionnels — inutile de monter un système plus grand." }
+    ]
+  },
+  {
+    "id": "mat1600-vect-003",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 1,
+    "prompt": "Trois vecteurs non nuls de $\\mathbb R^2$ sont toujours linéairement dépendants.",
+    "explanation": "Dans un espace de dimension 2, toute famille de plus de 2 vecteurs est automatiquement liée, peu importe lesquels.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1600-vect-004",
+    "course": "MAT1600",
+    "topic": "mat1600-vect",
+    "difficulty": 2,
+    "prompt": "Qu'est-ce qu'une combinaison linéaire des vecteurs $v_1,\\dots,v_k$ ?",
+    "explanation": "Une combinaison linéaire est une somme pondérée par des scalaires; l'ensemble de toutes ces sommes forme $\\text{Vect}(v_1,\\dots,v_k)$.",
+    "type": "flash",
+    "answer": "C'est toute expression $c_1v_1+c_2v_2+\\cdots+c_kv_k$ où les $c_i$ sont des scalaires; l'ensemble de toutes ces combinaisons forme $\\text{Vect}(v_1,\\dots,v_k)$.",
+    "keyPoints": [
+      "Les coefficients $c_i$ peuvent être n'importe quel scalaire, y compris $0$",
+      "$\\text{Vect}(v_1,\\dots,v_k)$ = ensemble de toutes les combinaisons linéaires possibles",
+      "L'équation vectorielle $x_1v_1+\\cdots+x_kv_k=b$ a une solution ssi $b\\in\\text{Vect}(v_1,\\dots,v_k)$"
+    ]
+  }
+]
