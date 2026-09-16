@@ -9,6 +9,7 @@
  */
 import { readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { extname, join } from 'node:path';
+import { QuestionFileSchema } from '../src/lib/schema';
 import type { Question } from '../src/lib/types';
 
 function mulberry32(seed: number): () => number {
@@ -75,17 +76,15 @@ function loadQuestions(inputPath: string): Question[] {
   const out: Question[] = [];
   for (const f of files) {
     const raw: unknown = JSON.parse(readFileSync(f, 'utf8'));
-    if (!Array.isArray(raw)) {
-      process.stderr.write(`Ignoré (pas un tableau JSON) : ${f}\n`);
-      continue;
-    }
-    for (const q of raw) {
-      if (q && typeof q === 'object' && typeof q.id === 'string' && typeof q.type === 'string') {
-        out.push(q as Question);
-      } else {
-        process.stderr.write(`Question mal formée ignorée dans ${f} : ${JSON.stringify(q).slice(0, 80)}\n`);
+    const parsed = QuestionFileSchema.safeParse(raw);
+    if (!parsed.success) {
+      process.stderr.write(`${f} : JSON invalide selon src/lib/schema.ts (fais passer le gate avant la relecture) :\n`);
+      for (const issue of parsed.error.issues) {
+        process.stderr.write(`  ${issue.path.join('.')}: ${issue.message}\n`);
       }
+      process.exit(1);
     }
+    out.push(...parsed.data);
   }
   return out;
 }
@@ -114,10 +113,6 @@ function main(): void {
     if (q.type === 'qcm') {
       const order = shuffledIndices(q.choices.length, rng);
       const correctOrigIdx = q.choices.findIndex((c) => c.correct);
-      const correctCount = q.choices.filter((c) => c.correct).length;
-      if (correctCount !== 1) {
-        process.stderr.write(`ATTENTION ${q.id} : ${correctCount} choix marqué(s) correct (1 attendu).\n`);
-      }
       const mapping: Record<string, number> = {};
       let correctLetter: string | null = null;
       order.forEach((origIdx, pos) => {
