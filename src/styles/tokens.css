@@ -1,0 +1,126 @@
+/* Jetons de design. Clair par défaut, sombre selon le système. */
+:root {
+  color-scheme: light dark;
+
+  --font-display: 'Baloo 2', ui-rounded, 'Arial Rounded MT Bold', system-ui, sans-serif;
+  --font-body: 'Figtree', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'SF Mono', Menlo, monospace;
+
+  --bg: #edf1f8;
+  --surface: #ffffff;
+  --surface-sunk: #e3e8f2;
+  --line: #d7deea;
+  --line-strong: #c0c9da;
+  --ink: #141b33;
+  --ink-2: #444f6b;
+  --ink-3: #5f6a86;
+
+  --brand: #1a2340;
+  --brand-lip: #070b1a;
+  --on-brand: #ffffff;
+
+  --good: #17a046;
+  --good-lip: #0e7433;
+  --good-soft: #dcf5e4;
+  --good-ink: #0b642b;
+  --on-good: #ffffff;
+
+  --bad: #e03e46;
+  --bad-lip: #a8262e;
+  --bad-soft: #fde5e6;
+  --bad-ink: #9e1f28;
+  --on-bad: #ffffff;
+
+  --warn-soft: #fff3d4;
+  --warn-line: #f0cf76;
+  --warn-ink: #734600;
+
+  --streak-bg: #ffefc7;
+  --streak-ink: #8f5200;
+  --flame-a: #ffd23f;
+  --flame-b: #ff7419;
+  --flame-ink: #c2410c;
+
+  --focus: #2b62f0;
+
+  /* dérivés des couleurs de cours (voir .tint) */
+  --ink-mix: black;
+  --ink-amt: 58%;
+  --fill-amt: 80%;
+  --soft-amt: 14%;
+  --on-c: #ffffff;
+
+  --radius-s: 10px;
+  --radius-m: 16px;
+  --radius-l: 20px;
+  --radius-xl: 26px;
+  --lip: 4px;
+  --gutter: 16px;
+
+  --shadow-card: 0 1px 2px rgb(20 27 51 / 0.05), 0 12px 28px -16px rgb(20 27 51 / 0.24);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur: 200ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0c1020;
+    --surface: #161c30;
+    --surface-sunk: #0f1426;
+    --line: #262e47;
+    --line-strong: #343f5e;
+    --ink: #eef1f9;
+    --ink-2: #b9c1d6;
+    --ink-3: #8d97b1;
+
+    --brand: #eef1f9;
+    --brand-lip: #97a1bb;
+    --on-brand: #11172c;
+
+    --good: #3dcf70;
+    --good-lip: #1f9148;
+    --good-soft: #112c1d;
+    --good-ink: #86e6a8;
+    --on-good: #06200e;
+
+    --bad: #ff636b;
+    --bad-lip: #b73a44;
+    --bad-soft: #36161b;
+    --bad-ink: #ffa9ad;
+    --on-bad: #2b0509;
+
+    --warn-soft: #2d2410;
+    --warn-line: #6b5420;
+    --warn-ink: #ffd47e;
+
+    --streak-bg: #33270d;
+    --streak-ink: #ffc54f;
+    --flame-ink: #ff9d4f;
+
+    --focus: #7aa2ff;
+
+    --ink-mix: white;
+    --ink-amt: 60%;
+    --fill-amt: 100%;
+    --soft-amt: 20%;
+    --on-c: #0c1020;
+
+    --shadow-card: 0 14px 30px -18px rgb(0 0 0 / 0.7);
+  }
+}
+
+/* Couleur d'un cours : poser --c en style, les teintes suivent. */
+.tint {
+  --c-ink: color-mix(in oklab, var(--c) var(--ink-amt), var(--ink-mix));
+  --c-fill: color-mix(in oklab, var(--c) var(--fill-amt), black);
+  --c-lip: color-mix(in oklab, var(--c) 62%, black);
+  --c-soft: color-mix(in oklab, var(--c) var(--soft-amt), var(--surface));
+  --c-line: color-mix(in oklab, var(--c) 55%, var(--surface));
+}
+
+/* Un seul cours sélectionné : l'action principale prend sa couleur. */
+.has-accent {
+  --accent-bg: var(--c-fill);
+  --accent-ink: var(--on-c);
+  --accent-lip: var(--c-lip);
+}
