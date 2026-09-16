@@ -2,6 +2,23 @@
 
 Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute la sienne dans son worktree ; l'admin fusionne.
 
+## 2026-09-16 — MAT1400 Jalon 2 complet : 96 questions, 8 thèmes intra (lot mat1400)
+
+- Les 8 thèmes intra (vect, fonc, quad, grad, part, chain, extr, lagr) sont à 12 questions
+  chacun, 96 au total : 59 qcm / 21 vf / 16 flash (61/22/17 %), 8 Défi (8,3 %) avec solution
+  pas-à-pas.
+- Relecture aveugle systématique via `scripts/blind-review.ts` (choix mélangés, sans flag
+  correct) + sous-agent + vérification SymPy dans un venv scratch : les 96 questions confirmées
+  contre leur clé, zéro désaccord sur l'ensemble du lot.
+- Relecture pédagogique Opus (`docs/reviews/relecture-opus/mat1400.md`, sur les 48 premières
+  questions) : tous les points appliqués (1 élevée : `why` faux de vect-007 ; 3 moyennes :
+  grad-008, chain-002, absence de Défi ; 16 basses). Détail dans
+  `docs/reviews/mat1400/reponse-relecture-opus.md`. Aucun rejet.
+- `npm test` : 315 tests verts après rebase sur main (autres lots inclus).
+- Suite possible : garder ~12/thème comme référence si de nouveaux thèmes post-intra
+  (ch. 6-7, 1-2) sont ouverts avant le final ; `D:\Math\MAT1400` toujours vide au moment de
+  cette entrée (lot StudiUM en attente), contenu tiré de `Downloads`.
+
 ## 2026-09-16 — Lot UI : écrans, composants, thème ludique, KaTeX (lot/ui)
 
 - **Écrans** (`src/components/`) : Home (tuiles de cours multi-sélection avec niveau et barre d'XP, « Tout », commutateur Défi, série, Rafale / Sans fin / À revoir avec compteur), QuestionCard (qcm mélangé via `order`, vf toujours Vrai puis Faux), FlashCard (révéler, puis Pas su / Je savais, hors combo), Feedback (feuille qui monte : bonne réponse, `why` du choix tapé, explication, « Voir la solution »), Solution (Markdown simple + formules), Recap (score, points aux couleurs des cours, combo max, XP gagné, passages de niveau, cartes à revoir, Encore 5, confettis si parfaite), Settings (thèmes via `isTopicOn`/`setTopic`, synchro avec `checkSyncCode`, réinitialisation via `resetProgress` en deux temps), Stats (série, XP, vues, maîtrise par thème, signalements copiables, version de la banque), écran vide (banque vide / sélection vide / rien à revoir), bandeaux installation, récupération et échec d'écriture.
