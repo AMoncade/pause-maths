@@ -2,6 +2,33 @@
 
 Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute la sienne dans son worktree ; l'admin fusionne.
 
+## 2026-09-16 — MAT1500 Jalon 1 (lot mat1500)
+
+- `src/content/mat1500/index.ts` : les 8 thèmes intra du scaffold + 2 thèmes finaux ajoutés
+  (`mat1500-count` dénombrement ch. 4-5, `mat1500-graphs` graphes ch. 7, `exam:'final'`, sans
+  questions). `defaultOn` corrigé d'après le calendrier réel : seuls `mat1500-logic` et
+  `mat1500-quant` passent à `true` (le scaffold initial avait aussi `mat1500-sets` à `true`).
+  Raisonnement : le premier quiz (17 sept.) ne porte que sur les devoirs 1-2, et le contenu de
+  ces deux devoirs (lu via `agy`, gists seulement) est entièrement de la logique et des
+  quantificateurs — aucune trace d'ensembles, fonctions, divisibilité ou induction. Détails et
+  limites de cette inférence dans `docs/sources/mat1500.md`.
+- Jalon 1 : 10 questions (5 `mat1500-logic`, 5 `mat1500-quant` ; 6 qcm / 2 vf / 2 flash dont 1
+  Défi). Distracteurs = erreurs réelles vues dans les devoirs : négation d'un quantificateur
+  imbriqué à moitié basculée, réciproque/contraposée confondues, De Morgan appliqué au mauvais
+  connecteur, $\exists!$ pris pour $\exists$, ordre $\forall\exists$ vs $\exists\forall$.
+- Relecture aveugle par sous-agent (choix mélangés, sans flag ni explication) + vérification
+  SymPy (tautologies propositionnelles) et force brute sur domaines finis (négations de
+  quantificateurs, unicité) dans un venv temporaire hors dépôt : verdict PASS, aucune
+  ambiguïté. Deux flash cards remontées de difficulté 1 à 2 suite aux notes de calibration de
+  l'agent (`mat1500-quant-003`, `mat1500-quant-005`). Journal dans `docs/reviews/mat1500/`.
+- `D:\Math\MAT1500` toujours vide (lot StudiUM pas encore livré) : contenu tiré de `Downloads`
+  (lecture seule), sources consignées dans `docs/sources/mat1500.md`.
+- Écart assumé, comme pour mat1400 : script de gate local (scratchpad, hors dépôt) le temps que
+  `tests/content.test.ts` soit disponible, abandonné dès le rebase sur main@26c884f.
+- Gate officiel (`npm test`, 76 tests) vert après rebase sur main@72b6986.
+- Suite : Jalon 2, ~8 questions par thème sur les 8 thèmes intra (~100 au total), un thème à la
+  fois, via `scripts/blind-review.ts` (disponible depuis main@8af2316).
+
 ## 2026-09-16 — MAT1400 Jalon 1 (lot mat1400)
 
 - `src/content/mat1400/index.ts` : 8 thèmes intra réordonnés selon le calendrier réel de `Downloads/Info MAT1400.txt` (le cours enseigne le chap. 4.4 — gradient/dérivées directionnelles — avant 4.1-4.2 ; à noter, contre-intuitif si on suit l'ordre du manuel Stewart). `defaultOn` = déjà enseigné au 2026-09-16 : vect (annexes A-B), fonc (3.1-3.2), quad (3.3) seulement. 4 thèmes post-intra ajoutés (`exam:'final'`, sans questions).
