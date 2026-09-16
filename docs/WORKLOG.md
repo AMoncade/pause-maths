@@ -88,6 +88,12 @@ Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute
   chacun poussé séparément comme demandé par l'admin.
 
 ## 2026-09-16 — MAT1600 jalon 2 étendu : thème syst à 20 (lot mat1600)
+## 2026-09-16 — Engine : gate, choice-catchall élargi et markdown-outside-solution (lot Engine)
+
+- `choice-catchall` reconnaît aussi « aucun(e) de ces <nom> » / « tou(te)s ces <nom> » (le trou de mat1500-modul-004) ; « Toutes les … », « Aucune des deux … » restent permis (testé).
+- Nouvelle règle `markdown-outside-solution` : refuse `**`, `__`, `#` ou `- ` en début de ligne dans tout champ sauf `solution` (MathText affiche le texte tel quel ; décision de l'admin). Les formules sont ignorées (un tiret de formule n'est pas une puce, testé).
+- `tests/fixtures/broken.json` : 8 cas de plus (3 fourre-tout, 5 Markdown), chacun ne lève que sa règle.
+- Préparé avant le nettoyage de MAT1500 : sur la banque d'avant nettoyage, le gate lève exactement les 12 problèmes attendus (11 `**` + modul-004), aucun faux positif ailleurs. Poussé seulement après le « go » de l'admin, une fois `content.test` vert sur la vraie banque.
 
 ## 2026-09-16 — Lot UI : écrans, composants, thème ludique, KaTeX (lot/ui)
 
