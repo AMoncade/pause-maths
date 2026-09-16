@@ -11,6 +11,11 @@ Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute
 - Trouvé et corrigé par l'admin (main@b433065) : `hasStrayDollar` signalait `\$` comme orphelin.
 - Vérifié : `import.meta.glob` de `bank.ts` fonctionne sous Vitest 5 ; KaTeX `renderToString` tourne en node sans DOM. `vitest.config.ts` fixe `TZ=America/Toronto` et inclut `tests/**/*.test.{ts,tsx}`.
 - `npm test` : 76 tests verts ; `tsc --noEmit` : OK.
+## 2026-09-16 — Part D, tâche intermédiaire : scripts/blind-review.ts (lot Part D)
+
+- `scripts/blind-review.ts` : `npx tsx scripts/blind-review.ts <fichier.json|dossier> [--seed N] --key <chemin>`. Lit un fichier ou dossier de `Question[]`, mélange les choix `qcm` (mulberry32 seedé, seed par défaut 1, fisher-yates), imprime un Markdown sans `correct`/`why`/`explanation`/`solution` sur stdout, écrit la clé de correspondance (id → lettre correcte, id → mapping lettre→index d'origine ; pour `vf`/`flash`, la réponse attendue) dans le fichier `--key`, jamais sur stdout. `vf` affiche "Vrai / Faux" sans mélange (ordre fixe de l'app) ; `flash` n'affiche que le prompt + consigne. Ne modifie jamais `src/content`. Typecheck (`tsc --noEmit`) propre, testé manuellement sur un fixture (fichier seul, dossier, arg `--key` manquant).
+- `.claude/skills/ajouter-questions/SKILL.md` mise à jour : l'étape 4 (relecture aveugle) passe par ce script au lieu de construire le matériel aveugle à la main ; nouvelle règle "ne jamais montrer la clé au sous-agent".
+
 ## 2026-09-16 — Part D, phase 1 : processus + skill d'import (lot Part D)
 
 - `docs/PROCESSUS_QUESTIONS.md` : doc à uploader dans le projet claude.ai de l'utilisateur ; format JSON exact (dérivé de `src/lib/types.ts`), thèmes par cours (à jour au 2026-09-16, MAT1400/1500/1600 seulement — STT1700 vide, pas encore dérivé des PDFs), règles de style, 4 exemples, auto-vérification, consigne de sortie stricte.

@@ -37,22 +37,33 @@ le trajet de ce JSON jusqu'au dépôt : sauvegarde, import, contrôle qualité c
    "toutes/aucune de ces réponses") se corrige dans le JSON source puis se réimporte — jamais en
    éditant le fichier de contenu à la main pour faire taire le test.
 
-4. **Gate — relecture aveugle.** Pour chaque question nouvellement importée, lance un sous-agent
-   qui ne reçoit **ni le flag `correct`, ni `why`, ni `explanation`**, et dont les choix sont
-   mélangés. Il doit :
-   - choisir une réponse, avec son niveau de confiance ;
+4. **Gate — relecture aveugle.** Génère le matériel aveugle avec le script du projet, jamais à la
+   main :
+   ```
+   npx tsx scripts/blind-review.ts <fichier-ou-dossier-de-questions> --seed <n> --key <chemin-clé> > <chemin-markdown>
+   ```
+   Il mélange les choix (mulberry32 seedé), retire `correct`/`why`/`explanation`/`solution`, et
+   écrit la clé de correspondance (id → lettre correcte, id → mapping lettre→index d'origine) dans
+   `--key`, **jamais sur stdout** — ne donne cette clé au sous-agent sous aucun prétexte, elle sert
+   uniquement à comparer après coup. Choisis un chemin de clé et de markdown dans le scratchpad de
+   session, pas dans le dépôt.
+
+   Donne le Markdown (pas le JSON source) à un sous-agent de relecture. Il doit :
+   - choisir une réponse par question, avec son niveau de confiance ;
    - dire pourquoi chacun des autres choix est faux (un simple "bon choix trouvé" ne suffit pas :
      ça ne détecte pas une question à deux réponses correctes) ;
    - vérifier tout résultat calculé avec un script SymPy/scipy dans un venv **hors du dépôt**.
 
-   Consigne son verdict dans `docs/reviews/<cours>/<idDuThème>.md` (créer le fichier s'il
-   n'existe pas). Si l'agent choisit une réponse différente de celle marquée correcte, ou trouve
-   un deuxième choix défendable comme correct, ou que SymPy contredit un calcul : **désaccord**.
+   Compare ensuite son verdict à la clé. Consigne le résultat dans
+   `docs/reviews/<cours>/<idDuThème>.md` (créer le fichier s'il n'existe pas). Désaccord si :
+   l'agent choisit une lettre dont le mapping ne correspond pas à `correctLetter`, ou il trouve un
+   deuxième choix défendable comme correct, ou SymPy contredit un calcul.
 
 5. **Désaccord → troisième agent**, sans lui dire ce que les deux premiers ont conclu, mêmes
-   règles qu'à l'étape 4. Sa conclusion tranche : la question est corrigée (nouveau JSON,
-   retour à l'étape 2) ou retirée (id ajouté à `src/content/retired-ids.json` — fichier de
-   l'admin, ne pas y toucher directement ; signale-le à l'admin à la place).
+   règles qu'à l'étape 4 (nouveau `--seed` pour éviter qu'il reconnaisse le même mélange). Sa
+   conclusion tranche : la question est corrigée (nouveau JSON, retour à l'étape 2) ou retirée
+   (id ajouté à `src/content/retired-ids.json` — fichier de l'admin, ne pas y toucher directement ;
+   signale-le à l'admin à la place).
 
 6. **Commit.** Liste précisément les chemins touchés (`git diff --cached --name-only` avant de
    committer) : fichiers `src/content/<cours>/*.json` routés, `docs/reviews/**` mis à jour.
@@ -72,5 +83,6 @@ le trajet de ce JSON jusqu'au dépôt : sauvegarde, import, contrôle qualité c
 | Sauter la relecture aveugle parce que les tests de format passent | Les tests de format ne vérifient pas qu'une réponse est mathématiquement correcte, ni qu'un seul choix l'est. |
 | Donner à l'agent de relecture le champ `correct` ou `explanation` | Ça invalide la relecture : il confirmerait la réponse au lieu de la trouver. |
 | Lancer le script SymPy à l'intérieur du dépôt | Le venv de vérification est un outil de session, pas un artefact du projet ; il ne se commite pas. |
+| Montrer la clé `--key` au sous-agent de relecture, ou la lui décrire | Ça invalide la relecture, comme lui donner `correct` directement. |
 | `git add -A` ou `git commit -a` | Risque de committer un fichier hors du périmètre de ce lot. |
 | Éditer `retired-ids.json` directement | C'est un fichier de l'admin (régie) ; un retrait passe par lui. |
