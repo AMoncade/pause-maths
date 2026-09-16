@@ -1,0 +1,111 @@
+[
+  {
+    "id": "mat1400-grad-001",
+    "course": "MAT1400",
+    "topic": "mat1400-grad",
+    "difficulty": 1,
+    "prompt": "Le gradient de $f(x,y)=x^2y+3y$ au point $(1,2)$ est...",
+    "explanation": "$\\nabla f=(f_x,f_y)=(2xy,\\ x^2+3)$. Au point $(1,2)$ : $(2\\cdot1\\cdot2,\\ 1+3)=(4,4)$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$(4,4)$", "correct": true },
+      { "text": "$(2,4)$", "correct": false, "why": "Le coefficient $2$ de $f_x=2xy$ a été oublié : $xy=1\\cdot2=2$ au lieu de $2xy=4$." },
+      { "text": "$(4,1)$", "correct": false, "why": "La constante $+3$ de $f_y=x^2+3$ a été oubliée : $x^2=1$ au lieu de $1+3=4$." },
+      { "text": "$(2,1)$", "correct": false, "why": "Les deux erreurs précédentes combinées : coefficient oublié pour $f_x$, constante oubliée pour $f_y$." }
+    ]
+  },
+  {
+    "id": "mat1400-grad-002",
+    "course": "MAT1400",
+    "topic": "mat1400-grad",
+    "difficulty": 2,
+    "prompt": "Pour calculer la dérivée directionnelle de $f$ dans la direction de $\\vec v=(3,4)$, il faut d'abord...",
+    "explanation": "La formule $D_{\\hat u}f=\\nabla f\\cdot\\hat u$ n'est valide que pour un vecteur UNITAIRE. Il faut normaliser $\\vec v$ : $\\hat u=\\vec v/\\|\\vec v\\|=(3/5,4/5)$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Normaliser $\\vec v$ pour obtenir un vecteur unitaire", "correct": true },
+      { "text": "Rien, on utilise $\\vec v$ tel quel", "correct": false, "why": "La formule $\\nabla f\\cdot\\vec v$ ne donne la vraie dérivée directionnelle que si $\\vec v$ est unitaire ; sinon le résultat est faussé par un facteur $\\|\\vec v\\|$." },
+      { "text": "Multiplier $\\vec v$ par $\\|\\nabla f\\|$", "correct": false, "why": "Ce n'est pas une opération qui a du sens ici : on normalise $\\vec v$, on ne le met pas à l'échelle du gradient." },
+      { "text": "Prendre le gradient de $\\vec v$", "correct": false, "why": "Le gradient s'applique à une fonction scalaire comme $f$, pas à un vecteur constant $\\vec v$." }
+    ]
+  },
+  {
+    "id": "mat1400-grad-003",
+    "course": "MAT1400",
+    "topic": "mat1400-grad",
+    "difficulty": 2,
+    "prompt": "La valeur maximale de la dérivée directionnelle de $f$ en un point est $\\|\\nabla f\\|$, atteinte dans la direction de $\\nabla f$.",
+    "explanation": "C'est le théorème central du gradient : $D_{\\hat u}f=\\nabla f\\cdot\\hat u=\\|\\nabla f\\|\\cos\\theta$ est maximal quand $\\theta=0$, c'est-à-dire quand $\\hat u$ pointe dans la direction de $\\nabla f$.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1400-grad-004",
+    "course": "MAT1400",
+    "topic": "mat1400-grad",
+    "difficulty": 2,
+    "prompt": "Dérivée directionnelle de $f(x,y)=x^2+y^2$ en $(1,1)$ dans la direction de $\\vec v=(1,1)$ ?",
+    "explanation": "$\\nabla f(1,1)=(2,2)$. Vecteur unitaire : $\\hat u=(1/\\sqrt2,1/\\sqrt2)$. $D_{\\hat u}f=2(1/\\sqrt2)+2(1/\\sqrt2)=4/\\sqrt2=2\\sqrt2$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$2\\sqrt2$", "correct": true },
+      { "text": "$4$", "correct": false, "why": "C'est $\\nabla f\\cdot\\vec v$ SANS normaliser $\\vec v$ : erreur classique d'oublier l'étape de normalisation." },
+      { "text": "$2$", "correct": false, "why": "Un seul des deux termes du produit scalaire a été gardé." },
+      { "text": "$\\sqrt2$", "correct": false, "why": "Le vecteur a bien été normalisé, mais un des deux termes du produit scalaire $\\nabla f\\cdot\\hat u$ a été oublié en cours de calcul." }
+    ]
+  },
+  {
+    "id": "mat1400-grad-005",
+    "course": "MAT1400",
+    "topic": "mat1400-grad",
+    "difficulty": 2,
+    "prompt": "Que peut-on dire de la direction de $\\nabla f(a,b)$ par rapport à la courbe de niveau de $f$ passant par $(a,b)$ ?",
+    "explanation": "C'est une propriété géométrique fondamentale du gradient, utile pour tracer rapidement des directions sans calcul supplémentaire.",
+    "type": "flash",
+    "answer": "Il lui est perpendiculaire (normal), et pointe vers les valeurs croissantes de $f$.",
+    "keyPoints": [
+      "$\\nabla f$ est toujours orthogonal aux courbes de niveau",
+      "Il pointe dans le sens de l'accroissement le plus rapide de $f$"
+    ]
+  },
+  {
+    "id": "mat1400-grad-006",
+    "course": "MAT1400",
+    "topic": "mat1400-grad",
+    "difficulty": 2,
+    "prompt": "Pour $f(x,y)=e^{xy}$, que vaut $\\dfrac{\\partial f}{\\partial x}$ ?",
+    "explanation": "Règle de dérivation en chaîne sur l'exposant : $\\dfrac{\\partial}{\\partial x}e^{xy}=e^{xy}\\cdot\\dfrac{\\partial}{\\partial x}(xy)=ye^{xy}$, puisque $y$ est traité comme une constante.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$ye^{xy}$", "correct": true },
+      { "text": "$e^{xy}$", "correct": false, "why": "Le facteur $y$ issu de la dérivée de l'exposant $xy$ par rapport à $x$ a été oublié." },
+      { "text": "$xye^{xy}$", "correct": false, "why": "L'exposant complet $xy$ a été gardé comme facteur au lieu de sa dérivée par rapport à $x$, qui est $y$ seul." },
+      { "text": "$xe^{xy}$", "correct": false, "why": "C'est le facteur de $\\partial f/\\partial y$, pas de $\\partial f/\\partial x$ : les deux variables ont été inversées." }
+    ]
+  },
+  {
+    "id": "mat1400-grad-007",
+    "course": "MAT1400",
+    "topic": "mat1400-grad",
+    "difficulty": 2,
+    "prompt": "La direction de décroissance la plus rapide de $f$ en un point est donnée par...",
+    "explanation": "Puisque $D_{\\hat u}f$ est maximal dans la direction de $\\nabla f$, il est minimal (le plus négatif) dans la direction opposée $-\\nabla f$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$-\\nabla f$", "correct": true },
+      { "text": "$\\nabla f$", "correct": false, "why": "C'est la direction de croissance la plus rapide, pas de décroissance : erreur de signe." },
+      { "text": "$\\nabla f/\\|\\nabla f\\|$", "correct": false, "why": "C'est le vecteur unitaire de la direction de croissance maximale, il manque toujours le signe négatif pour la décroissance." },
+      { "text": "Perpendiculaire à $\\nabla f$", "correct": false, "why": "C'est la direction où $f$ ne change PAS au premier ordre (dérivée directionnelle nulle), pas celle de décroissance maximale." }
+    ]
+  },
+  {
+    "id": "mat1400-grad-008",
+    "course": "MAT1400",
+    "topic": "mat1400-grad",
+    "difficulty": 1,
+    "prompt": "La formule $D_{\\vec v}f=\\nabla f\\cdot\\vec v$ est valide pour n'importe quel vecteur $\\vec v$, même non unitaire.",
+    "explanation": "Faux : la formule suppose $\\vec v$ unitaire. Avec un vecteur non unitaire, il faut diviser par $\\|\\vec v\\|$ après le produit scalaire pour obtenir la vraie dérivée directionnelle.",
+    "type": "vf",
+    "answer": false
+  }
+]
