@@ -1,0 +1,109 @@
+[
+  {
+    "id": "mat1500-logic-001",
+    "course": "MAT1500",
+    "topic": "mat1500-logic",
+    "difficulty": 1,
+    "prompt": "Quelle proposition est logiquement équivalente à $p \\rightarrow q$ ?",
+    "explanation": "$p \\rightarrow q \\equiv \\neg p \\vee q$ : c'est la définition même du conditionnel en termes de $\\vee$ et $\\neg$, utile pour pousser une négation à l'intérieur.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$\\neg p \\vee q$", "correct": true },
+      {
+        "text": "$p \\vee \\neg q$",
+        "correct": false,
+        "why": "Ceci inverse le rôle de $p$ et $q$ ; ce n'est pas ce que dit le conditionnel."
+      },
+      {
+        "text": "$\\neg p \\wedge q$",
+        "correct": false,
+        "why": "Le connecteur principal du conditionnel est $\\vee$, pas $\\wedge$."
+      },
+      {
+        "text": "$p \\wedge \\neg q$",
+        "correct": false,
+        "why": "C'est la négation de $p \\rightarrow q$, pas $p \\rightarrow q$ lui-même."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-logic-002",
+    "course": "MAT1500",
+    "topic": "mat1500-logic",
+    "difficulty": 1,
+    "prompt": "La réciproque de « si $p$ alors $q$ » est « si $q$ alors $p$ ».",
+    "explanation": "C'est bien la définition de la réciproque ($q \\rightarrow p$), à ne pas confondre avec la contraposée ($\\neg q \\rightarrow \\neg p$), qui elle est toujours équivalente à l'énoncé original.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1500-logic-003",
+    "course": "MAT1500",
+    "topic": "mat1500-logic",
+    "difficulty": 2,
+    "prompt": "Quelle est la négation correcte de $p \\wedge q$ selon les lois de De Morgan ?",
+    "explanation": "$\\neg(p \\wedge q) \\equiv \\neg p \\vee \\neg q$ : nier un « et » donne un « ou » des négations. L'erreur classique est de garder $\\wedge$ après avoir nié chaque membre.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$\\neg p \\vee \\neg q$", "correct": true },
+      {
+        "text": "$\\neg p \\wedge \\neg q$",
+        "correct": false,
+        "why": "De Morgan change le connecteur : nier un $\\wedge$ produit un $\\vee$, pas un $\\wedge$."
+      },
+      {
+        "text": "$p \\vee q$",
+        "correct": false,
+        "why": "Il faut aussi nier chacun des membres, pas seulement changer le connecteur."
+      },
+      {
+        "text": "$\\neg p \\vee q$",
+        "correct": false,
+        "why": "Le second membre doit aussi être nié : c'est $\\neg q$, pas $q$."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-logic-004",
+    "course": "MAT1500",
+    "topic": "mat1500-logic",
+    "difficulty": 1,
+    "prompt": "Quelle expression décrit le mieux comment lire $p \\leftrightarrow q$ (le biconditionnel) ?",
+    "explanation": "$p \\leftrightarrow q$ signifie « $p$ si et seulement si $q$ », vrai exactement quand $p$ et $q$ ont la même valeur de vérité, c'est-à-dire $(p \\rightarrow q) \\wedge (q \\rightarrow p)$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$p$ si et seulement si $q$", "correct": true },
+      {
+        "text": "si $p$ alors $q$, mais pas l'inverse",
+        "correct": false,
+        "why": "Ceci décrit un conditionnel simple $p \\rightarrow q$, pas un biconditionnel : le biconditionnel exige l'implication dans les deux sens."
+      },
+      {
+        "text": "$p$ ou $q$, mais pas les deux",
+        "correct": false,
+        "why": "C'est la description du ou exclusif $p \\oplus q$, pas du biconditionnel."
+      },
+      {
+        "text": "ni $p$ ni $q$",
+        "correct": false,
+        "why": "Ceci correspond à $\\neg p \\wedge \\neg q$, sans rapport avec le biconditionnel."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-logic-005",
+    "course": "MAT1500",
+    "topic": "mat1500-logic",
+    "difficulty": 3,
+    "prompt": "Prouve, en nommant chaque loi utilisée, que $\\neg(p \\rightarrow q) \\equiv p \\wedge \\neg q$.",
+    "explanation": "L'erreur fréquente est de nier seulement l'implication en $\\neg p \\rightarrow \\neg q$ au lieu de d'abord réécrire $p \\rightarrow q$ en $\\neg p \\vee q$ puis d'appliquer De Morgan.",
+    "challenge": true,
+    "type": "flash",
+    "answer": "$\\neg(p \\rightarrow q) \\equiv p \\wedge \\neg q$.",
+    "keyPoints": [
+      "Loi du conditionnel : $p \\rightarrow q \\equiv \\neg p \\vee q$",
+      "De Morgan : $\\neg(\\neg p \\vee q) \\equiv \\neg\\neg p \\wedge \\neg q \\equiv p \\wedge \\neg q$"
+    ],
+    "solution": "1. Loi du conditionnel : $p \\rightarrow q \\equiv \\neg p \\vee q$.\n2. Donc $\\neg(p \\rightarrow q) \\equiv \\neg(\\neg p \\vee q)$.\n3. De Morgan : $\\neg(\\neg p \\vee q) \\equiv \\neg(\\neg p) \\wedge \\neg q$.\n4. Double négation : $\\neg(\\neg p) \\equiv p$, donc le résultat est $p \\wedge \\neg q$."
+  }
+]
