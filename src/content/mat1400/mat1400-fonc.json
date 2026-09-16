@@ -11,7 +11,7 @@
       { "text": "$x^2+y^2\\le9$", "correct": true },
       { "text": "$x^2+y^2<9$", "correct": false, "why": "L'inégalité n'est pas stricte : le bord $x^2+y^2=9$ donne $f=0$, une valeur bien définie, donc il fait partie du domaine." },
       { "text": "$x^2+y^2\\ge9$", "correct": false, "why": "Le sens de l'inégalité est inversé : il faut que la quantité sous la racine soit positive, pas négative." },
-      { "text": "$x+y\\le3$", "correct": false, "why": "Confond $x^2+y^2$ avec $(x+y)^2$ : ce ne sont pas la même expression." }
+      { "text": "$x+y\\le3$", "correct": false, "why": "$\\sqrt{x^2+y^2}\\ne x+y$ : on ne peut pas prendre la racine carrée terme à terme." }
     ]
   },
   {
@@ -80,8 +80,8 @@
     "choices": [
       { "text": "$0$", "correct": true },
       { "text": "$\\dfrac12$", "correct": false, "why": "C'est la valeur obtenue pour $\\dfrac{xy}{x^2+y^2}$ le long de $y=x$ — une expression différente, sans le facteur $x^2$ au numérateur." },
-      { "text": "N'existe pas", "correct": false, "why": "Cette expression ressemble à $\\dfrac{xy}{x^2+y^2}$ (dont la limite n'existe pas), mais le facteur $x^2$ supplémentaire la borne : ici la limite existe bel et bien, par encadrement." },
-      { "text": "$1$", "correct": false, "why": "Aucun chemin standard (ni l'encadrement) ne donne cette valeur." }
+      { "text": "N'existe pas : les chemins $y=0$ et $y=x$ donnent des valeurs différentes", "correct": false, "why": "Faux ici : le long de $y=x$, l'expression vaut $\\dfrac{x^3}{2x^2}=\\dfrac{x}{2}\\to0$, la MÊME valeur que le long de $y=0$. Ce raisonnement est correct pour $\\dfrac{xy}{x^2+y^2}$ (thème précédent), pas pour cette expression-ci." },
+      { "text": "N'existe pas, car $f(0,0)$ n'est pas défini", "correct": false, "why": "Que $f$ ne soit pas définie EN $(0,0)$ n'empêche pas sa LIMITE d'exister en s'approchant de ce point : c'est justement pour ça qu'on étudie les limites plutôt que la simple valeur de la fonction." }
     ]
   },
   {
@@ -89,7 +89,7 @@
     "course": "MAT1400",
     "topic": "mat1400-fonc",
     "difficulty": 1,
-    "prompt": "Une fonction $f(x,y)$ est continue en $(a,b)$ si $f(a,b)$ existe et que $\\lim_{(x,y)\\to(a,b)} f(x,y)$ existe (peu importe si les deux valeurs sont égales).",
+    "prompt": "$f$ est continue en $(a,b)$ dès que $f(a,b)$ est défini et que $\\lim_{(x,y)\\to(a,b)}f(x,y)$ existe.",
     "explanation": "Il manque la condition essentielle : la limite doit être ÉGALE à $f(a,b)$, pas seulement exister séparément. Une fonction peut avoir une limite en un point sans que $f$ y soit continue.",
     "type": "vf",
     "answer": false
@@ -106,6 +106,63 @@
     "keyPoints": [
       "Exclure où le dénominateur s'annule",
       "$x^2-y=0 \\Leftrightarrow y=x^2$ : toute une parabole est exclue, pas juste un point"
+    ]
+  },
+  {
+    "id": "mat1400-fonc-009",
+    "course": "MAT1400",
+    "topic": "mat1400-fonc",
+    "difficulty": 3,
+    "challenge": true,
+    "prompt": "La limite $\\lim_{(x,y)\\to(0,0)} \\dfrac{x^3+y^3}{x^2+y^2}$...",
+    "explanation": "En coordonnées polaires, l'expression se borne par $2r$, qui tend vers $0$ peu importe l'angle $\\theta$ : c'est le théorème d'encadrement qui tranche, pas le fait que le facteur angulaire dépende de $\\theta$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Existe et vaut $0$", "correct": true },
+      { "text": "N'existe pas", "correct": false, "why": "Généralise à tort le comportement de $xy/(x^2+y^2)$ (thème précédent) : ici le numérateur est de degré 3, ce qui borne l'expression et force la convergence." },
+      { "text": "Vaut $1$", "correct": false, "why": "Aucun chemin standard ni l'encadrement polaire ne donne cette valeur." },
+      { "text": "Dépend de l'angle $\\theta$, donc n'existe pas", "correct": false, "why": "Le facteur $\\cos^3\\theta+\\sin^3\\theta$ dépend bien de $\\theta$, mais il reste BORNÉ (entre $-2$ et $2$) et est multiplié par $r\\to0$ : la limite existe malgré la dépendance angulaire du facteur borné." }
+    ],
+    "solution": "1. Passer en coordonnées polaires : $x=r\\cos\\theta$, $y=r\\sin\\theta$.\n2. Numérateur : $x^3+y^3=r^3(\\cos^3\\theta+\\sin^3\\theta)$. Dénominateur : $x^2+y^2=r^2$.\n3. L'expression devient $r(\\cos^3\\theta+\\sin^3\\theta)$.\n4. Comme $|\\cos^3\\theta+\\sin^3\\theta|\\le2$ pour tout $\\theta$, on a $|f(x,y)|\\le2r\\to0$ quand $r\\to0$, peu importe $\\theta$.\n5. Par le théorème d'encadrement, la limite existe et vaut $0$."
+  },
+  {
+    "id": "mat1400-fonc-010",
+    "course": "MAT1400",
+    "topic": "mat1400-fonc",
+    "difficulty": 3,
+    "prompt": "Pour $f(x,y)=\\dfrac{xy^2}{x^2+y^4}$, que révèle le chemin $x=y^2$ comparé aux chemins linéaires $y=mx$ ?",
+    "explanation": "Le long de $y=mx$ : $f=\\dfrac{m^2x^3}{x^2+m^4x^4}\\to0$ pour toute pente $m$ fixée. Mais le long de $x=y^2$ : $f=\\dfrac{y^2\\cdot y^2}{y^4+y^4}=\\dfrac12$. Deux valeurs différentes ⇒ la limite n'existe pas, même si TOUTES les droites donnent $0$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Tous les chemins linéaires donnent $0$, mais $x=y^2$ donne $1/2$ : la limite n'existe pas", "correct": true },
+      { "text": "Tous les chemins, linéaires ou non, donnent $0$ : la limite existe et vaut $0$", "correct": false, "why": "Tester seulement des droites ne suffit JAMAIS à conclure à l'existence : ici une parabole révèle une valeur différente ($1/2$)." },
+      { "text": "Le chemin $x=y^2$ donne aussi $0$", "correct": false, "why": "En substituant $x=y^2$ : $f=\\dfrac{y^2\\cdot y^2}{y^4+y^4}=\\dfrac12$, pas $0$." },
+      { "text": "Cette fonction n'a pas de limite le long d'AUCUN chemin", "correct": false, "why": "Chaque chemin pris individuellement donne bien une limite précise ; c'est seulement que ces valeurs diffèrent d'un chemin à l'autre." }
+    ]
+  },
+  {
+    "id": "mat1400-fonc-011",
+    "course": "MAT1400",
+    "topic": "mat1400-fonc",
+    "difficulty": 2,
+    "prompt": "Si $f$ et $g$ sont continues, alors $f\\circ g$ (quand elle est définie) est aussi continue.",
+    "explanation": "C'est un théorème standard : la composition de fonctions continues est continue, exactement comme pour les fonctions d'une variable.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1400-fonc-012",
+    "course": "MAT1400",
+    "topic": "mat1400-fonc",
+    "difficulty": 1,
+    "prompt": "Domaine de $f(x,y)=\\dfrac{1}{\\sqrt{x-y}}$ ?",
+    "explanation": "Il faut $x-y>0$ STRICTEMENT : la racine exige $x-y\\ge0$, mais la division exige en plus que le dénominateur ne soit pas nul, donc $x-y\\ne0$. Les deux ensemble forcent $x>y$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$x>y$", "correct": true },
+      { "text": "$x\\ge y$", "correct": false, "why": "À $x=y$, le dénominateur $\\sqrt{x-y}=\\sqrt0=0$ : la division par $0$ n'est pas définie, même si la racine l'est." },
+      { "text": "$x\\le y$", "correct": false, "why": "Le sens de l'inégalité est inversé : il faut un argument positif sous la racine." },
+      { "text": "$x\\ne y$", "correct": false, "why": "Permettrait $x<y$, où $x-y<0$ et la racine carrée d'un nombre négatif n'est même pas définie (dans les réels)." }
     ]
   }
 ]
