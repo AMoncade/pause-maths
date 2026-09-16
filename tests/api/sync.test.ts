@@ -1,59 +1,89 @@
-// Propriété du lot PWA. Tests de la logique de api/sync.ts (GET/PUT/merge/rate-limit),
-// avec @vercel/blob mocké par un store en mémoire (pas d'appel réseau réel).
+// Propriété du lot PWA. Tests de la logique de api/sync.ts (GET/PUT/merge/CAS/
+// rate-limit), avec @vercel/blob mocké par un store en mémoire (pas d'appel
+// réseau réel). Le mock modélise l'essentiel du contrat réel : etag par
+// écriture, ifMatch/allowOverwrite conditionnels (BlobPreconditionFailedError
+// sinon), et une file `__getQueue` pour scripter une lecture "périmée" et
+// simuler un entrelacement de deux écrivains concurrents.
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import type { Progress } from '@/lib/types';
 
-const blobStore = new Map<string, string>();
-
 vi.mock('@vercel/blob', () => {
+  class BlobError extends Error {}
+  class BlobPreconditionFailedError extends BlobError {
+    constructor() {
+      super('The specified precondition failed for one of the conditionals.');
+    }
+  }
+
+  const store = new Map<string, { text: string; etag: string }>();
+  const getQueue: Array<'ABSENT' | { text: string; etag: string }> = [];
+  let etagCounter = 0;
+
+  function makeGetResult(text: string, etag: string) {
+    const stream = new ReadableStream<Uint8Array>({
+      start(controller) {
+        controller.enqueue(new TextEncoder().encode(text));
+        controller.close();
+      },
+    });
+    return {
+      statusCode: 200,
+      stream,
+      headers: new Headers(),
+      blob: {
+        url: '',
+        downloadUrl: '',
+        pathname: '',
+        contentDisposition: '',
+        cacheControl: '',
+        uploadedAt: new Date(),
+        etag,
+        contentType: 'application/json',
+        size: text.length,
+      },
+    };
+  }
+
   return {
+    BlobError,
+    BlobPreconditionFailedError,
+    __store: store,
+    __getQueue: getQueue,
     get: vi.fn(async (pathname: string) => {
-      const text = blobStore.get(pathname);
-      if (text === undefined) return null;
-      const stream = new ReadableStream<Uint8Array>({
-        start(controller) {
-          controller.enqueue(new TextEncoder().encode(text));
-          controller.close();
-        },
-      });
-      return {
-        statusCode: 200,
-        stream,
-        headers: new Headers(),
-        blob: {
-          url: '',
-          downloadUrl: '',
-          pathname,
-          contentDisposition: '',
-          cacheControl: '',
-          uploadedAt: new Date(),
-          etag: '',
-          contentType: 'application/json',
-          size: text.length,
-        },
-      };
+      if (getQueue.length > 0) {
+        const scripted = getQueue.shift()!;
+        if (scripted === 'ABSENT') return null;
+        return makeGetResult(scripted.text, scripted.etag);
+      }
+      const entry = store.get(pathname);
+      return entry ? makeGetResult(entry.text, entry.etag) : null;
     }),
-    put: vi.fn(async (pathname: string, body: string) => {
-      blobStore.set(pathname, body);
+    put: vi.fn(async (pathname: string, body: string, opts: { ifMatch?: string; allowOverwrite?: boolean }) => {
+      const existing = store.get(pathname);
+      if (opts?.ifMatch) {
+        if (!existing || existing.etag !== opts.ifMatch) throw new BlobPreconditionFailedError();
+      } else if (existing && opts?.allowOverwrite !== true) {
+        throw new BlobPreconditionFailedError();
+      }
+      const etag = `etag-${++etagCounter}`;
+      store.set(pathname, { text: body, etag });
       return { pathname, url: '', downloadUrl: '', contentType: 'application/json', contentDisposition: '' };
     }),
   };
 });
 
 const { default: handler } = await import('../../api/sync');
+const blob = (await import('@vercel/blob')) as unknown as {
+  __store: Map<string, { text: string; etag: string }>;
+  __getQueue: Array<'ABSENT' | { text: string; etag: string }>;
+  get: ReturnType<typeof vi.fn>;
+  put: ReturnType<typeof vi.fn>;
+};
 
-function makeReq(opts: {
-  method: string;
-  key?: string;
-  body?: unknown;
-  contentLength?: number;
-}) {
-  return {
-    method: opts.method,
-    query: { key: opts.key ?? '' },
-    headers: opts.contentLength !== undefined ? { 'content-length': String(opts.contentLength) } : {},
-    body: opts.body,
-  } as any;
+function makeReq(opts: { method: string; key?: string; body?: unknown; contentLength?: number; ip?: string }) {
+  const headers: Record<string, string> = { 'x-sync-key': opts.key ?? '', 'x-forwarded-for': opts.ip ?? opts.key ?? 'no-key' };
+  if (opts.contentLength !== undefined) headers['content-length'] = String(opts.contentLength);
+  return { method: opts.method, query: {}, headers, body: opts.body } as any;
 }
 
 function makeRes() {
@@ -86,12 +116,16 @@ function progress(over: Partial<Progress> = {}): Progress {
   };
 }
 
+const card = (box: 1 | 2 | 3 | 4 | 5, due: number, at: number) => ({ box, due, n: 1, k: 1, wrongLast: false, at });
+
 const KEY_A = 'a'.repeat(64);
 const KEY_B = 'b'.repeat(64);
 
 describe('api/sync', () => {
   beforeEach(() => {
-    blobStore.clear();
+    blob.__store.clear();
+    blob.__getQueue.length = 0;
+    vi.clearAllMocks();
   });
 
   it('rejette une clé mal formée', async () => {
@@ -152,10 +186,7 @@ describe('api/sync', () => {
 
   it('rejette un corps trop gros (content-length)', async () => {
     const res = makeRes();
-    await handler(
-      makeReq({ method: 'PUT', key: KEY_A, body: progress(), contentLength: 300_000 }),
-      res,
-    );
+    await handler(makeReq({ method: 'PUT', key: KEY_A, body: progress(), contentLength: 300_000 }), res);
     expect(res.statusCode).toBe(413);
   });
 
@@ -170,7 +201,10 @@ describe('api/sync', () => {
     let last = makeRes();
     for (let i = 0; i < 25; i++) {
       last = makeRes();
-      await handler(makeReq({ method: 'PUT', key, body: progress({ settings: { courses: [], topicOverrides: {}, challenge: false, updatedAt: i } }) }), last);
+      await handler(
+        makeReq({ method: 'PUT', key, body: progress({ settings: { courses: [], topicOverrides: {}, challenge: false, updatedAt: i } }) }),
+        last,
+      );
     }
     expect(last.statusCode).toBe(429);
   });
@@ -179,5 +213,77 @@ describe('api/sync', () => {
     const res = makeRes();
     await handler(makeReq({ method: 'DELETE', key: KEY_A }), res);
     expect(res.statusCode).toBe(405);
+  });
+
+  // --- Relecture Engine : points 1, 2, 3 ---
+
+  it('deux PUT entrelacés convergent sans perte (conflit détecté, nouvelle tentative)', async () => {
+    const key = 'd'.repeat(64);
+    const p1 = progress({ cards: { qa: card(1, 100, 10) } });
+    const p2 = progress({ cards: { qb: card(1, 200, 20) } });
+
+    const res1 = makeRes();
+    await handler(makeReq({ method: 'PUT', key, body: p1 }), res1);
+    expect(res1.statusCode).toBe(200);
+
+    // Le deuxième écrivain a lu l'état AVANT l'écriture ci-dessus (comme s'il
+    // tournait en parallèle) : sa première lecture voit encore "absent".
+    blob.__getQueue.push('ABSENT');
+
+    const res2 = makeRes();
+    await handler(makeReq({ method: 'PUT', key, body: p2 }), res2);
+    expect(res2.statusCode).toBe(200);
+    expect(res2.body.cards).toMatchObject({ qa: p1.cards.qa, qb: p2.cards.qb });
+    // 1 écriture pour res1, 2 tentatives pour res2 (échec précondition puis succès).
+    expect(blob.put).toHaveBeenCalledTimes(3);
+
+    const getRes = makeRes();
+    await handler(makeReq({ method: 'GET', key }), getRes);
+    expect(getRes.body.cards).toMatchObject({ qa: p1.cards.qa, qb: p2.cards.qb });
+  });
+
+  it('ne stocke ni ne renvoie jamais syncCode', async () => {
+    const key = 'e'.repeat(64);
+    const p = progress({ syncCode: 'SECRET12345' });
+
+    const putRes = makeRes();
+    await handler(makeReq({ method: 'PUT', key, body: p }), putRes);
+    expect(putRes.statusCode).toBe(200);
+    expect(putRes.body.syncCode).toBeUndefined();
+
+    const stored = blob.__store.get(`sync/${key}.json`)!;
+    expect(stored.text).not.toContain('SECRET12345');
+    expect(stored.text).not.toContain('syncCode');
+
+    const getRes = makeRes();
+    await handler(makeReq({ method: 'GET', key }), getRes);
+    expect(getRes.body.syncCode).toBeUndefined();
+  });
+
+  it("ne réécrit jamais un blob illisible sans le sauvegarder d'abord", async () => {
+    const key = 'f'.repeat(64);
+    const pathname = `sync/${key}.json`;
+    const oldShapeText = JSON.stringify({
+      v: 1,
+      cards: {},
+      activeDays: [],
+      settings: { courses: ['MAT1400'], topics: [], challenge: false, updatedAt: 1 }, // ancien contrat
+      flagged: [],
+    });
+    blob.__store.set(pathname, { text: oldShapeText, etag: 'etag-seed' });
+
+    const getRes = makeRes();
+    await handler(makeReq({ method: 'GET', key }), getRes);
+    expect(getRes.statusCode).toBe(422); // ni 200 (silencieux) ni 404 ("code inexistant", faux)
+
+    const incoming = progress({ cards: { qz: card(2, 300, 30) } });
+    const putRes = makeRes();
+    await handler(makeReq({ method: 'PUT', key, body: incoming }), putRes);
+    expect(putRes.statusCode).toBe(200);
+    expect(putRes.body.cards.qz).toEqual(incoming.cards.qz);
+
+    const backupPathname = [...blob.__store.keys()].find((k) => k.startsWith(`sync/${key}.backup-`));
+    expect(backupPathname).toBeDefined();
+    expect(blob.__store.get(backupPathname!)!.text).toBe(oldShapeText);
   });
 });
