@@ -1,0 +1,26 @@
+// Point d'entrée unique de l'UI vers le moteur (lot Engine) et la PWA (lot PWA).
+// Tant que ces lots ne sont pas fusionnés, tout vient de ui-stubs.ts.
+export {
+  STORAGE_KEY,
+  emptyProgress,
+  loadProgress,
+  saveProgress,
+  markActive,
+  streak,
+  xp,
+  level,
+  levelProgress,
+  mastery,
+  toggleFlag,
+  applyAnswer,
+  nextQuestion,
+  mulberry32,
+  generateSyncCode,
+  formatSyncCode,
+  normalizeSyncCode,
+  syncNow,
+  checkSyncCode,
+  initPwa,
+  onUpdateReady,
+  applyUpdate,
+} from './ui-stubs';

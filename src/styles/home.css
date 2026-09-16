@@ -1,0 +1,191 @@
+/* Accueil : barre, cours, Défi, modes de jeu. */
+.home-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  min-height: 3rem;
+}
+
+.wordmark {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 auto 0 0;
+  font: 800 1.5rem/1 var(--font-display);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.pause-mark {
+  flex: none;
+}
+
+.streak {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+  height: 2.25rem;
+  margin-right: 0.375rem;
+  padding: 0 0.75rem 0 0.5rem;
+  font: 800 1.0625rem/1 var(--font-display);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+  background: var(--surface-sunk);
+  border-radius: 999px;
+}
+
+.streak.is-on {
+  color: var(--streak-ink);
+  background: var(--streak-bg);
+}
+
+.streak__unit {
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+/* ---------- cours ---------- */
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.625rem 0.75rem;
+}
+
+.course-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.125rem;
+  min-width: 0;
+  margin: 0 0 var(--lip);
+  padding: 0.75rem 0.75rem 0.8125rem 0.875rem;
+  text-align: left;
+  color: var(--ink);
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-l);
+  box-shadow: 0 var(--lip) 0 var(--line-strong);
+  cursor: pointer;
+  transition:
+    transform 90ms ease-out,
+    box-shadow 90ms ease-out,
+    background-color var(--dur),
+    border-color var(--dur);
+}
+
+.course-tile[aria-pressed='true'] {
+  background: var(--c-soft);
+  border-color: var(--c);
+  box-shadow: 0 var(--lip) 0 var(--c);
+}
+
+.course-tile:active {
+  transform: translateY(var(--lip));
+  box-shadow: 0 0 0 transparent;
+}
+
+.course-tile__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.course-code {
+  font: 800 1.25rem/1.1 var(--font-display);
+  letter-spacing: 0.01em;
+  color: var(--c-ink);
+}
+
+.course-tick {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 1.375rem;
+  height: 1.375rem;
+  color: transparent;
+  border: 2px solid var(--line-strong);
+  border-radius: 999px;
+  transition:
+    background-color var(--dur),
+    border-color var(--dur),
+    color var(--dur);
+}
+
+.course-tile[aria-pressed='true'] .course-tick {
+  color: var(--on-c);
+  background: var(--c-fill);
+  border-color: var(--c-fill);
+}
+
+.course-title {
+  overflow: hidden;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--ink-3);
+}
+
+.course-level {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.375rem;
+}
+
+.course-level__n {
+  flex: none;
+  font: 800 0.8125rem/1 var(--font-display);
+  color: var(--c-ink);
+}
+
+.course-level .meter__fill {
+  min-width: 0.5rem;
+}
+
+/* ---------- modes ---------- */
+.home-spacer {
+  flex: 1;
+  min-height: 0.25rem;
+}
+
+.modes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modes__note {
+  margin: 0 0 0.25rem;
+  font-size: 0.875rem;
+  text-align: center;
+  color: var(--ink-3);
+}
+
+.modes__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.mode-btn {
+  min-height: 3.5rem;
+  font-size: 1.125rem;
+}
+
+.mode-btn svg {
+  color: var(--ink-3);
+}
+
+.has-accent .mode-btn svg {
+  color: var(--c-ink);
+}
+
+@media (min-width: 40rem) {
+  .home {
+    gap: 1.5rem;
+    padding-top: max(env(safe-area-inset-top), 1.5rem);
+  }
+}
