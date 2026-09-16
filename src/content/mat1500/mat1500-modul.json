@@ -1,0 +1,161 @@
+[
+  {
+    "id": "mat1500-modul-001",
+    "course": "MAT1500",
+    "topic": "mat1500-modul",
+    "difficulty": 1,
+    "prompt": "Que vaut $17 \\bmod 5$ ?",
+    "explanation": "$17 = 3 \\times 5 + 2$, donc le reste est $2$. Le résultat de $a \\bmod n$ est toujours choisi dans $\\{0, 1, \\ldots, n-1\\}$, jamais négatif ni supérieur ou égal à $n$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$2$", "correct": true },
+      {
+        "text": "$3$",
+        "correct": false,
+        "why": "$3$ est le quotient de la division ($17 \\div 5 = 3$ reste $2$), pas le reste demandé."
+      },
+      {
+        "text": "$12$",
+        "correct": false,
+        "why": "$12 = 17 - 5$ n'est qu'une soustraction partielle ; il faut continuer à soustraire des multiples de 5 jusqu'à obtenir un reste dans $\\{0,\\ldots,4\\}$."
+      },
+      {
+        "text": "$0$",
+        "correct": false,
+        "why": "$17$ n'est pas un multiple de $5$ (le seul cas où le reste serait $0$)."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-modul-002",
+    "course": "MAT1500",
+    "topic": "mat1500-modul",
+    "difficulty": 2,
+    "prompt": "Que vaut $-7 \\bmod 3$ ?",
+    "explanation": "Par convention, $a \\bmod n$ est toujours dans $\\{0, \\ldots, n-1\\}$, jamais négatif. Ici $-7 = -3 \\times 3 + 2$, donc $-7 \\bmod 3 = 2$. L'erreur classique est de garder un reste négatif (comme $-1$, obtenu avec $-7 = -2 \\times 3 - 1$) au lieu d'ajuster vers le représentant positif.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$2$", "correct": true },
+      {
+        "text": "$-1$",
+        "correct": false,
+        "why": "$-1$ est un reste négatif, obtenu en arrondissant le quotient vers zéro ; par convention $a \\bmod n$ doit rester dans $\\{0, \\ldots, n-1\\}$, donc on ajoute $n=3$ pour obtenir $2$."
+      },
+      {
+        "text": "$1$",
+        "correct": false,
+        "why": "$-7 = -3\\times 3 + 2$, pas $+1$ : vérifier par $-3 \\times 3 = -9$, et $-9 + 2 = -7$ ✓, alors que $-9 + 1 = -8 \\ne -7$."
+      },
+      {
+        "text": "$-7$",
+        "correct": false,
+        "why": "Le résultat d'un modulo doit être un reste réduit dans $\\{0, \\ldots, n-1\\}$, jamais le nombre de départ lui-même."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-modul-003",
+    "course": "MAT1500",
+    "topic": "mat1500-modul",
+    "difficulty": 1,
+    "prompt": "$a \\equiv b \\pmod{n}$ signifie que $n$ divise $a - b$.",
+    "explanation": "Vrai : c'est la définition même de la congruence modulo $n$. Par exemple $17 \\equiv 2 \\pmod 5$ car $5 \\mid (17 - 2) = 15$.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1500-modul-004",
+    "course": "MAT1500",
+    "topic": "mat1500-modul",
+    "difficulty": 2,
+    "prompt": "Si $a \\equiv b \\pmod n$ et $c \\equiv d \\pmod n$, laquelle de ces opérations préserve la congruence ?",
+    "explanation": "La congruence modulo $n$ est compatible avec l'addition, la soustraction **et** la multiplication : $ac \\equiv bd \\pmod n$. Ce n'est en général PAS le cas pour la division, qui exige des conditions supplémentaires (inverse modulaire).",
+    "type": "qcm",
+    "choices": [
+      { "text": "$ac \\equiv bd \\pmod n$", "correct": true },
+      {
+        "text": "$a/c \\equiv b/d \\pmod n$ toujours",
+        "correct": false,
+        "why": "La division n'est pas toujours compatible avec la congruence : elle exige que $c$ (et $d$) soient inversibles modulo $n$, une condition supplémentaire non garantie ici."
+      },
+      {
+        "text": "$a^c \\equiv b^d \\pmod n$ toujours",
+        "correct": false,
+        "why": "L'exponentiation ne se comporte pas comme l'addition/multiplication ; élever à une puissance congrue ne préserve pas la congruence en général."
+      },
+      {
+        "text": "aucune de ces opérations n'est garantie",
+        "correct": false,
+        "why": "C'est trop pessimiste : addition, soustraction et multiplication sont bien garanties par les propriétés de base de la congruence."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-modul-005",
+    "course": "MAT1500",
+    "topic": "mat1500-modul",
+    "difficulty": 1,
+    "prompt": "$23 \\equiv 3 \\pmod{5}$.",
+    "explanation": "Vrai : $23 - 3 = 20$, et $5 \\mid 20$. On peut aussi vérifier directement que $23 \\bmod 5 = 3$.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1500-modul-006",
+    "course": "MAT1500",
+    "topic": "mat1500-modul",
+    "difficulty": 2,
+    "prompt": "Sachant qu'aujourd'hui est un mardi, quel jour sera-t-il dans $17$ jours ? (lundi = 0, mardi = 1, ..., dimanche = 6)",
+    "explanation": "On calcule $(1 + 17) \\bmod 7 = 18 \\bmod 7 = 4$, qui correspond au vendredi. Une erreur fréquente est d'oublier de réduire modulo 7 et de compter les jours un par un, ou de mal aligner l'indexation des jours.",
+    "type": "qcm",
+    "choices": [
+      { "text": "vendredi", "correct": true },
+      {
+        "text": "jeudi",
+        "correct": false,
+        "why": "Correspondrait à l'indice 3, mais $18 \\bmod 7 = 4$, pas $3$."
+      },
+      {
+        "text": "mardi",
+        "correct": false,
+        "why": "Ce serait le cas si $17$ était un multiple de $7$ ; or $17$ n'est pas un multiple de $7$, donc le jour change."
+      },
+      {
+        "text": "samedi",
+        "correct": false,
+        "why": "Correspondrait à l'indice 5, mais $18 \\bmod 7 = 4$, pas $5$."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-modul-007",
+    "course": "MAT1500",
+    "topic": "mat1500-modul",
+    "difficulty": 1,
+    "prompt": "Explique pourquoi $a \\bmod n$ (la fonction reste) est toujours un résultat dans $\\{0, 1, \\ldots, n-1\\}$, jamais négatif.",
+    "explanation": "C'est une convention qui garantit l'unicité et l'utilité pratique de l'opération (par exemple pour indexer un tableau circulaire) ; si on autorisait des restes négatifs, il y aurait plusieurs façons valides d'écrire le même résultat.",
+    "type": "flash",
+    "answer": "Par définition, $a \\bmod n$ est le reste $r$ de la division entière de $a$ par $n$, choisi pour satisfaire $0 \\le r < n$ ; on ajuste le quotient (en l'arrondissant vers le bas, pas vers zéro) jusqu'à ce que le reste tombe dans cet intervalle.",
+    "keyPoints": [
+      "Le reste est toujours choisi dans $\\{0, 1, \\ldots, n-1\\}$",
+      "Pour un $a$ négatif, on arrondit le quotient vers $-\\infty$ (pas vers 0) pour obtenir un reste positif"
+    ]
+  },
+  {
+    "id": "mat1500-modul-008",
+    "course": "MAT1500",
+    "topic": "mat1500-modul",
+    "difficulty": 3,
+    "prompt": "Prouve que si $a \\equiv b \\pmod n$ et $c \\equiv d \\pmod n$, alors $a + c \\equiv b + d \\pmod n$.",
+    "explanation": "La preuve utilise directement la définition de la congruence en termes de divisibilité ; l'erreur fréquente est de manipuler les congruences comme de simples égalités sans revenir à leur définition ($n \\mid (a-b)$) quand une justification rigoureuse est demandée.",
+    "challenge": true,
+    "type": "flash",
+    "answer": "$a \\equiv b \\pmod n$ et $c \\equiv d \\pmod n$ impliquent $a + c \\equiv b + d \\pmod n$.",
+    "keyPoints": [
+      "$a \\equiv b \\pmod n$ signifie $n \\mid (a - b)$, donc $a - b = nk_1$ pour un entier $k_1$",
+      "$c \\equiv d \\pmod n$ signifie $c - d = nk_2$ pour un entier $k_2$",
+      "En additionnant : $(a+c) - (b+d) = n(k_1+k_2)$, donc $n \\mid ((a+c)-(b+d))$"
+    ],
+    "solution": "Par définition, $a \\equiv b \\pmod n$ signifie $n \\mid (a - b)$, c'est-à-dire qu'il existe un entier $k_1$ tel que $a - b = n k_1$. De même, $c \\equiv d \\pmod n$ donne un entier $k_2$ tel que $c - d = n k_2$.\n\nEn additionnant les deux égalités : $(a - b) + (c - d) = n k_1 + n k_2 = n(k_1 + k_2)$.\n\nEn réarrangeant le membre de gauche : $(a + c) - (b + d) = n(k_1 + k_2)$.\n\nComme $k_1 + k_2$ est un entier, ceci montre que $n \\mid ((a+c) - (b+d))$, c'est-à-dire $a + c \\equiv b + d \\pmod n$."
+  }
+]
