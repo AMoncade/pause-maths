@@ -1,0 +1,248 @@
+[
+  {
+    "id": "stt1700-descr-001",
+    "course": "STT1700",
+    "topic": "stt1700-descr",
+    "difficulty": 1,
+    "type": "qcm",
+    "prompt": "On mesure les temps (en min) : $3, 5, 7, 9, 11$. Quelle est la variance $s^2$ de cet échantillon ?",
+    "explanation": "La variance d'échantillon divise par $n-1=4$, pas par $n=5$. Diviser par $n$ est l'erreur la plus fréquente.",
+    "choices": [
+      {
+        "text": "$10$",
+        "correct": true
+      },
+      {
+        "text": "$8$",
+        "correct": false,
+        "why": "Divise $\\sum(x_i-\\bar{x})^2=40$ par $n=5$ au lieu de $n-1=4$ : c'est la variance de population, pas d'échantillon."
+      },
+      {
+        "text": "$\\sqrt{10}$",
+        "correct": false,
+        "why": "C'est l'écart-type $s$, pas la variance $s^2$."
+      },
+      {
+        "text": "$40$",
+        "correct": false,
+        "why": "C'est $\\sum(x_i-\\bar{x})^2$ sans diviser du tout : il manque le dénominateur $n-1$."
+      }
+    ]
+  },
+  {
+    "id": "stt1700-descr-002",
+    "course": "STT1700",
+    "topic": "stt1700-descr",
+    "difficulty": 1,
+    "type": "qcm",
+    "prompt": "Pour les données $2, 4, 4, 6, 8, 10$ ($n=6$), quelle est la médiane ?",
+    "explanation": "Quand $n$ est pair, la médiane est la moyenne des deux valeurs centrales (positions 3 et 4). Le piège est de ne prendre que l'une des deux.",
+    "choices": [
+      {
+        "text": "$5$",
+        "correct": true
+      },
+      {
+        "text": "$4$",
+        "correct": false,
+        "why": "Prend seulement la valeur en position 3 ($x_{(3)}=4$) sans faire la moyenne avec $x_{(4)}=6$."
+      },
+      {
+        "text": "$6$",
+        "correct": false,
+        "why": "Prend seulement la valeur en position 4 ($x_{(4)}=6$) au lieu de la moyenne $(4+6)/2$."
+      },
+      {
+        "text": "$5{,}67$",
+        "correct": false,
+        "why": "Calcule la moyenne arithmétique $\\bar{x}=34/6\\approx5{,}67$ au lieu de la médiane."
+      }
+    ]
+  },
+  {
+    "id": "stt1700-descr-003",
+    "course": "STT1700",
+    "topic": "stt1700-descr",
+    "difficulty": 2,
+    "type": "qcm",
+    "prompt": "Les données ordonnées sont $1, 2, 8, 9, 10, 12, 14, 15, 18, 20$ ($n=10$). Quel est $Q_1$ par la méthode du cours ?",
+    "explanation": "Position $(n+1)/4=2{,}75$ : on interpole entre $x_{(2)}=2$ et $x_{(3)}=8$, donc $Q_1=2+0{,}75\\times(8-2)=6{,}5$. Le piège est d'arrondir la position au lieu d'interpoler.",
+    "choices": [
+      {
+        "text": "$6{,}5$",
+        "correct": true
+      },
+      {
+        "text": "$2$",
+        "correct": false,
+        "why": "Prend directement $x_{(2)}=2$ (position arrondie vers le bas) sans interpoler les $0{,}75$ vers $x_{(3)}$."
+      },
+      {
+        "text": "$8$",
+        "correct": false,
+        "why": "Utilise la méthode médiane-des-moitiés (médiane des 5 plus petites données, ici $x_{(3)}=8$) au lieu de la position $(n+1)/4$ du cours."
+      },
+      {
+        "text": "$5$",
+        "correct": false,
+        "why": "Utilise la position $n/4=2{,}5$ au lieu de $(n+1)/4=2{,}75$, puis interpole entre $x_{(2)}=2$ et $x_{(3)}=8$."
+      }
+    ]
+  },
+  {
+    "id": "stt1700-descr-004",
+    "course": "STT1700",
+    "topic": "stt1700-descr",
+    "difficulty": 1,
+    "type": "qcm",
+    "prompt": "Un étudiant obtient 72 à un examen dont $\\bar{x}=65$ et $s=10$. Quelle est sa cote $z$ ?",
+    "explanation": "La cote $z=(x-\\bar{x})/s$. Le piège est d'inverser la soustraction ou d'oublier de diviser par $s$.",
+    "choices": [
+      {
+        "text": "$0{,}7$",
+        "correct": true
+      },
+      {
+        "text": "$-0{,}7$",
+        "correct": false,
+        "why": "Calcule $(\\bar{x}-x)/s=(65-72)/10$ : le signe est inversé."
+      },
+      {
+        "text": "$7$",
+        "correct": false,
+        "why": "Calcule $x-\\bar{x}=7$ sans diviser par l'écart-type."
+      },
+      {
+        "text": "$7{,}2$",
+        "correct": false,
+        "why": "Divise $x$ par $s$ directement ($72/10$) au lieu de centrer d'abord."
+      }
+    ]
+  },
+  {
+    "id": "stt1700-descr-005",
+    "course": "STT1700",
+    "topic": "stt1700-descr",
+    "difficulty": 2,
+    "type": "qcm",
+    "prompt": "Si $\\bar{x}=20$, $s_x=4$, $\\bar{y}=50$, $s_y=10$ et $c_{xy}=30$, quelle est la pente $b$ de la droite des moindres carrés $\\hat{y}=a+bx$ ?",
+    "explanation": "La pente est $b=c_{xy}/s_x^2=30/16$. Le piège classique est de diviser par $s_x$ au lieu de $s_x^2$, ou d'utiliser $r_{xy}$ sans convertir.",
+    "choices": [
+      {
+        "text": "$1{,}875$",
+        "correct": true
+      },
+      {
+        "text": "$7{,}5$",
+        "correct": false,
+        "why": "Divise $c_{xy}$ par $s_x=4$ au lieu de $s_x^2=16$ : confond écart-type et variance."
+      },
+      {
+        "text": "$0{,}75$",
+        "correct": false,
+        "why": "Calcule $r_{xy}=c_{xy}/(s_xs_y)=30/40=0{,}75$ : c'est le coefficient de corrélation, pas la pente."
+      },
+      {
+        "text": "$3$",
+        "correct": false,
+        "why": "Divise $c_{xy}=30$ par $s_y=10$ au lieu de $s_x^2=16$ : confond la variable $y$ avec $x$ au dénominateur."
+      }
+    ]
+  },
+  {
+    "id": "stt1700-descr-006",
+    "course": "STT1700",
+    "topic": "stt1700-descr",
+    "difficulty": 2,
+    "type": "qcm",
+    "prompt": "Un résumé à 5 chiffres donne $\\min=10$, $Q_1=25$, $\\text{méd}=40$, $Q_3=55$, $\\max=130$. Jusqu'où la moustache supérieure peut-elle s'étendre au maximum (boîte modifiée) ?",
+    "explanation": "IQR $=55-25=30$, borne haute $=Q_3+1{,}5\\times\\text{IQR}=55+45=100$. Comme $\\max=130>100$, la moustache s'arrête à 100 (ou à la dernière donnée $\\leq 100$), pas à 130.",
+    "choices": [
+      {
+        "text": "$100$",
+        "correct": true
+      },
+      {
+        "text": "$130$",
+        "correct": false,
+        "why": "Étend la moustache jusqu'au maximum : c'est la boîte simple, pas la boîte modifiée."
+      },
+      {
+        "text": "$85$",
+        "correct": false,
+        "why": "Calcule $Q_3+\\text{IQR}=55+30=85$ : oublie le facteur $1{,}5$."
+      },
+      {
+        "text": "$70$",
+        "correct": false,
+        "why": "Calcule $\\text{méd}+\\text{IQR}=40+30=70$ : part de la médiane au lieu de $Q_3$."
+      }
+    ]
+  },
+  {
+    "id": "stt1700-descr-007",
+    "course": "STT1700",
+    "topic": "stt1700-descr",
+    "difficulty": 1,
+    "type": "vf",
+    "prompt": "Le mode d'un échantillon est nécessairement unique.",
+    "explanation": "Faux : si deux valeurs apparaissent le même nombre maximal de fois, la distribution est bimodale. Le mode n'est pas toujours unique.",
+    "answer": false
+  },
+  {
+    "id": "stt1700-descr-008",
+    "course": "STT1700",
+    "topic": "stt1700-descr",
+    "difficulty": 2,
+    "type": "vf",
+    "prompt": "Selon la règle empirique du cours, environ $99\\%$ des données d'une distribution en forme de cloche se situent à moins de $3$ écarts-types de la moyenne.",
+    "explanation": "Vrai : le cours utilise la règle 68-95-99. Le piège est de répondre faux en pensant à la valeur 99,7 % d'autres manuels — ici, la convention du cours dit 99.",
+    "answer": true
+  },
+  {
+    "id": "stt1700-descr-009",
+    "course": "STT1700",
+    "topic": "stt1700-descr",
+    "difficulty": 1,
+    "type": "flash",
+    "prompt": "Le nombre d'enfants dans un ménage est-il une variable qualitative ou quantitative ?",
+    "explanation": "Le piège est de penser « qualitatif » parce que les valeurs sont des petits entiers, mais compter donne bien une variable quantitative (discrète).",
+    "answer": "Quantitative discrète",
+    "keyPoints": [
+      "Une variable quantitative représente une mesure ou un dénombrement.",
+      "Variable discrète car elle ne prend que des valeurs entières."
+    ]
+  },
+  {
+    "id": "stt1700-descr-010",
+    "course": "STT1700",
+    "topic": "stt1700-descr",
+    "difficulty": 3,
+    "type": "qcm",
+    "challenge": true,
+    "prompt": "Données $(x,y)$ : $(1,2),(3,6),(5,14),(7,16),(9,17)$. Avec $\\bar{x}=5$, $\\bar{y}=11$, $c_{xy}=20$ et $s_x^2=10$, quelle est l'équation $\\hat{y}=a+bx$ ?",
+    "explanation": "Il faut $b=c_{xy}/s_x^2$ puis $a=\\bar{y}-b\\bar{x}$. Le piège : oublier de soustraire $b\\bar{x}$ dans $a$, ou échanger les rôles de $a$ et $b$.",
+    "choices": [
+      {
+        "text": "$\\hat{y}=1+2x$",
+        "correct": true
+      },
+      {
+        "text": "$\\hat{y}=11+2x$",
+        "correct": false,
+        "why": "Utilise $a=\\bar{y}=11$ sans soustraire $b\\bar{x}=10$ : oublie que $a=\\bar{y}-b\\bar{x}$."
+      },
+      {
+        "text": "$\\hat{y}=2+x$",
+        "correct": false,
+        "why": "Échange $a$ et $b$ : écrit $1$ comme pente et $2$ comme ordonnée à l'origine, au lieu de $a=1$, $b=2$."
+      },
+      {
+        "text": "$\\hat{y}=8{,}5+0{,}5x$",
+        "correct": false,
+        "why": "Inverse la formule de la pente : calcule $b=s_x^2/c_{xy}=10/20=0{,}5$ au lieu de $c_{xy}/s_x^2$."
+      }
+    ],
+    "solution": "1. On calcule la pente : $b = \\frac{c_{xy}}{s_x^2} = \\frac{20}{10} = 2$.\n2. On calcule l'ordonnée à l'origine : $a = \\bar{y} - b\\bar{x} = 11 - 2 \\times 5 = 1$.\n3. L'équation est donc $\\hat{y} = 1 + 2x$.\n4. Vérification : la droite passe par $(\\bar{x}, \\bar{y}) = (5, 11)$ car $1 + 2\\times5 = 11$. ✓"
+  }
+]
