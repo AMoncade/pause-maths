@@ -19,3 +19,5 @@ Verdicts comparés à la clé : accord total (8/8).
 Aucune correction ni retrait.
 
 **Suite à la relecture Opus** (`docs/reviews/relecture-opus/mat1400.md`) : phrase "Le piège : …" ajoutée aux `explanation` de part-003, part-004, part-008 (aucun changement de réponse ni de structure, pas de nouvelle relecture aveugle nécessaire). Voir `reponse-relecture-opus.md`.
+
+**Ronde 2** (élevée) : part-010, le `why` du distracteur $4{,}996$ était mathématiquement incohérent (un simple signe sur $\Delta y$ donne $5{,}02$, pas $4{,}996$) ; corrigé pour décrire l'erreur réelle (inversion complète du déplacement, $\Delta x=-0{,}02$ ET $\Delta y=+0{,}01$). Décimales converties en virgule française ($5{,}004$ au lieu de $5.004$) dans tout le champ. Valeurs numériques inchangées, pas de nouvelle relecture aveugle nécessaire (vérifié manuellement : $5+0{,}6(-0{,}02)+0{,}8(0{,}01)=5-0{,}012+0{,}008=4{,}996$, cohérent).

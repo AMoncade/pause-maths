@@ -130,13 +130,13 @@
     "course": "MAT1400",
     "topic": "mat1400-part",
     "difficulty": 2,
-    "prompt": "Approximation linéaire de $f(3.02,3.99)$ pour $f(x,y)=\\sqrt{x^2+y^2}$, à partir de $(3,4)$ ?",
-    "explanation": "$f(3,4)=5$. $f_x=x/\\sqrt{x^2+y^2}=3/5$, $f_y=y/\\sqrt{x^2+y^2}=4/5$. Avec $\\Delta x=0.02$, $\\Delta y=-0.01$ : $f\\approx5+0.6(0.02)+0.8(-0.01)=5+0.012-0.008=5.004$.",
+    "prompt": "Approximation linéaire de $f(3{,}02;\\ 3{,}99)$ pour $f(x,y)=\\sqrt{x^2+y^2}$, à partir de $(3,4)$ ?",
+    "explanation": "$f(3,4)=5$. $f_x=x/\\sqrt{x^2+y^2}=3/5$, $f_y=y/\\sqrt{x^2+y^2}=4/5$. Avec $\\Delta x=0{,}02$, $\\Delta y=-0{,}01$ : $f\\approx5+0{,}6(0{,}02)+0{,}8(-0{,}01)=5+0{,}012-0{,}008=5{,}004$.",
     "type": "qcm",
     "choices": [
-      { "text": "$5.004$", "correct": true },
-      { "text": "$5.02$", "correct": false, "why": "$\\Delta x$ a été ajouté directement sans le multiplier par $f_x$, et la contribution de $y$ a été ignorée." },
-      { "text": "$4.996$", "correct": false, "why": "Erreur de signe sur $\\Delta y$ : traité comme $+0.01$ au lieu de $-0.01$ (le point va de $4$ à $3.99$, donc $\\Delta y$ est NÉGATIF)." },
+      { "text": "$5{,}004$", "correct": true },
+      { "text": "$5{,}02$", "correct": false, "why": "$\\Delta x$ a été ajouté directement sans le multiplier par $f_x$, et la contribution de $y$ a été ignorée." },
+      { "text": "$4{,}996$", "correct": false, "why": "Le déplacement a été inversé : $\\Delta x=-0{,}02$ et $\\Delta y=+0{,}01$ ont été utilisés (comme si on repartait du point cible vers le point de référence), au lieu de $\\Delta x=+0{,}02$ et $\\Delta y=-0{,}01$." },
       { "text": "$5$", "correct": false, "why": "Les termes de correction $f_x\\Delta x+f_y\\Delta y$ ont été complètement oubliés, gardant seulement $f(3,4)$." }
     ]
   },
