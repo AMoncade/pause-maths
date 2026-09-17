@@ -2,6 +2,16 @@
 
 Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute la sienne dans son worktree ; l'admin fusionne.
 
+## 2026-09-17 — STT1700 : jalon 3 (12 questions `stt1700-var`) (lot stt1700)
+
+- Brief `docs/regie/briefs/tour2-stt1700-j3.md`. Worktree avancé sur `main` (`git merge --ff-only`, jusqu'à `744b9ee`) avant de commencer.
+- Contenu de section 3 (variables aléatoires discrètes) déjà consigné dans `docs/sources/stt1700.md` depuis le jalon 1 : fonction de masse, espérance, variance $E(X^2)-\mu^2$, transformation affine, combinaisons de v.a. indépendantes, loi binomiale, loi multinomiale — aucune nouvelle lecture PDF nécessaire pour ce jalon.
+- **Écart de méthode signalé à l'admin** : `agy` (Antigravity CLI, `claude-opus-4-6-thinking`) a expiré deux fois (timeout par défaut, puis `-t 10m`), sans réponse exploitable. Conformément à la règle de la skill agy sur timeout, les 12 questions ont été écrites directement par la session au lieu d'un brouillon agy, puis vérifiées en fractions exactes (`fractions.Fraction` + `math.comb` en Python, hors dépôt) avant l'import : bonne réponse et arithmétique de chaque distracteur recalculées pour les 7 qcm numériques, **0 erreur trouvée**. Détail dans `docs/sources/stt1700.md` et `docs/reviews/stt1700/stt1700-var.md`.
+- Import (`npm run import`, aucun `--renumber` nécessaire), gate vert (`npm test` 363 tests, `npm run build`). Relecture aveugle (`scripts/blind-review.ts`, seed 719, clé jamais montrée) par un sous-agent **Haiku** frais : **12/12 confirmées, 0 désaccord, aucune ambiguïté signalée**.
+- `defaultOn` de `stt1700-var` reste `false` (règle du jalon 2 : ne bascule qu'à/après le 2026-09-28 ; ce jalon pousse le 2026-09-17, bien avant le seuil).
+- **Compte mesuré STT1700 : 34 questions** (21 qcm / 8 vf / 5 flash, 4 Défi) sur `stt1700-descr` (10) + `stt1700-prob` (12) + `stt1700-var` (12). Toujours sous le seuil de 40 où `bank-stats.test.ts` applique ses bornes de proportions — au-delà de ce jalon le cours franchira ce seuil si un prochain lot ajoute ≥ 6 questions.
+- Suite : les 7 thèmes de sections 4-10 (hors intra 1) restent à écrire pour l'intra 2 / le final ; repasser `stt1700-prob.defaultOn` à `true` au premier push à/après le 2026-09-21, `stt1700-var.defaultOn` à `true` au premier push à/après le 2026-09-28.
+
 ## 2026-09-17 — MAT1400 (tour 2) : vérification contre le vrai matériel StudiUM (lot mat1400)
 
 - Brief `docs/regie/briefs/tour2-mat1400-verif.md`. `D:\Math\MAT1400` (lecture seule) comparé aux 96 questions et à `src/content/mat1400/index.ts`. Détail complet : `docs/sources/mat1400.md`, `docs/reviews/mat1400/verification-studium.md`.
