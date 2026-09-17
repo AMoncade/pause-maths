@@ -36,11 +36,13 @@
       "worktree": null,
       "branch": null,
       "assignedAt": "2026-09-17T17:44:43Z",
-      "status": "clôture en cours (2 PDF par repli CloudFront)",
+      "status": "clos",
       "exclusive": [
         "chrome",
         "Downloads"
-      ]
+      ],
+      "closedAt": "2026-09-17T19:05:28Z",
+      "result": "4 cours synchronisés, skill 9caaf57"
     },
     {
       "session": "adrie-8f",
