@@ -30,6 +30,25 @@ describe('gate — fixture valide', () => {
     expect(checkBank([q], testCourses, testRetired)).toEqual([]);
   });
 
+  it('ne signale pas « Toutes les … » ni « Aucune des … » quand ce ne sont pas des choix fourre-tout', () => {
+    const q = clone(valid[0]!) as Extract<Question, { type: 'qcm' }>;
+    q.choices[1].text = 'Toutes les droites sont parallèles';
+    q.choices[2].text = "Aucune des deux équations n'a de solution";
+    q.choices[3].text = 'Tous les coefficients sont nuls';
+    expect(checkBank([q], testCourses, testRetired)).toEqual([]);
+  });
+
+  it('accepte le Markdown dans solution, et un tiret ou un souligné qui appartiennent à une formule', () => {
+    const defi = clone(valid[3]!);
+    defi.solution = '# Méthode\n**Étape 1** : calculer le déterminant.\n- si $k = 1$ : infinité de solutions\n- si $k = -1$ : incompatible';
+    const q = clone(valid[0]!) as Extract<Question, { type: 'qcm' }>;
+    q.prompt = '$x - y = 0$ - combien de solutions a le système $x + y = 2$, $x - y = 0$ ?';
+    q.choices[3].text = '$- 2$ - deux solutions';
+    q.explanation = '$-1$ - les droites se coupent. Le piège : $x_{1} \\ne x_1^2$.';
+    const issues = checkBank([defi, q], testCourses, testRetired);
+    expect(issues, formatIssues(issues)).toEqual([]);
+  });
+
   it('accepte un dollar littéral échappé \\$ hors et dans une formule', () => {
     const q = clone(valid[0]!);
     q.prompt = String.raw`Un billet coûte 5\$ et un autre $x\$$ : combien de solutions a $x = 1$ ?`;

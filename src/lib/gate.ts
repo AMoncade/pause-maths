@@ -26,6 +26,7 @@ export const RULES = [
   'control-char',
   'katex',
   'stray-dollar',
+  'markdown-outside-solution',
   'challenge-solution',
 ] as const;
 
@@ -48,8 +49,24 @@ const fold = (s: string) =>
     .replace(/\s+/g, ' ')
     .trim();
 
+/**
+ * Choix fourre-tout, sur le texte replié : « toutes/aucune de ces réponses » et variantes, et tout
+ * « aucun(e) de ces <nom> » / « tou(te)s ces <nom> ». « Toutes les valeurs propres… » reste permis.
+ */
 const CATCHALL =
-  /\b(toutes?|tous|aucune?)\b(?: [\w'-]+){0,2}? (reponses?|choix|propositions?|options?|ci-dessus|celles?-ci|ceux-ci)\b|\b(none|all) of the above\b/;
+  /\b(toutes?|tous|aucune?)\b(?: [\w'-]+){0,2}? (reponses?|choix|propositions?|options?|ci-dessus|celles?-ci|ceux-ci)\b|\b(toutes?|tous|aucune?)( de)? ces [a-z'-]+|\b(none|all) of the above\b/;
+
+/**
+ * Markdown hors `solution` : MathText l'afficherait tel quel. Gras ou souligné (`**`, `__`), titre `#`
+ * ou puce `- ` en début de ligne. Les formules sont remplacées par un repère neutre avant la recherche.
+ */
+function markdownOutsideSolution(value: string): string | undefined {
+  const text = splitMath(value)
+    .map((p) => (p.kind === 'text' ? p.value : 'X'))
+    .join('');
+  const m = /\*\*|__/.exec(text) ?? /^ *(#|- )/m.exec(text);
+  return m ? m[0].trim() : undefined;
+}
 
 /** Nom de la commande LaTeX probablement mangée par un échappement JSON, par caractère de contrôle. */
 const JSON_ESCAPES: Record<number, string> = { 0x08: 'b', 0x09: 't', 0x0a: 'n', 0x0c: 'f', 0x0d: 'r' };
@@ -210,6 +227,10 @@ export function checkBank(questions: unknown[], courses: Course[], retired: Set<
         }
       }
       if (hasStrayDollar(value)) add('stray-dollar', `${path} : "$" orphelin (dollar littéral : écrire \\$)`);
+      const markdown = path === 'solution' ? undefined : markdownOutsideSolution(value);
+      if (markdown !== undefined) {
+        add('markdown-outside-solution', `${path} : Markdown « ${markdown} » affiché tel quel (permis seulement dans solution)`);
+      }
     }
   });
 

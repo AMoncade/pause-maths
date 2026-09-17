@@ -745,6 +745,111 @@
     ]
   },
   {
+    "rule": "choice-catchall",
+    "note": "« Aucune de ces opérations n'est garantie » (nom quelconque après « ces »)",
+    "questions": [
+      {
+        "id": "mat1600-syst-001",
+        "course": "MAT1600",
+        "topic": "mat1600-syst",
+        "difficulty": 1,
+        "type": "qcm",
+        "prompt": "Combien de solutions a le système $x + y = 2$, $x - y = 0$ ?",
+        "explanation": "Les deux droites se coupent au point $(1, 1)$. Le piège : croire que deux équations donnent toujours une infinité de solutions.",
+        "choices": [
+          {
+            "text": "Exactement une",
+            "correct": true
+          },
+          {
+            "text": "Aucune",
+            "correct": false,
+            "why": "Les deux droites ne sont pas parallèles."
+          },
+          {
+            "text": "Une infinité",
+            "correct": false,
+            "why": "Les deux équations ne sont pas proportionnelles."
+          },
+          {
+            "text": "Aucune de ces opérations n'est garantie",
+            "correct": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "rule": "choice-catchall",
+    "note": "« Toutes ces affirmations sont vraies »",
+    "questions": [
+      {
+        "id": "mat1600-syst-001",
+        "course": "MAT1600",
+        "topic": "mat1600-syst",
+        "difficulty": 1,
+        "type": "qcm",
+        "prompt": "Combien de solutions a le système $x + y = 2$, $x - y = 0$ ?",
+        "explanation": "Les deux droites se coupent au point $(1, 1)$. Le piège : croire que deux équations donnent toujours une infinité de solutions.",
+        "choices": [
+          {
+            "text": "Exactement une",
+            "correct": true
+          },
+          {
+            "text": "Aucune",
+            "correct": false,
+            "why": "Les deux droites ne sont pas parallèles."
+          },
+          {
+            "text": "Une infinité",
+            "correct": false,
+            "why": "Les deux équations ne sont pas proportionnelles."
+          },
+          {
+            "text": "Toutes ces affirmations sont vraies",
+            "correct": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "rule": "choice-catchall",
+    "note": "« Aucun de ces systèmes » (masculin, accent)",
+    "questions": [
+      {
+        "id": "mat1600-syst-001",
+        "course": "MAT1600",
+        "topic": "mat1600-syst",
+        "difficulty": 1,
+        "type": "qcm",
+        "prompt": "Combien de solutions a le système $x + y = 2$, $x - y = 0$ ?",
+        "explanation": "Les deux droites se coupent au point $(1, 1)$. Le piège : croire que deux équations donnent toujours une infinité de solutions.",
+        "choices": [
+          {
+            "text": "Exactement une",
+            "correct": true
+          },
+          {
+            "text": "Aucune",
+            "correct": false,
+            "why": "Les deux droites ne sont pas parallèles."
+          },
+          {
+            "text": "Une infinité",
+            "correct": false,
+            "why": "Les deux équations ne sont pas proportionnelles."
+          },
+          {
+            "text": "Aucun de ces systèmes",
+            "correct": false
+          }
+        ]
+      }
+    ]
+  },
+  {
     "rule": "prompt-length",
     "note": "prompt de 281 caractères",
     "questions": [
@@ -1061,6 +1166,133 @@
             "correct": false,
             "why": "Un système linéaire n'a jamais exactement deux solutions."
           }
+        ]
+      }
+    ]
+  },
+  {
+    "rule": "markdown-outside-solution",
+    "note": "**gras** dans un prompt",
+    "questions": [
+      {
+        "id": "mat1600-det-001",
+        "course": "MAT1600",
+        "topic": "mat1600-det",
+        "difficulty": 2,
+        "type": "vf",
+        "prompt": "Pour **toute** matrice $A$ de taille $3 \\times 3$, $\\det(2A) = 2\\det(A)$.",
+        "explanation": "Chaque ligne est multipliée par $2$ : $\\det(2A) = 2^3 \\det(A) = 8\\det(A)$. Le piège : sortir le $k$ une seule fois.",
+        "answer": false
+      }
+    ]
+  },
+  {
+    "rule": "markdown-outside-solution",
+    "note": "__souligné__ dans un why",
+    "questions": [
+      {
+        "id": "mat1600-syst-001",
+        "course": "MAT1600",
+        "topic": "mat1600-syst",
+        "difficulty": 1,
+        "type": "qcm",
+        "prompt": "Combien de solutions a le système $x + y = 2$, $x - y = 0$ ?",
+        "explanation": "Les deux droites se coupent au point $(1, 1)$. Le piège : croire que deux équations donnent toujours une infinité de solutions.",
+        "choices": [
+          {
+            "text": "Exactement une",
+            "correct": true
+          },
+          {
+            "text": "Aucune",
+            "correct": false,
+            "why": "Les droites ne sont __pas__ parallèles."
+          },
+          {
+            "text": "Une infinité",
+            "correct": false,
+            "why": "Les deux équations ne sont pas proportionnelles."
+          },
+          {
+            "text": "Deux",
+            "correct": false,
+            "why": "Un système linéaire n'a jamais exactement deux solutions."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "rule": "markdown-outside-solution",
+    "note": "titre # en début d'explication",
+    "questions": [
+      {
+        "id": "mat1600-syst-001",
+        "course": "MAT1600",
+        "topic": "mat1600-syst",
+        "difficulty": 1,
+        "type": "qcm",
+        "prompt": "Combien de solutions a le système $x + y = 2$, $x - y = 0$ ?",
+        "explanation": "# Piège : croire que deux équations donnent toujours une infinité de solutions.",
+        "choices": [
+          {
+            "text": "Exactement une",
+            "correct": true
+          },
+          {
+            "text": "Aucune",
+            "correct": false,
+            "why": "Les deux droites ne sont pas parallèles."
+          },
+          {
+            "text": "Une infinité",
+            "correct": false,
+            "why": "Les deux équations ne sont pas proportionnelles."
+          },
+          {
+            "text": "Deux",
+            "correct": false,
+            "why": "Un système linéaire n'a jamais exactement deux solutions."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "rule": "markdown-outside-solution",
+    "note": "puce « - » en début de point clé",
+    "questions": [
+      {
+        "id": "stt1700-desc-001",
+        "course": "STT1700",
+        "topic": "stt1700-desc",
+        "difficulty": 1,
+        "type": "flash",
+        "prompt": "Écart type de la moyenne $\\bar{X}$ de $n$ observations indépendantes d'écart type $\\sigma$ ?",
+        "explanation": "La variance de $\\bar{X}$ est $\\sigma^2/n$. Le piège : oublier la racine et écrire $\\sigma/n$.",
+        "answer": "$\\dfrac{\\sigma}{\\sqrt{n}}$",
+        "keyPoints": [
+          "- On prend la racine carrée de la variance."
+        ]
+      }
+    ]
+  },
+  {
+    "rule": "markdown-outside-solution",
+    "note": "**gras** dans la réponse d'une flash",
+    "questions": [
+      {
+        "id": "stt1700-desc-001",
+        "course": "STT1700",
+        "topic": "stt1700-desc",
+        "difficulty": 1,
+        "type": "flash",
+        "prompt": "Écart type de la moyenne $\\bar{X}$ de $n$ observations indépendantes d'écart type $\\sigma$ ?",
+        "explanation": "La variance de $\\bar{X}$ est $\\sigma^2/n$. Le piège : oublier la racine et écrire $\\sigma/n$.",
+        "answer": "**$\\dfrac{\\sigma}{\\sqrt{n}}$**",
+        "keyPoints": [
+          "$\\operatorname{Var}(\\bar{X}) = \\sigma^2/n$",
+          "On prend la racine carrée de la variance."
         ]
       }
     ]
