@@ -221,7 +221,9 @@ export function checkBank(questions: unknown[], courses: Course[], retired: Set<
       for (const part of splitMath(value)) {
         if (part.kind === 'text') continue;
         try {
-          katex.renderToString(part.value, { throwOnError: true, displayMode: part.kind === 'display' });
+          // strict: 'error' : un avertissement KaTeX (ex. lettre accentuée en mode math, signe d'une paire
+          // de « $ » littéraux non échappés) devient un refus au lieu d'un rendu en italique mathématique.
+          katex.renderToString(part.value, { throwOnError: true, strict: 'error', displayMode: part.kind === 'display' });
         } catch (e) {
           add('katex', `${path} : « ${part.value} » ne compile pas — ${(e as Error).message}`);
         }
