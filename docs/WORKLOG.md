@@ -2,6 +2,17 @@
 
 Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute la sienne dans son worktree ; l'admin fusionne.
 
+## 2026-09-17 — STT1700 : jalon 2 (12 questions `stt1700-prob`) (lot stt1700)
+
+- Worktree avancé sur `main` (`git merge --ff-only`, jusqu'à `3228984`) avant de commencer, comme demandé par le brief `docs/regie/briefs/tour2-stt1700-j2.md`.
+- Lu en entier `02 Notes de cours/2. Probabilités/CoursSTT1700Sect2A26H27.pdf` (48 diapositives, extraction `pypdf` + lecture directe) : axiomes de Kolmogorov, opérations ensemblistes, De Morgan, équiprobabilité, conditionnelle, probabilités totales, Bayes, indépendance, tirages avec/sans remise. Détail dans `docs/sources/stt1700.md`.
+- **Vérifié le point laissé ouvert par l'admin** (correspondance liste d'exercices ↔ section 2) : `Liste2_stt1700.pdf` **et** `Liste3_stt1700.pdf` couvrent ensemble le chapitre 4 du livre (probabilités) ; `Liste4_stt1700.pdf` bascule déjà au chapitre 6 (variables aléatoires, section 3). La numérotation des listes ne suit donc pas 1-pour-1 le numéro de section — noté dans `docs/sources/stt1700.md`.
+- **`defaultOn` tranché comme demandé par l'admin** : `stt1700-prob` et `stt1700-var` passés à `false` dans `src/content/stt1700/index.ts` (ce jalon pousse le 2026-09-17, avant le seuil du 21 septembre pour `prob` ; `var` reste `false` jusqu'au 28 septembre quoi qu'il arrive). Règle et dates seuils documentées dans `docs/sources/stt1700.md` pour que le prochain jalon les applique sans redemander.
+- Brouillon initial des 12 questions `stt1700-prob` via `agy` (Antigravity CLI, `claude-opus-4-6-thinking`, quota Google), même méthode qu'au jalon 1, prompt cette fois enrichi du contenu détaillé du thème et de la distribution de types visée. **Mesure : 12 produites, 12 gardées telles quelles, 0 corrigée, 0 rejetée** — vérification numérique indépendante (`fractions.Fraction` en Python, hors dépôt) sur les 7 qcm et leurs distracteurs : aucune erreur trouvée, meilleur taux que le jalon 1 (3/10 corrigées). Détail dans `docs/reviews/stt1700/stt1700-prob.md`.
+- Import (`npm run import`, aucun `--renumber` nécessaire), gate vert (`npm test` 363 tests, `npm run build`). Relecture aveugle (`scripts/blind-review.ts`, seed 493, clé jamais montrée) par un sous-agent **Haiku** frais : **12/12 confirmées, 0 désaccord**.
+- **Compte mesuré STT1700 : 22 questions** (14 qcm / 5 vf / 3 flash, 2 Défi) sur `stt1700-descr` (10) + `stt1700-prob` (12). Toujours sous le seuil de 40 où `bank-stats.test.ts` applique ses bornes de proportions.
+- Suite : thème `stt1700-var` (section 3, ~10-12 questions visées, à confirmer par l'admin) une fois ce jalon revu ; repasser `defaultOn` de `stt1700-prob` à `true` au premier push à/après le 2026-09-21.
+
 ## 2026-09-17 — STT1700 : thèmes dérivés du matériel, jalon 1 (10 questions `stt1700-descr`) (lot stt1700)
 
 - `D:\Math\STT1700` est rempli (lot A) : lu `01 Plan de cours/StudiUM - structure STT1700-A-A26.md` (contient le calendrier semaine par semaine, pas seulement le plan PDF manquant), `INDEX.md`, et les PDF des sections 1-3 (`02 Notes de cours/`). **Matière de l'intra 1 (7 octobre) confirmée par le matériel, pas une hypothèse** : sections 1 (statistique descriptive), 2 (probabilités), 3 (variables aléatoires discrètes) — section 4 (lois continues) commence la semaine suivant l'intra. Détail dans `docs/sources/stt1700.md`.

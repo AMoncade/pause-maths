@@ -7,8 +7,8 @@ export const stt1700: Course = {
   color: '#22c55e',
   topics: [
     { id: 'stt1700-descr', label: 'Statistique descriptive, corrélation et droite des moindres carrés', exam: 'intra', defaultOn: true },
-    { id: 'stt1700-prob', label: 'Probabilités, conditionnelle et indépendance', exam: 'intra', defaultOn: true },
-    { id: 'stt1700-var', label: 'Variables aléatoires discrètes, binomiale et multinomiale', exam: 'intra', defaultOn: true },
+    { id: 'stt1700-prob', label: 'Probabilités, conditionnelle et indépendance', exam: 'intra', defaultOn: false },
+    { id: 'stt1700-var', label: 'Variables aléatoires discrètes, binomiale et multinomiale', exam: 'intra', defaultOn: false },
     { id: 'stt1700-cont', label: 'Lois continues et théorème limite central', exam: 'final', defaultOn: false },
     { id: 'stt1700-est', label: 'Estimations ponctuelles', exam: 'final', defaultOn: false },
     { id: 'stt1700-ic', label: 'Intervalles de confiance pour grands échantillons', exam: 'final', defaultOn: false },
