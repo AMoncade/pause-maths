@@ -2,6 +2,21 @@
 
 Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute la sienne dans son worktree ; l'admin fusionne.
 
+## 2026-09-16 — MAT1500 : troisième passe relecture Opus (lot mat1500)
+
+- Applique la section complémentaire de `docs/reviews/relecture-opus/mat1500-b.md` (16
+  nouvelles questions relues + suivi des 15 points précédents) : 2 ÉLEVÉES (induc-008 explication
+  fausse, modul-009 `why` faux), 6 MOYENNES (réponses/indices donnés dans l'énoncé, longueurs
+  trahissant la bonne réponse, deux réponses défendables sur divis-011), 4 BASSES (résidus du
+  suivi, distracteurs artificiels).
+- Stratégie : conversion en flash pour 4 questions (logic-009, quant-011, proof-009, induc-009)
+  plutôt que redesign de distracteurs — répond aussi à la contrainte bank-stats de l'admin (Défi
+  proche du plafond 15%, flash sous la cible ~20%).
+- Gate vert (`npm test`, 363 tests) et relecture aveugle ciblée (SymPy/Python, venv hors dépôt)
+  sur les 16 items touchés : PASS partout.
+- Compte mesuré : 96 questions, **59% qcm / 26% vf / 15% flash, 14,6% Défi** (sous le plafond).
+- Suite : idle jusqu'à nouvelle demande de l'admin ou remplissage de `D:\Math\MAT1500`.
+
 ## 2026-09-16 — MAT1500 : relecture Opus (b) appliquée, 96 questions inchangées (lot mat1500)
 
 - Applique `docs/reviews/relecture-opus/mat1500-b.md` (29 questions relues : les 22 nouvelles de
