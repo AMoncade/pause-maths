@@ -86,7 +86,9 @@
       "worktree": "C:/Users/adrie/pause-maths-wt/mat1400",
       "branch": "lot/mat1400",
       "assignedAt": "2026-09-17T19:09:12Z",
-      "status": "en cours"
+      "status": "clos",
+      "closedAt": "2026-09-17T19:28:06Z",
+      "result": "67fdcf1, 107 questions"
     }
   ]
 }
