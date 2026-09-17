@@ -2,6 +2,16 @@
 
 Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute la sienne dans son worktree ; l'admin fusionne.
 
+## 2026-09-17 — STT1700 : correctifs de la relecture Opus appliqués (lot stt1700)
+
+- Applique `docs/reviews/relecture-opus/stt1700.md` selon les décisions déjà prises par l'admin : détail point par point dans `docs/reviews/stt1700/relecture-opus-application.md`. **12 points, 0 écarté.**
+- **1 élevée** : `descr-012`, `why` du choix $24$ corrigé (formule fausse de la variance $b^2s_x$ remplacée par l'explication correcte, avec $144$ affiché comme vraie variance). Id conservé.
+- **3 moyennes** : `prob-013` retiré et remplacé par un nouvel id `stt1700-prob-018` (option (b) du rapport, réponse passe à Faux, teste la distinction axiome/propriété — `src/content/retired-ids.json` non touché, fichier admin) ; `descr-003` (choix $5$ → $15{,}75$, option (a) minimale, id conservé) ; commutateur Défi rééquilibré (`challenge` retiré de `var-006` et `prob-017`, `var-015` promue Défi avec la `solution` du rapport).
+- **8 basses**, toutes appliquées : `var-005`, `var-006` (`why` corrigés) ; `descr-011` (3ᵉ `keyPoint`) ; `prob-009` (`explanation` complétée) ; `var-016` (`difficulty` 2→1, `keyPoint` reformulé) ; `descr-009` (`prompt` complété) ; `descr-006` (`prompt` reformulé) ; `prob-004` ($0{,}60$ → $0{,}6$).
+- Gate vert : `npm test` **363/363**, `tests/bank-stats.test.ts` inclus (Défi STT1700 5/48 = 10,4 %, bornes 5–15 % ✓ ; qcm 28/48 = 58,3 % ✓ ; descr/prob/var à 14/17/17, tous ≥ 8). `npm run typecheck` OK. `npm run build` OK.
+- **Compte mesuré STT1700 : 48 questions inchangé** (descr 14, prob 17, var 17) — une question retirée (`prob-013`), une ajoutée (`prob-018`).
+- Pas de relecture aveugle relancée : seule `prob-013`→`prob-018` change de bonne réponse, avec un nouvel id dédié (règle des ids, HANDOFF §7) ; tous les autres correctifs sont des `why`/`explanation`/`keyPoints`/`prompt` sans changement de bonne réponse ni de structure.
+
 ## 2026-09-17 — STT1700 : jalon 4, densification (34 → 48 questions) (lot stt1700)
 
 - Brief `docs/regie/briefs/tour2-stt1700-j4.md`. Worktree avancé sur `main` (`git merge --ff-only`, jusqu'à `fe575ab`) avant de commencer.

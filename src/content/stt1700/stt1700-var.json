@@ -105,7 +105,7 @@
       {
         "text": "$9$",
         "correct": false,
-        "why": "Additionne $4+5$ au lieu de multiplier, confondant la pente avec un terme à ajouter."
+        "why": "Additionne $4+5$ au lieu de multiplier, et laisse tomber la constante $-2$ au passage."
       }
     ]
   },
@@ -115,7 +115,6 @@
     "topic": "stt1700-var",
     "difficulty": 3,
     "type": "qcm",
-    "challenge": true,
     "prompt": "Si $\\mathrm{var}(X)=6$, que vaut $\\mathrm{var}(-3X+7)$ ?",
     "explanation": "Pour $Y=aX+b$, $\\mathrm{var}(Y)=a^2\\,\\mathrm{var}(X)$ : la constante $b$ n'a aucun effet et le signe de $a$ disparaît au carré — piège classique de garder le signe négatif ou d'oublier d'élever $a$ au carré.",
     "choices": [
@@ -126,7 +125,7 @@
       {
         "text": "$-54$",
         "correct": false,
-        "why": "Garde le signe négatif de $-3$ au carré, donnant $-9\\times6=-54$ — une variance ne peut pourtant jamais être négative."
+        "why": "Calcule $-(3^2)\\times6=-54$ en sortant le signe du carré, alors que $(-3)^2=9$ — une variance ne peut jamais être négative."
       },
       {
         "text": "$18$",
@@ -337,6 +336,7 @@
     "topic": "stt1700-var",
     "difficulty": 3,
     "type": "qcm",
+    "challenge": true,
     "prompt": "$X_1$, $X_2$, $X_3$ sont trois v.a. indépendantes avec $\\mathrm{var}(X_1)=2$, $\\mathrm{var}(X_2)=5$, $\\mathrm{var}(X_3)=1$. Que vaut $\\mathrm{var}(X_1-2X_2+3X_3)$ ?",
     "explanation": "Sous indépendance, $\\mathrm{var}(\\sum a_iX_i)=\\sum a_i^2\\,\\mathrm{var}(X_i)$. Le piège principal est d'oublier d'élever les coefficients au carré.",
     "choices": [
@@ -359,20 +359,21 @@
         "correct": false,
         "why": "Oublie le terme $3^2\\,\\mathrm{var}(X_3)=9$ : $1^2\\times2+(-2)^2\\times5=22$."
       }
-    ]
+    ],
+    "solution": "1. Sous indépendance, $\\mathrm{var}(\\sum a_iX_i)=\\sum a_i^2\\,\\mathrm{var}(X_i)$ : chaque coefficient passe au carré.\n2. $a_1=1$ : $1^2\\times2=2$.\n3. $a_2=-2$ : $(-2)^2\\times5=20$ — le signe disparaît au carré.\n4. $a_3=3$ : $3^2\\times1=9$.\n5. Total : $2+20+9=31$."
   },
   {
     "id": "stt1700-var-016",
     "course": "STT1700",
     "topic": "stt1700-var",
-    "difficulty": 2,
+    "difficulty": 1,
     "type": "flash",
     "prompt": "Pour une loi multinomiale à $K$ classes de probabilités $p_1,\\dots,p_K$ (un seul essai réparti entre les classes), à quoi ces probabilités doivent-elles sommer ?",
     "explanation": "Le piège est de croire que les probabilités peuvent sommer à une valeur autre que 1, comme pour des événements non exhaustifs.",
     "answer": "$\\sum_{i=1}^K p_i = 1$",
     "keyPoints": [
       "Chaque essai tombe dans exactement une des $K$ classes, donc les probabilités s'épuisent complètement.",
-      "Même contrainte que pour toute fonction de masse valide d'une v.a. discrète à un seul support."
+      "Même contrainte que pour la fonction de masse de toute v.a. discrète."
     ]
   },
   {

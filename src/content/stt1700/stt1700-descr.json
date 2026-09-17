@@ -83,9 +83,9 @@
         "why": "Utilise la méthode médiane-des-moitiés (médiane des 5 plus petites données, ici $x_{(3)}=8$) au lieu de la position $(n+1)/4$ du cours."
       },
       {
-        "text": "$5$",
+        "text": "$15{,}75$",
         "correct": false,
-        "why": "Utilise la position $n/4=2{,}5$ au lieu de $(n+1)/4=2{,}75$, puis interpole entre $x_{(2)}=2$ et $x_{(3)}=8$."
+        "why": "Prend la position de $Q_3$, $3(n+1)/4=8{,}25$, au lieu de celle de $Q_1$ : on obtient $15+0{,}25\\times(18-15)=15{,}75$."
       }
     ]
   },
@@ -155,7 +155,7 @@
     "topic": "stt1700-descr",
     "difficulty": 2,
     "type": "qcm",
-    "prompt": "Un résumé à 5 chiffres donne $\\min=10$, $Q_1=25$, $\\text{méd}=40$, $Q_3=55$, $\\max=130$. Jusqu'où la moustache supérieure peut-elle s'étendre au maximum (boîte modifiée) ?",
+    "prompt": "Un résumé à 5 chiffres donne $\\min=10$, $Q_1=25$, $\\text{méd}=40$, $Q_3=55$, $\\max=130$. Au-delà de quelle valeur une donnée est-elle identifiée séparément comme atypique (boîte modifiée) ?",
     "explanation": "IQR $=55-25=30$, borne haute $=Q_3+1{,}5\\times\\text{IQR}=55+45=100$. Comme $\\max=130>100$, la moustache s'arrête à 100 (ou à la dernière donnée $\\leq 100$), pas à 130.",
     "choices": [
       {
@@ -205,7 +205,7 @@
     "topic": "stt1700-descr",
     "difficulty": 1,
     "type": "flash",
-    "prompt": "Le nombre d'enfants dans un ménage est-il une variable qualitative ou quantitative ?",
+    "prompt": "Le nombre d'enfants dans un ménage est-il une variable qualitative ou quantitative ? Si quantitative : discrète ou continue ?",
     "explanation": "Le piège est de penser « qualitatif » parce que les valeurs sont des petits entiers, mais compter donne bien une variable quantitative (discrète).",
     "answer": "Quantitative discrète",
     "keyPoints": [
@@ -256,7 +256,8 @@
     "answer": "Diagramme à bâtons",
     "keyPoints": [
       "L'histogramme sert aux variables quantitatives continues regroupées en classes.",
-      "Le diagramme tige-feuilles conserve les valeurs individuelles d'une variable quantitative."
+      "Le diagramme tige-feuilles conserve les valeurs individuelles d'une variable quantitative.",
+      "Le diagramme circulaire est l'autre graphique du cours pour une variable qualitative."
     ]
   },
   {
@@ -275,7 +276,7 @@
       {
         "text": "$24$",
         "correct": false,
-        "why": "Applique la formule de la variance $b^2 s_x$ au lieu de l'écart-type $|b|s_x$ : $(-2)^2 \\times 6 = 24$."
+        "why": "Élève le coefficient au carré sans élever aussi $s_x$ : $(-2)^2\\times6=24$. La variance, elle, vaut $b^2s_x^2=4\\times36=144$ ; l'écart-type est $\\lvert b\\rvert s_x$."
       },
       {
         "text": "$-12$",

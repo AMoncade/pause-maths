@@ -99,7 +99,7 @@
     "explanation": "Pour des disjoints, $\\Pr(A\\cup B)=\\Pr(A)+\\Pr(B)$ puisque $\\Pr(A\\cap B)=0$. Le piège est de multiplier au lieu d'additionner.",
     "choices": [
       {
-        "text": "$0{,}60$",
+        "text": "$0{,}6$",
         "correct": true
       },
       {
@@ -228,7 +228,7 @@
     "difficulty": 2,
     "type": "vf",
     "prompt": "Deux événements incompatibles de probabilités non nulles sont nécessairement indépendants.",
-    "explanation": "Faux : $A\\cap B=\\emptyset$ implique $\\Pr(A\\cap B)=0 \\neq \\Pr(A)\\Pr(B)$ quand les deux probabilités sont positives. Incompatibilité et indépendance s'excluent mutuellement.",
+    "explanation": "Faux : $A\\cap B=\\emptyset$ implique $\\Pr(A\\cap B)=0 \\neq \\Pr(A)\\Pr(B)$ quand les deux probabilités sont positives. Incompatibilité et indépendance s'excluent mutuellement dès que les deux probabilités sont non nulles.",
     "answer": false
   },
   {
@@ -271,14 +271,14 @@
     ]
   },
   {
-    "id": "stt1700-prob-013",
+    "id": "stt1700-prob-018",
     "course": "STT1700",
     "topic": "stt1700-prob",
     "difficulty": 1,
     "type": "vf",
-    "prompt": "Selon les axiomes de Kolmogorov, $\\Pr(\\emptyset) = 0$.",
-    "explanation": "Conséquence directe des axiomes : $\\emptyset = \\Omega^c$, donc $\\Pr(\\emptyset) = 1 - \\Pr(\\Omega) = 1 - 1 = 0$.",
-    "answer": true
+    "prompt": "$\\Pr(\\emptyset)=0$ fait partie des trois axiomes de la définition d'une probabilité.",
+    "explanation": "Faux : les trois axiomes sont $\\Pr(A)\\ge0$, l'additivité des événements disjoints et $\\Pr(\\Omega)=1$. $\\Pr(\\emptyset)=0$ est une propriété qui s'en déduit.",
+    "answer": false
   },
   {
     "id": "stt1700-prob-014",
@@ -340,7 +340,6 @@
     "topic": "stt1700-prob",
     "difficulty": 3,
     "type": "qcm",
-    "challenge": true,
     "prompt": "$A$, $B$ et $C$ sont mutuellement indépendants avec $\\Pr(A)=0{,}5$, $\\Pr(B)=0{,}4$ et $\\Pr(C)=0{,}25$. Que vaut $\\Pr(A\\cap B\\cap C)$ ?",
     "explanation": "L'indépendance mutuelle permet de factoriser l'intersection en produit des probabilités marginales. Le piège est d'additionner au lieu de multiplier, ou d'oublier un facteur.",
     "choices": [
