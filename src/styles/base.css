@@ -61,6 +61,16 @@ p {
   display: block;
 }
 
+/* Ponctuation collée à une formule : pas de retour à la ligne entre « ( » et la formule ;
+   la formule elle-même peut encore se couper après un signe = ou +. */
+.math-glue {
+  white-space: nowrap;
+}
+
+.math-glue > .math-inline {
+  white-space: normal;
+}
+
 .katex-display {
   margin: 0.5em 0;
   overflow-x: auto;

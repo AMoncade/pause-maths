@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { MathText } from '@/lib/MathText';
+import { MathText, mathPieces } from '@/lib/MathText';
 import { QuestionCard } from '@/components/QuestionCard';
 import { Feedback } from '@/components/Feedback';
 import { FlashCard } from '@/components/FlashCard';
@@ -27,6 +27,27 @@ describe('MathText', () => {
     expect(root.textContent).toContain('<b>gras</b>');
     expect(root.querySelector('.math-inline .katex')).not.toBeNull();
     expect(root.querySelector('.math-display .katex-display')).not.toBeNull();
+  });
+
+  it('colle la ponctuation voisine à la formule (pas de ligne coupée entre « ( » et $1,1,1$)', () => {
+    expect(mathPieces('égaux ($1, 1, 1$), donc $x$ et $y$ ; puis$$z$$.')).toEqual([
+      { kind: 'text', value: 'égaux ' },
+      { kind: 'inline', tex: '1, 1, 1', before: '(', after: '),' },
+      { kind: 'text', value: ' donc ' },
+      { kind: 'inline', tex: 'x', before: '', after: '' },
+      { kind: 'text', value: ' et ' },
+      { kind: 'inline', tex: 'y', before: '', after: '' },
+      { kind: 'text', value: ' ; puis' },
+      { kind: 'display', tex: 'z' },
+      { kind: 'text', value: '.' },
+    ]);
+    // un mot long collé à la formule n'est jamais rendu insécable
+    expect(mathPieces('dérivable$f$')[0]).toEqual({ kind: 'text', value: 'dérivable' });
+    const { root } = mount(<MathText text={'égaux ($1, 1, 1$), donc'} />);
+    const glue = root.querySelector('.math-glue')!;
+    expect(glue.textContent!.startsWith('(')).toBe(true);
+    expect(glue.querySelector('.katex')).not.toBeNull();
+    expect(root.textContent).toContain('donc');
   });
 
   it('une formule invalide ne casse pas le rendu', () => {

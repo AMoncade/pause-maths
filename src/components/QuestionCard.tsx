@@ -17,13 +17,13 @@ export function CardHeader({ question, course, topicLabel, flagged, onFlag }: He
       <span class="card-tag">
         <span class="card-tag__code">{course.code}</span>
         <span class="card-tag__topic">{topicLabel}</span>
+        {question.challenge && (
+          <span class="defi-badge">
+            <Icon name="peak" size={14} />
+            Défi
+          </span>
+        )}
       </span>
-      {question.challenge && (
-        <span class="defi-badge">
-          <Icon name="peak" size={14} />
-          Défi
-        </span>
-      )}
       <button
         type="button"
         class="flag-btn"
