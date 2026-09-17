@@ -57,4 +57,40 @@ notant que le distracteur « non, car pas orthogonaux » a la bonne conclusion m
 raisonnement invalide (piège pédagogique volontaire, pas un défaut de la question).
 Verdict : **OK**.
 
-**Résultat : 8/8 publiables, 0 correction nécessaire, 0 désaccord.**
+**Résultat (jalon 1, 1-8) : 8/8 publiables, 0 correction nécessaire, 0 désaccord.**
+
+## mat1600-vect-009 à 020 (extension à 20/thème)
+
+Relecture aveugle (seed 103) sur les 12 nouvelles : appartenance à $\text{Vect}(v_1,v_2)$
+vérifiée par système incompatible pour {009} ; test du pivot sur $\begin{pmatrix}1&2\\2&4\end{pmatrix}$
+confirmé pour {011} ; indépendance de 3 vecteurs dans $\mathbb R^4$ (rang 3) confirmée
+pour le Défi {013} ; résolution des coefficients $c_1,c_2,c_3$ confirmée pour {017} ;
+calcul $2v_1-3v_2$ confirmé pour {020}. Concepts (010, 012, 014, 015, 016, 018, 019)
+confirmés par raisonnement. 0 désaccord.
+
+## mat1600-vect-001, 002, 004 (corrigés suite à la relecture Opus, round 1)
+
+Voir `docs/reviews/mat1600/reponse-relecture-opus.md` pour le détail des correctifs
+(vect-001 reformulé sans « base » ; vect-002 distracteur remplacé sans introduire
+`det` ; vect-004 difficulty et typographie). Relecture aveugle ciblée (seed 203) sur
+vect-001 et vect-002 : 0 désaccord, notant que le distracteur D de vect-001 (« non,
+car $v_1,v_2,v_3$ ne sont pas indépendants ») a la bonne conclusion mais une prémisse
+fausse — un piège volontaire, pas un défaut.
+
+## mat1600-vect-009, 013, 014, 020 (corrigés suite à la relecture Opus, round 3)
+
+- **vect-009 :** 2 distracteurs faibles remplacés par des calculs concrets vérifiés
+  ($c_1=1,c_2=0$ et $c_1=0,c_2=1$, tous deux faux).
+- **vect-013 :** Défi recalibré (difficulty 3) avec des vecteurs où $v_3=v_1+v_2$
+  n'est pas visible sur les 3 premières composantes (contrairement à l'ancienne
+  version, essentiellement une identité).
+- **vect-014 :** remplacé par une version concrète à 2 vecteurs (« $\{v,0\}$ est-elle
+  libre ? ») pour éliminer le recoupement avec le point clé de vect-007.
+- **vect-020 :** 2 `why` faux corrigés ; un distracteur remplacé par $(2,-5,7)=2v_1-v_2$
+  (aucune origine identifiable dans l'ancien $(2,1,3)$).
+
+Relecture aveugle ciblée (seed 705) : 0 désaccord, tous les calculs reconfirmés par
+SymPy (dont $v_3=v_1+v_2$ pour vect-013, et les trois combinaisons $2v_1\pm3v_2$,
+$2v_1-v_2$ pour vect-020).
+
+**Résultat final : 20/20 publiables, 0 correction nécessaire, 0 désaccord.**

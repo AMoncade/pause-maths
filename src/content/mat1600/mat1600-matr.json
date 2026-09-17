@@ -107,8 +107,8 @@
     "choices": [
       { "text": "$c=1$", "correct": true },
       { "text": "$c=-1$", "correct": false, "why": "Erreur de signe sur l'entrée $(2,1)$ de $B$ : $1\\cdot1+c\\cdot(-1)$ traité comme $1+c$ au lieu de $1-c$." },
-      { "text": "$c=2$", "correct": false, "why": "Le coefficient $2$ devant $c$ dans l'entrée $(2,2)$ a été oublié : $-1+2c=1$ donne $c=1$, pas $-1+c=1$." },
-      { "text": "$c=0$", "correct": false, "why": "La première ligne de $AB$ ne dépend pas de $c$, mais cela ne veut pas dire que $c$ peut être n'importe quoi : la deuxième ligne impose bien $c=1$." }
+      { "text": "$c=2$", "correct": false, "why": "Le coefficient $2$ devant $c$ a été oublié dans l'entrée $(2,2)$ : l'équation devient $-1+c=1$ (au lieu de $-1+2c=1$), ce qui donne $c=2$." },
+      { "text": "$c=\\tfrac12$", "correct": false, "why": "L'équation $2c-1=0$ a été résolue au lieu de $2c-1=1$ (l'entrée diagonale de $I$, pas $0$)." }
     ]
   },
   {

@@ -75,8 +75,8 @@
     "topic": "mat1600-esp",
     "difficulty": 3,
     "challenge": true,
-    "solution": "1) Résoudre $Ax=0$ : la matrice est déjà échelonnée, donc $x_1+2x_2=0$ et $x_3=0$.\n\n2) $x_2$ est la seule variable libre ($x_1,x_3$ sont des variables pivots). On pose $x_2=t$.\n\n3) $x_1=-2t$, $x_3=0$, donc $x=t(-2,1,0)$ pour $t\\in\\mathbb R$.\n\n4) Une base de l'espace nul est donc $\\{(-2,1,0)\\}$, de dimension 1.",
-    "prompt": "Quelle est une base de l'espace nul de $A=\\begin{pmatrix}1&2&0\\\\0&0&1\\end{pmatrix}$ ?",
+    "solution": "1) Résoudre $Ax=0$ : la matrice est déjà échelonnée, donc $x_1+2x_2=0$ et $x_3=0$.\n\n2) $x_2$ est la seule variable libre ($x_1,x_3$ sont des variables pivots). On pose $x_2=t$.\n\n3) $x_1=-2t$, $x_3=0$, donc $x=t(-2,1,0)$ pour $t\\in\\mathbb R$.\n\n4) Une base du noyau est donc $\\{(-2,1,0)\\}$, de dimension 1.",
+    "prompt": "Quelle est une base du noyau de $A=\\begin{pmatrix}1&2&0\\\\0&0&1\\end{pmatrix}$ ?",
     "explanation": "En résolvant $Ax=0$ : $x_3=0$, $x_1=-2x_2$ avec $x_2$ libre, donc $x=x_2(-2,1,0)$ : une base est $\\{(-2,1,0)\\}$.",
     "type": "qcm",
     "choices": [

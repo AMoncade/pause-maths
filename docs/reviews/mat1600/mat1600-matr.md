@@ -92,3 +92,10 @@ du cours (matr-019 : inverse à sens unique hors programme, noté explicitement)
 désaccord.
 
 **Résultat final : 20/20 publiables, 0 correction nécessaire, 0 désaccord.**
+
+## mat1600-matr-008 (suivi, round 3)
+
+`why` du distracteur $c=2$ reformulé (clarté) ; distracteur $c=0$ (faible) remplacé
+par $c=\tfrac12$ (résout $2c-1=0$ au lieu de $2c-1=1$, une erreur réelle). Relecture
+aveugle ciblée (seed 707) : confiance 5/5, $c=1$ reconfirmé, $c=\tfrac12$ vérifié
+comme un vrai échec ($AB\ne I$). 0 désaccord.

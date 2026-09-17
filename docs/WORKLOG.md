@@ -65,6 +65,37 @@ Points 9-13/17-21 : tous appliqués (aucun jugé non fondé). `npm test` (354 te
 - Gate : KaTeX en `strict: 'error'` ; une lettre accentuée en mode math (paire de « $ » littéraux non échappés) est refusée, `\text{…}` accentué reste permis. Vérifié d'abord sur la vraie banque (MAT1400, MAT1500, MAT1600) : aucune question ne casse. Cas ajouté dans `broken.json`.
 - `scripts/import-questions.ts` et `tests/import.test.ts` contenaient un BOM littéral (U+FEFF) au lieu d'un code : remplacé par `0xfeff`. `tests/source-hygiene.test.ts` refuse désormais aussi les caractères invisibles (BOM, espaces de largeur nulle) dans tous les sources Engine et tests (contrôle : il trouve le BOM dans l'ancienne version).
 - `npm test` : 354 verts ; `tsc --noEmit` : OK.
+## 2026-09-16 — MAT1600 : relecture Opus round 3 (complémentaire 2) appliquée (lot mat1600)
+
+- 4 élevées corrigées : det-015 (`why` faux), det-017 (explanation fausse), det-019
+  (`why` faux, question remplacée par un calcul $3\times3$ sans zéro pour aussi régler
+  un doublon avec det-001), vect-020 (2 `why` faux, un distracteur remplacé par
+  $2v_1-v_2$, vérifié SymPy).
+- 1 moyenne (2 questions) : syst-015 recalibré à difficulty 3 avec des distracteurs
+  qui vérifient chacun 2 des 3 équations (empêche une élimination par test partiel) ;
+  vect-013 recalibré avec des vecteurs où la dépendance n'est pas visible sur les 3
+  premières composantes.
+- 8 basses : esp-006 (« espace nul » résiduel → « noyau ») ; matr-008 (`why` clarifié,
+  distracteur $c=\tfrac12$) ; det-013 (parenthèse trompeuse retirée, distracteur
+  amélioré) ; det-018 (remplacé par un calcul, plus de redondance avec det-008/017) ;
+  redondances det-020/003 (piège du signe pour taille impaire plutôt que l'exposant),
+  vect-014/007 (version concrète à 2 vecteurs), syst-016 (choix distinct) ; syst-012
+  (précision) ; distracteurs faibles (det-010, det-012, syst-010, vect-009) ; 17
+  pièges nommés.
+- Écart documentaire signalé (référence à `matr-017` inexistant dans
+  `reponse-relecture-opus.md`) : résolu automatiquement par le push précédent
+  (`matr-017` existe désormais).
+- Gate `npm test` vert (334 tests). Relecture aveugle ciblée (sous-agent frais, sans
+  clé) sur les 15 questions modifiées : 0 désaccord. Décisions dans
+  `docs/reviews/mat1600/reponse-relecture-opus-3.md`.
+- Rattrapage : `docs/reviews/mat1600/mat1600-vect.md` manquait la section pour
+  l'extension vect-009..020 (déjà relue à l'époque, seed 103, 0 désaccord) — ajoutée
+  a posteriori pour que le journal soit complet.
+- **Cumul des 3 rondes Opus sur MAT1600 :** 5 élevées, 5 moyennes, 23 basses lues au
+  total par le relecteur ; toutes corrigées ou adaptées avec justification (aucun
+  rejet net).
+
+## 2026-09-16 — MAT1600 : esp et matr étendus à 20, extension à 20/thème complète (lot mat1600)
 
 ## 2026-09-16 — MAT1500 : relecture Opus appliquée + logic/quant à 12 (lot mat1500)
 

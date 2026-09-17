@@ -117,7 +117,7 @@
     "topic": "mat1600-det",
     "difficulty": 1,
     "prompt": "$\\det(A^T)=\\det(A)$ pour toute matrice carrée $A$.",
-    "explanation": "Vrai : la transposition n'échange que rangées et colonnes, ce qui ne change jamais la valeur du déterminant (chaque développement par cofacteurs donne le même résultat).",
+    "explanation": "Vrai : la transposition n'échange que rangées et colonnes, ce qui ne change jamais la valeur du déterminant (chaque développement par cofacteurs donne le même résultat). Le piège : croire que la transposition inverse le signe du déterminant, comme elle peut le faire pour d'autres propriétés.",
     "type": "vf",
     "answer": true
   },
@@ -127,12 +127,12 @@
     "topic": "mat1600-det",
     "difficulty": 2,
     "prompt": "Si $\\det A=4$, que vaut $\\det(A^{-1})$ ?",
-    "explanation": "De $A A^{-1}=I$, on tire $\\det(A)\\det(A^{-1})=\\det(I)=1$, donc $\\det(A^{-1})=\\dfrac1{\\det A}=\\dfrac14$.",
+    "explanation": "De $A A^{-1}=I$, on tire $\\det(A)\\det(A^{-1})=\\det(I)=1$, donc $\\det(A^{-1})=\\dfrac1{\\det A}=\\dfrac14$. Le piège : croire que prendre l'inverse d'une matrice change aussi le signe de son déterminant, alors que seul l'inverse numérique est pris.",
     "type": "qcm",
     "choices": [
       { "text": "$\\tfrac14$", "correct": true },
       { "text": "$4$", "correct": false, "why": "Prendre l'inverse d'une matrice change son déterminant : ce n'est pas le même que $\\det A$." },
-      { "text": "$-4$", "correct": false, "why": "Il n'y a aucune raison de changer le signe du déterminant en prenant l'inverse." },
+      { "text": "$-\\tfrac14$", "correct": false, "why": "Le signe ne change pas en prenant l'inverse : $\\det(A^{-1})=\\dfrac1{\\det A}=\\dfrac14$, sans signe négatif ajouté." },
       { "text": "$\\tfrac1{16}$", "correct": false, "why": "C'est $\\tfrac1{\\det A}$ qu'il faut, pas $\\tfrac1{(\\det A)^2}$ : la relation est $\\det(A^{-1})=\\tfrac1{\\det A}$, sans carré." }
     ]
   },
@@ -157,13 +157,13 @@
     "topic": "mat1600-det",
     "difficulty": 1,
     "prompt": "Si une matrice carrée a une rangée entièrement nulle, que vaut son déterminant ?",
-    "explanation": "$0$ : en développant selon cette rangée, chaque terme contient un facteur nul, donc la somme entière vaut $0$.",
+    "explanation": "$0$ : en développant selon cette rangée, chaque terme contient un facteur nul, donc la somme entière vaut $0$. Le piège : croire que la position de la rangée nulle (première, dernière, au milieu) change quelque chose au résultat.",
     "type": "qcm",
     "choices": [
       { "text": "$0$", "correct": true },
       { "text": "$1$", "correct": false, "why": "$1$ est le déterminant de la matrice identité, pas celui d'une matrice avec une rangée nulle." },
       { "text": "Cela dépend des autres rangées", "correct": false, "why": "Une rangée entièrement nulle force le déterminant à $0$, peu importe le contenu des autres rangées : chaque terme du développement selon cette rangée est nul." },
-      { "text": "Le déterminant n'est pas défini dans ce cas", "correct": false, "why": "Le déterminant est toujours défini pour une matrice carrée, rangée nulle ou non ; ici il vaut simplement $0$." }
+      { "text": "Cela dépend de la position de la rangée nulle dans la matrice", "correct": false, "why": "La position (première, au milieu, dernière) n'a aucune importance : une seule rangée nulle, où qu'elle soit, suffit à rendre le déterminant nul." }
     ]
   },
   {
@@ -172,13 +172,13 @@
     "topic": "mat1600-det",
     "difficulty": 2,
     "prompt": "Si deux rangées d'une matrice carrée sont proportionnelles (l'une est un multiple scalaire de l'autre), que vaut son déterminant ?",
-    "explanation": "$0$ : une opération élémentaire (soustraire un multiple de l'une à l'autre) transforme la deuxième rangée en rangée nulle sans changer le déterminant, donc $\\det A=0$.",
+    "explanation": "$0$ : une opération élémentaire (soustraire un multiple de l'une à l'autre) transforme la deuxième rangée en rangée nulle sans changer le déterminant, donc $\\det A=0$. Le piège : croire que la valeur du facteur de proportionnalité $k$ influence le résultat, alors qu'il n'intervient pas.",
     "type": "qcm",
     "choices": [
       { "text": "$0$", "correct": true },
-      { "text": "Cela dépend du facteur de proportionnalité", "correct": false, "why": "Le déterminant est toujours $0$ dans ce cas, peu importe la valeur du facteur (tant qu'il ne s'agit pas de deux rangées nulles à la fois, cas trivial)." },
+      { "text": "Cela dépend du facteur de proportionnalité", "correct": false, "why": "Le déterminant est toujours $0$ dans ce cas, peu importe la valeur du facteur." },
       { "text": "$1$", "correct": false, "why": "Rien ne rapproche ce cas de la matrice identité : deux rangées proportionnelles rendent plutôt le déterminant nul." },
-      { "text": "Le produit des deux rangées", "correct": false, "why": "Le déterminant n'est pas défini comme un produit de rangées entières ; ce n'est pas une opération valide." }
+      { "text": "Le facteur de proportionnalité $k$", "correct": false, "why": "$k$ n'intervient pas dans le résultat : soustraire $k$ fois une rangée de l'autre donne toujours une rangée nulle, peu importe la valeur de $k$." }
     ]
   },
   {
@@ -206,7 +206,7 @@
     "type": "qcm",
     "choices": [
       { "text": "$2$", "correct": true },
-      { "text": "$3$", "correct": false, "why": "Erreur de calcul dans le produit $AB$ : la deuxième entrée de la première ligne est $1\\cdot0+2\\cdot1=2$, pas $3$." },
+      { "text": "$3$", "correct": false, "why": "C'est $\\det A+\\det B=1+2$ : le déterminant d'un produit est le PRODUIT des déterminants, pas leur somme." },
       { "text": "$1$", "correct": false, "why": "C'est $\\det A$ seul, pas $\\det(AB)$." },
       { "text": "$-2$", "correct": false, "why": "Erreur de signe dans le calcul du déterminant de $AB$ : $\\det\\begin{pmatrix}4&2\\\\1&1\\end{pmatrix}=4\\cdot1-2\\cdot1=2$, pas $-2$." }
     ]
@@ -217,7 +217,7 @@
     "topic": "mat1600-det",
     "difficulty": 1,
     "prompt": "Quel est le déterminant de la matrice diagonale $\\begin{pmatrix}2&0&0\\\\0&-3&0\\\\0&0&5\\end{pmatrix}$ ?",
-    "explanation": "Une matrice diagonale est un cas particulier de matrice triangulaire : son déterminant est le produit des entrées diagonales, $2\\cdot(-3)\\cdot5=-30$.",
+    "explanation": "Une matrice diagonale est un cas particulier de matrice triangulaire : son déterminant est le produit des entrées diagonales, $2\\cdot(-3)\\cdot5=-30$. Le piège : additionner les entrées diagonales (la trace) au lieu de les multiplier.",
     "type": "qcm",
     "choices": [
       { "text": "$-30$", "correct": true },
@@ -232,7 +232,7 @@
     "topic": "mat1600-det",
     "difficulty": 2,
     "prompt": "Pour calculer $\\det\\begin{pmatrix}1&2&3\\\\0&0&4\\\\5&1&2\\end{pmatrix}$ le plus efficacement (le moins de termes à calculer), selon quelle rangée faut-il développer ?",
-    "explanation": "La deuxième ligne a deux zéros ($0,0,4$) : un seul terme non nul à calculer. Toutes les autres rangées et colonnes n'ont aucun zéro et demanderaient 3 termes chacune.",
+    "explanation": "La deuxième ligne a deux zéros ($0,0,4$) : un seul terme non nul à calculer. Les colonnes 1 et 2 ont chacune un zéro (2 termes), les deux autres rangées n'en ont aucun (3 termes) : la deuxième ligne reste la plus efficace.",
     "type": "qcm",
     "choices": [
       { "text": "La deuxième ligne (2 zéros)", "correct": true },
@@ -245,30 +245,30 @@
     "id": "mat1600-det-018",
     "course": "MAT1600",
     "topic": "mat1600-det",
-    "difficulty": 1,
-    "prompt": "Pourquoi le résultat du développement par cofacteurs est-il le même peu importe la rangée choisie, mais préfère-t-on quand même celle avec le plus de zéros ?",
-    "explanation": "C'est un théorème : toutes les rangées et colonnes donnent la même valeur du déterminant. Mais chaque zéro dans la rangée choisie élimine un terme entier à calculer, réduisant l'effort sans changer le résultat.",
-    "type": "flash",
-    "answer": "Le théorème du développement par cofacteurs garantit que le résultat est identique peu importe la rangée ou la colonne choisie ; choisir celle avec le plus de zéros élimine simplement des termes du calcul, pour le même résultat final.",
-    "keyPoints": [
-      "L'égalité entre les développements selon différentes rangées est un théorème, pas une coïncidence",
-      "Un zéro dans la rangée choisie annule tout le terme correspondant, sans calcul supplémentaire",
-      "Le choix de la rangée est une question d'efficacité, jamais de correction du résultat"
+    "difficulty": 2,
+    "prompt": "En développant selon la deuxième colonne (qui a deux zéros), quel est $\\det\\begin{pmatrix}3&0&1\\\\2&0&4\\\\1&5&2\\end{pmatrix}$ ?",
+    "explanation": "Seul $a_{32}=5$ est non nul sur la colonne 2. Son cofacteur est $C_{32}=(-1)^{3+2}\\det\\begin{pmatrix}3&1\\\\2&4\\end{pmatrix}=-(12-2)=-10$, donc $\\det A=5\\cdot(-10)=-50$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$-50$", "correct": true },
+      { "text": "$50$", "correct": false, "why": "Le signe $(-1)^{3+2}=-1$ du cofacteur a été oublié : la position $(3,2)$ porte un signe négatif." },
+      { "text": "$-10$", "correct": false, "why": "C'est le cofacteur $C_{32}$ seul : il manque la multiplication par l'entrée $a_{32}=5$." },
+      { "text": "$10$", "correct": false, "why": "C'est le mineur $M_{32}$ seul, sans le signe $(-1)^{3+2}$ ni la multiplication par $a_{32}=5$." }
     ]
   },
   {
     "id": "mat1600-det-019",
     "course": "MAT1600",
     "topic": "mat1600-det",
-    "difficulty": 1,
-    "prompt": "Quel est le déterminant de $\\begin{pmatrix}-2&3\\\\4&1\\end{pmatrix}$ ?",
-    "explanation": "$\\det=ad-bc=(-2)\\cdot1-3\\cdot4=-2-12=-14$.",
+    "difficulty": 2,
+    "prompt": "Aucune rangée ni colonne de $\\begin{pmatrix}1&2&3\\\\2&1&1\\\\1&3&2\\end{pmatrix}$ n'a de zéro. En développant selon la première ligne, quel est son déterminant ?",
+    "explanation": "$\\det A=1\\cdot\\det\\begin{pmatrix}1&1\\\\3&2\\end{pmatrix}-2\\cdot\\det\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}+3\\cdot\\det\\begin{pmatrix}2&1\\\\1&3\\end{pmatrix}=1\\cdot(-1)-2\\cdot3+3\\cdot5=8$.",
     "type": "qcm",
     "choices": [
-      { "text": "$-14$", "correct": true },
-      { "text": "$10$", "correct": false, "why": "C'est $ad+bc=(-2)\\cdot1+3\\cdot4$ : il faut soustraire, pas additionner." },
-      { "text": "$14$", "correct": false, "why": "C'est $bc-ad=3\\cdot4-(-2)\\cdot1$ : la formule est $ad-bc$, pas l'inverse." },
-      { "text": "$-2$", "correct": false, "why": "Ce calcul utilise les mauvaises entrées ($-2\\cdot4-3\\cdot1$) au lieu de la diagonale principale et hors diagonale." }
+      { "text": "$8$", "correct": true },
+      { "text": "$20$", "correct": false, "why": "Le signe alterné $(-1)^{1+j}$ a été ignoré : les trois termes ont été additionnés au lieu d'alterner $+,-,+$." },
+      { "text": "$-7$", "correct": false, "why": "Le troisième terme ($3$ fois son cofacteur, qui vaut $15$) a été oublié : il ne reste que les deux premiers termes." },
+      { "text": "$10$", "correct": false, "why": "Le mineur du deuxième terme utilise les mauvaises lignes/colonnes : en retirant la ligne 1 et la colonne 2, le mineur est $\\det\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}=3$, pas $2$." }
     ]
   },
   {
@@ -276,8 +276,8 @@
     "course": "MAT1600",
     "topic": "mat1600-det",
     "difficulty": 2,
-    "prompt": "$\\det(2A)=2\\det(A)$ pour une matrice $A$ de taille $4\\times4$.",
-    "explanation": "Faux : multiplier une matrice $4\\times4$ par $2$ multiplie chacune de ses 4 rangées par $2$, donc $\\det(2A)=2^4\\det A=16\\det A$, pas $2\\det A$.",
+    "prompt": "$\\det(-A)=\\det(A)$ pour une matrice $A$ de taille $3\\times3$.",
+    "explanation": "Faux : $\\det(-A)=\\det((-1)A)=(-1)^3\\det A=-\\det A$. Le piège : penser que négativer une matrice n'affecte pas son déterminant, alors que le signe dépend de la taille (pair ou impair) via l'exposant $n$.",
     "type": "vf",
     "answer": false
   }

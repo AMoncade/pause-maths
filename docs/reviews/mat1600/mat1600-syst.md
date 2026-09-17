@@ -86,4 +86,24 @@ distracteur donne soit une solution unique soit aucune solution, jamais une infi
 Le distracteur $(6,6)$ testé et confirmé comme un piège pédagogique solide (bon $h$,
 mauvais $k$ ⇒ incompatible plutôt qu'infini). 0 désaccord.
 
+**Résultat (jalon 2, 1-21) : 21/21 publiables, 0 correction nécessaire, 0 désaccord.**
+
+## Corrections suite à la relecture Opus, round 3
+
+- **syst-015 (Défi mal calibré) :** difficulty 3 ; distracteurs remplacés par
+  $(-1,1,6)$ (vérifie eq. 1-2) et $(4,0,2)$ (vérifie eq. 1-3), empêchant une
+  élimination par test partiel des 3 équations.
+- **syst-010 :** distracteur faible « $h=-6$ » remplacé par « $h=\tfrac52$ » (rapport
+  des constantes confondu avec celui des coefficients), vérifié par SymPy comme
+  donnant en fait une solution unique.
+- **syst-016 :** un des deux choix « ignorer la ligne » remplacé par une idée
+  distincte (« autant de lignes non nulles que d'inconnues »).
+- **syst-012 :** précision ajoutée (matrice augmentée, mêmes inconnues).
+- Pièges nommés ajoutés à 012, 013, 017, 018, 020.
+
+Relecture aveugle ciblée (seed 703) sur syst-010, syst-015, syst-016 : 0 désaccord.
+SymPy reconfirme $h=6$ (pas $\tfrac52$, qui donne une solution unique) pour syst-010 ;
+$(1,2,3)$ avec chaque distracteur satisfaisant exactement 2 des 3 équations pour
+syst-015.
+
 **Résultat final : 21/21 publiables, 0 correction nécessaire, 0 désaccord.**

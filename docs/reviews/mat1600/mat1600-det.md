@@ -82,4 +82,28 @@ pour une $4\times4$ confirmé pour {020} (exemple aléatoire : $\det A=99$,
 $\det(2A)=1584=16\times99$). Concepts (009, 012, 013, 014, 017, 018) confirmés par
 raisonnement. 0 désaccord.
 
+**Résultat (jalon 2, 1-20) : 20/20 publiables, 0 correction nécessaire, 0 désaccord.**
+
+## Corrections suite à la relecture Opus, round 3
+
+- **det-015 (élevée) :** `why` faux corrigé (c'était $\det A+\det B$, pas une entrée
+  erronée d'$AB$).
+- **det-017 (élevée) :** explanation corrigée (colonnes 1 et 2 ont chacune un zéro,
+  pas zéro comme affirmé).
+- **det-019 (élevée + doublon avec det-001) :** question remplacée par un calcul
+  $3\times3$ sans aucun zéro (développement selon la première ligne, $\det=8$).
+- **det-020 (doublon avec det-003) :** remplacé par $\det(-A)=\det A$ pour une taille
+  impaire (Faux), un piège de signe distinct de l'exposant déjà testé par det-003.
+- **det-010, det-012, det-013 :** distracteurs faibles remplacés par des erreurs
+  réelles ($-\tfrac14$ pour det-010 ; position de la rangée nulle pour det-012 ; le
+  facteur $k$ pour det-013).
+- **det-018 :** remplacé par un calcul (colonne 2 de $[[3,0,1],[2,0,4],[1,5,2]]$,
+  $\det=-50$) au lieu d'une question redondante avec det-008/017.
+- Pièges nommés ajoutés à 009, 010, 012, 013, 016, 020.
+
+Relecture aveugle ciblée (seed 701) sur les 7 questions modifiées : 0 désaccord.
+SymPy reconfirme $\det(AB)=2\ne\det A+\det B=3$ pour det-015 ; $\det=-50$ pour det-018 ;
+$\det=8$ pour det-019 (distracteurs 20/-7/10 tous faux) ; $\det(-A)=-\det A$ pour un
+$3\times3$ (det-020).
+
 **Résultat final : 20/20 publiables, 0 correction nécessaire, 0 désaccord.**
