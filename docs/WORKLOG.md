@@ -2,6 +2,14 @@
 
 Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute la sienne dans son worktree ; l'admin fusionne.
 
+## 2026-09-16 — Lot UI : checklist §11 « App in Chrome » (lot/ui)
+
+- Faite dans un onglet dédié (nouvelle fenêtre, localhost seulement), sur `vite preview` du build de main@394e8a7 (146 questions réelles), 390 px (iframe) puis pleine largeur. Aucun autre onglet touché ; onglet fermé à la fin.
+- **OK** : choix des cours (depuis Tout, un cours seul ; 9 réponses toutes MAT1600) ; bonne et mauvaise réponse avec `why` et explication ; Rafale → bilan → Encore 5 ; Sans fin (7 questions sans doublon, flamme de combo, redémarrage après épuisement) ; À revoir = exactement les 2 ratées puis « Tout est revu ! » ; décocher des thèmes les retire (12 réponses, un seul thème) ; Défi éteint = aucune question Défi sur 12, allumé = badge + « Voir la solution » (Markdown + KaTeX, défilement dans la feuille) ; carte flash (clic et Espace) ; rechargement : 26 cartes, Défi, thèmes, série, XP conservés ; raccourcis au vrai clavier : 3, Entrée, Espace, 2, F, Entrée (bilan puis Encore 5), Échap.
+- **PWA** : manifest lié et valide (id, scope, start_url, display standalone, lang fr-CA, icônes 192/512/maskable en 200) ; service worker `activated`, contrôle la page ; précache 31 URL uniques (37 entrées, doublons icônes/manifest côté config) dont index.html et les 21 woff2 ; `beforeinstallprompt` reçu → bouton « Installer » affiché (non cliqué). Hors ligne : serveur arrêté puis rechargement → l'app, ses polices et les formules KaTeX se chargent depuis le cache, `fetch` vers le serveur échoue.
+- **Corrigé** : en-tête de carte (Signaler seul sur une 2e ligne avec un thème long) ; boutons Vrai/Faux et auto-évaluation poussés en bas aussi sur desktop ; retour à la ligne entre « ( » et une formule. Vérifié par captures Edge headless, tests ajoutés.
+- **Non fait / limites** : le panneau DevTools lui-même n'est pas pilotable par l'extension — manifest, SW et cache vérifiés par script dans la page, et « hors ligne » simulé en arrêtant le serveur au lieu du mode offline de DevTools. Fenêtre passée en arrière-plan en cours de route : captures Chrome impossibles ensuite, vérifications par script.
+
 ## 2026-09-16 — MAT1400 Jalon 2 complet : 96 questions, 8 thèmes intra (lot mat1400)
 
 - Les 8 thèmes intra (vect, fonc, quad, grad, part, chain, extr, lagr) sont à 12 questions
