@@ -159,7 +159,7 @@
     "topic": "mat1500-modul",
     "difficulty": 3,
     "prompt": "Dans la preuve que $a\\equiv b$ et $c\\equiv d \\pmod n$ impliquent $a+c\\equiv b+d \\pmod n$, après avoir écrit $a-b=nk_1$ et $c-d=nk_2$, quelle est la bonne étape finale ?",
-    "explanation": "La preuve utilise directement la définition de la congruence en termes de divisibilité ; l'erreur fréquente est de manipuler les congruences comme de simples égalités sans revenir à leur définition ($n \\mid (a-b)$) quand une justification rigoureuse est demandée.",
+    "explanation": "Le piège le plus tentant : soustraire les deux égalités au lieu de les additionner. $(a-b)-(c-d)$ se simplifie en $(a-c)-(b-d)$, ce qui prouverait $a-c\\equiv b-d$ (un fait vrai, mais différent) — pas $a+c\\equiv b+d$, qui exige d'additionner.",
     "challenge": true,
     "type": "qcm",
     "choices": [

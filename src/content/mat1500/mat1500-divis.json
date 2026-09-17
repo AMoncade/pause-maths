@@ -130,15 +130,15 @@
     "topic": "mat1500-divis",
     "difficulty": 3,
     "prompt": "Dans la preuve que $a \\mid b$ et $b \\mid c$ impliquent $a \\mid c$, après avoir écrit $b=ak_1$ et $c=bk_2$, quelle substitution termine correctement la preuve ?",
-    "explanation": "La preuve directe demande d'écrire $b$ et $c$ en fonction des définitions ($b = ak_1$, $c = bk_2$) puis de substituer : l'erreur fréquente est de supposer la conclusion ou de ne pas exhiber explicitement l'entier qui témoigne de $a \\mid c$.",
+    "explanation": "Le piège le plus tentant : confondre avec la preuve « $a\\mid b$ et $a\\mid c$ $\\Rightarrow$ $a\\mid(b+c)$ » vue au thème divisibilité, où les témoins s'additionnent. Ici $c$ s'obtient en substituant $b=ak_1$ dans $c=bk_2$, ce qui donne un produit $k_1k_2$, pas une somme $k_1+k_2$.",
     "challenge": true,
     "type": "qcm",
     "choices": [
       { "text": "$c = bk_2 = (ak_1)k_2 = a(k_1k_2)$, donc $a\\mid c$ avec le témoin $k_1k_2$", "correct": true },
       {
-        "text": "$c = bk_2 = a + k_1k_2$, donc $a\\mid c$",
+        "text": "$c = a(k_1+k_2)$, donc $a\\mid c$ avec le témoin $k_1+k_2$",
         "correct": false,
-        "why": "Cette expression additionne $a$ au lieu de le multiplier ; substituer $b=ak_1$ dans $c=bk_2$ donne un produit, pas une somme."
+        "why": "Cette expression vient d'une confusion avec la preuve additive « $a\\mid b, a\\mid c \\Rightarrow a\\mid(b+c)$ » ; ici la substitution de $b=ak_1$ dans $c=bk_2$ produit un produit $k_1k_2$, pas une somme $k_1+k_2$."
       },
       {
         "text": "$c = k_1+k_2$, donc $a\\mid c$ car $a\\mid k_1$",

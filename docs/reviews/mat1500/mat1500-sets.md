@@ -32,3 +32,17 @@ Morgan) dans un venv temporaire hors dépôt, supprimé après usage. Deux passe
 
 Re-vérifié (gate + relecture aveugle complète des 12 questions, brute force) après application :
 **PASS**, aucune régression.
+
+## Relecture Opus (b) (docs/reviews/relecture-opus/mat1500-b.md) — corrections appliquées
+
+- `sets-008` (Défi) : bonne réponse raccourcie (elle se repérait à sa longueur), 2 distracteurs
+  artificiels remplacés par des quasi-erreurs réelles (une seule inclusion montrée ; confondre
+  l'hypothèse avec un fait toujours vrai), `explanation` alignée.
+- `sets-009` : distracteur $2$ remplacé par $3$ (une vraie erreur, $|A|-|A\cap B|$).
+- `sets-010` : piège nommé.
+- `sets-011` : notation $\triangle$ remplacée par $\oplus$ (celle de Rosen).
+- `sets-012` (Défi) : converti de flash à qcm (avait été ajouté après la première conversion,
+  raté par erreur).
+
+Re-vérifié (brute force sur les sous-ensembles, venv hors dépôt) : **PASS** sur les 5 items
+touchés, aucune ambiguïté.

@@ -165,9 +165,9 @@
     "choices": [
       { "text": "$p^2$ est pair, donc $p$ est pair", "correct": true },
       {
-        "text": "$p^2$ est pair, donc $p$ est impair",
+        "text": "$p^2$ est pair, donc $p=2$",
         "correct": false,
-        "why": "Un carré pair implique que la base est paire, pas impaire ; le carré d'un impair est toujours impair."
+        "why": "Pair ne veut pas dire égal à $2$ : $p$ pair signifie $p=2m$ pour un entier $m$ quelconque, pas nécessairement $m=1$."
       },
       {
         "text": "$p^2=2q^2$ implique directement $p=q\\sqrt2$, ce qui prouve que $p$ est irrationnel",

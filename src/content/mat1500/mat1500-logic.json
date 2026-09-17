@@ -104,7 +104,7 @@
     "course": "MAT1500",
     "topic": "mat1500-logic",
     "difficulty": 3,
-    "prompt": "En prouvant que $\\neg(p \\rightarrow q) \\equiv p \\wedge \\neg q$, la première étape donne $\\neg(p \\rightarrow q) \\equiv \\neg(\\neg p \\vee q)$. Quelle est la simplification finale correcte, par De Morgan puis double négation ?",
+    "prompt": "On part de $\\neg(p \\rightarrow q)$ et on réécrit $p \\rightarrow q \\equiv \\neg p \\vee q$, donnant $\\neg(\\neg p \\vee q)$. Que donnent De Morgan puis la double négation, appliqués à cette expression ?",
     "explanation": "Les erreurs classiques à cette étape : appliquer De Morgan sans la double négation finale (donnant $\\neg p \\wedge \\neg q$), ou ne pas changer le connecteur $\\vee$ en $\\wedge$ (donnant $p \\vee \\neg q$ ou $\\neg p \\vee \\neg q$).",
     "challenge": true,
     "type": "qcm",
@@ -174,9 +174,9 @@
     "topic": "mat1500-logic",
     "difficulty": 1,
     "prompt": "Explique la différence entre une tautologie et une contradiction.",
-    "explanation": "Ces deux notions sont aux extrêmes opposés : une tautologie est vraie sur toute la table de vérité, une contradiction est fausse sur toute la table de vérité. La plupart des propositions ne sont ni l'une ni l'autre (leur valeur dépend des variables).",
+    "explanation": "Ces deux notions sont aux extrêmes opposés : une tautologie est vraie sur toute la table de vérité, une contradiction est fausse sur toute la table de vérité. La plupart des propositions ne sont ni l'une ni l'autre (leur valeur dépend des variables). Le piège : $(p\\to q)\\vee(q\\to p)$ est une tautologie même si elle ne le semble pas à première vue (aucun des deux membres n'est trivialement vrai).",
     "type": "flash",
-    "answer": "Une tautologie est une proposition toujours vraie (ex. $p \\vee \\neg p$) ; une contradiction est toujours fausse (ex. $p \\wedge \\neg p$).",
+    "answer": "Une tautologie est une proposition toujours vraie (ex. $(p\\to q)\\vee(q\\to p)$, vraie dans les 4 lignes de sa table) ; une contradiction est toujours fausse (ex. $p \\wedge \\neg p$).",
     "keyPoints": [
       "Tautologie = vraie pour toutes les valeurs de vérité des variables",
       "Contradiction = fausse pour toutes les valeurs de vérité des variables"
@@ -201,9 +201,9 @@
         "why": "C'est la distribution de $\\vee$ sur $\\wedge$ (pour l'énoncé $p \\vee (q \\wedge r)$), pas celle de $\\wedge$ sur $\\vee$ demandée ici."
       },
       {
-        "text": "$(p \\wedge q) \\vee r$",
+        "text": "$(p \\wedge q) \\vee (q \\wedge r)$",
         "correct": false,
-        "why": "$p$ n'est distribué que sur $q$, pas sur $r$ : cette expression change complètement la structure logique."
+        "why": "$p$ a été oublié dans le second terme, remplacé par $q$ : la distribution correcte répète $p$ sur les deux membres, pas $q$."
       },
       {
         "text": "$(p \\vee q) \\wedge r$",
@@ -218,7 +218,7 @@
     "topic": "mat1500-logic",
     "difficulty": 1,
     "prompt": "$p \\vee \\text{Vrai}$ est toujours vraie, peu importe la valeur de $p$ (loi de domination).",
-    "explanation": "Vrai : dès qu'un « ou » contient une proposition toujours vraie, le résultat est toujours vrai, sans égard à l'autre membre. C'est le pendant de $p \\wedge \\text{Faux} \\equiv \\text{Faux}$.",
+    "explanation": "Vrai : dès qu'un « ou » contient une proposition toujours vraie, le résultat est toujours vrai, sans égard à l'autre membre. Le piège : confondre avec $p \\vee \\text{Faux} \\equiv p$, qui elle dépend bel et bien de $p$.",
     "type": "vf",
     "answer": true
   },
@@ -246,9 +246,9 @@
         "why": "Ceci place $q$ du mauvais côté : $q$ était une hypothèse dans l'énoncé original, pas une partie de la conclusion."
       },
       {
-        "text": "$q \\rightarrow (p \\vee r)$",
+        "text": "$(p \\rightarrow q) \\rightarrow r$",
         "correct": false,
-        "why": "Cette expression change à la fois la variable de l'hypothèse externe et le connecteur de la conclusion ; elle n'a aucune justification logique liée à l'énoncé de départ."
+        "why": "Le $\\wedge$ de l'hypothèse a été lu à tort comme une implication ; $(p\\wedge q)\\to r$ ne se réécrit pas en remplaçant $\\wedge$ par $\\to$ entre $p$ et $q$."
       }
     ]
   },
@@ -258,12 +258,12 @@
     "topic": "mat1500-logic",
     "difficulty": 2,
     "prompt": "Simplifie $p \\vee (p \\wedge q)$ à l'aide de la loi d'absorption, en nommant la loi utilisée.",
-    "explanation": "L'erreur fréquente est d'essayer de distribuer d'abord (ce qui complique inutilement l'expression) au lieu de reconnaître directement le motif d'absorption $p \\vee (p \\wedge q) \\equiv p$.",
+    "explanation": "Distribuer d'abord fonctionne aussi ($p\\vee(p\\wedge q)\\equiv(p\\vee p)\\wedge(p\\vee q)$), mais tourne en rond sans rien simplifier ; reconnaître directement le motif d'absorption est bien plus direct. Le vrai piège : croire à tort que $p\\vee(p\\wedge q)\\equiv p\\wedge q$ (en « simplifiant » par $p$ des deux côtés, ce qui n'est pas une opération valide ici).",
     "type": "flash",
     "answer": "$p \\vee (p \\wedge q) \\equiv p$ (loi d'absorption).",
     "keyPoints": [
       "Si $p$ est vrai, toute l'expression est vraie ; si $p$ est faux, $p \\wedge q$ l'est aussi, donc l'expression vaut $p$ dans les deux cas",
-      "À ne pas confondre avec la distributivité, qui ne s'applique pas ici directement"
+      "Le résultat est $p$, pas $p \\wedge q$ : il n'y a pas de « simplification par $p$ » valide entre $\\vee$ et $\\wedge$"
     ]
   }
 ]

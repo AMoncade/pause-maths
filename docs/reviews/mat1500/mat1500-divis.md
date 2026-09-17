@@ -42,3 +42,10 @@ Re-vérifié (gate + relecture aveugle complète des 8 questions, SymPy) après 
 | mat1500-divis-012 (défi) | contradiction via $N \bmod p_i = 1$ | haute | vérifié sur 4 listes de premiers différentes | conforme |
 
 **Verdict : PASS.** Aucune ambiguïté. Total du thème : 12 questions.
+
+## Relecture Opus (b) (docs/reviews/relecture-opus/mat1500-b.md) — correction appliquée
+
+- `divis-008` (Défi) : distracteur artificiel remplacé par une confusion réelle avec la preuve
+  additive du thème ($a(k_1+k_2)$ au lieu du produit $a(k_1k_2)$), `explanation` alignée.
+
+Re-vérifié (SymPy, venv hors dépôt) : **PASS**.

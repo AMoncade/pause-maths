@@ -139,7 +139,7 @@
     "topic": "mat1500-func",
     "difficulty": 3,
     "prompt": "Dans la preuve que $f(x) = 2x+1$ est bijective sur $\\mathbb{R}$, quelle construction montre correctement la surjectivité ?",
-    "explanation": "Une preuve de bijection complète doit établir séparément l'injectivité et la surjectivité ; oublier l'une des deux moitiés est l'erreur la plus fréquente.",
+    "explanation": "Le piège le plus tentant : confondre $f$ et sa réciproque, en posant $x=2y+1$ (appliquer $f$ à $y$ au lieu de résoudre $y=2x+1$ pour $x$). Le bon témoin s'obtient en isolant $x$ dans l'équation $y=f(x)$, pas en réutilisant la formule de $f$ elle-même.",
     "challenge": true,
     "type": "qcm",
     "choices": [
@@ -167,28 +167,28 @@
     "course": "MAT1500",
     "topic": "mat1500-func",
     "difficulty": 2,
-    "prompt": "Que vaut $\\lceil -3{,}2 \\rceil$ (la fonction plafond) ?",
-    "explanation": "Le plafond donne le plus petit entier supérieur ou égal au nombre. Pour $-3{,}2$, le plus petit entier qui convient est $-3$ (puisque $-3 \\ge -3{,}2$), pas $-4$ (qui est plus petit que $-3{,}2$). Confondre plancher et plafond sur un nombre négatif inverse la direction de l'arrondi.",
+    "prompt": "Que vaut $\\lceil -2{,}7 \\rceil$ (la fonction plafond) ?",
+    "explanation": "Le plafond donne le plus petit entier supérieur ou égal au nombre. Pour $-2{,}7$, le plus petit entier qui convient est $-2$ (puisque $-2 \\ge -2{,}7$), pas $-3$ (qui est plus petit que $-2{,}7$). Confondre plancher et plafond sur un nombre négatif inverse la direction de l'arrondi.",
     "type": "qcm",
     "choices": [
       {
-        "text": "$-3$",
+        "text": "$-2$",
         "correct": true
       },
       {
-        "text": "$-4$",
+        "text": "$-3$",
         "correct": false,
-        "why": "C'est $\\lfloor -3{,}2 \\rfloor$ (le plancher), pas le plafond : $-4 < -3{,}2$, donc $-4$ ne peut pas être le plus petit entier supérieur ou égal à $-3{,}2$."
+        "why": "C'est l'arrondi au plus proche (ou $\\lfloor -2{,}7 \\rfloor$, le plancher), pas le plafond : $-3 < -2{,}7$, donc $-3$ ne peut pas être le plus petit entier supérieur ou égal à $-2{,}7$."
       },
       {
         "text": "$3$",
         "correct": false,
-        "why": "Ce résultat ignore le signe négatif du nombre de départ."
+        "why": "Le signe négatif a été ignoré : ceci serait $\\lceil 2{,}7 \\rceil$, pas $\\lceil -2{,}7 \\rceil$."
       },
       {
-        "text": "$4$",
+        "text": "$-2{,}7$",
         "correct": false,
-        "why": "Ni le plancher ni le plafond de $-3{,}2$ ne peuvent être positifs : les deux arrondis restent proches de $-3{,}2$."
+        "why": "Le plafond renvoie toujours un entier, jamais le nombre lui-même."
       }
     ]
   },
@@ -216,7 +216,7 @@
         "correct": true
       },
       {
-        "text": "$(4, 1, 0, 1, 4)$ — la liste des valeurs sans les fusionner",
+        "text": "$(4, 1, 0, 1, 4)$",
         "correct": false,
         "why": "L'image d'un ensemble est elle-même un ensemble : les doublons $4$ et $1$ doivent être fusionnés, donnant $\\{0,1,4\\}$, pas gardés comme une liste ordonnée."
       },
@@ -238,7 +238,7 @@
     "topic": "mat1500-func",
     "difficulty": 2,
     "prompt": "Explique pourquoi une fonction strictement croissante sur $\\mathbb{R}$ est toujours injective.",
-    "explanation": "Le lien entre monotonie stricte et injectivité est un argument standard : la stricte croissance empêche deux entrées distinctes de partager la même sortie, car l'une des deux devrait forcément dépasser l'autre.",
+    "explanation": "Le lien entre monotonie stricte et injectivité est un argument standard : la stricte croissance empêche deux entrées distinctes de partager la même sortie, car l'une des deux devrait forcément dépasser l'autre. Le piège : l'argument échoue sans le mot « strictement » — une fonction seulement croissante (non stricte) peut être constante sur un intervalle, et y perdre l'injectivité.",
     "type": "flash",
     "answer": "Si $a \\ne b$, disons $a < b$ sans perte de généralité, alors la stricte croissance donne $f(a) < f(b)$, donc $f(a) \\ne f(b)$. Ainsi des entrées distinctes ont toujours des sorties distinctes : $f$ est injective.",
     "keyPoints": [

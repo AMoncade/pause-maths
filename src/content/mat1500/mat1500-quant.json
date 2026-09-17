@@ -170,9 +170,9 @@
         "why": "Avec les mêmes prédicats des deux côtés, les deux membres coïncident toujours : ce n'est pas un contre-exemple."
       },
       {
-        "text": "$P(x)$ = « $x>0$ », $Q(x)$ = « $x<0$ », sur le domaine $\\{0\\}$ seulement",
+        "text": "$P(x)$ = « $x>0$ », $Q(x)$ = « $x\\ge1$ »",
         "correct": false,
-        "why": "Sur un domaine à un seul élément, $\\exists x$ devient une simple évaluation en cet élément : les deux membres coïncident automatiquement, ce n'est pas un contre-exemple."
+        "why": "Un même $x$ (par exemple $x=1$) satisfait les deux prédicats à la fois : ce n'est pas incompatible, donc $\\exists x(P(x)\\wedge Q(x))$ est vrai — tout comme le membre de droite. Il faut des prédicats mutuellement exclusifs, pas seulement différents."
       },
       {
         "text": "$P(x)$ = vrai pour tout $x$, $Q(x)$ = faux pour tout $x$",
@@ -217,18 +217,18 @@
     "course": "MAT1500",
     "topic": "mat1500-quant",
     "difficulty": 1,
-    "prompt": "L'énoncé $\\forall x \\in \\mathbb{R}, x^2 \\ge 0$ est vrai.",
-    "explanation": "Vrai : le carré d'un nombre réel, positif ou négatif, est toujours positif ou nul. Il n'existe aucun réel dont le carré serait strictement négatif.",
+    "prompt": "L'énoncé $\\forall x \\in \\mathbb{R}, x^2 > 0$ est vrai.",
+    "explanation": "Faux : le piège est d'oublier le cas d'égalité. Pour $x=0$, $x^2=0$, qui n'est pas strictement positif : $x=0$ est un contre-exemple à l'inégalité stricte, même si $x^2 \\ge 0$ (sans stricte) est bien vrai pour tout réel.",
     "type": "vf",
-    "answer": true
+    "answer": false
   },
   {
     "id": "mat1500-quant-011",
     "course": "MAT1500",
     "topic": "mat1500-quant",
     "difficulty": 2,
-    "prompt": "Avec $S(x)$ = « $x$ est étudiant », $E(y)$ = « $y$ est un examen » et $F(x,y)$ = « $x$ a échoué $y$ », quelle formule traduit « Un étudiant a échoué tous les examens » ?",
-    "explanation": "La règle de style est : le $\\forall$ se combine avec $\\rightarrow$ (« pour tout examen, si c'est un examen, alors... »), et le $\\exists$ se combine avec $\\wedge$ (« il existe un étudiant, et c'est un étudiant, et... »). Inverser ces deux connecteurs est l'erreur la plus fréquente en traduction de quantificateurs imbriqués.",
+    "prompt": "Avec $S(x)$ = « $x$ est étudiant », $E(y)$ = « $y$ est un examen » et $F(x,y)$ = « $x$ a échoué $y$ », quelle formule traduit « Un étudiant a échoué à tous les examens » ?",
+    "explanation": "La règle usuelle est : le $\\forall$ se combine avec $\\rightarrow$ (« pour tout $y$, si $y$ est un examen, alors... »), et le $\\exists$ se combine avec $\\wedge$ (« il existe un $x$ qui est étudiant et qui... »). Inverser ces deux connecteurs est l'erreur la plus fréquente en traduction de quantificateurs imbriqués.",
     "type": "qcm",
     "choices": [
       {
@@ -238,7 +238,7 @@
       {
         "text": "$\\forall x \\, (S(x) \\rightarrow \\exists y \\,(E(y) \\wedge F(x,y)))$",
         "correct": false,
-        "why": "Ceci dit « chaque étudiant a échoué au moins un examen », une affirmation différente (et plus forte pour l'ensemble des étudiants) que « un étudiant a échoué tous les examens »."
+        "why": "Ceci dit « chaque étudiant a échoué à au moins un examen » : une affirmation différente, ni plus forte ni plus faible que « un étudiant a échoué à tous les examens » (aucune des deux n'implique l'autre en général)."
       },
       {
         "text": "$\\exists x \\, (S(x) \\rightarrow \\forall y \\,(E(y) \\wedge F(x,y)))$",
@@ -258,7 +258,7 @@
     "topic": "mat1500-quant",
     "difficulty": 3,
     "prompt": "Pour réfuter $\\exists x \\in \\mathbb{R}, \\forall y \\in \\mathbb{R}, x \\le y$ (« il existe un plus petit réel »), quel témoin $y$ faut-il choisir pour un $x$ donné ?",
-    "explanation": "L'erreur fréquente est d'essayer de « tester des exemples » de petits nombres au lieu de prouver directement la négation universelle : pour réfuter un $\\exists\\forall$, il faut montrer que pour tout candidat $x$, on peut trouver un $y$ plus petit.",
+    "explanation": "Le piège est de choisir un témoin qui ne fonctionne que pour certains $x$ (comme $-x$ ou $0$, qui échouent selon le signe de $x$) au lieu d'un témoin qui marche pour TOUT $x$ réel sans exception : il faut montrer que pour tout candidat $x$, on peut trouver un $y$ plus petit, quel que soit le signe de $x$.",
     "challenge": true,
     "type": "qcm",
     "choices": [

@@ -42,3 +42,15 @@ n'affectait pas la validité de la bonne réponse, seulement la clarté du distr
 
 Re-vérifié (gate + relecture aveugle complète des 12 questions, Python/SymPy) après application :
 **PASS**, aucune régression ; le calcul $f(3)+g(3)=4+6=10$ reconfirmé.
+
+## Relecture Opus (b) (docs/reviews/relecture-opus/mat1500-b.md) — corrections appliquées
+
+- `func-008` (Défi) : `explanation` alignée sur le distracteur le plus tentant (confondre $f$ et
+  sa réciproque en posant $x=2y+1$).
+- `func-009` : valeur changée de $-3{,}2$ à $-2{,}7$ (doublon avec func-002 sinon), distracteur
+  artificiel remplacé.
+- `func-011` : texte auto-diagnostiqué retiré d'un choix (« — la liste sans les fusionner »
+  s'éliminait à la lecture).
+- `func-012` : piège remonté de `keyPoints` vers `explanation`.
+
+Re-vérifié (Python, venv hors dépôt) : **PASS** sur les 4 items touchés.

@@ -42,3 +42,8 @@ Re-vérifié (gate + relecture aveugle complète des 8 questions, SymPy) après 
 `mat1500-induc-012` reformulé pour ne plus être défendable même par un lecteur très littéral
 (affirmait à tort que rien ne garantit $2 \le a$, alors que $a>1$ entier l'implique
 automatiquement). Total du thème : 12 questions.
+
+## Relecture Opus (b) (docs/reviews/relecture-opus/mat1500-b.md) — correction appliquée
+
+- `induc-008` (Défi) : `explanation` alignée sur le distracteur le plus tentant (mauvaise
+  factorisation donnant $k(k+2)/2$).

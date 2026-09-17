@@ -38,3 +38,17 @@ cause).
 
 Re-vérifié (gate + relecture aveugle complète des 12 questions, SymPy) après application :
 **PASS**, aucune régression.
+
+## Relecture Opus (b) (docs/reviews/relecture-opus/mat1500-b.md) — corrections appliquées
+
+- `logic-005` (Défi) : prompt réécrit pour ne plus donner la réponse (elle se lisait dans
+  l'énoncé).
+- `logic-007`/`008` : redondance réduite, `logic-008` utilise un exemple moins évident
+  ($(p\to q)\vee(q\to p)$) au lieu de $p\vee\neg p$ déjà vu en 007.
+- `logic-009`, `logic-011` : distracteurs artificiels remplacés par de vraies erreurs
+  (confusion $p$/$q$ dans un terme distribué ; $\wedge$ lu comme $\to$ dans l'exportation).
+- `logic-010`, `logic-012` : pièges nommés explicitement ; `logic-012` ne présente plus
+  « distribuer » comme une erreur (ça fonctionne, ça tourne juste en rond).
+
+Re-vérifié par SymPy (venv hors dépôt) : **PASS**, tous les nouveaux distracteurs confirmés non
+équivalents à la bonne réponse.

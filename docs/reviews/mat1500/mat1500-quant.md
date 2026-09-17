@@ -33,3 +33,17 @@ hors dépôt, supprimé après usage. Trois passes : 001-005 (jalon 1), 006-008 
 
 Re-vérifié (gate + relecture aveugle complète des 12 questions, force brute + SymPy) après
 application : **PASS**, aucune régression, contre-exemples de 008/012 confirmés valides.
+
+## Relecture Opus (b) (docs/reviews/relecture-opus/mat1500-b.md) — corrections appliquées
+
+- `quant-008` (Défi, ÉLEVÉE indirecte) : option qui changeait le domaine ($\{0\}$) en
+  contradiction avec l'énoncé (« sur $\mathbb{Z}$ ») remplacée par un quasi-contre-exemple sur
+  $\mathbb{Z}$ ($P(x)=x>0$, $Q(x)=x\ge1$, qui échoue car $x=1$ satisfait les deux).
+- `quant-010` : remplacée par $\forall x, x^2>0$ (Faux, $x=0$) pour nommer le piège du cas
+  d'égalité, au lieu d'une redite triviale de quant-009.
+- `quant-011` (ÉLEVÉE) : `why` corrigé — les deux formules ne s'impliquent pas l'une l'autre
+  (vérifié par deux modèles opposés), plus une reformulation française.
+- `quant-012` (Défi) : `explanation` alignée sur les distracteurs réels (témoin qui ne marche que
+  pour certains $x$, pas « tester des exemples »).
+
+Re-vérifié (force brute, modèles finis, venv hors dépôt) : **PASS** sur les 4 items touchés.

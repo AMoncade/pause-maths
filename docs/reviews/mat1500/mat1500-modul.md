@@ -48,3 +48,8 @@ concret.
 | mat1500-modul-012 (défi) | $\{2,5\}$ | haute | brute force sur les 6 résidus mod 6 | conforme |
 
 **Verdict : PASS.** Aucune ambiguïté. Total du thème : 12 questions.
+
+## Relecture Opus (b) (docs/reviews/relecture-opus/mat1500-b.md) — correction appliquée
+
+- `modul-008` (Défi) : `explanation` alignée sur le distracteur le plus tentant (soustraire au
+  lieu d'additionner les deux congruences).

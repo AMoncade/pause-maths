@@ -159,7 +159,7 @@
     "topic": "mat1500-induc",
     "difficulty": 3,
     "prompt": "Dans l'étape inductive de la preuve de $1+2+\\cdots+n=\\dfrac{n(n+1)}{2}$, en partant de l'hypothèse $1+\\cdots+k=\\dfrac{k(k+1)}{2}$, quelle simplification de $\\dfrac{k(k+1)}{2}+(k+1)$ est correcte ?",
-    "explanation": "L'erreur la plus fréquente ici est de manipuler l'hypothèse d'induction de façon informelle sans l'écrire explicitement, ou de sauter la simplification algébrique qui relie $\\frac{k(k+1)}{2} + (k+1)$ à $\\frac{(k+1)(k+2)}{2}$.",
+    "explanation": "Le piège le plus tentant : mal factoriser $(k+1)$ en oubliant le $1$ implicite devant lui, ce qui donne à tort $\\frac{k(k+2)}{2}$ au lieu de $\\frac{(k+1)(k+2)}{2}$. La factorisation correcte est $\\frac{k(k+1)}{2}+(k+1) = (k+1)\\left(\\frac{k}{2}+1\\right) = \\frac{(k+1)(k+2)}{2}$.",
     "challenge": true,
     "type": "qcm",
     "choices": [
