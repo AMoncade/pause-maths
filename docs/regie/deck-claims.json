@@ -1,0 +1,134 @@
+{
+  "pendingRequest": null,
+  "claims": [
+    {
+      "session": "adrie-7e",
+      "task": "Lot A: StudiUM → D:Math + skill studium-sync",
+      "files": [
+        "D:/Math/**",
+        "C:/Users/adrie/.claude/skills/studium-sync/**"
+      ],
+      "worktree": null,
+      "branch": null,
+      "assignedAt": "2026-09-16T21:58:30.767Z",
+      "status": "en cours",
+      "exclusive": [
+        "chrome",
+        "Downloads"
+      ]
+    },
+    {
+      "session": "adrie-79",
+      "task": "Lot Engine: schema/progress/merge/scheduler/math + tests + import script",
+      "files": [
+        "src/lib/schema.ts",
+        "src/lib/progress.ts",
+        "src/lib/merge.ts",
+        "src/lib/scheduler.ts",
+        "vitest.config.ts",
+        "scripts/import-questions.ts",
+        "tests/*.test.ts",
+        "tests/fixtures/**",
+        "src/lib/gate.ts",
+        "docs/reviews/code/**",
+        "docs/reviews/relecture-opus/**"
+      ],
+      "worktree": "C:/Users/adrie/pause-maths-wt/engine",
+      "branch": "lot/engine",
+      "assignedAt": "2026-09-16T22:03:20.245Z",
+      "status": "en cours"
+    },
+    {
+      "session": "adrie-cd",
+      "task": "Lot UI: écrans, composants, thème, KaTeX",
+      "files": [
+        "src/app.tsx",
+        "src/components/**",
+        "src/styles/**",
+        "src/lib/MathText.tsx",
+        "src/lib/ui-*.ts",
+        "tests/ui/**",
+        "src/main.tsx"
+      ],
+      "worktree": "C:/Users/adrie/pause-maths-wt/ui",
+      "branch": "lot/ui",
+      "assignedAt": "2026-09-16T22:03:20.245Z",
+      "status": "en cours"
+    },
+    {
+      "session": "adrie-1f",
+      "task": "Lot PWA: vite-plugin-pwa, manifest, icônes, api/sync, sync client, vercel.json, déploiement",
+      "files": [
+        "vite.config.ts",
+        "vercel.json",
+        "api/**",
+        "public/**",
+        "src/lib/sync.ts",
+        "src/lib/pwa.ts",
+        "index.html",
+        "tests/api/**",
+        "package.json",
+        "package-lock.json"
+      ],
+      "worktree": "C:/Users/adrie/pause-maths-wt/pwa",
+      "branch": "lot/pwa",
+      "assignedAt": "2026-09-16T22:03:20.245Z",
+      "status": "en cours: correctifs relecture"
+    },
+    {
+      "session": "adrie-d7",
+      "task": "Contenu MAT1400",
+      "files": [
+        "src/content/mat1400/**",
+        "docs/reviews/mat1400/**",
+        "docs/sources/mat1400.md"
+      ],
+      "worktree": "C:/Users/adrie/pause-maths-wt/mat1400",
+      "branch": "lot/mat1400",
+      "assignedAt": "2026-09-16T22:03:20.245Z",
+      "status": "en cours"
+    },
+    {
+      "session": "adrie-87",
+      "task": "Contenu MAT1500",
+      "files": [
+        "src/content/mat1500/**",
+        "docs/reviews/mat1500/**",
+        "docs/sources/mat1500.md"
+      ],
+      "worktree": "C:/Users/adrie/pause-maths-wt/mat1500",
+      "branch": "lot/mat1500",
+      "assignedAt": "2026-09-16T22:03:20.245Z",
+      "status": "en cours"
+    },
+    {
+      "session": "adrie-18",
+      "task": "Contenu MAT1600",
+      "files": [
+        "src/content/mat1600/**",
+        "docs/reviews/mat1600/**",
+        "docs/sources/mat1600.md"
+      ],
+      "worktree": "C:/Users/adrie/pause-maths-wt/mat1600",
+      "branch": "lot/mat1600",
+      "assignedAt": "2026-09-16T22:03:20.245Z",
+      "status": "en cours"
+    },
+    {
+      "session": "adrie-8f",
+      "task": "Part D puis contenu STT1700",
+      "files": [
+        "docs/PROCESSUS_QUESTIONS.md",
+        ".claude/skills/ajouter-questions/**",
+        "src/content/stt1700/**",
+        "docs/reviews/stt1700/**",
+        "docs/sources/stt1700.md",
+        "scripts/blind-review.ts"
+      ],
+      "worktree": "C:/Users/adrie/pause-maths-wt/stt1700",
+      "branch": "lot/stt1700",
+      "assignedAt": "2026-09-16T22:03:20.245Z",
+      "status": "en cours"
+    }
+  ]
+}

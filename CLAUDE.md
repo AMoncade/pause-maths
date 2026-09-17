@@ -2,7 +2,7 @@
 
 PWA de quiz rapides (français) sur MAT1400, MAT1500, MAT1600, STT1700 (UdeM, automne 2026).
 
-**Avant tout : lire `docs/WORKLOG.md`** (journal daté des sessions), puis `HANDOFF.md` (spécification complète et décisions réglées, ne pas les re-poser).
+**Avant tout : lire `docs/WORKLOG.md`** (journal daté des sessions), puis `HANDOFF.md` (spécification complète et décisions réglées, ne pas les re-poser). **Une session admin qui reprend la régie lit `docs/HANDOFF-ADMIN.md`** (état au 2026-09-17, ce qui reste, les deux gestes utilisateur qui bloquent, méthode du tour précédent).
 
 ## Règles
 
