@@ -106,4 +106,11 @@ SymPy reconfirme $h=6$ (pas $\tfrac52$, qui donne une solution unique) pour syst
 $(1,2,3)$ avec chaque distracteur satisfaisant exactement 2 des 3 équations pour
 syst-015.
 
+## Correction signalée par l'admin (suivi Engine)
+
+**syst-015 :** le `why` du distracteur $(1,3,2)$ affirmait à tort qu'il ne vérifiait
+« aucune » des trois équations, alors qu'il vérifie la première ($1+3+2=6$).
+Corrigé : « Ne vérifie que la première équation ; la deuxième échoue déjà ». Vérifié
+par SymPy (confirmé par Engine).
+
 **Résultat final : 21/21 publiables, 0 correction nécessaire, 0 désaccord.**

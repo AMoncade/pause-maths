@@ -123,7 +123,7 @@
       { "text": "Non, les deux matrices doivent avoir exactement la même taille", "correct": true },
       { "text": "Oui, le résultat est $2\\times2$", "correct": false, "why": "L'addition entrée par entrée n'a de sens que si les deux matrices ont la même forme ; ici $2\\times3$ et $3\\times2$ ne correspondent pas." },
       { "text": "Oui, le résultat est $3\\times3$", "correct": false, "why": "Aucune règle d'addition ne produit une taille différente de celle des deux matrices de départ ; de toute façon, l'opération n'est pas définie ici." },
-      { "text": "Oui, à condition de transposer l'une des deux", "correct": false, "why": "Transposer changerait le problème posé : la question demande si $A+B$ est calculable telles quelles, et ce n'est pas le cas." }
+      { "text": "Oui, en additionnant les entrées qui se correspondent en position", "correct": false, "why": "Il n'existe pas de correspondance bien définie entrée par entrée entre une matrice $2\\times3$ et une $3\\times2$ : leurs formes ne coïncident pas." }
     ]
   },
   {
@@ -132,7 +132,7 @@
     "topic": "mat1600-matr",
     "difficulty": 1,
     "prompt": "$(A+B)^T=A^T+B^T$ pour toutes matrices $A,B$ de même taille.",
-    "explanation": "Vrai : contrairement à la transposée d'un produit, la transposée d'une somme ne change pas l'ordre — l'addition matricielle se fait entrée par entrée, tout comme la transposition.",
+    "explanation": "Vrai : contrairement à la transposée d'un produit, la transposée d'une somme ne change pas l'ordre — l'addition matricielle se fait entrée par entrée, tout comme la transposition. Le piège : appliquer par réflexe la règle d'inversion d'ordre de $(AB)^T$, qui ne s'applique pas à l'addition.",
     "type": "vf",
     "answer": true
   },
@@ -142,7 +142,7 @@
     "topic": "mat1600-matr",
     "difficulty": 2,
     "prompt": "Calculer $2A-B$ pour $A=\\begin{pmatrix}1&2\\\\3&0\\end{pmatrix}$ et $B=\\begin{pmatrix}0&1\\\\1&2\\end{pmatrix}$.",
-    "explanation": "$2A=\\begin{pmatrix}2&4\\\\6&0\\end{pmatrix}$, donc $2A-B=\\begin{pmatrix}2&3\\\\5&-2\\end{pmatrix}$.",
+    "explanation": "$2A=\\begin{pmatrix}2&4\\\\6&0\\end{pmatrix}$, donc $2A-B=\\begin{pmatrix}2&3\\\\5&-2\\end{pmatrix}$. Le piège : oublier de multiplier $A$ par $2$ avant de soustraire $B$.",
     "type": "qcm",
     "choices": [
       { "text": "$\\begin{pmatrix}2&3\\\\5&-2\\end{pmatrix}$", "correct": true },
@@ -157,7 +157,7 @@
     "topic": "mat1600-matr",
     "difficulty": 2,
     "prompt": "Si $AB=AC$ et $A\\ne0$, alors nécessairement $B=C$.",
-    "explanation": "Faux : contrairement aux nombres réels, on ne peut pas « simplifier » par $A$ en général — cela ne fonctionne que si $A$ est inversible. Sinon, $A(B-C)=0$ n'implique pas $B-C=0$.",
+    "explanation": "Faux : contrairement aux nombres réels, on ne peut pas « simplifier » par $A$ en général — cela ne fonctionne que si $A$ est inversible. Sinon, $A(B-C)=0$ n'implique pas $B-C=0$. Le piège : croire que $A\\ne0$ (matrice non nulle) équivaut à $A$ inversible, alors que ce sont deux conditions différentes.",
     "type": "vf",
     "answer": false
   },
@@ -166,14 +166,14 @@
     "course": "MAT1600",
     "topic": "mat1600-matr",
     "difficulty": 2,
-    "prompt": "Pourquoi ne peut-on pas toujours « simplifier » par $A$ dans une égalité $AB=AC$ ?",
-    "explanation": "Simplifier par $A$ reviendrait à multiplier les deux côtés par $A^{-1}$, ce qui n'est possible que si $A$ est inversible. Si $A$ n'est pas inversible, $AB=AC$ n'entraîne pas $B=C$.",
+    "prompt": "Donner des matrices $A\\ne0$, $B\\ne C$ telles que $AB=AC$.",
+    "explanation": "Avec $A=\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}$, $B=I$, $C=\\begin{pmatrix}1&0\\\\0&2\\end{pmatrix}$ : $AB=A$ et $AC=\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}=A$ aussi, alors que $B\\ne C$. $A$ n'est pas inversible ($\\det A=0$), c'est ce qui permet la coïncidence.",
     "type": "flash",
-    "answer": "Parce que cela reviendrait à multiplier par $A^{-1}$, qui n'existe que si $A$ est inversible. Si $A$ est singulière, $AB=AC$ peut être vrai même si $B\\ne C$.",
+    "answer": "Par exemple $A=\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}$, $B=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$, $C=\\begin{pmatrix}1&0\\\\0&2\\end{pmatrix}$ : $AB=AC=\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}$ malgré $B\\ne C$, car $A$ est singulière.",
     "keyPoints": [
-      "La « division » par une matrice n'existe pas : seule la multiplication par $A^{-1}$ (si elle existe) en tient lieu",
-      "$A(B-C)=0$ avec $A$ non inversible n'implique pas $B-C=0$",
-      "Cette simplification est toujours valide si on sait d'avance que $A$ est inversible"
+      "$A$ doit être non inversible pour qu'un tel exemple existe",
+      "La deuxième colonne de $B$ et $C$ diffère, mais $A$ « efface » cette différence (sa deuxième colonne est nulle)",
+      "Avec une matrice $A$ inversible, un tel exemple serait impossible : $AB=AC$ forcerait $B=C$"
     ]
   },
   {
@@ -203,22 +203,22 @@
       { "text": "$\\begin{pmatrix}4&0\\\\5&9\\end{pmatrix}$", "correct": true },
       { "text": "$\\begin{pmatrix}4&0\\\\1&9\\end{pmatrix}$", "correct": false, "why": "Ceci élève chaque entrée au carré individuellement, ce qui n'est pas ce que signifie $A^2$ : il faut multiplier la matrice par elle-même." },
       { "text": "$\\begin{pmatrix}4&0\\\\2&9\\end{pmatrix}$", "correct": false, "why": "Erreur de calcul sur l'entrée $(2,1)$ : $1\\cdot2+3\\cdot1=5$, pas $2$." },
-      { "text": "$\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$", "correct": false, "why": "Ceci suppose à tort que $A^2=A$, ce qui n'est vrai que pour des matrices particulières (comme $I$), pas en général." }
+      { "text": "$\\begin{pmatrix}5&3\\\\3&9\\end{pmatrix}$", "correct": false, "why": "C'est $A^TA$ (lignes et colonnes échangées dans le produit), pas $A\\cdot A$ : $A^2$ signifie toujours $A$ multipliée par elle-même dans le même ordre." }
     ]
   },
   {
     "id": "mat1600-matr-016",
     "course": "MAT1600",
     "topic": "mat1600-matr",
-    "difficulty": 1,
-    "prompt": "Pourquoi $A^2$ ne signifie-t-il pas « élever chaque entrée de $A$ au carré » ?",
-    "explanation": "$A^2$ est une notation pour $A\\cdot A$, le produit matriciel de $A$ par elle-même, qui combine les rangées et les colonnes — pas une opération entrée par entrée comme le carré des nombres réels.",
-    "type": "flash",
-    "answer": "Parce que $A^2$ signifie $A\\cdot A$ (multiplication matricielle), qui mélange les rangées et les colonnes, contrairement à une opération terme à terme.",
-    "keyPoints": [
-      "Toute puissance de matrice ($A^2, A^3,\\dots$) se définit par multiplication matricielle répétée",
-      "Élever chaque entrée au carré donne en général une matrice différente de $A\\cdot A$",
-      "Les deux calculs ne coïncident que dans des cas particuliers (par exemple $A$ diagonale)"
+    "difficulty": 2,
+    "prompt": "Pour quel type de matrice $A$, $A^2$ (produit matriciel) et le carré de $A$ entrée par entrée coïncident-ils toujours ?",
+    "explanation": "Pour une matrice diagonale : $A^2=\\text{diag}(a_1,\\dots,a_n)^2=\\text{diag}(a_1^2,\\dots,a_n^2)$, exactement le carré entrée par entrée, car les entrées hors diagonale restent nulles dans les deux calculs.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Une matrice diagonale", "correct": true },
+      { "text": "Une matrice triangulaire", "correct": false, "why": "Une matrice triangulaire avec des entrées hors diagonale non nulles donne des résultats différents : par exemple $\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}^2=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}$, alors que le carré entrée par entrée donne $\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$." },
+      { "text": "Toute matrice symétrique", "correct": false, "why": "Une matrice symétrique comme $\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$ donne $A^2=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$, différent du carré entrée par entrée $\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$." },
+      { "text": "Aucune matrice : ces deux calculs diffèrent toujours", "correct": false, "why": "Pour une matrice diagonale, les deux calculs coïncident exactement : ce n'est pas un cas impossible." }
     ]
   },
   {
@@ -227,15 +227,15 @@
     "topic": "mat1600-matr",
     "difficulty": 3,
     "challenge": true,
-    "solution": "1) On sait que $A^{-1}=\\begin{pmatrix}1&-2\\\\0&1\\end{pmatrix}$.\n\n2) Multiplier les deux côtés de $AX=B$ à gauche par $A^{-1}$ : $X=A^{-1}B$.\n\n3) $X=\\begin{pmatrix}1&-2\\\\0&1\\end{pmatrix}\\begin{pmatrix}3\\\\1\\end{pmatrix}=\\begin{pmatrix}1\\cdot3+(-2)\\cdot1\\\\0\\cdot3+1\\cdot1\\end{pmatrix}=\\begin{pmatrix}1\\\\1\\end{pmatrix}$.",
-    "prompt": "Résoudre $AX=B$ pour $A=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}$, $B=\\begin{pmatrix}3\\\\1\\end{pmatrix}$, sachant que $A^{-1}=\\begin{pmatrix}1&-2\\\\0&1\\end{pmatrix}$.",
-    "explanation": "Comme $A$ est inversible, $X=A^{-1}B$ (dans cet ordre) $=\\begin{pmatrix}1\\\\1\\end{pmatrix}$.",
+    "solution": "1) On sait que $A^{-1}=\\begin{pmatrix}1&-2\\\\0&1\\end{pmatrix}$.\n\n2) $A$ est à DROITE dans $XA=B$ : multiplier les deux côtés à droite par $A^{-1}$ donne $X=BA^{-1}$ (pas $A^{-1}B$, qui serait pour $AX=B$).\n\n3) $X=\\begin{pmatrix}3&1\\\\1&1\\end{pmatrix}\\begin{pmatrix}1&-2\\\\0&1\\end{pmatrix}=\\begin{pmatrix}3\\cdot1+1\\cdot0&3\\cdot(-2)+1\\cdot1\\\\1\\cdot1+1\\cdot0&1\\cdot(-2)+1\\cdot1\\end{pmatrix}=\\begin{pmatrix}3&-5\\\\1&-1\\end{pmatrix}$.",
+    "prompt": "Résoudre $XA=B$ pour $A=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}$, $B=\\begin{pmatrix}3&1\\\\1&1\\end{pmatrix}$, sachant que $A^{-1}=\\begin{pmatrix}1&-2\\\\0&1\\end{pmatrix}$.",
+    "explanation": "$A$ multiplie $X$ à droite : il faut multiplier des deux côtés par $A^{-1}$ À DROITE aussi, donnant $X=BA^{-1}$, pas $A^{-1}B$ (qui résoudrait plutôt $AX=B$).",
     "type": "qcm",
     "choices": [
-      { "text": "$\\begin{pmatrix}1\\\\1\\end{pmatrix}$", "correct": true },
-      { "text": "$\\begin{pmatrix}3\\\\1\\end{pmatrix}$", "correct": false, "why": "Ceci recopie $B$ directement, sans multiplier par $A^{-1}$." },
-      { "text": "$\\begin{pmatrix}5\\\\1\\end{pmatrix}$", "correct": false, "why": "Erreur de signe : $1\\cdot3+2\\cdot1=5$ utilise $A$ au lieu de $A^{-1}$ (dont l'entrée est $-2$, pas $2$)." },
-      { "text": "$\\begin{pmatrix}-1\\\\1\\end{pmatrix}$", "correct": false, "why": "Erreur de signe sur la première composante : $1\\cdot3+(-2)\\cdot1=1$, pas $-1$." }
+      { "text": "$\\begin{pmatrix}3&-5\\\\1&-1\\end{pmatrix}$", "correct": true },
+      { "text": "$\\begin{pmatrix}1&-1\\\\1&1\\end{pmatrix}$", "correct": false, "why": "C'est $A^{-1}B$, du mauvais côté : $X$ est multiplié par $A$ à droite dans $XA=B$, donc il faut isoler $X$ en multipliant par $A^{-1}$ à droite aussi ($X=BA^{-1}$), pas à gauche." },
+      { "text": "$\\begin{pmatrix}3&1\\\\1&1\\end{pmatrix}$", "correct": false, "why": "Ceci recopie $B$ directement, sans multiplier par $A^{-1}$." },
+      { "text": "$\\begin{pmatrix}3&7\\\\1&3\\end{pmatrix}$", "correct": false, "why": "C'est $BA$, avec $A$ au lieu de $A^{-1}$ : il faut multiplier par l'inverse de $A$, pas par $A$ lui-même." }
     ]
   },
   {
@@ -254,7 +254,7 @@
     "topic": "mat1600-matr",
     "difficulty": 1,
     "prompt": "Une matrice $A$ de taille $2\\times3$ peut-elle être inversible ?",
-    "explanation": "Non : seules les matrices carrées peuvent être inversibles, car $AA^{-1}=A^{-1}A=I$ exige que les produits soient définis dans les deux sens, ce qui force $A$ à être carrée.",
+    "explanation": "Non : seules les matrices carrées peuvent être inversibles, car $AA^{-1}=A^{-1}A=I$ exige que les produits soient définis dans les deux sens, ce qui force $A$ à être carrée. Le piège : croire qu'un rang maximal (ici $2$) suffit à garantir l'inversibilité, sans vérifier d'abord que $A$ est carrée.",
     "type": "qcm",
     "choices": [
       { "text": "Non, seules les matrices carrées peuvent être inversibles", "correct": true },
@@ -269,7 +269,7 @@
     "topic": "mat1600-matr",
     "difficulty": 1,
     "prompt": "Qu'est-ce que la trace d'une matrice carrée $A$ ?",
-    "explanation": "La trace est la somme des entrées de la diagonale principale de $A$ ; c'est une notion différente du déterminant, même si les deux se calculent à partir de la diagonale dans le cas d'une matrice triangulaire.",
+    "explanation": "La trace est la somme des entrées de la diagonale principale de $A$ ; c'est une notion différente du déterminant, même si les deux se calculent à partir de la diagonale dans le cas d'une matrice triangulaire. Le piège : confondre la trace (une somme) avec le déterminant (un produit pour une triangulaire).",
     "type": "flash",
     "answer": "C'est la somme des entrées de la diagonale principale de $A$, notée $\\text{tr}(A)$.",
     "keyPoints": [

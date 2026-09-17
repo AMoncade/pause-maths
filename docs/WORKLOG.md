@@ -16,6 +16,31 @@ Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute
   les 24 items touchés : PASS partout.
 - Compte inchangé : 96 questions (le contenu, pas le nombre, a changé dans ce lot).
 - Suite : rien en attente côté MAT1500 intra, sauf nouvelle relecture demandée par l'admin.
+## 2026-09-16 — MAT1600 : relecture Opus round 4 (complémentaire 3) appliquée (lot mat1600)
+
+- 4 moyennes : esp-016 (ambiguïté « ne...que » corrigée), esp-019 (espace ambiant
+  $\mathbb R^7$ précisé), matr-017 (Défi recalibré : $XA=B$, $X=BA^{-1}$, piège
+  $A^{-1}B$), esp-014 (doublon de vect-008 remplacé par un Défi propre à `esp` :
+  dimension de $\{x+y=0,z=2w\}\subset\mathbb R^4$).
+- 6 basses : esp-012 (`why` nommant l'erreur réelle), terminologie « noyau »
+  résiduelle, redondances matr-013/012 et matr-016/015 (remplacées par des cas
+  concrets) et esp-017/008+013 (remplacé par une lecture de pivots), matr-018 laissé
+  inchangé (sa redondance disparaît avec la correction de matr-017), distracteurs
+  faibles (matr-015, esp-019, matr-009), indice de longueur esp-009, 11 pièges
+  nommés.
+- Correction signalée séparément par l'admin (suivi Engine) : `why` faux de
+  syst-015 pour le distracteur $(1,3,2)$ (vérifiait en fait la première équation).
+- Décision de l'admin sur les ids : réutiliser un id en changeant le sens
+  (det-018/019/020, vect-013/014, esp-014/016/017, matr-013/016/017) reste accepté
+  tant qu'aucune progression utilisateur n'existe ; la règle stricte s'appliquera au
+  premier déploiement.
+- Gate `npm test` vert (363 tests). Relecture aveugle ciblée (seed 801/803) sur les 9
+  questions modifiées : 0 désaccord, tout reconfirmé par SymPy. Décisions dans
+  `docs/reviews/mat1600/reponse-relecture-opus-4.md`.
+- **Cumul des 4 rondes Opus sur MAT1600 :** 5 élevées, 9 moyennes, 29 basses lues au
+  total ; toutes corrigées ou adaptées avec justification (aucun rejet net).
+
+## 2026-09-16 — MAT1600 : relecture Opus round 3 (complémentaire 2) appliquée (lot mat1600)
 
 ## 2026-09-16 — Engine : test d'équilibre de la banque (lot Engine)
 

@@ -84,4 +84,29 @@ l'union) ; théorème du rang confirmé pour {012} et {015} avec des matrices co
 $v_3=v_1+v_2$ confirmé exactement pour le Défi {014} (rang $2<3$). Concepts (013, 016,
 017, 018, 019, 020) confirmés par raisonnement. 0 désaccord.
 
+**Résultat (jalon 2, 1-20) : 20/20 publiables, 0 correction nécessaire, 0 désaccord.**
+
+## Corrections suite à la relecture Opus, round 4 (complémentaire 3)
+
+- **esp-016 (ambiguïté) :** reformulé « Tout sous-espace vectoriel de $\mathbb R^n$ ne
+  contient que le vecteur nul » pour éliminer la double lecture.
+- **esp-019 (donnée manquante) :** espace ambiant précisé ($H\subset\mathbb R^7$),
+  distracteur $7$ ajouté, « $10$ » remplacé par « $1$ ».
+- **esp-014 (doublon de vect-008, Défi) :** remplacé par un Défi propre au thème :
+  base/dimension de $H=\{x+y=0,\ z=2w\}\subset\mathbb R^4$, $\dim H=2$.
+- **esp-017 (redondant avec esp-008/013) :** remplacé par une lecture concrète (rang
+  à partir des positions de pivots d'une $4\times6$).
+- **esp-009 :** indice de longueur retiré (choix correct simplifié à « Oui »).
+- **esp-012 :** `why` reformulés pour nommer l'erreur réelle ($m-\text{rang}$ vs
+  nombre de lignes).
+- **esp-015 :** « espace nul » résiduel → « noyau ».
+- Pièges nommés ajoutés à esp-010, 011, 015, 018, 020.
+
+Relecture aveugle ciblée (seed 801) sur esp-014, 016, 017, 019 : 0 désaccord. SymPy
+reconfirme $\dim H=2$ pour esp-014 (rang $2$ de la matrice de contraintes) ; esp-016
+vérifié sans ambiguïté grammaticale (la tournure restrictive « ne...que » exclut la
+lecture alternative) ; rang $=3$ pour esp-017 (nombre de colonnes pivots, indépendant
+de leur position) ; borne $5$ confirmée pour esp-019 malgré l'espace ambiant
+$\mathbb R^7$.
+
 **Résultat final : 20/20 publiables, 0 correction nécessaire, 0 désaccord.**

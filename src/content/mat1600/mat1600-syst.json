@@ -208,7 +208,7 @@
       { "text": "$(1,2,3)$", "correct": true },
       { "text": "$(-1,1,6)$", "correct": false, "why": "Vérifie les équations 1 et 2, mais pas la troisième : $-1+2(1)-6=-5\\ne2$." },
       { "text": "$(4,0,2)$", "correct": false, "why": "Vérifie les équations 1 et 3, mais pas la deuxième : $2(4)-0+2=10\\ne3$." },
-      { "text": "$(1,3,2)$", "correct": false, "why": "Ne vérifie aucune des trois équations correctement : $2(1)-3+2=1\\ne3$." }
+      { "text": "$(1,3,2)$", "correct": false, "why": "Ne vérifie que la première équation ($1+3+2=6$) : la deuxième échoue déjà, $2(1)-3+2=1\\ne3$." }
     ]
   },
   {

@@ -91,6 +91,32 @@ Concepts (009, 010, 013, 016, 018, 019, 020) confirmés par raisonnement dans le
 du cours (matr-019 : inverse à sens unique hors programme, noté explicitement). 0
 désaccord.
 
+**Résultat (jalon 1-2, 1-20) : 20/20 publiables, 0 correction nécessaire, 0 désaccord.**
+
+## Corrections suite à la relecture Opus, round 4 (complémentaire 3)
+
+- **matr-017 (Défi mal calibré) :** $AX=B$ → $XA=B$ avec $B=\begin{pmatrix}3&1\\1&1\end{pmatrix}$,
+  réponse $X=BA^{-1}=\begin{pmatrix}3&-5\\1&-1\end{pmatrix}$, distracteur piège
+  $A^{-1}B$ (mauvais côté), vérifié SymPy.
+- **matr-013 (redondant avec matr-012) :** remplacé par un cas concret ($A,B,C$
+  vérifiés avec $AB=AC$, $B\ne C$, $A$ singulière).
+- **matr-016 (redondant avec matr-015) :** remplacé par une question sur le type de
+  matrice où $A^2$ (produit) et le carré terme à terme coïncident (diagonale),
+  triangulaire et symétrique vérifiés comme des contre-exemples.
+- **matr-015 :** distracteur faible « $A^2=A$ » remplacé par $A^TA$ (confusion
+  transposée/carré, valeur vérifiée).
+- **matr-009 :** distracteur faible remplacé par une tentative réelle (addition
+  entrée par entrée malgré l'absence de correspondance).
+- **matr-018 : laissé inchangé.** Sa redondance signalée était avec l'ancien
+  matr-017 ($AX=B$) ; le nouveau matr-017 porte sur $XA=B$, un fait complémentaire
+  distinct — le recoupement disparaît sans y toucher.
+- Pièges nommés ajoutés à matr-010, 011, 012, 017, 019, 020.
+
+Relecture aveugle ciblée (seed 803) sur matr-009, 013, 015, 016, 017 : 0 désaccord.
+SymPy reconfirme $X=BA^{-1}=\begin{pmatrix}3&-5\\1&-1\end{pmatrix}$ pour matr-017 (et
+que $A^{-1}B$, $BA$ sont bien différents et faux) ; $A^TA=\begin{pmatrix}5&3\\3&9\end{pmatrix}\ne A^2$
+pour matr-015 ; coïncidence uniquement pour une matrice diagonale pour matr-016.
+
 **Résultat final : 20/20 publiables, 0 correction nécessaire, 0 désaccord.**
 
 ## mat1600-matr-008 (suivi, round 3)

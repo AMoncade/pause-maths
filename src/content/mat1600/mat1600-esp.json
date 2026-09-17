@@ -120,7 +120,7 @@
     "explanation": "Oui : $(0,0,0)\\in H$, et $H$ est fermé sous l'addition et la multiplication scalaire (si $x_1=2y_1$ et $x_2=2y_2$, alors $x_1+x_2=2(y_1+y_2)$, et $cx_1=2(cy_1)$). C'est un plan passant par l'origine.",
     "type": "qcm",
     "choices": [
-      { "text": "Oui : il contient $0$ et il est fermé sous l'addition et la multiplication scalaire", "correct": true },
+      { "text": "Oui", "correct": true },
       { "text": "Non, car il ne contient pas tous les vecteurs de $\\mathbb R^3$", "correct": false, "why": "Un sous-espace n'a pas besoin d'être l'espace entier : $\\{0\\}$ et $\\mathbb R^3$ lui-même en sont aussi, mais un sous-espace propre comme un plan ou une droite passant par l'origine est tout aussi valide." },
       { "text": "Non, car il n'est pas fermé sous l'addition", "correct": false, "why": "Il est en fait fermé sous l'addition : si $x_1=2y_1$ et $x_2=2y_2$, alors $(x_1+x_2)=2(y_1+y_2)$, donc la somme reste dans $H$." },
       { "text": "Oui, car il contient une infinité de vecteurs", "correct": false, "why": "Le nombre de vecteurs ne suffit pas à conclure : $\\{(x,y):x+y=1\\}$ contient aussi une infinité de vecteurs mais n'est pas un sous-espace (il ne contient pas $0$)." }
@@ -132,7 +132,7 @@
     "topic": "mat1600-esp",
     "difficulty": 1,
     "prompt": "L'intersection de deux sous-espaces vectoriels de $\\mathbb R^n$ est toujours un sous-espace vectoriel.",
-    "explanation": "Vrai : $0$ appartient aux deux sous-espaces donc à leur intersection, et si $u,v$ sont dans les deux sous-espaces, $u+v$ et $cu$ le sont aussi (chaque sous-espace est fermé séparément), donc dans l'intersection.",
+    "explanation": "Vrai : $0$ appartient aux deux sous-espaces donc à leur intersection, et si $u,v$ sont dans les deux sous-espaces, $u+v$ et $cu$ le sont aussi (chaque sous-espace est fermé séparément), donc dans l'intersection. Le piège : croire que l'intersection de deux sous-espaces peut être vide — elle contient toujours au moins $0$.",
     "type": "vf",
     "answer": true
   },
@@ -142,7 +142,7 @@
     "topic": "mat1600-esp",
     "difficulty": 2,
     "prompt": "L'union de deux sous-espaces vectoriels de $\\mathbb R^n$ est toujours un sous-espace vectoriel.",
-    "explanation": "Faux : par exemple, deux droites distinctes passant par l'origine dans $\\mathbb R^2$ ; la somme d'un vecteur de chaque droite n'est en général dans aucune des deux, donc l'union n'est pas fermée sous l'addition.",
+    "explanation": "Faux : par exemple, deux droites distinctes passant par l'origine dans $\\mathbb R^2$ ; la somme d'un vecteur de chaque droite n'est en général dans aucune des deux, donc l'union n'est pas fermée sous l'addition. Le piège : croire que l'union de deux droites forme un plan — l'union reste seulement les deux droites, pas tous les points entre elles.",
     "type": "vf",
     "answer": false
   },
@@ -156,9 +156,9 @@
     "type": "qcm",
     "choices": [
       { "text": "$\\dim(\\text{Col}\\,A)=2,\\ \\dim(\\text{Nul}\\,A)=2$", "correct": true },
-      { "text": "$\\dim(\\text{Col}\\,A)=2,\\ \\dim(\\text{Nul}\\,A)=1$", "correct": false, "why": "Le théorème du rang donne $4-2=2$, pas $1$ : il ne faut pas oublier une colonne dans le calcul." },
+      { "text": "$\\dim(\\text{Col}\\,A)=2,\\ \\dim(\\text{Nul}\\,A)=1$", "correct": false, "why": "C'est $m-\\text{rang}=3-2$ : le théorème du rang utilise le nombre de COLONNES ($4-2=2$), pas le nombre de lignes." },
       { "text": "$\\dim(\\text{Col}\\,A)=3,\\ \\dim(\\text{Nul}\\,A)=2$", "correct": false, "why": "$\\dim(\\text{Col}\\,A)$ est égale au rang ($2$), pas au nombre de lignes ($3$)." },
-      { "text": "$\\dim(\\text{Col}\\,A)=2,\\ \\dim(\\text{Nul}\\,A)=3$", "correct": false, "why": "$4-2=2$, pas $3$ : erreur de soustraction dans le théorème du rang." }
+      { "text": "$\\dim(\\text{Col}\\,A)=2,\\ \\dim(\\text{Nul}\\,A)=3$", "correct": false, "why": "$3$ est le nombre de lignes de $A$, pas une dimension du noyau : le théorème du rang donne $4-2=2$." }
     ]
   },
   {
@@ -182,15 +182,15 @@
     "topic": "mat1600-esp",
     "difficulty": 3,
     "challenge": true,
-    "solution": "1) Chercher une relation entre les trois vecteurs : essayer $v_3=v_1+v_2$.\n\n2) $v_1+v_2=(1,0,1)+(0,1,1)=(1,1,2)=v_3$ exactement.\n\n3) Donc $v_1+v_2-v_3=0$ : c'est une combinaison non triviale, la famille est liée.",
-    "prompt": "Les vecteurs $v_1=(1,0,1)$, $v_2=(0,1,1)$, $v_3=(1,1,2)$ forment-ils une famille libre dans $\\mathbb R^3$ ?",
-    "explanation": "$v_3=v_1+v_2$ exactement : il existe une combinaison non triviale des trois vecteurs qui donne $0$, donc la famille est liée.",
+    "solution": "1) $H$ est défini par 2 équations linéaires indépendantes ($x+y=0$ et $z=2w$) sur les 4 coordonnées $(x,y,z,w)$.\n\n2) Poser $y=-x$ (libre : $x$) et $z=2w$ (libre : $w$) : tout élément de $H$ s'écrit $(x,-x,2w,w)=x(1,-1,0,0)+w(0,0,2,1)$.\n\n3) $\\{(1,-1,0,0),(0,0,2,1)\\}$ engendre $H$ et ces deux vecteurs sont clairement indépendants (aucun n'est un multiple de l'autre), donc c'est une base.\n\n4) $\\dim H=2$ (2 variables libres, $4-2=2$ contraintes indépendantes).",
+    "prompt": "Quelle est la dimension de $H=\\{(x,y,z,w)\\in\\mathbb R^4 : x+y=0,\\ z=2w\\}$ ?",
+    "explanation": "$H$ est défini par 2 équations indépendantes sur 4 coordonnées, donc $\\dim H=4-2=2$ ; une base est $\\{(1,-1,0,0),(0,0,2,1)\\}$.",
     "type": "qcm",
     "choices": [
-      { "text": "Non : $v_3=v_1+v_2$", "correct": true },
-      { "text": "Oui, car il y a exactement 3 vecteurs dans $\\mathbb R^3$", "correct": false, "why": "Avoir autant de vecteurs que la dimension de l'espace ne garantit rien : cela borne seulement le nombre maximal de vecteurs indépendants possibles." },
-      { "text": "Oui, car aucune paire de vecteurs n'est colinéaire", "correct": false, "why": "Vérifier la colinéarité deux à deux ne suffit qu'avec exactement 2 vecteurs. Avec 3 vecteurs, une dépendance peut impliquer les trois à la fois, comme ici." },
-      { "text": "On ne peut pas savoir sans calculer un déterminant $3\\times3$", "correct": false, "why": "On peut conclure directement en trouvant la relation $v_3=v_1+v_2$, sans avoir besoin de calculer de déterminant." }
+      { "text": "$2$", "correct": true },
+      { "text": "$4$", "correct": false, "why": "Cela ignore les deux équations qui contraignent $H$ : sans contrainte, $\\dim=4$, mais chaque équation indépendante retire une dimension." },
+      { "text": "$1$", "correct": false, "why": "Une seule contrainte retirerait une dimension ($4-1=3$) ; ici il y a deux équations indépendantes, donc $4-2=2$, pas $4-3=1$." },
+      { "text": "$3$", "correct": false, "why": "Cela ne compte qu'une seule des deux équations ($4-1=3$) : il faut tenir compte des deux contraintes $x+y=0$ et $z=2w$." }
     ]
   },
   {
@@ -199,13 +199,13 @@
     "topic": "mat1600-esp",
     "difficulty": 2,
     "prompt": "Si $A$ est une matrice $5\\times3$ de rang $3$, que peut-on dire de $\\text{Nul}(A)$ ?",
-    "explanation": "$\\dim(\\text{Nul}\\,A)=3-3=0$ (théorème du rang), donc $\\text{Nul}(A)=\\{0\\}$ : seul le vecteur nul résout $Ax=0$.",
+    "explanation": "$\\dim(\\text{Nul}\\,A)=3-3=0$ (théorème du rang), donc $\\text{Nul}(A)=\\{0\\}$ : seul le vecteur nul résout $Ax=0$. Le piège : croire qu'un rang maximal (égal au nombre de colonnes) rend le noyau « maximal » aussi, alors que c'est l'inverse.",
     "type": "qcm",
     "choices": [
       { "text": "$\\text{Nul}(A)=\\{0\\}$ (seulement le vecteur nul)", "correct": true },
       { "text": "$\\dim(\\text{Nul}\\,A)=2$", "correct": false, "why": "C'est $5-3=2$ : ceci soustrait le rang du nombre de lignes au lieu du nombre de colonnes. Le théorème du rang utilise le nombre de colonnes : $3-3=0$." },
       { "text": "$\\text{Nul}(A)=\\mathbb R^3$", "correct": false, "why": "C'est l'inverse : un rang maximal ($3$, égal au nombre de colonnes) signifie que le noyau est le plus petit possible, réduit à $\\{0\\}$, pas tout $\\mathbb R^3$." },
-      { "text": "$\\text{Nul}(A)$ n'est pas défini pour une matrice non carrée", "correct": false, "why": "L'espace nul est défini pour toute matrice, carrée ou non : c'est l'ensemble des solutions de $Ax=0$." }
+      { "text": "$\\text{Nul}(A)$ n'est pas défini pour une matrice non carrée", "correct": false, "why": "Le noyau est défini pour toute matrice, carrée ou non : c'est l'ensemble des solutions de $Ax=0$." }
     ]
   },
   {
@@ -213,8 +213,8 @@
     "course": "MAT1600",
     "topic": "mat1600-esp",
     "difficulty": 1,
-    "prompt": "Le vecteur nul est le seul élément de tout sous-espace vectoriel.",
-    "explanation": "Faux : tout sous-espace contient le vecteur nul, mais la plupart en contiennent bien d'autres (par exemple $\\mathbb R^3$ tout entier est un sous-espace de lui-même). Seul le sous-espace trivial $\\{0\\}$ n'a que le vecteur nul.",
+    "prompt": "Tout sous-espace vectoriel de $\\mathbb R^n$ ne contient que le vecteur nul.",
+    "explanation": "Faux : tout sous-espace contient le vecteur nul, mais la plupart en contiennent bien d'autres (par exemple $\\mathbb R^n$ tout entier est un sous-espace de lui-même). Seul le sous-espace trivial $\\{0\\}$ n'a que le vecteur nul.",
     "type": "vf",
     "answer": false
   },
@@ -223,14 +223,14 @@
     "course": "MAT1600",
     "topic": "mat1600-esp",
     "difficulty": 2,
-    "prompt": "Quelle est la relation entre $\\dim(\\text{Col}\\,A)$ et le rang de $A$ ?",
-    "explanation": "Ce sont exactement la même quantité : le rang d'une matrice est défini comme la dimension de son espace des colonnes.",
-    "type": "flash",
-    "answer": "$\\dim(\\text{Col}\\,A)=\\text{rang}(A)$ : ce sont deux noms pour la même quantité, le nombre de colonnes pivots de $A$.",
-    "keyPoints": [
-      "Le rang n'est pas une notion séparée : c'est la définition de $\\dim(\\text{Col}\\,A)$",
-      "Le nombre de colonnes pivots dans la forme échelonnée donne directement cette valeur",
-      "Cette même valeur est aussi la dimension de l'espace ligne de $A$"
+    "prompt": "La forme échelonnée d'une matrice $A$ de taille $4\\times6$ a des pivots dans les colonnes 1, 3 et 5. Quel est le rang de $A$ ?",
+    "explanation": "Le rang est le nombre de colonnes pivots : ici il y en a 3 (colonnes 1, 3, 5), donc $\\text{rang}(A)=3$, peu importe leurs positions exactes.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$3$", "correct": true },
+      { "text": "$5$", "correct": false, "why": "$5$ est la position de la dernière colonne pivot, pas le nombre total de colonnes pivots." },
+      { "text": "$4$", "correct": false, "why": "$4$ est le nombre de lignes de $A$, pas le nombre de colonnes pivots." },
+      { "text": "$6$", "correct": false, "why": "$6$ est le nombre total de colonnes de $A$, incluant celles sans pivot (variables libres)." }
     ]
   },
   {
@@ -239,7 +239,7 @@
     "topic": "mat1600-esp",
     "difficulty": 1,
     "prompt": "Un sous-espace vectoriel de $\\mathbb R^3$ peut-il avoir pour dimension $4$ ?",
-    "explanation": "Non : la dimension d'un sous-espace ne peut jamais dépasser la dimension de l'espace ambiant qui le contient.",
+    "explanation": "Non : la dimension d'un sous-espace ne peut jamais dépasser la dimension de l'espace ambiant qui le contient. Le piège : croire qu'un sous-espace « assez riche » ou « bien choisi » pourrait dépasser cette borne.",
     "type": "qcm",
     "choices": [
       { "text": "Non : la dimension d'un sous-espace ne dépasse jamais celle de l'espace ambiant", "correct": true },
@@ -253,14 +253,14 @@
     "course": "MAT1600",
     "topic": "mat1600-esp",
     "difficulty": 2,
-    "prompt": "Un sous-espace $H$ est engendré par $5$ vecteurs. Quelle est la plus grande dimension possible de $H$ ?",
-    "explanation": "$\\dim H\\le5$ : la dimension d'un espace engendré par $k$ vecteurs ne peut jamais dépasser $k$ (elle vaut exactement $k$ seulement si les $5$ vecteurs sont indépendants).",
+    "prompt": "Un sous-espace $H$ de $\\mathbb R^7$ est engendré par $5$ vecteurs. Quelle est la plus grande dimension possible de $H$ ?",
+    "explanation": "$\\dim H\\le5$ : la dimension d'un espace engendré par $k$ vecteurs ne peut jamais dépasser $k$ (elle vaut exactement $k$ seulement si les $5$ vecteurs sont indépendants). Ici $\\mathbb R^7$ ne borne pas davantage, puisque $5<7$. Le piège : appliquer la mauvaise borne (celle de l'espace ambiant plutôt que celle du nombre de générateurs) quand les deux sont différentes.",
     "type": "qcm",
     "choices": [
       { "text": "$5$", "correct": true },
       { "text": "$4$", "correct": false, "why": "Si les 5 vecteurs sont indépendants, la dimension atteint exactement $5$, pas $4$." },
-      { "text": "$6$", "correct": false, "why": "La dimension ne peut jamais dépasser le nombre de vecteurs générateurs : $6>5$ est impossible ici." },
-      { "text": "$10$", "correct": false, "why": "Un ensemble générateur de $5$ vecteurs ne peut jamais engendrer un espace de dimension supérieure à $5$." }
+      { "text": "$7$", "correct": false, "why": "La dimension de l'espace ambiant borne aussi, mais ici les 5 générateurs bornent d'abord : $\\dim H\\le5<7$." },
+      { "text": "$1$", "correct": false, "why": "Un sous-espace engendré par plusieurs vecteurs n'est pas automatiquement une droite : sa dimension peut aller jusqu'à $5$ si les générateurs sont indépendants." }
     ]
   },
   {
@@ -269,7 +269,7 @@
     "topic": "mat1600-esp",
     "difficulty": 1,
     "prompt": "Donner un exemple de sous-espace de dimension $0$ dans un espace vectoriel $V$.",
-    "explanation": "Le sous-espace trivial $\\{0\\}$ (contenant seulement le vecteur nul) est toujours de dimension $0$ : sa base est l'ensemble vide, qui a $0$ élément.",
+    "explanation": "Le sous-espace trivial $\\{0\\}$ (contenant seulement le vecteur nul) est toujours de dimension $0$ : sa base est l'ensemble vide, qui a $0$ élément. Le piège : croire qu'un ensemble vide ne peut pas être une base valide.",
     "type": "flash",
     "answer": "Le sous-espace trivial $\\{0\\}$, contenant seulement le vecteur nul, a pour base l'ensemble vide et donc pour dimension $0$.",
     "keyPoints": [
