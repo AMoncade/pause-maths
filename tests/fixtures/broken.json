@@ -1101,6 +1101,42 @@
   },
   {
     "rule": "katex",
+    "note": "lettre accentuée dans une formule (paire de dollars littéraux « 5 $ … 3 $ », avertissement KaTeX devenu refus)",
+    "questions": [
+      {
+        "id": "mat1600-syst-001",
+        "course": "MAT1600",
+        "topic": "mat1600-syst",
+        "difficulty": 1,
+        "type": "qcm",
+        "prompt": "Un café coûte 5 $ et un thé 3 $ : combien de solutions a le système $x + y = 2$, $x - y = 0$ ?",
+        "explanation": "Les deux droites se coupent au point $(1, 1)$. Le piège : croire que deux équations donnent toujours une infinité de solutions.",
+        "choices": [
+          {
+            "text": "Exactement une",
+            "correct": true
+          },
+          {
+            "text": "Aucune",
+            "correct": false,
+            "why": "Les deux droites ne sont pas parallèles."
+          },
+          {
+            "text": "Une infinité",
+            "correct": false,
+            "why": "Les deux équations ne sont pas proportionnelles."
+          },
+          {
+            "text": "Deux",
+            "correct": false,
+            "why": "Un système linéaire n'a jamais exactement deux solutions."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "rule": "katex",
     "note": "environnement non fermé en display dans un choix",
     "questions": [
       {

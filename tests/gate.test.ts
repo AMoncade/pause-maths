@@ -49,6 +49,14 @@ describe('gate — fixture valide', () => {
     expect(issues, formatIssues(issues)).toEqual([]);
   });
 
+  it('KaTeX strict : accepte une lettre accentuée dans \\text{…}, pas en mode math', () => {
+    const q = clone(valid[0]!);
+    q.prompt = String.raw`Combien de solutions a $x + y = 2 \text{ et } x - y = 0 \text{ (système réel)}$ ?`;
+    expect(checkBank([q], testCourses, testRetired)).toEqual([]);
+    q.prompt = 'Combien de solutions a $x + y = 2$, système réél en $é$ ?';
+    expect(checkBank([q], testCourses, testRetired).map((i) => i.rule)).toEqual(['katex']);
+  });
+
   it('accepte un dollar littéral échappé \\$ hors et dans une formule', () => {
     const q = clone(valid[0]!);
     q.prompt = String.raw`Un billet coûte 5\$ et un autre $x\$$ : combien de solutions a $x = 1$ ?`;

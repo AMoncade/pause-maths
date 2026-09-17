@@ -1,4 +1,4 @@
-// Propriété du lot Engine. Import de questions collées : `npm run import -- <fichier.json>`.
+// Propriété du lot Engine. Import de questions collées : `npm run import -- <fichier.json> [--renumber]`.
 // Valide tout avec le gate, puis range chaque question dans src/content/<cours>/<thème>.json (trié par id).
 // Tout ou rien : à la moindre issue, aucun fichier n'est écrit. Ne touche qu'aux fichiers src/content/<cours>/*.json.
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
@@ -13,6 +13,14 @@ export interface ImportOptions {
   contentDir: string;
   courses: Course[];
   retired: Set<string>;
+  /** `--renumber` : réattribuer les ids avant validation (voir renumberQuestions) */
+  renumber?: boolean;
+}
+
+export interface RenumberEntry {
+  /** id collé (absent si la question n'en avait pas) */
+  from: string | undefined;
+  to: string;
 }
 
 export interface ImportResult {
@@ -21,11 +29,49 @@ export interface ImportResult {
   /** chemins relatifs à contentDir, ex. "stt1700/stt1700-desc.json" */
   written: string[];
   summary: string;
+  /** correspondance ancien → nouveau, présente seulement avec `renumber` (même si l'import est refusé) */
+  renumbered?: RenumberEntry[];
+}
+
+/**
+ * `--renumber` : donne à chaque question collée, dans l'ordre du fichier, le prochain numéro libre de son thème
+ * (`<topic>-<nnn>`). Libre = au-dessus du plus grand numéro déjà présent dans la banque pour ce thème, en sautant
+ * les ids retirés et ceux déjà attribués dans ce lot. Les trous ne sont jamais réutilisés : un ancien id peut
+ * encore figurer dans la progression d'un utilisateur. Un élément sans `topic` (chaîne) est laissé tel quel,
+ * le gate le signalera. L'entrée n'est pas modifiée.
+ */
+export function renumberQuestions(
+  raw: readonly unknown[],
+  existingIds: Iterable<string>,
+  retired: Set<string>,
+): { questions: unknown[]; mapping: RenumberEntry[] } {
+  const highest = new Map<string, number>();
+  for (const id of existingIds) {
+    const m = /^(.+)-(\d+)$/.exec(id);
+    if (m) highest.set(m[1]!, Math.max(highest.get(m[1]!) ?? 0, Number(m[2])));
+  }
+  const assigned = new Set<string>();
+  const mapping: RenumberEntry[] = [];
+  const questions = raw.map((q) => {
+    if (typeof q !== 'object' || q === null || Array.isArray(q)) return q;
+    const record = q as Record<string, unknown>;
+    const topic = record.topic;
+    if (typeof topic !== 'string') return q;
+    let n = (highest.get(topic) ?? 0) + 1;
+    const idFor = (k: number) => `${topic}-${String(k).padStart(3, '0')}`;
+    while (retired.has(idFor(n)) || assigned.has(idFor(n))) n++;
+    const to = idFor(n);
+    assigned.add(to);
+    highest.set(topic, n);
+    mapping.push({ from: typeof record.id === 'string' ? record.id : undefined, to });
+    return { ...record, id: to };
+  });
+  return { questions, mapping };
 }
 
 /** Texte collé → JSON : retire un BOM et une clôture Markdown ```json … ``` éventuelle. */
 export function parsePasted(text: string): unknown {
-  let t = text.replace(/^﻿/, '').trim();
+  let t = (text.charCodeAt(0) === 0xfeff ? text.slice(1) : text).trim();
   const fence = /^```[a-zA-Z]*\s*\n([\s\S]*?)\n?```$/.exec(t);
   if (fence) t = fence[1]!;
   return JSON.parse(t);
@@ -52,16 +98,18 @@ export function readContentFiles(contentDir: string): Record<string, unknown> {
 }
 
 export function importQuestions(raw: unknown, opts: ImportOptions): ImportResult {
-  const fail = (issues: Issue[]): ImportResult => ({ ok: false, issues, written: [], summary: '' });
+  let renumbered: RenumberEntry[] | undefined;
+  const fail = (issues: Issue[]): ImportResult => ({
+    ok: false,
+    issues,
+    written: [],
+    summary: '',
+    ...(renumbered ? { renumbered } : {}),
+  });
   if (!Array.isArray(raw)) return fail([{ rule: 'schema', message: 'le fichier collé doit être un tableau JSON de questions' }]);
   if (raw.length === 0) return fail([{ rule: 'schema', message: 'tableau vide : rien à importer' }]);
 
-  // 1. Gate complet sur les questions collées (ids en double dans le collage et ids retirés compris).
-  const issues = checkBank(raw, opts.courses, opts.retired);
-  if (issues.length > 0) return fail(issues);
-  const incoming = raw as Question[];
-
-  // 2. Ids déjà présents dans la banque, et fichiers cibles lisibles.
+  // Ids déjà présents dans la banque (utiles à --renumber et au refus des doublons).
   const existing = readContentFiles(opts.contentDir);
   const owner = new Map<string, string>();
   for (const [file, content] of Object.entries(existing)) {
@@ -72,6 +120,20 @@ export function importQuestions(raw: unknown, opts: ImportOptions): ImportResult
       }
     }
   }
+
+  let pasted: unknown[] = raw;
+  if (opts.renumber) {
+    const r = renumberQuestions(raw, owner.keys(), opts.retired);
+    pasted = r.questions;
+    renumbered = r.mapping;
+  }
+
+  // 1. Gate complet sur les questions collées (ids en double dans le collage et ids retirés compris).
+  const issues = checkBank(pasted, opts.courses, opts.retired);
+  if (issues.length > 0) return fail(issues);
+  const incoming = pasted as Question[];
+
+  // 2. Ids déjà dans la banque, et fichiers cibles lisibles.
   const targetOf = (q: Question) => `${q.course.toLowerCase()}/${q.topic}.json`;
   for (const q of incoming) {
     const file = owner.get(q.id);
@@ -116,15 +178,22 @@ export function importQuestions(raw: unknown, opts: ImportOptions): ImportResult
       .join(', ')}${defi > 0 ? `, dont ${defi} Défi` : ''}`,
     ...lines,
   ].join('\n');
-  return { ok: true, issues: [], written, summary };
+  return { ok: true, issues: [], written, summary, ...(renumbered ? { renumbered } : {}) };
 }
 
+const USAGE = 'Usage : npm run import -- <fichier.json> [--renumber]';
+
 function main(args: string[]): number {
-  const arg = args[0];
-  if (arg === undefined) {
-    console.error('Usage : npm run import -- <fichier.json>');
+  const flags = args.filter((a) => a.startsWith('--'));
+  const positional = args.filter((a) => !a.startsWith('--'));
+  const unknown = flags.filter((f) => f !== '--renumber');
+  const arg = positional[0];
+  if (arg === undefined || positional.length > 1 || unknown.length > 0) {
+    if (unknown.length > 0) console.error(`Option inconnue : ${unknown.join(' ')}`);
+    console.error(USAGE);
     return 2;
   }
+  const renumber = flags.includes('--renumber');
   // npm lance le script depuis la racine du paquet ; INIT_CWD est le dossier d'où la commande a été tapée.
   const file = resolve(process.env.INIT_CWD ?? process.cwd(), arg);
   let raw: unknown;
@@ -136,7 +205,11 @@ function main(args: string[]): number {
   }
   const contentDir = fileURLToPath(new URL('../src/content', import.meta.url));
   const retired = new Set<string>(JSON.parse(readFileSync(join(contentDir, 'retired-ids.json'), 'utf8')) as string[]);
-  const result = importQuestions(raw, { contentDir, courses, retired });
+  const result = importQuestions(raw, { contentDir, courses, retired, renumber });
+  if (result.renumbered) {
+    const lines = result.renumbered.map((m) => `  ${m.from ?? '(sans id)'} → ${m.to}`);
+    console.log(`Renumérotation (ancien → nouveau) :\n${lines.join('\n')}`);
+  }
   if (!result.ok) {
     console.error(`Import refusé, aucun fichier écrit (${result.issues.length} problème(s)) :\n${formatIssues(result.issues)}`);
     return 1;
