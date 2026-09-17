@@ -47,3 +47,14 @@ automatiquement). Total du thème : 12 questions.
 
 - `induc-008` (Défi) : `explanation` alignée sur le distracteur le plus tentant (mauvaise
   factorisation donnant $k(k+2)/2$).
+
+## Relecture Opus (b), complément (docs/reviews/relecture-opus/mat1500-b.md) — corrections appliquées
+
+- `induc-008` (ÉLEVÉE) : `explanation` corrigée — le mécanisme d'erreur décrit précédemment était
+  mathématiquement faux ; nouvelle description vérifiée par SymPy.
+- `induc-009` : converti en flash (éliminait les 2 distracteurs artificiels restants).
+- `induc-011` : réponse raccourcie, 3 nouveaux distracteurs réels (au lieu d'arbitraires), ne
+  duplique plus la réponse d'induc-012.
+- `induc-012` : 2 distracteurs remplacés, réponse raccourcie.
+
+Re-vérifié (SymPy, venv hors dépôt) : **PASS** sur les 4 items.

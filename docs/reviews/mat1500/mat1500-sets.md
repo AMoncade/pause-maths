@@ -46,3 +46,10 @@ Re-vérifié (gate + relecture aveugle complète des 12 questions, brute force) 
 
 Re-vérifié (brute force sur les sous-ensembles, venv hors dépôt) : **PASS** sur les 5 items
 touchés, aucune ambiguïté.
+
+## Relecture Opus (b), complément — sets-012
+
+- Bonne réponse raccourcie (elle se repérait à sa longueur) ; distracteur par cardinalité
+  remplacé par une inclusion dans le mauvais sens ($A\cap B \subseteq A\cup(A\cap B)$).
+
+Re-vérifié (brute force) : **PASS**.

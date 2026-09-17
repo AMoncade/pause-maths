@@ -188,28 +188,12 @@
     "topic": "mat1500-logic",
     "difficulty": 2,
     "prompt": "Selon la loi de distributivité, à quoi est équivalent $p \\wedge (q \\vee r)$ ?",
-    "explanation": "$p \\wedge (q \\vee r) \\equiv (p \\wedge q) \\vee (p \\wedge r)$ : le $\\wedge$ se distribue sur le $\\vee$, exactement comme la multiplication se distribue sur l'addition en algèbre ($a(b+c)=ab+ac$). Oublier de répéter $p$ sur chaque terme est l'erreur la plus fréquente.",
-    "type": "qcm",
-    "choices": [
-      {
-        "text": "$(p \\wedge q) \\vee (p \\wedge r)$",
-        "correct": true
-      },
-      {
-        "text": "$(p \\vee q) \\wedge (p \\vee r)$",
-        "correct": false,
-        "why": "C'est la distribution de $\\vee$ sur $\\wedge$ (pour l'énoncé $p \\vee (q \\wedge r)$), pas celle de $\\wedge$ sur $\\vee$ demandée ici."
-      },
-      {
-        "text": "$(p \\wedge q) \\vee (q \\wedge r)$",
-        "correct": false,
-        "why": "$p$ a été oublié dans le second terme, remplacé par $q$ : la distribution correcte répète $p$ sur les deux membres, pas $q$."
-      },
-      {
-        "text": "$(p \\vee q) \\wedge r$",
-        "correct": false,
-        "why": "Cette expression regroupe $p$ et $q$ avec $\\vee$ et applique $\\wedge$ avec $r$ seul : ce n'est pas la distribution voulue et ne préserve pas la structure de l'énoncé de départ."
-      }
+    "explanation": "$p \\wedge (q \\vee r) \\equiv (p \\wedge q) \\vee (p \\wedge r)$ : le $\\wedge$ se distribue sur le $\\vee$, exactement comme la multiplication se distribue sur l'addition en algèbre ($a(b+c)=ab+ac$). Le piège : oublier de répéter $p$ sur chaque terme (donnant à tort $(p\\wedge q)\\vee r$), ou remplacer $p$ par $q$ dans le second terme (donnant $(p\\wedge q)\\vee(q\\wedge r)$).",
+    "type": "flash",
+    "answer": "$p \\wedge (q \\vee r) \\equiv (p \\wedge q) \\vee (p \\wedge r)$.",
+    "keyPoints": [
+      "$p$ doit être répété sur les deux termes de la disjonction",
+      "Erreur classique : $(p\\wedge q)\\vee r$ (oubli de répéter $p$) ou $(p\\wedge q)\\vee(q\\wedge r)$ ($p$ remplacé par $q$)"
     ]
   },
   {

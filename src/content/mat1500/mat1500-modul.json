@@ -200,7 +200,7 @@
       {
         "text": "$4$",
         "correct": false,
-        "why": "Ne correspond à aucun calcul correct de $3^4 \\bmod 5$ ; peut-être confondu avec $3^1 \\bmod 5$."
+        "why": "C'est $3^2 \\bmod 5$ ($9 \\bmod 5 = 4$) : l'exposant a été divisé par 2 au lieu d'être utilisé au complet."
       },
       {
         "text": "$3$",
@@ -232,17 +232,17 @@
       {
         "text": "$3$",
         "correct": false,
-        "why": "$3\\times3=9\\equiv2\\pmod7$, pas $1$ : $3$ n'est pas son propre inverse ici."
+        "why": "Croit à tort que $3$ est son propre inverse ; ce n'est vrai que pour des éléments particuliers comme $1$ ou $n-1$, pas pour $3$ modulo $7$ ($3\\times3=9\\equiv2\\pmod7$)."
       },
       {
         "text": "$2$",
         "correct": false,
-        "why": "$3\\times2=6\\equiv6\\pmod7$, pas $1$."
+        "why": "C'est le quotient de $7$ par $3$ ($7\\div3=2$ reste $1$), confondu avec l'inverse multiplicatif."
       },
       {
         "text": "$4$",
         "correct": false,
-        "why": "$3\\times4=12\\equiv5\\pmod7$, pas $1$."
+        "why": "C'est l'inverse additif de $3$ modulo $7$ ($3+4\\equiv0\\pmod7$), pas l'inverse multiplicatif."
       }
     ]
   },
@@ -251,7 +251,7 @@
     "course": "MAT1500",
     "topic": "mat1500-modul",
     "difficulty": 3,
-    "prompt": "L'équation $2x \\equiv 4 \\pmod 6$ a plusieurs solutions non congrues modulo $6$, car $\\text{pgcd}(2,6)=2\\ne1$ (on ne peut pas « diviser par 2 » directement). Quel est l'ensemble complet des solutions modulo $6$ ?",
+    "prompt": "Quel est l'ensemble complet des solutions de $2x \\equiv 4 \\pmod 6$ dans $\\{0, 1, 2, 3, 4, 5\\}$ ?",
     "explanation": "L'erreur classique est de diviser les deux côtés par $2$ pour conclure à tort que $x\\equiv2\\pmod6$ est l'unique solution — cette simplification n'est valide que si le facteur retiré est inversible modulo $n$, ce qui n'est pas le cas ici.",
     "challenge": true,
     "type": "qcm",

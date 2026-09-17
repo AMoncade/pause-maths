@@ -49,3 +49,13 @@ Re-vérifié (gate + relecture aveugle complète des 8 questions, SymPy) après 
   additive du thème ($a(k_1+k_2)$ au lieu du produit $a(k_1k_2)$), `explanation` alignée.
 
 Re-vérifié (SymPy, venv hors dépôt) : **PASS**.
+
+## Relecture Opus (b), complément (docs/reviews/relecture-opus/mat1500-b.md) — corrections appliquées
+
+- `divis-008` : dernier distracteur artificiel remplacé (substitution partielle $ak_1+k_2$).
+- `divis-011` : reformulée pour éliminer les deux réponses défendables (demande maintenant le
+  reste calculé, pas le prochain appel $\text{pgcd}(\cdot,\cdot)$ complet).
+- `divis-012` : bonne réponse raccourcie, 2 distracteurs artificiels remplacés (aucun facteur
+  premier ; $N-1$ divisible par chaque $p_i$ donc $N$ aussi).
+
+Re-vérifié (SymPy/Python, venv hors dépôt) : **PASS** sur les 3 items.

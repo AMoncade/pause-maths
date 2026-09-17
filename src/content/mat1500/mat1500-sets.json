@@ -243,7 +243,7 @@
     "challenge": true,
     "type": "qcm",
     "choices": [
-      { "text": "soit $x \\in A \\cup (A \\cap B)$ ; si $x \\in A \\cap B$ alors $x \\in A$ (car $A \\cap B \\subseteq A$) ; dans les deux cas possibles, $x \\in A$", "correct": true },
+      { "text": "si $x \\in A \\cap B$, alors $x \\in A$ ; donc tout élément de l'union est dans $A$", "correct": true },
       {
         "text": "$A \\subseteq A \\cup (A \\cap B)$ est toujours vraie, donc l'égalité suit immédiatement",
         "correct": false,
@@ -255,9 +255,9 @@
         "why": "$A \\cup B \\subseteq A$ est faux en général (seulement si $B \\subseteq A$) : cette chaîne d'inclusions ne tient pas."
       },
       {
-        "text": "$A$ et $A \\cap B$ ont le même nombre d'éléments, donc leur union vaut $A$",
+        "text": "$A \\cap B \\subseteq A \\cup (A \\cap B)$, donc l'union est dans $A$",
         "correct": false,
-        "why": "$A$ et $A \\cap B$ n'ont pas nécessairement le même nombre d'éléments (ils sont égaux seulement si $A \\subseteq B$) ; l'argument par cardinalité ne s'applique pas ici."
+        "why": "Cette inclusion va dans le mauvais sens ($A\\cap B$ est inclus dans l'union, pas l'inverse) : elle ne dit rien sur le fait que l'union soit incluse dans $A$."
       }
     ],
     "solution": "($\\subseteq$) Soit $x \\in A \\cup (A \\cap B)$. Alors $x \\in A$ ou $x \\in A \\cap B$. Dans les deux cas, $x \\in A$ (le second cas donne $x \\in A$ directement, puisque $A \\cap B \\subseteq A$). Donc $A \\cup (A \\cap B) \\subseteq A$.\n\n($\\supseteq$) Soit $x \\in A$. Alors $x \\in A \\cup (A \\cap B)$ trivialement, puisque $A$ est l'un des deux ensembles de cette union. Donc $A \\subseteq A \\cup (A \\cap B)$.\n\nPar double inclusion, $A \\cup (A \\cap B) = A$."

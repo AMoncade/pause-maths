@@ -187,26 +187,13 @@
     "course": "MAT1500",
     "topic": "mat1500-proof",
     "difficulty": 2,
-    "prompt": "L'énoncé $\\forall x \\in \\emptyset, P(x)$ (pour un prédicat $P$ quelconque) est...",
-    "explanation": "Toujours vrai par « vacuité » : $\\forall x \\in \\emptyset, P(x)$ affirme que tout élément de $\\emptyset$ satisfait $P$, mais comme $\\emptyset$ n'a aucun élément, il n'y a rien à vérifier — l'énoncé ne peut pas être mis en défaut, peu importe $P$.",
-    "type": "qcm",
-    "choices": [
-      { "text": "toujours vrai, quel que soit $P$", "correct": true },
-      {
-        "text": "toujours faux, quel que soit $P$",
-        "correct": false,
-        "why": "C'est l'inverse : un énoncé universel sur l'ensemble vide est vrai par vacuité, jamais faux."
-      },
-      {
-        "text": "vrai seulement si $P(x)$ est vrai pour au moins un $x$",
-        "correct": false,
-        "why": "Cette condition n'a aucun sens ici : $\\emptyset$ n'a aucun élément, donc « $P(x)$ vrai pour au moins un $x$ » ne peut jamais se produire, et pourtant l'énoncé reste vrai."
-      },
-      {
-        "text": "indéterminé sans connaître $P$",
-        "correct": false,
-        "why": "Le contenu de $P$ n'a aucune importance ici : la vérité vient uniquement du fait que le domaine de quantification est vide."
-      }
+    "prompt": "L'énoncé $\\forall x \\in \\emptyset, P(x)$ (pour un prédicat $P$ quelconque) est-il vrai, faux, ou cela dépend-il de $P$ ?",
+    "explanation": "Toujours vrai par « vacuité » : $\\forall x \\in \\emptyset, P(x)$ affirme que tout élément de $\\emptyset$ satisfait $P$, mais comme $\\emptyset$ n'a aucun élément, il n'y a rien à vérifier — l'énoncé ne peut pas être mis en défaut, peu importe $P$. Le piège : croire à tort qu'un domaine vide rend l'énoncé faux ou indéterminé.",
+    "type": "flash",
+    "answer": "Toujours vrai, quel que soit $P$ : c'est une vérité par vacuité.",
+    "keyPoints": [
+      "Aucun élément de $\\emptyset$ ne peut mettre l'énoncé en défaut",
+      "Le contenu de $P$ n'a aucune importance : seule compte la vacuité du domaine"
     ]
   },
   {
@@ -224,8 +211,8 @@
     "course": "MAT1500",
     "topic": "mat1500-proof",
     "difficulty": 2,
-    "prompt": "Pour réfuter l'énoncé $\\exists x, P(x)$ (c'est-à-dire prouver $\\forall x, \\neg P(x)$), que doit-on montrer ?",
-    "explanation": "Réfuter un énoncé existentiel demande de couvrir TOUS les cas (montrer que $P$ échoue partout), contrairement à réfuter un énoncé universel qui ne demande qu'un seul contre-exemple. C'est l'exact contraire de la situation vue pour les énoncés universels.",
+    "prompt": "Pour réfuter l'énoncé $\\exists x, P(x)$, que doit-on montrer ?",
+    "explanation": "Réfuter un énoncé existentiel demande de couvrir TOUS les cas (montrer que $P$ échoue partout), contrairement à réfuter un énoncé universel qui ne demande qu'un seul contre-exemple.",
     "type": "qcm",
     "choices": [
       { "text": "que $P(x)$ est faux pour absolument tout $x$", "correct": true },
@@ -256,21 +243,21 @@
     "challenge": true,
     "type": "qcm",
     "choices": [
-      { "text": "distinguer deux cas ($\\sqrt2^{\\sqrt2}$ rationnel ou irrationnel) et exhiber une paire $(a,b)$ qui fonctionne dans chacun, sans savoir lequel se produit", "correct": true },
+      { "text": "distinguer les deux cas possibles pour $\\sqrt2^{\\sqrt2}$, avec une paire $(a,b)$ pour chacun", "correct": true },
       {
         "text": "montrer que $\\sqrt2^{\\sqrt2}$ est nécessairement irrationnel, puis conclure",
         "correct": false,
-        "why": "La preuve n'a pas besoin de trancher cette question (en fait difficile) : elle fonctionne dans les deux cas possibles, sans déterminer lequel est vrai."
+        "why": "C'est vrai (théorème de Gelfond–Schneider), mais hors de portée : l'intérêt de la preuve est justement de ne pas en avoir besoin."
       },
       {
-        "text": "calculer numériquement $\\sqrt2^{\\sqrt2}$ pour vérifier qu'il est rationnel",
+        "text": "choisir $a=\\sqrt2$, $b=\\sqrt2$ sans vérifier dans quel cas on se trouve",
         "correct": false,
-        "why": "Un calcul numérique approché ne peut jamais prouver qu'un nombre est rationnel ou irrationnel avec certitude."
+        "why": "Cette paire ne fonctionne que si $\\sqrt2^{\\sqrt2}$ est rationnel (cas 1) ; sans distinguer les cas, la preuve ne couvre pas l'autre possibilité."
       },
       {
-        "text": "utiliser l'induction sur les puissances de $\\sqrt2$",
+        "text": "montrer que $\\sqrt2^{\\sqrt2}$ est rationnel",
         "correct": false,
-        "why": "Aucune induction n'intervient dans cette preuve ; elle repose sur une disjonction de cas exhaustive, pas sur une récurrence."
+        "why": "En réalité $\\sqrt2^{\\sqrt2}$ est irrationnel (transcendant, par Gelfond–Schneider) ; et même s'il était rationnel, ce n'est pas ce que cette preuve cherche à établir."
       }
     ],
     "solution": "Considérons le nombre $\\sqrt2^{\\sqrt2}$. Il est soit rationnel, soit irrationnel — ces deux cas épuisent toutes les possibilités.\n\n**Cas 1 : $\\sqrt2^{\\sqrt2}$ est rationnel.** Alors on a trouvé notre paire : $a=\\sqrt2$, $b=\\sqrt2$, tous deux irrationnels, avec $a^b=\\sqrt2^{\\sqrt2}$ rationnel par hypothèse de ce cas.\n\n**Cas 2 : $\\sqrt2^{\\sqrt2}$ est irrationnel.** Posons alors $a=\\sqrt2^{\\sqrt2}$ (irrationnel par hypothèse de ce cas) et $b=\\sqrt2$ (irrationnel). Alors $a^b = \\left(\\sqrt2^{\\sqrt2}\\right)^{\\sqrt2} = \\sqrt2^{\\sqrt2\\cdot\\sqrt2} = \\sqrt2^2 = 2$, qui est rationnel.\n\nDans les deux cas, on a exhibé des irrationnels $a,b$ avec $a^b$ rationnel — sans jamais déterminer dans lequel des deux cas on se trouve réellement."

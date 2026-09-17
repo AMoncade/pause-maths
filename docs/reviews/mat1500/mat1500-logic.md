@@ -52,3 +52,11 @@ Re-vérifié (gate + relecture aveugle complète des 12 questions, SymPy) après
 
 Re-vérifié par SymPy (venv hors dépôt) : **PASS**, tous les nouveaux distracteurs confirmés non
 équivalents à la bonne réponse.
+
+## Relecture Opus (b), complément (docs/reviews/relecture-opus/mat1500-b.md) — correction appliquée
+
+- `logic-009` : résidu du correctif précédent (la mauvaise moitié du distracteur artificiel avait
+  été corrigée) — converti en flash pour éliminer le problème de distracteurs entièrement, tout
+  en nommant les deux pièges (oubli de répéter $p$ ; $p$ remplacé par $q$) dans l'`explanation`.
+
+Re-vérifié par SymPy : **PASS**.

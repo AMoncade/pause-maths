@@ -141,9 +141,9 @@
         "why": "Cette expression vient d'une confusion avec la preuve additive « $a\\mid b, a\\mid c \\Rightarrow a\\mid(b+c)$ » ; ici la substitution de $b=ak_1$ dans $c=bk_2$ produit un produit $k_1k_2$, pas une somme $k_1+k_2$."
       },
       {
-        "text": "$c = k_1+k_2$, donc $a\\mid c$ car $a\\mid k_1$",
+        "text": "$c = ak_1 + k_2$, donc $a\\mid c$ avec le témoin $k_1$",
         "correct": false,
-        "why": "Rien ne dit que $a\\mid k_1$ ; $b=ak_1$ signifie seulement que $k_1$ est un entier quelconque, pas nécessairement un multiple de $a$."
+        "why": "Substitution partielle : $c=bk_2=(ak_1)k_2$ est un produit, pas $ak_1$ additionné à $k_2$ ; le second facteur $k_2$ doit aussi être multiplié, pas ajouté."
       },
       {
         "text": "$c=bk_2$ donc $a=c/(k_1k_2)$, ce qui prouve $a\\mid c$",
@@ -195,25 +195,25 @@
     "course": "MAT1500",
     "topic": "mat1500-divis",
     "difficulty": 2,
-    "prompt": "L'algorithme d'Euclide calcule $\\text{pgcd}(48, 18)$ en répétant $\\text{pgcd}(a,b) = \\text{pgcd}(b, a \\bmod b)$. Après $\\text{pgcd}(48,18) = \\text{pgcd}(18, 12)$, quelle est l'étape suivante ?",
-    "explanation": "$48 \\bmod 18 = 12$ (première étape), puis $18 \\bmod 12 = 6$, donnant $\\text{pgcd}(18,12) = \\text{pgcd}(12, 6)$. L'erreur classique est de recalculer avec les mauvais nombres ou d'oublier de prendre le reste (pas le quotient).",
+    "prompt": "L'algorithme d'Euclide calcule $\\text{pgcd}(48, 18)$ en répétant $\\text{pgcd}(a,b) = \\text{pgcd}(b, a \\bmod b)$. À l'étape $\\text{pgcd}(18, 12)$, quel reste calcule-t-on pour continuer ?",
+    "explanation": "$18 \\bmod 12 = 6$ (puisque $18 = 1 \\times 12 + 6$), donnant $\\text{pgcd}(18,12) = \\text{pgcd}(12, 6)$. L'erreur classique est de prendre le quotient ($1$) au lieu du reste, ou de réutiliser le reste de l'étape précédente.",
     "type": "qcm",
     "choices": [
-      { "text": "$\\text{pgcd}(12, 6)$", "correct": true },
+      { "text": "$6$", "correct": true },
       {
-        "text": "$\\text{pgcd}(18, 1)$",
+        "text": "$1$",
         "correct": false,
-        "why": "$18 \\div 12 = 1$ reste $6$, pas reste $1$ : le quotient $1$ a été pris au lieu du reste $6$."
+        "why": "C'est le quotient de $18 \\div 12$, pas le reste : $18 = 1 \\times 12 + 6$, le reste est $6$."
       },
       {
-        "text": "$\\text{pgcd}(12, 18)$",
+        "text": "$12$",
         "correct": false,
-        "why": "Ceci reviendrait en arrière sans progresser : l'algorithme doit toujours utiliser le reste d'une étape antérieure, jamais recycler les nombres de départ."
+        "why": "C'est le reste de l'étape précédente ($48 \\bmod 18$), pas celui de cette étape-ci."
       },
       {
-        "text": "$\\text{pgcd}(6, 12)$",
+        "text": "$0$",
         "correct": false,
-        "why": "Les deux nombres sont inversés : la convention est $\\text{pgcd}(b, a \\bmod b)$, donc $\\text{pgcd}(12, 6)$, pas $\\text{pgcd}(6,12)$ (même si le résultat final serait le même, l'ordre standard doit être respecté pour poursuivre correctement l'algorithme)."
+        "why": "L'algorithme n'est pas encore terminé : un reste de $0$ signifierait que $12$ divise $18$ exactement, ce qui est faux ($18 = 1\\times12+6$)."
       }
     ]
   },
@@ -227,21 +227,21 @@
     "challenge": true,
     "type": "qcm",
     "choices": [
-      { "text": "$N$ n'est divisible par aucun $p_i$ de la liste, donc son plus petit facteur premier n'est pas dans la liste — contradiction", "correct": true },
+      { "text": "$N$ n'est divisible par aucun $p_i$, donc son facteur premier n'est pas dans la liste", "correct": true },
       {
         "text": "$N$ est nécessairement premier, ce qui contredit directement la liste finie",
         "correct": false,
         "why": "$N$ n'est pas forcément premier (il pourrait avoir un facteur premier non listé) ; seule l'existence d'un facteur premier absent de la liste est nécessaire à la contradiction."
       },
       {
-        "text": "$N$ est divisible par $p_1$, ce qui contredit la construction",
+        "text": "$N$ n'a aucun facteur premier",
         "correct": false,
-        "why": "Au contraire : diviser $N = p_1\\cdots p_n + 1$ par $p_1$ donne toujours un reste de $1$, donc $p_1 \\nmid N$."
+        "why": "Faux : tout entier $N>1$ possède au moins un facteur premier — c'est un fait utilisé pour construire la contradiction, pas quelque chose que la preuve nie."
       },
       {
-        "text": "$N$ doit être pair, ce qui contredit l'hypothèse si $2$ est dans la liste",
+        "text": "$N-1$ est divisible par chaque $p_i$, donc $N$ aussi",
         "correct": false,
-        "why": "Rien n'oblige $N$ à être pair ; par exemple si $p_1=2$, alors $N$ est impair (produit pair $+1$)."
+        "why": "$N-1=p_1\\cdots p_n$ est bien un multiple de chaque $p_i$, mais $N=(N-1)+1$ ne l'est pas : ajouter $1$ change le reste de la division."
       }
     ],
     "solution": "Supposons par contradiction qu'il n'existe qu'un nombre fini de nombres premiers $p_1, p_2, \\ldots, p_n$.\n\nPosons $N = p_1 p_2 \\cdots p_n + 1$. Comme $N > 1$, $N$ a au moins un facteur premier $q$ (tout entier $>1$ a un facteur premier).\n\nPour chaque $p_i$ de la liste : diviser $N$ par $p_i$ donne toujours un reste de $1$ (puisque $N - 1 = p_1\\cdots p_n$ est un multiple de $p_i$), donc $p_i \\nmid N$. Ainsi $q$ ne peut être égal à aucun $p_i$.\n\nMais $q$ est un nombre premier, donc il devrait figurer dans la liste $p_1,\\ldots,p_n$ (supposée contenir TOUS les premiers). Contradiction.\n\nDonc l'hypothèse de départ était fausse : il existe une infinité de nombres premiers."

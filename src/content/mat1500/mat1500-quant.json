@@ -227,29 +227,13 @@
     "course": "MAT1500",
     "topic": "mat1500-quant",
     "difficulty": 2,
-    "prompt": "Avec $S(x)$ = « $x$ est étudiant », $E(y)$ = « $y$ est un examen » et $F(x,y)$ = « $x$ a échoué $y$ », quelle formule traduit « Un étudiant a échoué à tous les examens » ?",
-    "explanation": "La règle usuelle est : le $\\forall$ se combine avec $\\rightarrow$ (« pour tout $y$, si $y$ est un examen, alors... »), et le $\\exists$ se combine avec $\\wedge$ (« il existe un $x$ qui est étudiant et qui... »). Inverser ces deux connecteurs est l'erreur la plus fréquente en traduction de quantificateurs imbriqués.",
-    "type": "qcm",
-    "choices": [
-      {
-        "text": "$\\exists x \\, (S(x) \\wedge \\forall y \\,(E(y) \\rightarrow F(x,y)))$",
-        "correct": true
-      },
-      {
-        "text": "$\\forall x \\, (S(x) \\rightarrow \\exists y \\,(E(y) \\wedge F(x,y)))$",
-        "correct": false,
-        "why": "Ceci dit « chaque étudiant a échoué à au moins un examen » : une affirmation différente, ni plus forte ni plus faible que « un étudiant a échoué à tous les examens » (aucune des deux n'implique l'autre en général)."
-      },
-      {
-        "text": "$\\exists x \\, (S(x) \\rightarrow \\forall y \\,(E(y) \\wedge F(x,y)))$",
-        "correct": false,
-        "why": "Les connecteurs sont inversés par rapport à la règle de style ($\\rightarrow$ avec $\\exists$, $\\wedge$ avec $\\forall$), ce qui rend la formule vraie de façon triviale et non pertinente dès que $S(x)$ est faux pour un $x$."
-      },
-      {
-        "text": "$\\forall x \\, (S(x) \\wedge \\exists y \\,(E(y) \\rightarrow F(x,y)))$",
-        "correct": false,
-        "why": "Encore une fois les connecteurs sont inversés, et cette formule prétend même que tout objet $x$ (pas seulement les étudiants) doit être un étudiant, ce qui est absurde."
-      }
+    "prompt": "Avec $S(x)$ = « $x$ est étudiant », $E(y)$ = « $y$ est un examen » et $F(x,y)$ = « $x$ a échoué à $y$ », traduis « Un étudiant a échoué à tous les examens ».",
+    "explanation": "La règle usuelle est : le $\\forall$ se combine avec $\\rightarrow$ (« pour tout $y$, si $y$ est un examen, alors... »), et le $\\exists$ se combine avec $\\wedge$ (« il existe un $x$ qui est étudiant et qui... »). Inverser ces deux connecteurs est l'erreur la plus fréquente en traduction de quantificateurs imbriqués — par exemple $\\forall x(S(x)\\to\\exists y(E(y)\\wedge F(x,y)))$ dit plutôt « chaque étudiant a échoué à au moins un examen », une affirmation différente (aucune des deux n'implique l'autre en général).",
+    "type": "flash",
+    "answer": "$\\exists x \\, (S(x) \\wedge \\forall y \\,(E(y) \\rightarrow F(x,y)))$",
+    "keyPoints": [
+      "$\\exists$ se combine avec $\\wedge$ : « il existe un $x$ qui est étudiant et qui... »",
+      "$\\forall$ se combine avec $\\rightarrow$ : « pour tout $y$, si $y$ est un examen, alors... »"
     ]
   },
   {

@@ -47,3 +47,10 @@ application : **PASS**, aucune régression, contre-exemples de 008/012 confirmé
   pour certains $x$, pas « tester des exemples »).
 
 Re-vérifié (force brute, modèles finis, venv hors dépôt) : **PASS** sur les 4 items touchés.
+
+## Relecture Opus (b), complément — converti en flash
+
+- `quant-011` : converti de qcm à flash, ce qui élimine à la fois l'incohérence de français
+  relevée (« $F(x,y)$ = a échoué $y$ » vs « échoué à ») et le risque de `why` mal formulé sur un
+  distracteur — la traduction correcte et la règle de style sont maintenant dans `answer` et
+  `keyPoints`.

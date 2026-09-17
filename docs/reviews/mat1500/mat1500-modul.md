@@ -53,3 +53,13 @@ concret.
 
 - `modul-008` (Défi) : `explanation` alignée sur le distracteur le plus tentant (soustraire au
   lieu d'additionner les deux congruences).
+
+## Relecture Opus (b), complément (docs/reviews/relecture-opus/mat1500-b.md) — corrections appliquées
+
+- `modul-009` : `why` du distracteur $4$ corrigé ($3^2 \bmod 5 = 4$, pas $3^1$).
+- `modul-011` : les trois `why` nomment maintenant l'erreur réelle (croire être son propre
+  inverse ; confondre avec le quotient ; confondre avec l'inverse additif) au lieu de seulement
+  revérifier le calcul.
+- `modul-012` : prompt reformulé pour ne plus éliminer d'avance le distracteur $\{2\}$.
+
+Re-vérifié (Python, venv hors dépôt) : **PASS** sur les 3 items.

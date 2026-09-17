@@ -42,3 +42,14 @@ de sens) confirmés chacun faux pour une raison distincte.
 
 - `proof-008` (Défi) : distracteur artificiel « $p^2$ pair donc $p$ impair » remplacé par
   « $p^2$ pair donc $p=2$ » (confondre « pair » avec « égal à 2 »), une vraie erreur d'étudiant.
+
+## Relecture Opus (b), complément (docs/reviews/relecture-opus/mat1500-b.md) — corrections appliquées
+
+- `proof-009` : converti en flash (éliminait le distracteur artificiel restant).
+- `proof-011` : parenthèse donnant la réponse retirée du prompt ; redondance de l'`explanation`
+  réduite.
+- `proof-012` : `why` du distracteur « nécessairement irrationnel » corrigé (c'est vrai par
+  Gelfond–Schneider, mais hors de portée de cette preuve) ; 2 distracteurs remplacés ; bonne
+  réponse raccourcie.
+
+Re-vérifié (SymPy, venv hors dépôt) : **PASS** sur les 3 items.

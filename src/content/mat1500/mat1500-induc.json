@@ -159,7 +159,7 @@
     "topic": "mat1500-induc",
     "difficulty": 3,
     "prompt": "Dans l'étape inductive de la preuve de $1+2+\\cdots+n=\\dfrac{n(n+1)}{2}$, en partant de l'hypothèse $1+\\cdots+k=\\dfrac{k(k+1)}{2}$, quelle simplification de $\\dfrac{k(k+1)}{2}+(k+1)$ est correcte ?",
-    "explanation": "Le piège le plus tentant : mal factoriser $(k+1)$ en oubliant le $1$ implicite devant lui, ce qui donne à tort $\\frac{k(k+2)}{2}$ au lieu de $\\frac{(k+1)(k+2)}{2}$. La factorisation correcte est $\\frac{k(k+1)}{2}+(k+1) = (k+1)\\left(\\frac{k}{2}+1\\right) = \\frac{(k+1)(k+2)}{2}$.",
+    "explanation": "Le piège le plus tentant : ajouter $1$ au facteur $(k+1)$ du numérateur au lieu d'ajouter le terme $(k+1)$ à la somme, ce qui donne à tort $\\frac{k(k+2)}{2}$. Il faut plutôt mettre $(k+1)$ en évidence : $\\frac{k(k+1)}{2}+(k+1) = (k+1)\\left(\\frac{k}{2}+1\\right) = \\frac{(k+1)(k+2)}{2}$.",
     "challenge": true,
     "type": "qcm",
     "choices": [
@@ -167,7 +167,7 @@
       {
         "text": "$\\dfrac{k(k+2)}{2}$",
         "correct": false,
-        "why": "Ceci oublie de mettre $(k+1)$ en évidence correctement : en factorisant, $\\frac{k(k+1)}{2}+(k+1) = (k+1)\\left(\\frac{k}{2}+1\\right) = \\frac{(k+1)(k+2)}{2}$, pas $\\frac{k(k+2)}{2}$."
+        "why": "Ceci ajoute $1$ au facteur $(k+1)$ (donnant $(k+1)+1=k+2$ au numérateur avec $k$ inchangé) au lieu d'ajouter le terme $(k+1)$ à la somme puis de factoriser correctement : $\\frac{k(k+1)}{2}+(k+1) = (k+1)\\left(\\frac{k}{2}+1\\right) = \\frac{(k+1)(k+2)}{2}$."
       },
       {
         "text": "$\\dfrac{(k+1)^2}{2}$",
@@ -187,26 +187,13 @@
     "course": "MAT1500",
     "topic": "mat1500-induc",
     "difficulty": 2,
-    "prompt": "Pour prouver par induction que $3 \\mid (n^3-n)$ pour tout $n \\ge 0$, quel est le cas de base ?",
-    "explanation": "Le cas de base est $n=0$ (la plus petite valeur visée par l'énoncé) : $0^3-0=0$, et $3 \\mid 0$ est vrai (tout entier, y compris $3$, divise $0$). Un piège fréquent est de croire que $0$ ne peut pas servir de cas de base parce que « $0$ ne compte pas », alors que $3 \\mid 0$ est parfaitement valide.",
-    "type": "qcm",
-    "choices": [
-      { "text": "$n=0$ : $0^3-0=0$, et $3\\mid0$", "correct": true },
-      {
-        "text": "$n=1$ : $1^3-1=0$ est le premier cas valide, $n=0$ ne compte pas",
-        "correct": false,
-        "why": "$n=0$ est bien dans la portée de l'énoncé ($n\\ge0$) et $3\\mid0$ est vrai ; il n'y a aucune raison de l'exclure comme cas de base."
-      },
-      {
-        "text": "$n=3$, car c'est la première valeur multiple de $3$",
-        "correct": false,
-        "why": "Le cas de base doit être la plus petite valeur visée par l'énoncé ($n=0$), pas une valeur choisie pour une autre raison."
-      },
-      {
-        "text": "aucun cas de base n'est nécessaire, car $0$ est toujours divisible par $3$",
-        "correct": false,
-        "why": "Un cas de base est toujours requis en induction ; le fait que $3\\mid0$ soit facile à vérifier ne dispense pas de l'énoncer."
-      }
+    "prompt": "Pour prouver par induction que $3 \\mid (n^3-n)$ pour tout $n \\ge 0$, quel est le cas de base, et pourquoi ?",
+    "explanation": "Le cas de base est $n=0$ (la plus petite valeur visée par l'énoncé) : $0^3-0=0$, et $3 \\mid 0$ est vrai (tout entier, y compris $3$, divise $0$). Le piège : croire que $0$ ne peut pas servir de cas de base parce que « $0$ ne compte pas », ou choisir $n=3$ en confondant le cas de base avec le module $3$ de la divisibilité.",
+    "type": "flash",
+    "answer": "$n=0$ : $0^3-0=0$, et $3 \\mid 0$.",
+    "keyPoints": [
+      "$n=0$ est bien dans la portée de l'énoncé ($n\\ge0$)",
+      "$3\\mid0$ est vrai : tout entier divise $0$"
     ]
   },
   {
@@ -242,24 +229,24 @@
     "topic": "mat1500-induc",
     "difficulty": 2,
     "prompt": "Pour prouver par induction forte que tout entier $n \\ge 2$ a un facteur premier, l'étape inductive doit distinguer quels cas pour un $n$ donné ?",
-    "explanation": "Ces deux cas épuisent toutes les possibilités pour $n \\ge 2$ : soit $n$ est déjà premier (et se divise lui-même), soit $n$ est composé et se factorise en un produit de deux entiers strictement plus petits, auquel l'hypothèse d'induction forte s'applique.",
+    "explanation": "Ces deux cas épuisent toutes les possibilités pour $n \\ge 2$ : soit $n$ est premier (et se divise lui-même), soit $n$ est composé, auquel cas l'hypothèse d'induction forte s'applique à l'un de ses facteurs.",
     "type": "qcm",
     "choices": [
-      { "text": "$n$ est premier (alors $n$ est son propre facteur premier), ou $n$ est composé (alors $n=ab$ avec $1<a<n$, et on applique l'hypothèse d'induction forte à $a$)", "correct": true },
+      { "text": "$n$ premier, ou $n$ composé", "correct": true },
       {
-        "text": "$n$ est pair, ou $n$ est impair",
+        "text": "$n$ premier, ou $n$ pair",
         "correct": false,
-        "why": "La parité de $n$ n'a aucun rapport avec l'existence d'un facteur premier ; ce n'est pas la bonne dichotomie pour cette preuve."
+        "why": "Ceci oublie les composés impairs, comme $9=3\\times3$ : la dichotomie ne couvre pas tous les entiers $\\ge 2$."
       },
       {
-        "text": "$n$ est plus petit que $10$, ou $n$ est plus grand ou égal à $10$",
+        "text": "$n$ composé seulement : un nombre premier n'a pas de facteur premier",
         "correct": false,
-        "why": "Cette distinction arbitraire ne correspond à aucune structure mathématique utile pour la preuve."
+        "why": "Faux : un nombre premier $n$ est lui-même son propre facteur premier. Confondre avec « facteur premier strict » (différent de $n$)."
       },
       {
-        "text": "$n$ est un carré parfait, ou $n$ ne l'est pas",
+        "text": "$n-1$ a un facteur premier, ou non",
         "correct": false,
-        "why": "Être un carré parfait n'a aucun rapport direct avec l'existence d'un facteur premier ; ce n'est pas la dichotomie utilisée dans cette preuve."
+        "why": "C'est la structure d'une induction simple mal placée : l'induction forte porte sur tous les entiers $2 \\le m < n$, pas seulement sur $n-1$."
       }
     ]
   },
@@ -273,21 +260,21 @@
     "challenge": true,
     "type": "qcm",
     "choices": [
-      { "text": "appliquer l'hypothèse d'induction forte à $a$ (car $2 \\le a < n$) pour obtenir un facteur premier de $a$, qui divise aussi $n$", "correct": true },
+      { "text": "appliquer l'HI forte à $a$ (car $2\\le a<n$) : $a$ a un facteur premier, qui divise aussi $n$", "correct": true },
       {
         "text": "appliquer l'hypothèse d'induction (simple, pas forte) au rang $n-1$",
         "correct": false,
         "why": "$a$ n'est pas nécessairement égal à $n-1$ ; c'est précisément pour couvrir un $a$ quelconque entre $2$ et $n-1$ que l'induction forte est nécessaire, pas l'induction simple limitée au rang précédent."
       },
       {
-        "text": "affirmer que l'hypothèse d'induction forte ne s'applique pas à $a$, car rien ne garantit que $2 \\le a$",
+        "text": "appliquer l'hypothèse d'induction forte à $n/2$, en supposant $n$ pair",
         "correct": false,
-        "why": "C'est faux : $a$ est un entier avec $1<a$, donc $a \\ge 2$ automatiquement. L'hypothèse d'induction forte s'applique bel et bien à $a$, sur l'intervalle $[2,n-1]$."
+        "why": "Rien ne garantit que $n$ est pair, ni que $n/2$ soit entier ; les facteurs à utiliser sont $a$ et $b$ eux-mêmes, obtenus de la factorisation $n=ab$, pas $n/2$."
       },
       {
-        "text": "vérifier directement que $n$ lui-même est premier",
+        "text": "appliquer l'hypothèse d'induction forte à $a-1$ plutôt qu'à $a$",
         "correct": false,
-        "why": "Ce cas ($n$ premier) est déjà traité séparément ; ici on est dans le cas où $n=ab$ est composé, donc $n$ n'est pas premier par hypothèse de ce cas."
+        "why": "$a-1$ n'est pas un facteur de $n$ et rien ne garantit $a-1\\ge2$ ; il faut appliquer l'hypothèse à $a$ lui-même, le facteur obtenu de $n=ab$."
       }
     ],
     "solution": "**Cas de base ($n=2$)** : $2$ est premier, donc il est son propre facteur premier.\n\n**Hypothèse d'induction forte** : supposons que tout entier $m$ avec $2 \\le m < n$ possède un facteur premier.\n\n**Étape inductive** : soit $n \\ge 2$. Deux cas :\n- Si $n$ est premier, $n$ est son propre facteur premier : terminé.\n- Si $n$ est composé, alors $n=ab$ pour des entiers $a,b$ avec $1<a<n$ (et donc $1<b<n$ aussi). Comme $2 \\le a < n$, l'hypothèse d'induction forte s'applique à $a$ : $a$ possède un facteur premier $p$. Comme $p \\mid a$ et $a \\mid n$, on a $p \\mid n$ (transitivité de la divisibilité) : $p$ est donc un facteur premier de $n$.\n\nDans les deux cas, $n$ possède un facteur premier. Par le principe d'induction forte, tout entier $n \\ge 2$ possède un facteur premier."
