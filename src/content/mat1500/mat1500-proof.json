@@ -163,7 +163,10 @@
     "challenge": true,
     "type": "qcm",
     "choices": [
-      { "text": "$p^2$ est pair, donc $p$ est pair", "correct": true },
+      {
+        "text": "$p^2$ est pair, donc $p$ est pair",
+        "correct": true
+      },
       {
         "text": "$p^2$ est pair, donc $p=2$",
         "correct": false,
@@ -215,7 +218,10 @@
     "explanation": "Réfuter un énoncé existentiel demande de couvrir TOUS les cas (montrer que $P$ échoue partout), contrairement à réfuter un énoncé universel qui ne demande qu'un seul contre-exemple.",
     "type": "qcm",
     "choices": [
-      { "text": "que $P(x)$ est faux pour absolument tout $x$", "correct": true },
+      {
+        "text": "que $P(x)$ est faux pour absolument tout $x$",
+        "correct": true
+      },
       {
         "text": "qu'il existe un seul $x$ pour lequel $P(x)$ est faux",
         "correct": false,
@@ -243,7 +249,10 @@
     "challenge": true,
     "type": "qcm",
     "choices": [
-      { "text": "distinguer les deux cas possibles pour $\\sqrt2^{\\sqrt2}$, avec une paire $(a,b)$ pour chacun", "correct": true },
+      {
+        "text": "distinguer les deux cas possibles pour $\\sqrt2^{\\sqrt2}$, avec une paire $(a,b)$ pour chacun",
+        "correct": true
+      },
       {
         "text": "montrer que $\\sqrt2^{\\sqrt2}$ est nécessairement irrationnel, puis conclure",
         "correct": false,
@@ -261,5 +270,35 @@
       }
     ],
     "solution": "Considérons le nombre $\\sqrt2^{\\sqrt2}$. Il est soit rationnel, soit irrationnel — ces deux cas épuisent toutes les possibilités.\n\n**Cas 1 : $\\sqrt2^{\\sqrt2}$ est rationnel.** Alors on a trouvé notre paire : $a=\\sqrt2$, $b=\\sqrt2$, tous deux irrationnels, avec $a^b=\\sqrt2^{\\sqrt2}$ rationnel par hypothèse de ce cas.\n\n**Cas 2 : $\\sqrt2^{\\sqrt2}$ est irrationnel.** Posons alors $a=\\sqrt2^{\\sqrt2}$ (irrationnel par hypothèse de ce cas) et $b=\\sqrt2$ (irrationnel). Alors $a^b = \\left(\\sqrt2^{\\sqrt2}\\right)^{\\sqrt2} = \\sqrt2^{\\sqrt2\\cdot\\sqrt2} = \\sqrt2^2 = 2$, qui est rationnel.\n\nDans les deux cas, on a exhibé des irrationnels $a,b$ avec $a^b$ rationnel — sans jamais déterminer dans lequel des deux cas on se trouve réellement."
+  },
+  {
+    "id": "mat1500-proof-013",
+    "course": "MAT1500",
+    "topic": "mat1500-proof",
+    "difficulty": 2,
+    "prompt": "Avec $p$ = « $n$ est divisible par $4$ » et $q$ = « $n$ est divisible par $2$ », comment s'écrit « être divisible par $4$ suffit pour être divisible par $2$ » ?",
+    "explanation": "« $p$ suffit pour $q$ » se lit « si $p$, alors $q$ » : la condition suffisante est l'hypothèse de l'implication. Le piège : la confondre avec « $p$ est nécessaire pour $q$ », qui donne l'implication dans l'autre sens, $q \\rightarrow p$.",
+    "type": "qcm",
+    "choices": [
+      {
+        "text": "$p \\rightarrow q$",
+        "correct": true
+      },
+      {
+        "text": "$q \\rightarrow p$",
+        "correct": false,
+        "why": "C'est « $p$ est nécessaire pour $q$ » : la condition suffisante est l'hypothèse de l'implication, pas sa conclusion."
+      },
+      {
+        "text": "$p \\leftrightarrow q$",
+        "correct": false,
+        "why": "« Suffit » n'affirme qu'un sens ; ici la réciproque est d'ailleurs fausse ($6$ est divisible par $2$ sans l'être par $4$)."
+      },
+      {
+        "text": "$\\neg p \\rightarrow \\neg q$",
+        "correct": false,
+        "why": "C'est l'inverse de $p \\rightarrow q$, équivalent à $q \\rightarrow p$ : il dit que sans la condition, la conclusion tombe — ce que « suffit » n'affirme pas."
+      }
+    ]
   }
 ]

@@ -163,7 +163,10 @@
     "challenge": true,
     "type": "qcm",
     "choices": [
-      { "text": "$P(x)$ = « $x$ est pair », $Q(x)$ = « $x$ est impair »", "correct": true },
+      {
+        "text": "$P(x)$ = « $x$ est pair », $Q(x)$ = « $x$ est impair »",
+        "correct": true
+      },
       {
         "text": "$P(x)$ = « $x$ est pair », $Q(x)$ = « $x$ est pair »",
         "correct": false,
@@ -246,7 +249,10 @@
     "challenge": true,
     "type": "qcm",
     "choices": [
-      { "text": "$y = x - 1$", "correct": true },
+      {
+        "text": "$y = x - 1$",
+        "correct": true
+      },
       {
         "text": "$y = x + 1$",
         "correct": false,
@@ -264,5 +270,15 @@
       }
     ],
     "solution": "La négation de $\\exists x \\in \\mathbb{R}, \\forall y \\in \\mathbb{R}, x \\le y$ est $\\forall x \\in \\mathbb{R}, \\exists y \\in \\mathbb{R}, y < x$ (basculer les deux quantificateurs et nier $\\le$ en $<$).\n\nMontrons que cette négation est vraie : soit $x \\in \\mathbb{R}$ quelconque. Posons $y = x - 1$, qui est bien un réel. Alors $y = x - 1 < x$, ce qui vérifie la propriété recherchée.\n\nComme la négation de l'énoncé de départ est vraie, l'énoncé de départ (« il existe un plus petit réel ») est faux : $\\mathbb{R}$ n'a pas de plus petit élément."
+  },
+  {
+    "id": "mat1500-quant-013",
+    "course": "MAT1500",
+    "topic": "mat1500-quant",
+    "difficulty": 2,
+    "prompt": "$\\forall x \\, (P(x) \\vee Q(x))$ est logiquement équivalent à $(\\forall x \\, P(x)) \\vee (\\forall x \\, Q(x))$.",
+    "explanation": "Faux : sur l'univers du discours $\\mathbb{Z}$, avec $P(x)$ = « $x \\ge 0$ » et $Q(x)$ = « $x \\le 0$ », le membre de gauche est vrai (tout entier est $\\ge 0$ ou $\\le 0$) alors que ni $\\forall x \\, P(x)$ ni $\\forall x \\, Q(x)$ ne l'est. Le piège : $\\forall$ se distribue sur $\\wedge$, jamais sur $\\vee$ — exactement l'inverse de $\\exists$.",
+    "type": "vf",
+    "answer": false
   }
 ]
