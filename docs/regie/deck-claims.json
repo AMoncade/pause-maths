@@ -70,6 +70,22 @@
       "worktree": "C:/Users/adrie/pause-maths-wt/mat1600",
       "branch": "lot/mat1600",
       "assignedAt": "2026-09-17T18:51:34Z",
+      "status": "clos",
+      "closedAt": "2026-09-17T19:09:12Z",
+      "result": "88ec87b, 115 questions"
+    },
+    {
+      "session": "adrie-d7",
+      "task": "Lot MAT1400 tour 2: vérification contre le matériel StudiUM (intra 26 oct)",
+      "files": [
+        "src/content/mat1400/**",
+        "docs/sources/mat1400.md",
+        "docs/reviews/mat1400/**",
+        "docs/WORKLOG.md"
+      ],
+      "worktree": "C:/Users/adrie/pause-maths-wt/mat1400",
+      "branch": "lot/mat1400",
+      "assignedAt": "2026-09-17T19:09:12Z",
       "status": "en cours"
     }
   ]
