@@ -34,7 +34,7 @@
     "course": "MAT1600",
     "topic": "mat1600-esp",
     "difficulty": 2,
-    "prompt": "Une matrice $A$ de taille $3\\times5$ a un rang de $2$. Quelle est la dimension de son espace nul ?",
+    "prompt": "Une matrice $A$ de taille $3\\times5$ a un rang de $2$. Quelle est la dimension de son noyau ?",
     "explanation": "Théorème du rang : $\\dim\\text{Nul}(A)=n-\\text{rang}(A)$ où $n$ est le nombre de colonnes. Ici $5-2=3$.",
     "type": "qcm",
     "choices": [
@@ -73,7 +73,7 @@
     "id": "mat1600-esp-006",
     "course": "MAT1600",
     "topic": "mat1600-esp",
-    "difficulty": 2,
+    "difficulty": 3,
     "challenge": true,
     "solution": "1) Résoudre $Ax=0$ : la matrice est déjà échelonnée, donc $x_1+2x_2=0$ et $x_3=0$.\n\n2) $x_2$ est la seule variable libre ($x_1,x_3$ sont des variables pivots). On pose $x_2=t$.\n\n3) $x_1=-2t$, $x_3=0$, donc $x=t(-2,1,0)$ pour $t\\in\\mathbb R$.\n\n4) Une base de l'espace nul est donc $\\{(-2,1,0)\\}$, de dimension 1.",
     "prompt": "Quelle est une base de l'espace nul de $A=\\begin{pmatrix}1&2&0\\\\0&0&1\\end{pmatrix}$ ?",
@@ -83,7 +83,7 @@
       { "text": "$\\{(-2,1,0)\\}$", "correct": true },
       { "text": "$\\{(2,1,0)\\}$", "correct": false, "why": "Erreur de signe : isoler $x_1$ dans $x_1+2x_2=0$ donne $x_1=-2x_2$, pas $x_1=2x_2$." },
       { "text": "$\\{(-2,1,0),(0,0,1)\\}$", "correct": false, "why": "$x_3$ est une variable pivot (fixée à $0$ par la deuxième équation), pas une variable libre : elle ne fournit pas de vecteur supplémentaire pour la base du noyau." },
-      { "text": "$\\{(1,0,0),(0,0,1)\\}$", "correct": false, "why": "Ce sont des colonnes pivots de $A$, utiles pour une base de $\\text{Col}(A)$, pas des vecteurs qui résolvent $Ax=0$." }
+      { "text": "$\\{(1,0),(0,1)\\}$", "correct": false, "why": "Ce sont les colonnes 1 et 3 de $A$ (les positions des colonnes pivots), utiles pour une base de $\\text{Col}(A)\\subset\\mathbb R^2$ — mais $Ax=0$ demande un vecteur $x$ dans $\\mathbb R^3$ (le domaine de $A$, une colonne par entrée de $x$), pas dans $\\mathbb R^2$." }
     ]
   },
   {
@@ -91,8 +91,8 @@
     "course": "MAT1600",
     "topic": "mat1600-esp",
     "difficulty": 2,
-    "prompt": "Si $\\dim V=n$ et qu'une famille de $n$ vecteurs de $V$ est libre, alors cette famille est automatiquement une base de $V$.",
-    "explanation": "C'est un théorème utile : dans un espace de dimension $n$, une famille libre de $n$ vecteurs engendre nécessairement tout l'espace, donc c'est une base (pas besoin de vérifier séparément qu'elle engendre).",
+    "prompt": "Si $\\dim V=n$ et qu'une famille de $n$ vecteurs de $V$ engendre $V$, alors cette famille est automatiquement une base de $V$.",
+    "explanation": "C'est le pendant du théorème sur les familles libres : dans un espace de dimension $n$, une famille génératrice d'exactement $n$ vecteurs est nécessairement libre, donc c'est une base (pas besoin de vérifier séparément l'indépendance).",
     "type": "vf",
     "answer": true
   },
@@ -102,7 +102,7 @@
     "topic": "mat1600-esp",
     "difficulty": 1,
     "prompt": "Qu'est-ce que la dimension d'un espace vectoriel $V$ ?",
-    "explanation": "La dimension est le nombre de vecteurs dans une base de $V$ ; ce nombre est le même pour toutes les bases possibles de $V$.",
+    "explanation": "La dimension est le nombre de vecteurs dans une base de $V$ ; ce nombre est le même pour toutes les bases possibles de $V$. Le piège : compter les vecteurs d'un ensemble générateur quelconque, qui peut être plus grand qu'une base s'il contient des vecteurs redondants.",
     "type": "flash",
     "answer": "C'est le nombre de vecteurs dans une base de $V$. Toutes les bases d'un même espace ont exactement le même nombre de vecteurs.",
     "keyPoints": [

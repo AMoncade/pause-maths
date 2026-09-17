@@ -57,4 +57,21 @@ Réponse attendue du relecteur : dimension = nombre de vecteurs dans une base,
 invariant par le théorème d'échange (Steinitz). Correspond à la réponse de la banque.
 Verdict : **OK**.
 
-**Résultat : 8/8 publiables, 0 correction nécessaire, 0 désaccord.**
+**Résultat (jalon 2, 1-8) : 8/8 publiables, 0 correction nécessaire, 0 désaccord.**
+
+## mat1600-esp-006 et esp-007 (corrigés suite à la relecture Opus)
+
+- **esp-006 (élevée) :** le `why` du distracteur $\{(1,0,0),(0,0,1)\}$ affirmait à tort
+  que ce sont des colonnes pivots de $A$ ($2\times3$, donc dans $\mathbb R^2$) tout en
+  utilisant des vecteurs $\mathbb R^3$. Corrigé en $\{(1,0),(0,1)\}$ avec `why`
+  distinguant domaine ($\mathbb R^3$) et codomaine ($\mathbb R^2$). Bump à difficulty 3.
+- **esp-007 :** inversé pour tester « famille génératrice de taille $n$ ⇒ base »
+  (dual du théorème déjà testé par `vect-006`), pour éliminer le recoupement signalé.
+
+Relecture aveugle (seed 303) : esp-006 confiance 5/5, base du noyau $\{(-2,1,0)\}$
+reconfirmée par SymPy, les 3 distracteurs (dont le nouveau, vérifié comme n'étant même
+pas dans $\mathbb R^3$) tous réfutés individuellement. esp-007 confiance 5/5, théorème
+de la base (forme duale) confirmé par raisonnement + exemple concret. 0 désaccord.
+
+**Résultat final : 8/8 publiables, 0 correction nécessaire, 0 désaccord. Extension à
+20/thème en cours (nouvelles questions non encore relues).**

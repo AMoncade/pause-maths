@@ -62,4 +62,24 @@ signe $(-1)^{i+j}$ en damier, intérêt de choisir une rangée avec des zéros. 
 à la réponse de la banque.
 Verdict : **OK**.
 
-**Résultat : 8/8 publiables, 0 correction nécessaire, 0 désaccord.**
+**Résultat (jalon 2, 1-8) : 8/8 publiables, 0 correction nécessaire, 0 désaccord.**
+
+## mat1600-det-001 (réécrit suite à la relecture Opus)
+
+Doublon avec `mat1400-vect-004` signalé par la relecture pédagogique Opus : matrice
+changée pour $\begin{pmatrix}5&2\\3&-1\end{pmatrix}$. Relecture aveugle (seed 301) :
+confiance 5/5, $\det=-11$ confirmé par SymPy ; les 3 distracteurs ($1=ad+bc$,
+$11=bc-ad$, $17=ac-bd$) vérifiés comme des erreurs distinctes et identifiables.
+Verdict : **OK**.
+
+## mat1600-det-009 à 020 (extension à 20/thème)
+
+Relecture aveugle (seed 401) sur les 12 nouvelles : $\det(A^{-1})=1/\det A$ vérifié
+avec un exemple concret ; développement en colonne de {011} confirmé ($21$) avec le
+détail de chaque terme ; $\det(AB)=\det A\det B$ vérifié numériquement pour {015} ;
+matrice diagonale {016} et calcul $2\times2$ {019} confirmés ; $\det(2A)=2^4\det A$
+pour une $4\times4$ confirmé pour {020} (exemple aléatoire : $\det A=99$,
+$\det(2A)=1584=16\times99$). Concepts (009, 012, 013, 014, 017, 018) confirmés par
+raisonnement. 0 désaccord.
+
+**Résultat final : 20/20 publiables, 0 correction nécessaire, 0 désaccord.**

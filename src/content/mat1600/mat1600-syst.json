@@ -85,7 +85,7 @@
     "topic": "mat1600-syst",
     "difficulty": 1,
     "prompt": "Qu'est-ce qu'une position de pivot dans une matrice échelonnée ?",
-    "explanation": "C'est la position du premier coefficient non nul de chaque ligne non nulle ; sa colonne est appelée colonne pivot et correspond à une variable pivot (non libre).",
+    "explanation": "C'est la position du premier coefficient non nul de chaque ligne non nulle ; sa colonne est appelée colonne pivot et correspond à une variable pivot (non libre). Le piège : chercher cette position sur la matrice de départ plutôt que sur sa forme échelonnée.",
     "type": "flash",
     "answer": "Une position de pivot est celle du premier coefficient non nul (le « pivot ») d'une ligne non nulle, une fois la matrice échelonnée. Sa colonne est une colonne pivot.",
     "keyPoints": [
@@ -99,8 +99,6 @@
     "course": "MAT1600",
     "topic": "mat1600-syst",
     "difficulty": 2,
-    "challenge": true,
-    "solution": "1) Isoler $x_1$ : $x_1=3+2x_2$, avec $x_2$ libre.\n\n2) Solution particulière : poser $x_2=0$ donne le point $(3,0)$.\n\n3) Direction homogène : l'équation associée $x_1-2x_2=0$ donne $x_1=2x_2$, soit la direction $(2,1)$.\n\n4) Solution générale : $(x_1,x_2)=(3,0)+t(2,1)$, $t\\in\\mathbb R$.",
     "prompt": "Quelle est la solution générale, sous forme vectorielle paramétrique, de l'équation $x_1-2x_2=3$ ?",
     "explanation": "Une solution particulière $(3,0)$ (en posant $x_2=0$) plus $t$ fois la direction homogène $(2,1)$ (solution de $x_1-2x_2=0$) donne $(3,0)+t(2,1)$.",
     "type": "qcm",
@@ -282,5 +280,22 @@
     "explanation": "Faux : Gauss-Jordan standardise seulement la forme (échelonnée réduite) ; le système peut encore avoir une infinité de solutions (variable libre) ou être incompatible, selon les pivots obtenus.",
     "type": "vf",
     "answer": false
+  },
+  {
+    "id": "mat1600-syst-021",
+    "course": "MAT1600",
+    "topic": "mat1600-syst",
+    "difficulty": 3,
+    "challenge": true,
+    "solution": "1) Pour une infinité de solutions, les deux équations doivent être proportionnelles, coefficients ET constantes.\n\n2) Coefficients : $\\dfrac21=\\dfrac{h}3$ donne $h=6$.\n\n3) Constantes : le même facteur $2$ doit s'appliquer, donc $\\dfrac21=\\dfrac6k$ donne $k=3$.\n\n4) Vérification : à $h=6,k=3$, la deuxième équation $2x+6y=6$ est exactement $2$ fois la première $x+3y=3$.",
+    "prompt": "Pour quelles valeurs de $h$ et $k$ le système $\\begin{cases}x+3y=k\\\\2x+hy=6\\end{cases}$ a-t-il une infinité de solutions ?",
+    "explanation": "Il faut que la deuxième équation soit un multiple de la première à la fois sur les coefficients ($h=6$) et sur la constante ($k=3$) : les deux conditions doivent être satisfaites ensemble, pas une seule.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$h=6,\\ k=3$", "correct": true },
+      { "text": "$h=3,\\ k=6$", "correct": false, "why": "Les valeurs de $h$ et $k$ sont inversées : ce couple donne en fait une solution unique $(0,2)$, pas une infinité." },
+      { "text": "$h=6,\\ k=6$", "correct": false, "why": "$h=6$ est correct pour les coefficients, mais $k$ doit aussi être ajusté au même facteur : $k=6$ rend le système incompatible, pas compatible avec une infinité de solutions." },
+      { "text": "$h=2,\\ k=3$", "correct": false, "why": "$h=2$ ne rend pas les coefficients proportionnels ($\\dfrac21\\ne\\dfrac23$) : ce couple donne une solution unique $(3,0)$." }
+    ]
   }
 ]

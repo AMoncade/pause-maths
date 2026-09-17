@@ -58,4 +58,25 @@ produit réel (dont le distracteur invoquant $\det A_2=0$, qui est aussi factuel
 faux : $\det A_2=1$).
 Verdict : **OK**.
 
-**Résultat : 8/8 publiables, 0 correction nécessaire, 0 désaccord.**
+**Résultat (jalon 1, 1-2) : 8/8 publiables, 0 correction nécessaire, 0 désaccord.**
+
+## mat1600-matr-001, 002, 005, 008 (corrigés suite aux relectures Opus)
+
+- **matr-001 :** distracteur « $AB$, la transposée ne change rien » (pas une erreur
+  réelle) remplacé par « $B^TA^T$ seulement si $A,B$ commutent ».
+- **matr-002 :** `challenge` retiré (routine, pas un Défi) ; `why` corrigé (on divise
+  toujours par $\det A$, diviser par $1$ ne change rien) ; distracteur remplacé par
+  $-A^{-1}$ (erreur $bc-ad$ au lieu de $ad-bc$).
+- **matr-005 :** distracteur « $(AB)^T$ » (pas une erreur réelle) remplacé par
+  $\tfrac1{\det(AB)}AB$ (mauvaise application de la formule d'inverse $2\times2$).
+- **matr-008 :** vérifié auprès d'`agy` que les indices $A_2/B_2$ n'étaient pas copiés
+  d'une source (confirmé : aucune correspondance dans `3.6_Linverse_dune_matrice.pdf`).
+  Remplacé quand même par un vrai Défi paramétrique (trouver $c$ tel que
+  $\begin{pmatrix}2&1\\1&c\end{pmatrix}B=I$, réponse $c=1$), difficulty 3.
+
+Relecture aveugle ciblée (seed 201/305) sur les 4 questions modifiées/remplacées :
+0 désaccord, chaque distracteur vérifié par SymPy comme correspondant à une erreur de
+calcul distincte et identifiable.
+
+**Résultat final : 8/8 publiables, 0 correction nécessaire, 0 désaccord. Extension à
+20/thème en cours.**

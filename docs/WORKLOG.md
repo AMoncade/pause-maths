@@ -26,6 +26,52 @@ Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute
 - Suite possible : garder ~12/thème comme référence si de nouveaux thèmes post-intra
   (ch. 6-7, 1-2) sont ouverts avant le final ; `D:\Math\MAT1400` toujours vide au moment de
   cette entrée (lot StudiUM en attente), contenu tiré de `Downloads`.
+## 2026-09-16 — MAT1600 : relectures pédagogiques Opus (2 rounds) + thème det à 20 (lot mat1600)
+
+- **Round 1 (10 premières questions, `docs/reviews/relecture-opus/mat1600.md`) :**
+  matr-002 retiré du statut Défi (routine) + `why`/distracteur corrigés (erreur
+  $bc-ad$) ; vect-001 reformulé sans « base » (notion `esp`, pas encore enseignée,
+  reformulé en place plutôt que déplacé — évite de toucher `retired-ids.json`, hors
+  périmètre) ; matr-001 et vect-002 : distracteurs sans erreur réelle remplacés
+  (vect-002 adapté pour ne pas introduire `det`, pas encore enseigné, même piège que
+  vect-001) ; syst-001 (indice de longueur), syst-002/004/011/016/019 (barre de
+  matrice augmentée `&|&` en `pmatrix` → `\left(\begin{array}{cc|c}...\end{array}\right)`,
+  étendu par grep aux 3 cas trouvés en plus des 2 signalés), pièges nommés dans les
+  explanations, vect-004 (difficulty, typographie). Décisions détaillées et rejets
+  argumentés dans `docs/reviews/mat1600/reponse-relecture-opus.md`.
+- **Round 2 (30 questions det/esp/compléments) :** esp-006 (élevée : `why` faux,
+  dimension $\mathbb R^2$ vs $\mathbb R^3$, corrigé) ; matr-008 (vérifié auprès d'`agy`
+  que les indices $A_2/B_2$ n'étaient pas copiés de `3.6_Linverse_dune_matrice.pdf` —
+  aucune correspondance trouvée — remplacé quand même par un vrai Défi paramétrique,
+  $c=1$) ; calibration des Défi : tous les Défi conservés passés en difficulty 3
+  (règle appliquée aussi à `vect-013`, ajouté depuis dans l'extension à 20) ; syst-008
+  rétrogradé en qcm ordinaire (Défi routinier), remplacé dans son rôle par le nouveau
+  `syst-021` (deux paramètres, volontairement différent de syst-009/010 déjà ajoutés) ;
+  det-001 dédoublonné avec `mat1400-vect-004` (nouvelle matrice, vérifiée) ; matr-005
+  (distracteur sans erreur réelle) ; terminologie uniformisée (« rangée », « noyau ») ;
+  esp-007 inversé pour éliminer un recoupement avec vect-006 ; pièges nommés. Décisions
+  dans `docs/reviews/mat1600/reponse-relecture-opus-2.md`. Confirmé : aucun `**`
+  Markdown hors `solution` dans tout `src/content/mat1600/`.
+- Relecture aveugle ciblée (sous-agent frais, sans clé, plusieurs passes à cause d'une
+  limite de dépenses temporaire) sur chaque question dont le contenu a changé : 0
+  désaccord sur les 10 questions vérifiées (det-001, esp-006, esp-007, matr-001,
+  matr-002, matr-005, matr-008, syst-021, vect-001, vect-002).
+- `mat1600-det` étendu de 8 à 20 (+12, en plus de la réécriture de det-001) :
+  $\det(A^T)=\det A$, $\det(A^{-1})=1/\det A$, développement en colonne, rangée/colonne
+  nulle ou proportionnelle, division d'une rangée par $k$, $\det(AB)=\det A\det B$,
+  matrice diagonale, choix de la rangée la plus efficace (lecture), $\det(2A)$ pour une
+  $4\times4$ (vf). Gate vert (315 tests). Relecture aveugle (seed 401) : 12/12
+  confirmées, 0 désaccord. Journal `docs/reviews/mat1600/mat1600-det.md`.
+- **Compte mesuré cumulé (les deux rounds Opus) :** 1 élevée corrigée · 4 moyennes
+  appliquées (2 adaptées pour éviter de réintroduire un problème déjà signalé ou une
+  redondance avec l'extension à 20) · 15 basses appliquées (quelques points groupés,
+  1 déjà résolu par un correctif antérieur).
+- Total banque MAT1600 à ce stade : `syst` 21, `vect` 20, `matr` 20, `det` 20, `esp` 8
+  = 89 questions sur les 5 thèmes intra.
+- Suite : étendre `esp` à 20 (12 restantes), envoyer un message par thème une fois
+  chacun poussé séparément comme demandé par l'admin.
+
+## 2026-09-16 — MAT1600 jalon 2 étendu : thème syst à 20 (lot mat1600)
 
 ## 2026-09-16 — Lot UI : écrans, composants, thème ludique, KaTeX (lot/ui)
 

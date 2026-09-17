@@ -66,7 +66,7 @@
       { "text": "$B^{-1}A^{-1}$", "correct": true },
       { "text": "$A^{-1}B^{-1}$", "correct": false, "why": "L'ordre s'inverse pour l'inverse d'un produit, tout comme pour la transposée : garder le même ordre que dans $AB$ est une erreur fréquente." },
       { "text": "$A^{-1}+B^{-1}$", "correct": false, "why": "L'inverse d'un produit n'est pas une somme d'inverses ; il n'existe d'ailleurs pas de formule aussi simple pour $(A+B)^{-1}$." },
-      { "text": "$(AB)^T$", "correct": false, "why": "Inverse et transposée sont deux opérations différentes ; rien ne garantit que $(AB)^{-1}=(AB)^T$ en général." }
+      { "text": "$\\dfrac{1}{\\det(AB)}AB$", "correct": false, "why": "Formule de l'inverse $2\\times2$ mal appliquée à un produit général : il faut la matrice adjointe (cofacteurs transposés) de $AB$, pas $AB$ lui-même." }
     ]
   },
   {
@@ -85,30 +85,30 @@
     "topic": "mat1600-matr",
     "difficulty": 1,
     "prompt": "Qu'est-ce que la matrice identité $I_n$ et quel rôle joue-t-elle dans la multiplication ?",
-    "explanation": "$I_n$ a des $1$ sur la diagonale et des $0$ ailleurs ; elle joue le rôle du nombre $1$ pour la multiplication matricielle.",
+    "explanation": "$I_n$ a des $1$ sur la diagonale et des $0$ ailleurs ; elle joue le rôle du nombre $1$ pour la multiplication matricielle. Le piège : $AI_n=A$ et $I_nA=A$ exigent que les tailles soient compatibles ($A$ peut être rectangulaire, mais $I_n$ doit avoir la bonne taille de chaque côté).",
     "type": "flash",
     "answer": "$I_n$ est la matrice $n\\times n$ avec des $1$ sur la diagonale principale et des $0$ partout ailleurs. Pour toute matrice $A$ de taille compatible, $AI_n=A$ et $I_nA=A$.",
     "keyPoints": [
       "$I_n$ est l'élément neutre de la multiplication matricielle",
       "$AA^{-1}=A^{-1}A=I_n$ définit l'inverse de $A$",
-      "$I_n$ est toujours carrée et inversible (elle est sa propre inverse)"
+      "$I_n$ est toujours carrée et inversible (elle est son propre inverse)"
     ]
   },
   {
     "id": "mat1600-matr-008",
     "course": "MAT1600",
     "topic": "mat1600-matr",
-    "difficulty": 2,
+    "difficulty": 3,
     "challenge": true,
-    "solution": "On calcule $A_2B_2$ ligne par ligne.\n\nLigne 1 : $(2\\cdot1+1\\cdot(-1),\\ 2\\cdot(-1)+1\\cdot2)=(1,0)$.\n\nLigne 2 : $(1\\cdot1+1\\cdot(-1),\\ 1\\cdot(-1)+1\\cdot2)=(0,1)$.\n\nDonc $A_2B_2=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}=I$, ce qui confirme que $B_2=A_2^{-1}$ (pour des matrices carrées, $A_2B_2=I$ suffit à garantir aussi $B_2A_2=I$).",
-    "prompt": "Calculer $A_2B_2$ pour $A_2=\\begin{pmatrix}2&1\\\\1&1\\end{pmatrix}$ et $B_2=\\begin{pmatrix}1&-1\\\\-1&2\\end{pmatrix}$, afin de vérifier si $B_2=A_2^{-1}$.",
-    "explanation": "Le calcul donne $A_2B_2=I$, donc $B_2$ est bien l'inverse de $A_2$.",
+    "solution": "On pose $A=\\begin{pmatrix}2&1\\\\1&c\\end{pmatrix}$ et on calcule $AB$ directement, sans passer par une formule d'inverse.\n\n1) Ligne 1 de $AB$ : $(2\\cdot1+1\\cdot(-1),\\ 2\\cdot(-1)+1\\cdot2)=(1,0)$ — ne dépend pas de $c$.\n\n2) Ligne 2 de $AB$ : $(1\\cdot1+c\\cdot(-1),\\ 1\\cdot(-1)+c\\cdot2)=(1-c,\\ 2c-1)$.\n\n3) Pour que $AB=I$, il faut $1-c=0$ et $2c-1=1$ : les deux donnent $c=1$.",
+    "prompt": "Pour quelle valeur de $c$ a-t-on $\\begin{pmatrix}2&1\\\\1&c\\end{pmatrix}B=I$ avec $B=\\begin{pmatrix}1&-1\\\\-1&2\\end{pmatrix}$ ?",
+    "explanation": "En calculant le produit ligne par ligne, la première ligne ne dépend pas de $c$ ; la deuxième impose $1-c=0$ et $2c-1=1$, toutes deux résolues par $c=1$.",
     "type": "qcm",
     "choices": [
-      { "text": "$\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}$ : oui, $B_2=A_2^{-1}$", "correct": true },
-      { "text": "$\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$ : non", "correct": false, "why": "Erreur sur l'entrée $(1,2)$ : $2\\cdot(-1)+1\\cdot2=0$, pas $1$." },
-      { "text": "$\\begin{pmatrix}1&0\\\\2&1\\end{pmatrix}$ : non", "correct": false, "why": "Erreur sur l'entrée $(2,1)$ : $1\\cdot1+1\\cdot(-1)=0$, pas $2$." },
-      { "text": "$\\begin{pmatrix}0&0\\\\0&0\\end{pmatrix}$ : non, $A_2$ est singulière", "correct": false, "why": "$A_2$ n'est pas singulière : $\\det A_2=2\\cdot1-1\\cdot1=1\\ne0$, donc $A_2B_2$ ne peut pas être la matrice nulle." }
+      { "text": "$c=1$", "correct": true },
+      { "text": "$c=-1$", "correct": false, "why": "Erreur de signe sur l'entrée $(2,1)$ de $B$ : $1\\cdot1+c\\cdot(-1)$ traité comme $1+c$ au lieu de $1-c$." },
+      { "text": "$c=2$", "correct": false, "why": "Le coefficient $2$ devant $c$ dans l'entrée $(2,2)$ a été oublié : $-1+2c=1$ donne $c=1$, pas $-1+c=1$." },
+      { "text": "$c=0$", "correct": false, "why": "La première ligne de $AB$ ne dépend pas de $c$, mais cela ne veut pas dire que $c$ peut être n'importe quoi : la deuxième ligne impose bien $c=1$." }
     ]
   }
 ]

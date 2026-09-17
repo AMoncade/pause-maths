@@ -71,4 +71,19 @@ confirmés par raisonnement, aucun désaccord. Note du relecteur : {012} suppose
 « forme échelonnée réduite du système » réfère à la matrice augmentée (convention
 standard) — pas un défaut.
 
-**Résultat final : 20/20 publiables, 0 correction nécessaire, 0 désaccord.**
+**Résultat (jalon 2, 1-20) : 20/20 publiables, 0 correction nécessaire, 0 désaccord.**
+
+## mat1600-syst-008 (rétrogradé) et mat1600-syst-021 (nouveau, suite à la relecture Opus)
+
+- **syst-008 :** Défi jugé trop routinier (forme vectorielle paramétrique) ; `challenge`
+  retiré, gardé en difficulty 2 comme qcm ordinaire (question toujours correcte).
+- **syst-021 :** nouveau Défi à deux paramètres $h,k$ (difficulty 3), volontairement
+  distinct des paramètres à une seule inconnue déjà testés par syst-009/010.
+
+Relecture aveugle (seed 307) sur syst-021 : confiance 5/5, $(h,k)=(6,3)$ confirmé par
+SymPy (rang de la matrice de coefficients et de la matrice augmentée) ; chaque
+distracteur donne soit une solution unique soit aucune solution, jamais une infinité.
+Le distracteur $(6,6)$ testé et confirmé comme un piège pédagogique solide (bon $h$,
+mauvais $k$ ⇒ incompatible plutôt qu'infini). 0 désaccord.
+
+**Résultat final : 21/21 publiables, 0 correction nécessaire, 0 désaccord.**
