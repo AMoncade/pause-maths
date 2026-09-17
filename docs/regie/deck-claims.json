@@ -36,7 +36,7 @@
       "worktree": null,
       "branch": null,
       "assignedAt": "2026-09-17T17:44:43Z",
-      "status": "en cours",
+      "status": "clôture en cours (2 PDF par repli CloudFront)",
       "exclusive": [
         "chrome",
         "Downloads"
@@ -55,6 +55,20 @@
       "branch": "lot/stt1700",
       "assignedAt": "2026-09-17T18:10:06Z",
       "status": "jalon 1 clos (a7a03cb) — jalon 2 en attente du /clear"
+    },
+    {
+      "session": "adrie-18",
+      "task": "Lot MAT1600 tour 2: vérification thèmes/defaultOn/questions contre le matériel StudiUM (intra 16 oct)",
+      "files": [
+        "src/content/mat1600/**",
+        "docs/sources/mat1600.md",
+        "docs/reviews/mat1600/**",
+        "docs/WORKLOG.md"
+      ],
+      "worktree": "C:/Users/adrie/pause-maths-wt/mat1600",
+      "branch": "lot/mat1600",
+      "assignedAt": "2026-09-17T18:51:34Z",
+      "status": "en cours"
     }
   ]
 }
