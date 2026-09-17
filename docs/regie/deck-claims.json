@@ -117,7 +117,9 @@
       "worktree": "C:/Users/adrie/pause-maths-wt/relecture",
       "branch": "lot/relecture",
       "assignedAt": "2026-09-17T20:08:13Z",
-      "status": "en cours"
+      "status": "clos",
+      "closedAt": "2026-09-17T20:29:15Z",
+      "result": "91943ac, 12 points, appliqués en 9b6b592"
     }
   ]
 }

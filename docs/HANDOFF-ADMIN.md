@@ -1,12 +1,72 @@
 # HANDOFF ADMIN — reprendre la régie de Pause Maths sur un autre ordinateur
 
-**Écrit le 2026-09-17 par la session admin (adrie-59, Claude Fable 5.1) à la fin du premier tour de régie.
+**Écrit le 2026-09-17 par la session admin (adrie-59, Claude Fable 5.1) à la fin du premier tour de régie ; section 0 ajoutée à la fin du tour 2, le même jour.
 État vérifié : `main@fe3e696` + ce commit, `npm test` 363/363, `tsc --noEmit` et `npm run build` propres,
 aucun worktree avec du travail non commité, toutes les branches `lot/*` intégrées dans `main`.**
 
 Ce document s'adresse à la **session admin** du prochain tour : celle qui découpe, délègue, intègre et
 n'exécute pas elle-même. Les sessions exécutantes lisent `CLAUDE.md`, `docs/WORKLOG.md` et `HANDOFF.md`
 (la spécification d'origine, toujours valable pour ce qui n'est pas marqué fait ici).
+
+---
+
+## 0. Tour 2 — 2026-09-17, même poste (lire en premier)
+
+**État vérifié à la fin du tour 2 : `main@a8ab8cb + ce commit`, `npm test` 363/363, `tsc` et `npm run build` propres,
+toutes les branches `lot/*` intégrées, `bank-stats` actif sur les 4 cours.** Journal : `docs/regie/deck-journal.jsonl`
+(tour 2 à partir de la ligne « Tour 2 ouvert »), attributions : `docs/regie/deck-claims.json`, briefs :
+`docs/regie/briefs/tour2-*.md` (chaque brief nomme ce que l'admin n'avait pas vérifié ; trois d'entre eux se sont
+révélés faux sur un point, et les sessions l'ont dit au lieu d'exécuter).
+
+### Livré au tour 2
+
+| Lot | Résultat | Vérification |
+|---|---|---|
+| PWA | **https://pause-maths.vercel.app** — projet Vercel `pause-maths` (équipe am-oncade-s-projects), auto-deploy sur push `main`, Blob store privé `pause-maths-sync` créé en CLI (`vercel blob create-store`, aucun clic dashboard). Bug de prod trouvé et corrigé : Vercel transpile les `.ts` des fonctions sans réécrire les imports sans extension → imports `.js` explicites dans `api/sync.ts` et `src/lib/progress.ts`. `ifMatch` réel = mock. | `curl -sI` sur `/`, `/sw.js`, `/manifest.webmanifest`, `/api/sync` |
+| Lot A | Les 4 cours StudiUM dans `D:\Math`, relance = « rien de nouveau » partout (STT1700 46, MAT1400 29, MAT1500 5, MAT1600 134 fichiers). Skill `studium-sync` corrigée et validée en réel (`claude-skills@9caaf57`). | `python studium_sync.py plan` |
+| MAT1600 | Vérifié contre StudiUM : 101 → 115 (thème intra « Transformations linéaires » manquant ajouté, 15 questions bases/rang reclassées final → thème `dim`, 15 ids retirés, notation Ker/Im). Intra **16 oct**. | `docs/reviews/mat1600/verification-studium.md` |
+| MAT1400 | Vérifié : 96 → 107 (droites paramétriques, différentiabilité, F = f − λg). Intra **26 oct**. | `docs/reviews/mat1400/verification-studium.md` |
+| MAT1500 | Vérifié sur le peu de matériel (devoirs 1-2) : 96 → 102. Intra **29 oct**, chap. 1-3. 5 thèmes / 60 questions invérifiables faute de notes. | `docs/reviews/mat1500/verification-studium.md` |
+| STT1700 | 0 → 48 questions d'intra (descr 14, prob 17, var 17) en 4 jalons, thèmes dérivés du calendrier StudiUM, relecture Opus unique appliquée. Intra **7 oct** (sections 1-3). | `docs/sources/stt1700.md`, `docs/reviews/relecture-opus/stt1700.md` |
+
+**Règle des ids ACTIVE depuis le premier déploiement** (écrite dans `CLAUDE.md`).
+
+### `defaultOn` STT1700 — règle datée, à appliquer par l'admin
+Semaine 1 = 31 août. `stt1700-prob` passe à `true` **le 21 septembre ou après**, `stt1700-var` **le 28 septembre ou
+après** (source : `docs/sources/stt1700.md`). C'est un changement d'une ligne dans `src/content/stt1700/index.ts`,
+à faire lors du premier push après ces dates.
+
+### Ce qui reste (rien n'est bloqué par une session)
+
+- **Gestes utilisateur** : test de synchro à deux profils de navigateur (HANDOFF §11), installation iPhone,
+  réglage Chrome « Téléchargements automatiques → studium.umontreal.ca » (utile pour les prochaines synchros,
+  pas bloquant : le repli URL CloudFront signée + `Invoke-WebRequest` marche).
+- **D:\Math est curé à la main par l'utilisateur** (renommages, dossiers recomposés, doublons copiés dans
+  MAT1400). Décision : la curation fait autorité ; la skill ignore les fichiers renommés (commande `ignore`).
+  Le suivi par empreinte est le vrai correctif, non fait. `INDEX.md`/`LIENS.md` de MAT1600 sont périmés par cette
+  réorganisation. 15 « Séance N » de MAT1600 ont été remontées dans leurs dossiers de semaine par le lot A.
+- **Pièges pour l'utilisateur** (à relayer, pas à coder) : les 5 anciens intras MAT1400 portent sur les séries
+  (matière du FINAL en A26) ; le devoir 1 de MAT1500 commence par des arbres (ch. 7, examinable aux quiz de TP, 0
+  question) ; MAT1500 interdit l'IA aux évaluations et la décourage aux devoirs.
+- **STT1700 après l'intra** : 7 thèmes de final sans question. MAT1600 : quiz-TP 3-11 et séances 6-11 non relus.
+- **Blobs de test** restants dans le store (clés aléatoires, privées, négligeables).
+
+### Ce que le tour 2 a appris
+
+- **Jetons** : tour 1 = 1 747 M relus en cache pour 10 sessions ; tour 2 = ~400 M pour le même volume de
+  livrables. Ce qui a marché : 2 exécutants à la fois, un thème ou une vérification par contexte, `/clear` entre
+  deux, briefs dans le dépôt et messages réduits à un pointeur, un seul rapport par tâche, relecture aveugle par
+  sous-agent Haiku, une seule relecture Opus par cours.
+- **agy pour les brouillons** : marche si on lui donne les bonnes réponses déjà calculées et qu'on ne lui demande
+  que les distracteurs et le JSON (79 s) ; expire en le laissant tout inventer (2 timeouts au jalon 3). Il double
+  les backslashs LaTeX et se trompe dans l'arithmétique des distracteurs : tout revérifier en fractions exactes.
+- **Le classificateur du mode auto refuse les messages inter-sessions longs** : mettre le brief dans
+  `docs/regie/briefs/` et n'envoyer que le chemin. Il refuse aussi `vercel --prod` (l'utilisateur approuve dans le
+  terminal de la session concernée ; l'admin ne le fait pas à sa place).
+- **Sans `/clear` utilisateur**, une tâche neuve va à une session encore propre ou à un sous-agent engendré par
+  l'admin (`Agent`, modèle sonnet) : contexte vide garanti.
+- **Mesurer avant d'arbitrer** : la « collision » Downloads était l'utilisateur lui-même ; la « bulle Chrome »
+  du tour 1 était un bug de la skill. Les deux se lisaient sur le disque.
 
 ---
 
