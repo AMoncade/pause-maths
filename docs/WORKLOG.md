@@ -2,6 +2,13 @@
 
 Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute la sienne dans son worktree ; l'admin fusionne.
 
+## 2026-09-16 — Engine : import `--renumber`, KaTeX strict dans le gate (lot Engine)
+
+- `npm run import -- <fichier.json> --renumber` : avant validation, chaque question reçoit le prochain numéro libre de son thème (ordre du fichier conservé, préfixe = `topic`). Libre = au-dessus du plus grand numéro du thème dans la banque, en sautant les ids retirés et ceux déjà attribués dans le lot ; les trous ne sont jamais réutilisés (un ancien id peut rester dans la progression d'un utilisateur). La correspondance ancien → nouveau est imprimée, même si l'import est refusé. Sans l'option : comportement inchangé. Option inconnue : usage, code 2. `renumberQuestions` exportée et testée.
+- Gate : KaTeX en `strict: 'error'` ; une lettre accentuée en mode math (paire de « $ » littéraux non échappés) est refusée, `\text{…}` accentué reste permis. Vérifié d'abord sur la vraie banque (MAT1400, MAT1500, MAT1600) : aucune question ne casse. Cas ajouté dans `broken.json`.
+- `scripts/import-questions.ts` et `tests/import.test.ts` contenaient un BOM littéral (U+FEFF) au lieu d'un code : remplacé par `0xfeff`. `tests/source-hygiene.test.ts` refuse désormais aussi les caractères invisibles (BOM, espaces de largeur nulle) dans tous les sources Engine et tests (contrôle : il trouve le BOM dans l'ancienne version).
+- `npm test` : 354 verts ; `tsc --noEmit` : OK.
+
 ## 2026-09-16 — MAT1500 : relecture Opus appliquée + logic/quant à 12 (lot mat1500)
 
 - Applique les deux sections de `docs/reviews/relecture-opus/mat1500.md` : 2 corrections ÉLEVÉES
