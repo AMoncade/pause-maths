@@ -2,6 +2,22 @@
 
 Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute la sienne dans son worktree ; l'admin fusionne.
 
+## 2026-09-16 — MAT1500 : relecture Opus appliquée + logic/quant à 12 (lot mat1500)
+
+- Applique les deux sections de `docs/reviews/relecture-opus/mat1500.md` : 2 corrections ÉLEVÉES
+  (func-004 `why` faux, induc-004/proof-008 `explanation` fausses), 5 MOYENNES (quant-003/005,
+  modul-004 choix fourre-tout, divis-003 trivial), une dizaine de BASSES (vocabulaire, virgule
+  décimale, distracteurs faibles, pièges nommés). `**gras**` retiré hors `solution` (11 questions
+  + modul-004). Les 9 questions Défi du lot (5 signalées + quant-008/012 ajoutées depuis)
+  converties de flash « Prouve… » à qcm 4 choix + `solution` (HANDOFF §5).
+- `logic` et `quant` complétés de 8 à 12 questions (distributivité/domination/exportation/
+  absorption ; négation d'inégalité, traduction ∀→/∃∧, contre-exemple sur un ∃∀).
+- Gate (`npm test`, 316 tests) vert et relecture aveugle complète des 8 thèmes (choix mélangés,
+  SymPy/Python/force brute dans des venv hors dépôt) après chaque correctif : PASS partout.
+- Compte mesuré (`src/content/mat1500/*.json`) : logic 12, quant 12, sets 12, func 12, divis 8,
+  modul 8, proof 8, induc 8 = **80 questions**.
+- Suite : compléter divis, modul, proof, induc à 12 chacun (cible ~96 au total).
+
 ## 2026-09-16 — Lot UI : checklist §11 « App in Chrome » (lot/ui)
 
 - Faite dans un onglet dédié (nouvelle fenêtre, localhost seulement), sur `vite preview` du build de main@394e8a7 (146 questions réelles), 390 px (iframe) puis pleine largeur. Aucun autre onglet touché ; onglet fermé à la fin.
