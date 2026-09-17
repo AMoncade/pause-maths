@@ -117,6 +117,34 @@ exécutantes (1 Opus pour le lot A, 1 Opus relecteur, 4 Sonnet : pwa, stt1700, p
 et repartir des briefs du §2. Chaque brief : périmètre de fichiers, worktree, `git add` explicite
 seulement, entrée `docs/WORKLOG.md`, compte rendu mesuré (SHA + comptes) à l'admin.
 
+## 4 bis. Économie de jetons — règles du tour 2 (mesuré, pas deviné)
+
+Mesure du tour 1 avec `node docs/regie/tokens.js` (36 h, 10 sessions) : **1,76 milliard de jetons relus
+en cache, 6,1 M produits, 5 092 appels**. Répartition : MAT1500 460 M, MAT1600 360 M, UI 228 M,
+Engine 204 M, MAT1400 159 M, admin 141 M, lot A 58 M, PWA 54 M, STT1700 41 M. Le coût est dominé par la
+**relecture du contexte à chaque appel** (450 k de contexte × 1 000 appels pour une session de contenu),
+pas par ce qui est écrit. Conséquences, à appliquer sans exception :
+
+1. **Peu de sessions à la fois : 3 au maximum** (admin comprise). Un lot à la fois par exécutant.
+2. **`/clear` après chaque tâche finie.** Une session de contenu écrit UN thème (≈12 questions), passe le
+   gate, la relecture aveugle, pousse, rend compte, puis l'utilisateur fait `/clear` dans ce terminal avant
+   le thème suivant. Une session ne doit jamais dépasser ~150 k de contexte ; l'admin le vérifie avec
+   `tokens.js` (colonne `ctx_k_par_appel`) et demande le `/clear`.
+3. **Aucun message qui ne change rien** : pas d'accusé de réception, pas de « où en es-tu » tant qu'un
+   jalon n'est pas dû, pas de `notify_when_idle` systématique. Un exécutant écrit à l'admin à la fin d'un
+   jalon, point. Chaque message reçu coûte à la session tout son contexte.
+4. **Une seule relecture Opus par cours, à la fin**, pas une par push (le tour 1 en a fait 3 à 4 par cours).
+   La relecture aveugle par question reste, mais par un sous-agent **Haiku** (`model: "haiku"`) avec SymPy,
+   pas Sonnet.
+5. **Brouillons hors quota Claude** : la rédaction initiale d'un thème peut être confiée à la skill `agy`
+   (Gemini, quota Google) à partir de `docs/PROCESSUS_QUESTIONS.md` ; Claude ne fait que le gate, la
+   relecture et les corrections. À essayer sur STT1700 et mesurer.
+6. **L'admin aussi** : cette session a coûté 141 M pour 527 appels. Démarrer chaque tour dans une session
+   admin **neuve** depuis ce fichier, et la `/clear` quand le tour est clos ; ne pas la garder ouverte
+   comme tableau de bord.
+7. **Mesurer, pas supposer** : `node docs/regie/tokens.js 6` toutes les heures de régie ; noter le total
+   dans le journal ; si une session dépasse 30 M en cache relu, la faire `/clear`.
+
 ## 5. Non vérifié à la fin de ce tour
 
 - Tout ce qui touche Vercel en réel (déploiement, Blob, `ifMatch`, protection des URLs de déploiement).
