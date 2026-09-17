@@ -79,9 +79,9 @@
         "why": "C'est $|A|$ lui-même, pas $|\\mathcal{P}(A)|$ : l'ensemble des parties compte tous les sous-ensembles, pas seulement les éléments."
       },
       {
-        "text": "$6$",
+        "text": "$7$",
         "correct": false,
-        "why": "Ce n'est ni $2^3$ ni une formule usuelle liée aux ensembles de parties ; $|\\mathcal{P}(A)|$ est toujours une puissance de 2."
+        "why": "L'ensemble vide a été oublié : $2^3=8$ compte aussi $\\emptyset$ parmi les sous-ensembles de $A$."
       },
       {
         "text": "$9$",
@@ -96,7 +96,7 @@
     "topic": "mat1500-sets",
     "difficulty": 1,
     "prompt": "Pour deux ensembles quelconques $A$ et $B$, on a toujours $A - B = B - A$.",
-    "explanation": "Faux en général : la différence d'ensembles n'est pas commutative. Par exemple avec $A = \\{1, 2\\}$ et $B = \\{2, 3\\}$, on a $A - B = \\{1\\}$ mais $B - A = \\{3\\}$ : les deux résultats diffèrent dès que $A \\ne B$.",
+    "explanation": "Faux en général : la différence d'ensembles n'est pas commutative. Par exemple avec $A = \\{1, 2\\}$ et $B = \\{2, 3\\}$, on a $A - B = \\{1\\}$ mais $B - A = \\{3\\}$ : les deux résultats diffèrent dès que $A \\ne B$. Le piège : lire $A - B$ comme une soustraction de nombres plutôt qu'une différence d'ensembles.",
     "type": "vf",
     "answer": false
   },
@@ -145,15 +145,108 @@
     "course": "MAT1500",
     "topic": "mat1500-sets",
     "difficulty": 3,
-    "prompt": "Prouve, en nommant chaque étape, que $A \\subseteq B$ si et seulement si $A \\cap B = A$.",
+    "prompt": "Dans la preuve de $A \\subseteq B \\iff A \\cap B = A$, quelle affirmation complète correctement le sens ($\\Rightarrow$) ?",
     "explanation": "L'erreur fréquente est de ne prouver qu'un seul sens de l'équivalence (souvent seulement « si $A \\subseteq B$ alors $A \\cap B = A$ ») en oubliant que « si et seulement si » exige les deux implications.",
     "challenge": true,
-    "type": "flash",
-    "answer": "$A \\subseteq B \\iff A \\cap B = A$.",
-    "keyPoints": [
-      "($\\Rightarrow$) Si $A \\subseteq B$ : tout $x \\in A$ vérifie aussi $x \\in B$, donc $x \\in A \\cap B$ ; comme $A \\cap B \\subseteq A$ toujours, on obtient $A \\cap B = A$.",
-      "($\\Leftarrow$) Si $A \\cap B = A$ : tout $x \\in A$ vérifie $x \\in A \\cap B$, donc $x \\in B$ ; ainsi $A \\subseteq B$."
+    "type": "qcm",
+    "choices": [
+      { "text": "Supposons $A \\subseteq B$ ; pour tout $x \\in A$, $x \\in B$ aussi, donc $x \\in A \\cap B$ ; avec $A \\cap B \\subseteq A$ toujours vrai, on conclut $A \\cap B = A$", "correct": true },
+      {
+        "text": "Supposons $A \\subseteq B$ ; alors $A \\cap B \\subseteq B$ directement donne $A \\cap B = A$",
+        "correct": false,
+        "why": "$A \\cap B \\subseteq B$ est vrai mais ne dit rien sur l'égalité avec $A$ ; il faut montrer les deux inclusions $A \\cap B \\subseteq A$ et $A \\subseteq A \\cap B$."
+      },
+      {
+        "text": "Supposons $A \\subseteq B$ ; alors $B \\subseteq A \\cap B$, donc $A = B$",
+        "correct": false,
+        "why": "Rien ne permet de déduire $B \\subseteq A \\cap B$ à partir de $A \\subseteq B$ ; cela mènerait même à tort à $A=B$, plus fort que ce qui est demandé."
+      },
+      {
+        "text": "Supposons $A \\subseteq B$ ; alors $A \\cap B = \\emptyset$ car $A$ et $B$ n'ont rien en commun",
+        "correct": false,
+        "why": "$A \\subseteq B$ signifie au contraire que tout $A$ est inclus dans $B$, donc $A \\cap B = A$, pas $\\emptyset$."
+      }
     ],
     "solution": "($\\Rightarrow$) Supposons $A \\subseteq B$. Comme $A \\cap B \\subseteq A$ est toujours vrai, il suffit de montrer $A \\subseteq A \\cap B$. Soit $x \\in A$ : par hypothèse $x \\in B$ aussi, donc $x \\in A \\cap B$. Ainsi $A \\subseteq A \\cap B$, d'où $A \\cap B = A$.\n\n($\\Leftarrow$) Supposons $A \\cap B = A$. Soit $x \\in A$ : alors $x \\in A \\cap B$ (puisque $A = A \\cap B$), donc en particulier $x \\in B$. Ainsi $A \\subseteq B$."
+  },
+  {
+    "id": "mat1500-sets-009",
+    "course": "MAT1500",
+    "topic": "mat1500-sets",
+    "difficulty": 2,
+    "prompt": "Si $|A| = 5$, $|B| = 4$ et $|A \\cap B| = 2$, combien d'éléments contient $A \\cup B$ ?",
+    "explanation": "La formule d'inclusion-exclusion est $|A \\cup B| = |A| + |B| - |A \\cap B| = 5 + 4 - 2 = 7$. Oublier de soustraire $|A \\cap B|$ compte deux fois les éléments communs.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$7$", "correct": true },
+      {
+        "text": "$9$",
+        "correct": false,
+        "why": "C'est $|A|+|B|$ sans soustraire l'intersection : les éléments communs à $A$ et $B$ sont alors comptés deux fois."
+      },
+      {
+        "text": "$2$",
+        "correct": false,
+        "why": "C'est seulement $|A \\cap B|$, pas la taille de l'union, qui doit inclure tous les éléments d'au moins un des deux ensembles."
+      },
+      {
+        "text": "$11$",
+        "correct": false,
+        "why": "Ceci ajoute l'intersection au lieu de la soustraire ($5+4+2$) ; la formule correcte la retranche pour corriger le double comptage."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-sets-010",
+    "course": "MAT1500",
+    "topic": "mat1500-sets",
+    "difficulty": 1,
+    "prompt": "Pour tous ensembles $A$ et $B$, on a toujours $A \\cap B \\subseteq A$.",
+    "explanation": "Vrai : tout élément de $A \\cap B$ doit, par définition de l'intersection, appartenir à la fois à $A$ et à $B$ — donc en particulier à $A$. C'est vrai indépendamment de la relation entre $A$ et $B$.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1500-sets-011",
+    "course": "MAT1500",
+    "topic": "mat1500-sets",
+    "difficulty": 2,
+    "prompt": "La différence symétrique $A \\triangle B$ est définie comme...",
+    "explanation": "$A \\triangle B = (A - B) \\cup (B - A)$ : les éléments qui sont dans exactement un des deux ensembles, jamais dans les deux à la fois. C'est l'analogue ensembliste du ou exclusif $\\oplus$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$(A - B) \\cup (B - A)$", "correct": true },
+      {
+        "text": "$A \\cap B$",
+        "correct": false,
+        "why": "C'est l'intersection, qui contient au contraire les éléments communs aux deux ensembles — l'opposé de la différence symétrique."
+      },
+      {
+        "text": "$A \\cup B$",
+        "correct": false,
+        "why": "L'union inclut aussi les éléments communs à $A$ et $B$, que la différence symétrique exclut spécifiquement."
+      },
+      {
+        "text": "$A - B$",
+        "correct": false,
+        "why": "Ceci n'inclut que les éléments de $A$ absents de $B$ ; il manque la partie symétrique $B - A$."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-sets-012",
+    "course": "MAT1500",
+    "topic": "mat1500-sets",
+    "difficulty": 3,
+    "prompt": "Prouve, en nommant chaque étape, que $A \\cup (A \\cap B) = A$ (loi d'absorption pour les ensembles).",
+    "explanation": "Comme pour la version logique de l'absorption, l'erreur fréquente est d'essayer de distribuer d'abord plutôt que de raisonner directement par double inclusion.",
+    "challenge": true,
+    "type": "flash",
+    "answer": "$A \\cup (A \\cap B) = A$.",
+    "keyPoints": [
+      "($\\subseteq$) $A \\subseteq A$ toujours, et $A \\cap B \\subseteq A$ toujours ; donc leur union est aussi $\\subseteq A$",
+      "($\\supseteq$) $A \\subseteq A \\cup (A \\cap B)$ toujours, car $A$ est l'un des deux membres de l'union"
+    ],
+    "solution": "($\\subseteq$) Soit $x \\in A \\cup (A \\cap B)$. Alors $x \\in A$ ou $x \\in A \\cap B$. Dans les deux cas, $x \\in A$ (le second cas donne $x \\in A$ directement, puisque $A \\cap B \\subseteq A$). Donc $A \\cup (A \\cap B) \\subseteq A$.\n\n($\\supseteq$) Soit $x \\in A$. Alors $x \\in A \\cup (A \\cap B)$ trivialement, puisque $A$ est l'un des deux ensembles de cette union. Donc $A \\subseteq A \\cup (A \\cap B)$.\n\nPar double inclusion, $A \\cup (A \\cap B) = A$."
   }
 ]

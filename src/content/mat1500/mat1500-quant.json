@@ -8,7 +8,10 @@
     "explanation": "La négation d'un $\\forall$ est un $\\exists$ portant sur la négation du prédicat : $\\neg \\forall x, P(x) \\equiv \\exists x, \\neg P(x)$. Garder le $\\forall$ en ne niant que $P(x)$ est l'erreur la plus fréquente.",
     "type": "qcm",
     "choices": [
-      { "text": "$\\exists x, \\neg P(x)$", "correct": true },
+      {
+        "text": "$\\exists x, \\neg P(x)$",
+        "correct": true
+      },
       {
         "text": "$\\forall x, \\neg P(x)$",
         "correct": false,
@@ -35,7 +38,10 @@
     "explanation": "Chaque quantificateur doit basculer, du plus externe au plus interne : $\\neg(\\forall x \\, \\exists y, P(x,y)) \\equiv \\exists x \\, \\forall y, \\neg P(x,y)$. Ne basculer qu'un seul des deux quantificateurs est une erreur fréquente sur les énoncés imbriqués.",
     "type": "qcm",
     "choices": [
-      { "text": "$\\exists x \\, \\forall y, \\neg P(x, y)$", "correct": true },
+      {
+        "text": "$\\exists x \\, \\forall y, \\neg P(x, y)$",
+        "correct": true
+      },
       {
         "text": "$\\exists x \\, \\exists y, \\neg P(x, y)$",
         "correct": false,
@@ -59,7 +65,7 @@
     "topic": "mat1500-quant",
     "difficulty": 2,
     "prompt": "Les énoncés $\\forall x \\, \\exists y, P(x, y)$ et $\\exists y \\, \\forall x, P(x, y)$ disent toujours exactement la même chose.",
-    "explanation": "Faux en général : dans $\\exists y \\, \\forall x, P(x,y)$, le même $y$ doit convenir pour tous les $x$, alors que dans $\\forall x \\, \\exists y, P(x,y)$, $y$ peut dépendre de $x$. Le second énoncé implique le premier, mais pas l'inverse.",
+    "explanation": "Faux en général : dans $\\exists y \\, \\forall x, P(x,y)$, le même $y$ doit convenir pour tous les $x$, alors que dans $\\forall x \\, \\exists y, P(x,y)$, $y$ peut dépendre de $x$. Précisément : $\\exists y \\, \\forall x, P(x,y)$ implique $\\forall x \\, \\exists y, P(x,y)$, mais l'implication inverse est fausse en général.",
     "type": "vf",
     "answer": false
   },
@@ -72,7 +78,10 @@
     "explanation": "$\\exists!$ combine existence et unicité : il faut qu'un $x$ satisfasse $P$, et que tout $y$ satisfaisant $P$ soit égal à ce $x$. Confondre $\\exists!$ avec un simple $\\exists$ oublie la condition d'unicité.",
     "type": "qcm",
     "choices": [
-      { "text": "$\\exists x \\, (P(x) \\wedge \\forall y \\, (P(y) \\rightarrow y = x))$", "correct": true },
+      {
+        "text": "$\\exists x \\, (P(x) \\wedge \\forall y \\, (P(y) \\rightarrow y = x))$",
+        "correct": true
+      },
       {
         "text": "$\\exists x, P(x)$",
         "correct": false,
@@ -96,12 +105,180 @@
     "topic": "mat1500-quant",
     "difficulty": 2,
     "prompt": "Comment nier l'énoncé « Tout étudiant a réussi au moins un examen », en gardant la structure logique visible ?",
-    "explanation": "Avec $P(x)$ = « l'étudiant $x$ a réussi l'examen », l'énoncé est $\\forall x \\, \\exists y, P(x, y)$ ; sa négation bascule les deux quantificateurs et nie le prédicat : $\\exists x \\, \\forall y, \\neg P(x, y)$, soit « il existe un étudiant qui n'a réussi aucun examen ».",
+    "explanation": "Avec $P(x,y)$ = « l'étudiant $x$ a réussi l'examen $y$ », l'énoncé est $\\forall x \\, \\exists y, P(x, y)$ ; sa négation bascule les deux quantificateurs et nie le prédicat : $\\exists x \\, \\forall y, \\neg P(x, y)$, soit « il existe un étudiant qui n'a réussi aucun examen ».",
     "type": "flash",
     "answer": "« Il existe un étudiant qui n'a réussi aucun examen. »",
     "keyPoints": [
       "$\\forall$ devient $\\exists$ (et vice versa) à chaque niveau, du plus externe au plus interne",
       "Le prédicat final est aussi nié : « a réussi » devient « n'a réussi aucun »"
     ]
+  },
+  {
+    "id": "mat1500-quant-006",
+    "course": "MAT1500",
+    "topic": "mat1500-quant",
+    "difficulty": 2,
+    "prompt": "Avec $L(x,y)$ = « $x$ aime $y$ », quelle formule traduit le mieux « Quelqu'un aime tout le monde » ?",
+    "explanation": "« Quelqu'un » place l'existentiel en premier, sur la personne qui aime ; « tout le monde » place ensuite l'universel sur les personnes aimées : $\\exists x \\, \\forall y, L(x,y)$. Inverser l'ordre des quantificateurs change complètement le sens de la phrase.",
+    "type": "qcm",
+    "choices": [
+      {
+        "text": "$\\exists x \\, \\forall y, L(x, y)$",
+        "correct": true
+      },
+      {
+        "text": "$\\forall x \\, \\exists y, L(x, y)$",
+        "correct": false,
+        "why": "Ceci dit plutôt « tout le monde aime quelqu'un », une phrase différente où chaque personne peut aimer quelqu'un de différent."
+      },
+      {
+        "text": "$\\exists y \\, \\forall x, L(x, y)$",
+        "correct": false,
+        "why": "Ceci dit « quelqu'un est aimé de tout le monde », ce qui inverse les rôles de qui aime et qui est aimé."
+      },
+      {
+        "text": "$\\forall x \\, \\forall y, L(x, y)$",
+        "correct": false,
+        "why": "Ceci dit « tout le monde aime tout le monde », une affirmation bien plus forte que « quelqu'un aime tout le monde »."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-quant-007",
+    "course": "MAT1500",
+    "topic": "mat1500-quant",
+    "difficulty": 2,
+    "prompt": "$\\exists x \\, (P(x) \\vee Q(x))$ est logiquement équivalent à $\\exists x \\, P(x) \\vee \\exists x \\, Q(x)$.",
+    "explanation": "Vrai : $\\exists$ se distribue sur $\\vee$. Intuitivement, trouver un $x$ qui satisfait $P$ ou $Q$ revient à trouver un $x$ qui satisfait $P$, ou à en trouver un qui satisfait $Q$ (pas nécessairement le même). Attention : cette distribution ne fonctionne PAS de la même façon avec $\\wedge$.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1500-quant-008",
+    "course": "MAT1500",
+    "topic": "mat1500-quant",
+    "difficulty": 3,
+    "prompt": "Pour montrer que $\\exists x \\, (P(x) \\wedge Q(x))$ n'est pas toujours équivalent à $\\big(\\exists x \\, P(x)\\big) \\wedge \\big(\\exists x \\, Q(x)\\big)$, quel contre-exemple fonctionne sur $\\mathbb{Z}$ ?",
+    "explanation": "Le piège est de croire que $\\exists$ se distribue sur $\\wedge$ comme il le fait sur $\\vee$. Mais le membre de droite permet que ce soit deux $x$ différents qui satisfont $P$ et $Q$ séparément, alors que le membre de gauche exige un seul et même $x$ qui satisfait les deux à la fois.",
+    "challenge": true,
+    "type": "qcm",
+    "choices": [
+      { "text": "$P(x)$ = « $x$ est pair », $Q(x)$ = « $x$ est impair »", "correct": true },
+      {
+        "text": "$P(x)$ = « $x$ est pair », $Q(x)$ = « $x$ est pair »",
+        "correct": false,
+        "why": "Avec les mêmes prédicats des deux côtés, les deux membres coïncident toujours : ce n'est pas un contre-exemple."
+      },
+      {
+        "text": "$P(x)$ = « $x>0$ », $Q(x)$ = « $x<0$ », sur le domaine $\\{0\\}$ seulement",
+        "correct": false,
+        "why": "Sur un domaine à un seul élément, $\\exists x$ devient une simple évaluation en cet élément : les deux membres coïncident automatiquement, ce n'est pas un contre-exemple."
+      },
+      {
+        "text": "$P(x)$ = vrai pour tout $x$, $Q(x)$ = faux pour tout $x$",
+        "correct": false,
+        "why": "$\\exists x\\,Q(x)$ est alors faux, donc $(\\exists xP)\\wedge(\\exists xQ)$ est déjà faux, tout comme $\\exists x(P\\wedge Q)$ — les deux côtés coïncident, ce n'est pas un contre-exemple."
+      }
+    ],
+    "solution": "Sur $\\mathbb{Z}$, prenons $P(x)$ = « $x$ est pair » et $Q(x)$ = « $x$ est impair ».\n\n1. $\\exists x\\,(P(x)\\wedge Q(x))$ demande un entier à la fois pair et impair : c'est impossible, donc cette proposition est fausse.\n\n2. $\\exists x\\,P(x)$ est vraie (par exemple $x=2$) et $\\exists x\\,Q(x)$ est vraie aussi (par exemple $x=3$), donc leur conjonction $\\exists x\\,P(x) \\wedge \\exists x\\,Q(x)$ est vraie.\n\n3. Une proposition fausse et une proposition vraie ne sont pas équivalentes : les deux membres diffèrent bien sur ce domaine, ce qui réfute l'équivalence générale."
+  },
+  {
+    "id": "mat1500-quant-009",
+    "course": "MAT1500",
+    "topic": "mat1500-quant",
+    "difficulty": 2,
+    "prompt": "Quelle est la négation de $\\exists x \\in \\mathbb{R}, x^2 < 0$ ?",
+    "explanation": "Nier $\\exists$ donne $\\forall$, et nier $<$ donne $\\ge$ (pas $>$, qui oublierait le cas d'égalité). Le résultat est $\\forall x \\in \\mathbb{R}, x^2 \\ge 0$ — qui se trouve d'ailleurs être un fait vrai.",
+    "type": "qcm",
+    "choices": [
+      {
+        "text": "$\\forall x \\in \\mathbb{R}, x^2 \\ge 0$",
+        "correct": true
+      },
+      {
+        "text": "$\\forall x \\in \\mathbb{R}, x^2 > 0$",
+        "correct": false,
+        "why": "La négation de $<$ est $\\ge$, pas $>$ : oublier le cas d'égalité est une erreur fréquente lors de la négation d'une inégalité stricte."
+      },
+      {
+        "text": "$\\exists x \\in \\mathbb{R}, x^2 \\ge 0$",
+        "correct": false,
+        "why": "Le quantificateur n'a pas été basculé : nier un $\\exists$ doit donner un $\\forall$."
+      },
+      {
+        "text": "$\\forall x \\in \\mathbb{R}, x^2 < 0$",
+        "correct": false,
+        "why": "L'inégalité n'a pas été niée du tout ; seul le quantificateur a changé."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-quant-010",
+    "course": "MAT1500",
+    "topic": "mat1500-quant",
+    "difficulty": 1,
+    "prompt": "L'énoncé $\\forall x \\in \\mathbb{R}, x^2 \\ge 0$ est vrai.",
+    "explanation": "Vrai : le carré d'un nombre réel, positif ou négatif, est toujours positif ou nul. Il n'existe aucun réel dont le carré serait strictement négatif.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1500-quant-011",
+    "course": "MAT1500",
+    "topic": "mat1500-quant",
+    "difficulty": 2,
+    "prompt": "Avec $S(x)$ = « $x$ est étudiant », $E(y)$ = « $y$ est un examen » et $F(x,y)$ = « $x$ a échoué $y$ », quelle formule traduit « Un étudiant a échoué tous les examens » ?",
+    "explanation": "La règle de style est : le $\\forall$ se combine avec $\\rightarrow$ (« pour tout examen, si c'est un examen, alors... »), et le $\\exists$ se combine avec $\\wedge$ (« il existe un étudiant, et c'est un étudiant, et... »). Inverser ces deux connecteurs est l'erreur la plus fréquente en traduction de quantificateurs imbriqués.",
+    "type": "qcm",
+    "choices": [
+      {
+        "text": "$\\exists x \\, (S(x) \\wedge \\forall y \\,(E(y) \\rightarrow F(x,y)))$",
+        "correct": true
+      },
+      {
+        "text": "$\\forall x \\, (S(x) \\rightarrow \\exists y \\,(E(y) \\wedge F(x,y)))$",
+        "correct": false,
+        "why": "Ceci dit « chaque étudiant a échoué au moins un examen », une affirmation différente (et plus forte pour l'ensemble des étudiants) que « un étudiant a échoué tous les examens »."
+      },
+      {
+        "text": "$\\exists x \\, (S(x) \\rightarrow \\forall y \\,(E(y) \\wedge F(x,y)))$",
+        "correct": false,
+        "why": "Les connecteurs sont inversés par rapport à la règle de style ($\\rightarrow$ avec $\\exists$, $\\wedge$ avec $\\forall$), ce qui rend la formule vraie de façon triviale et non pertinente dès que $S(x)$ est faux pour un $x$."
+      },
+      {
+        "text": "$\\forall x \\, (S(x) \\wedge \\exists y \\,(E(y) \\rightarrow F(x,y)))$",
+        "correct": false,
+        "why": "Encore une fois les connecteurs sont inversés, et cette formule prétend même que tout objet $x$ (pas seulement les étudiants) doit être un étudiant, ce qui est absurde."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-quant-012",
+    "course": "MAT1500",
+    "topic": "mat1500-quant",
+    "difficulty": 3,
+    "prompt": "Pour réfuter $\\exists x \\in \\mathbb{R}, \\forall y \\in \\mathbb{R}, x \\le y$ (« il existe un plus petit réel »), quel témoin $y$ faut-il choisir pour un $x$ donné ?",
+    "explanation": "L'erreur fréquente est d'essayer de « tester des exemples » de petits nombres au lieu de prouver directement la négation universelle : pour réfuter un $\\exists\\forall$, il faut montrer que pour tout candidat $x$, on peut trouver un $y$ plus petit.",
+    "challenge": true,
+    "type": "qcm",
+    "choices": [
+      { "text": "$y = x - 1$", "correct": true },
+      {
+        "text": "$y = x + 1$",
+        "correct": false,
+        "why": "$y>x$ ne contredit pas $x \\le y$ ; il faut un $y$ strictement plus petit que $x$ pour montrer que $x$ n'est pas minimal."
+      },
+      {
+        "text": "$y = -x$",
+        "correct": false,
+        "why": "Ne fonctionne pas pour $x$ négatif : par exemple $x=-5$ donne $y=5>x$, ce qui ne contredit pas $x\\le y$."
+      },
+      {
+        "text": "$y = 0$",
+        "correct": false,
+        "why": "Ne fonctionne pas si $x \\le 0$ déjà : par exemple $x=-3$ donne $y=0>x=-3$, ce qui ne contredit rien."
+      }
+    ],
+    "solution": "La négation de $\\exists x \\in \\mathbb{R}, \\forall y \\in \\mathbb{R}, x \\le y$ est $\\forall x \\in \\mathbb{R}, \\exists y \\in \\mathbb{R}, y < x$ (basculer les deux quantificateurs et nier $\\le$ en $<$).\n\nMontrons que cette négation est vraie : soit $x \\in \\mathbb{R}$ quelconque. Posons $y = x - 1$, qui est bien un réel. Alors $y = x - 1 < x$, ce qui vérifie la propriété recherchée.\n\nComme la négation de l'énoncé de départ est vraie, l'énoncé de départ (« il existe un plus petit réel ») est faux : $\\mathbb{R}$ n'a pas de plus petit élément."
   }
 ]

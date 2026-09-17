@@ -20,3 +20,20 @@ positif), pas de risque de double bonne réponse.
 **Verdict global : PASS.** `mat1500-modul-006` était déjà à difficulté 2 (deux étapes : réduire
 mod 7 puis remapper l'indice) — aucune correction nécessaire, la calibration proposée par
 l'agent correspondait déjà à la valeur existante.
+
+## Relecture Opus (docs/reviews/relecture-opus/mat1500.md) — corrections appliquées
+
+- `modul-004` (MOYENNE, bloquant pour le lot Engine) : choix fourre-tout « aucune de ces
+  opérations n'est garantie » (interdit par le HANDOFF §8, non détecté par le gate — trou signalé
+  à l'admin) remplacé par un vrai distracteur, $a-c\equiv d-b \pmod n$ (ordre des termes inversé).
+- `modul-001` : distracteur $12$ remplacé par $3{,}4$ (quotient décimal confondu avec le reste).
+- `modul-002` : `why` du choix $1$ corrigé (nommait mal l'erreur — ignorer le signe de $-7$).
+- `modul-003`, `modul-005` : piège nommé explicitement dans `explanation`.
+- `modul-007` : question entièrement réécrite (« pourquoi » remplacé par un calcul concret de
+  division euclidienne, $-10$ par $4$, pour plus de valeur d'entraînement) — évite aussi la
+  quasi-duplication avec `modul-002`.
+- `modul-008` (Défi) : converti de flash à qcm (HANDOFF §5).
+
+Re-vérifié (gate + relecture aveugle complète des 8 questions, Python) après application :
+**PASS**, aucune régression. Le distracteur $a-c\equiv d-b$ confirmé faux par contre-exemple
+concret.

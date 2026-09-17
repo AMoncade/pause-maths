@@ -8,7 +8,10 @@
     "explanation": "Une preuve directe de $p \\rightarrow q$ part de l'hypothèse $p$ (ici « $n$ est pair », donc $n = 2k$) et en déduit logiquement $q$ (ici $n^2$ pair, car $n^2 = 4k^2 = 2(2k^2)$). Partir de la conclusion pour retomber sur l'hypothèse inverse le sens de la preuve.",
     "type": "qcm",
     "choices": [
-      { "text": "supposer $n = 2k$ pour un entier $k$, puis montrer que $n^2$ s'écrit $2m$ pour un entier $m$", "correct": true },
+      {
+        "text": "supposer $n = 2k$ pour un entier $k$, puis montrer que $n^2$ s'écrit $2m$ pour un entier $m$",
+        "correct": true
+      },
       {
         "text": "supposer que $n^2$ est pair, puis montrer que $n$ est pair",
         "correct": false,
@@ -35,7 +38,10 @@
     "explanation": "Réfuter un énoncé universel $\\forall n, P(n)$ demande un seul contre-exemple : une valeur de $n$ pour laquelle $P(n)$ est fausse. (En fait $n = 40$ donne $40^2+40+41 = 1681 = 41^2$, qui n'est pas premier.) Il n'est pas nécessaire — ni possible en général — de vérifier tous les $n$.",
     "type": "qcm",
     "choices": [
-      { "text": "trouver une seule valeur de $n$ pour laquelle $n^2+n+41$ n'est pas premier", "correct": true },
+      {
+        "text": "trouver une seule valeur de $n$ pour laquelle $n^2+n+41$ n'est pas premier",
+        "correct": true
+      },
       {
         "text": "montrer que $n^2+n+41$ n'est premier pour aucune valeur de $n$",
         "correct": false,
@@ -59,7 +65,7 @@
     "topic": "mat1500-proof",
     "difficulty": 2,
     "prompt": "Une preuve par contradiction commence par supposer que la conclusion de l'énoncé est vraie.",
-    "explanation": "Faux : une preuve par contradiction commence en supposant que la conclusion est **fausse** (c'est-à-dire en supposant sa négation), combinée aux hypothèses de départ, puis en dérivant une contradiction logique.",
+    "explanation": "Faux : une preuve par contradiction commence en supposant que la conclusion est fausse (c'est-à-dire en supposant sa négation), combinée aux hypothèses de départ, puis en dérivant une contradiction logique.",
     "type": "vf",
     "answer": false
   },
@@ -72,7 +78,10 @@
     "explanation": "La contraposée de $p \\rightarrow q$ est $\\neg q \\rightarrow \\neg p$. Ici $p$ = « $n^2$ est impair », $q$ = « $n$ est impair » ; sa contraposée est « si $n$ est pair, alors $n^2$ est pair », souvent plus facile à manipuler directement.",
     "type": "qcm",
     "choices": [
-      { "text": "si $n$ est pair, alors $n^2$ est pair", "correct": true },
+      {
+        "text": "si $n$ est pair, alors $n^2$ est pair",
+        "correct": true
+      },
       {
         "text": "si $n$ est impair, alors $n^2$ est impair",
         "correct": false,
@@ -81,7 +90,7 @@
       {
         "text": "si $n^2$ est pair, alors $n$ est pair",
         "correct": false,
-        "why": "C'est l'inverse (négation des deux membres sans les échanger), pas la contraposée : la contraposée échange **et** nie les deux membres."
+        "why": "C'est l'inverse (négation des deux membres sans les échanger), pas la contraposée : la contraposée échange et nie les deux membres."
       },
       {
         "text": "si $n$ est pair, alors $n^2$ est impair",
@@ -106,12 +115,16 @@
     "topic": "mat1500-proof",
     "difficulty": 2,
     "prompt": "Pour prouver par cas que $n(n+1)$ est toujours pair pour tout entier $n$, quels cas doit-on couvrir ?",
-    "explanation": "Une preuve par cas doit couvrir **toutes** les possibilités sans exception : ici, tout entier est soit pair soit impair, donc ces deux cas épuisent toutes les possibilités. Oublier un cas (ou n'en traiter qu'un) laisse la preuve incomplète.",
+    "explanation": "Une preuve par cas doit couvrir toutes les possibilités sans exception : ici, tout entier est soit pair soit impair, donc ces deux cas épuisent toutes les possibilités. Oublier un cas (ou n'en traiter qu'un) laisse la preuve incomplète.",
     "type": "qcm",
     "choices": [
-      { "text": "le cas où $n$ est pair, et le cas où $n$ est impair", "correct": true },
       {
-        "text": "seulement le cas où $n$ est pair", "correct": false,
+        "text": "le cas où $n$ est pair, et le cas où $n$ est impair",
+        "correct": true
+      },
+      {
+        "text": "seulement le cas où $n$ est pair",
+        "correct": false,
         "why": "Ceci ne couvre pas tous les entiers : il manque le cas où $n$ est impair, laissant la preuve incomplète."
       },
       {
@@ -145,15 +158,27 @@
     "course": "MAT1500",
     "topic": "mat1500-proof",
     "difficulty": 3,
-    "prompt": "Prouve par contradiction que $\\sqrt{2}$ est irrationnel.",
-    "explanation": "L'erreur fréquente est d'oublier l'hypothèse « $p/q$ sous forme irréductible » (pgcd$(p,q)=1$) : sans elle, on ne peut pas conclure que $p$ et $q$ sont tous deux pairs, ce qui est le cœur de la contradiction.",
+    "prompt": "Dans la preuve par contradiction que $\\sqrt{2}$ est irrationnel, après avoir supposé $\\sqrt2=p/q$ avec $\\text{pgcd}(p,q)=1$ et dérivé $p^2=2q^2$, quelle est la conclusion correcte sur $p$ ?",
+    "explanation": "L'erreur fréquente est d'oublier l'hypothèse « $p/q$ sous forme irréductible » (pgcd$(p,q)=1$) : sans elle, on peut toujours dériver que $p$ et $q$ sont tous deux pairs, mais ce fait cesse d'être une contradiction — c'est précisément l'hypothèse pgcd$(p,q)=1$ qui rend « $p$ et $q$ pairs » impossible et referme la preuve.",
     "challenge": true,
-    "type": "flash",
-    "answer": "$\\sqrt{2}$ est irrationnel.",
-    "keyPoints": [
-      "Supposer $\\sqrt{2} = p/q$ avec $p,q$ entiers, $q \\ne 0$, et $\\text{pgcd}(p,q)=1$",
-      "$2q^2 = p^2$ force $p$ pair, donc $p=2m$ ; puis $2q^2 = 4m^2$ force $q$ pair aussi",
-      "$p$ et $q$ pairs contredit $\\text{pgcd}(p,q)=1$"
+    "type": "qcm",
+    "choices": [
+      { "text": "$p^2$ est pair, donc $p$ est pair", "correct": true },
+      {
+        "text": "$p^2$ est pair, donc $p$ est impair",
+        "correct": false,
+        "why": "Un carré pair implique que la base est paire, pas impaire ; le carré d'un impair est toujours impair."
+      },
+      {
+        "text": "$p^2=2q^2$ implique directement $p=q\\sqrt2$, ce qui prouve que $p$ est irrationnel",
+        "correct": false,
+        "why": "Ceci suppose déjà que $\\sqrt2$ est irrationnel, exactement ce qu'on cherche à prouver — un raisonnement circulaire."
+      },
+      {
+        "text": "$p^2$ est pair, donc $q$ est pair",
+        "correct": false,
+        "why": "Cette déduction porte sur $p^2$, qui contraint $p$, pas $q$ directement ; la conclusion sur $q$ vient plus tard dans la preuve, par un raisonnement séparé sur $q^2=2m^2$."
+      }
     ],
     "solution": "Supposons par contradiction que $\\sqrt{2}$ est rationnel : $\\sqrt{2} = p/q$ pour des entiers $p, q$ avec $q \\ne 0$ et $\\text{pgcd}(p,q) = 1$ (fraction irréductible).\n\nEn élevant au carré : $2 = p^2/q^2$, donc $p^2 = 2q^2$.\n\nAinsi $p^2$ est pair, ce qui force $p$ à être pair (si $p$ était impair, $p^2$ serait impair). Écrivons $p = 2m$ pour un entier $m$.\n\nEn substituant : $(2m)^2 = 2q^2$, soit $4m^2 = 2q^2$, soit $q^2 = 2m^2$. Donc $q^2$ est pair, ce qui force $q$ à être pair aussi.\n\nMais alors $p$ et $q$ sont tous deux pairs, donc $2$ divise leur pgcd — ce qui contredit $\\text{pgcd}(p,q) = 1$.\n\nCette contradiction montre que l'hypothèse de départ était fausse : $\\sqrt{2}$ n'est pas rationnel."
   }

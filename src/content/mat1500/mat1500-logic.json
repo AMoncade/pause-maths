@@ -8,7 +8,10 @@
     "explanation": "$p \\rightarrow q \\equiv \\neg p \\vee q$ : c'est la définition même du conditionnel en termes de $\\vee$ et $\\neg$, utile pour pousser une négation à l'intérieur.",
     "type": "qcm",
     "choices": [
-      { "text": "$\\neg p \\vee q$", "correct": true },
+      {
+        "text": "$\\neg p \\vee q$",
+        "correct": true
+      },
       {
         "text": "$p \\vee \\neg q$",
         "correct": false,
@@ -45,7 +48,10 @@
     "explanation": "$\\neg(p \\wedge q) \\equiv \\neg p \\vee \\neg q$ : nier un « et » donne un « ou » des négations. L'erreur classique est de garder $\\wedge$ après avoir nié chaque membre.",
     "type": "qcm",
     "choices": [
-      { "text": "$\\neg p \\vee \\neg q$", "correct": true },
+      {
+        "text": "$\\neg p \\vee \\neg q$",
+        "correct": true
+      },
       {
         "text": "$\\neg p \\wedge \\neg q$",
         "correct": false,
@@ -72,7 +78,10 @@
     "explanation": "$p \\leftrightarrow q$ signifie « $p$ si et seulement si $q$ », vrai exactement quand $p$ et $q$ ont la même valeur de vérité, c'est-à-dire $(p \\rightarrow q) \\wedge (q \\rightarrow p)$.",
     "type": "qcm",
     "choices": [
-      { "text": "$p$ si et seulement si $q$", "correct": true },
+      {
+        "text": "$p$ si et seulement si $q$",
+        "correct": true
+      },
       {
         "text": "si $p$ alors $q$, mais pas l'inverse",
         "correct": false,
@@ -95,14 +104,27 @@
     "course": "MAT1500",
     "topic": "mat1500-logic",
     "difficulty": 3,
-    "prompt": "Prouve, en nommant chaque loi utilisée, que $\\neg(p \\rightarrow q) \\equiv p \\wedge \\neg q$.",
-    "explanation": "L'erreur fréquente est de nier seulement l'implication en $\\neg p \\rightarrow \\neg q$ au lieu de d'abord réécrire $p \\rightarrow q$ en $\\neg p \\vee q$ puis d'appliquer De Morgan.",
+    "prompt": "En prouvant que $\\neg(p \\rightarrow q) \\equiv p \\wedge \\neg q$, la première étape donne $\\neg(p \\rightarrow q) \\equiv \\neg(\\neg p \\vee q)$. Quelle est la simplification finale correcte, par De Morgan puis double négation ?",
+    "explanation": "Les erreurs classiques à cette étape : appliquer De Morgan sans la double négation finale (donnant $\\neg p \\wedge \\neg q$), ou ne pas changer le connecteur $\\vee$ en $\\wedge$ (donnant $p \\vee \\neg q$ ou $\\neg p \\vee \\neg q$).",
     "challenge": true,
-    "type": "flash",
-    "answer": "$\\neg(p \\rightarrow q) \\equiv p \\wedge \\neg q$.",
-    "keyPoints": [
-      "Loi du conditionnel : $p \\rightarrow q \\equiv \\neg p \\vee q$",
-      "De Morgan : $\\neg(\\neg p \\vee q) \\equiv \\neg\\neg p \\wedge \\neg q \\equiv p \\wedge \\neg q$"
+    "type": "qcm",
+    "choices": [
+      { "text": "$p \\wedge \\neg q$", "correct": true },
+      {
+        "text": "$\\neg p \\wedge \\neg q$",
+        "correct": false,
+        "why": "De Morgan a bien changé $\\vee$ en $\\wedge$, mais la double négation $\\neg(\\neg p) \\equiv p$ a été oubliée sur le premier terme."
+      },
+      {
+        "text": "$p \\vee \\neg q$",
+        "correct": false,
+        "why": "Après De Morgan, le connecteur doit devenir $\\wedge$, pas rester $\\vee$."
+      },
+      {
+        "text": "$\\neg p \\vee \\neg q$",
+        "correct": false,
+        "why": "Ni De Morgan (le connecteur reste $\\vee$) ni la double négation n'ont été appliquées correctement ici."
+      }
     ],
     "solution": "1. Loi du conditionnel : $p \\rightarrow q \\equiv \\neg p \\vee q$.\n2. Donc $\\neg(p \\rightarrow q) \\equiv \\neg(\\neg p \\vee q)$.\n3. De Morgan : $\\neg(\\neg p \\vee q) \\equiv \\neg(\\neg p) \\wedge \\neg q$.\n4. Double négation : $\\neg(\\neg p) \\equiv p$, donc le résultat est $p \\wedge \\neg q$."
   },
@@ -112,10 +134,13 @@
     "topic": "mat1500-logic",
     "difficulty": 2,
     "prompt": "Quelle est l'inverse (« inverse », pas réciproque ni contraposée) de « si $p$ alors $q$ » ?",
-    "explanation": "L'inverse d'un conditionnel $p \\rightarrow q$ est $\\neg p \\rightarrow \\neg q$ : on nie les deux membres sans les échanger. C'est différent de la réciproque ($q \\rightarrow p$, échange sans négation) et de la contraposée ($\\neg q \\rightarrow \\neg p$, échange **et** négation) — trois transformations souvent confondues entre elles.",
+    "explanation": "L'inverse d'un conditionnel $p \\rightarrow q$ est $\\neg p \\rightarrow \\neg q$ : on nie les deux membres sans les échanger. C'est différent de la réciproque ($q \\rightarrow p$, échange sans négation) et de la contraposée ($\\neg q \\rightarrow \\neg p$, échange et négation) — trois transformations souvent confondues entre elles.",
     "type": "qcm",
     "choices": [
-      { "text": "si $\\neg p$ alors $\\neg q$", "correct": true },
+      {
+        "text": "si $\\neg p$ alors $\\neg q$",
+        "correct": true
+      },
       {
         "text": "si $q$ alors $p$",
         "correct": false,
@@ -166,7 +191,10 @@
     "explanation": "$p \\wedge (q \\vee r) \\equiv (p \\wedge q) \\vee (p \\wedge r)$ : le $\\wedge$ se distribue sur le $\\vee$, exactement comme la multiplication se distribue sur l'addition en algèbre ($a(b+c)=ab+ac$). Oublier de répéter $p$ sur chaque terme est l'erreur la plus fréquente.",
     "type": "qcm",
     "choices": [
-      { "text": "$(p \\wedge q) \\vee (p \\wedge r)$", "correct": true },
+      {
+        "text": "$(p \\wedge q) \\vee (p \\wedge r)$",
+        "correct": true
+      },
       {
         "text": "$(p \\vee q) \\wedge (p \\vee r)$",
         "correct": false,
@@ -203,7 +231,10 @@
     "explanation": "La loi d'exportation dit $(p \\wedge q) \\rightarrow r \\equiv p \\rightarrow (q \\rightarrow r)$ : avoir deux hypothèses combinées par $\\wedge$ revient à les traiter en cascade, une implication à la fois.",
     "type": "qcm",
     "choices": [
-      { "text": "$p \\rightarrow (q \\rightarrow r)$", "correct": true },
+      {
+        "text": "$p \\rightarrow (q \\rightarrow r)$",
+        "correct": true
+      },
       {
         "text": "$(p \\rightarrow r) \\wedge (q \\rightarrow r)$",
         "correct": false,

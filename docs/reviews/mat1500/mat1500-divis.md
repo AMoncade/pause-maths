@@ -17,3 +17,17 @@ contre-exemples sur de petits entiers) dans un venv temporaire hors dépôt, sup
 
 **Verdict global : PASS.** Aucune ambiguïté. `mat1500-divis-006` était déjà à difficulté 2 (le
 distracteur A demande plus qu'un rappel direct) — aucune correction nécessaire.
+
+## Relecture Opus (docs/reviews/relecture-opus/mat1500.md) — corrections appliquées
+
+- `divis-001` : choix correct précisé ($a\ne0$) ; `why` du distracteur « diviseur commun »
+  corrigé (deux entiers ont toujours 1 en commun — trivialement vrai, pas « plus faible »).
+- `divis-003` (MOYENNE) : reformulée en Vrai/Faux sans donner la factorisation dans l'énoncé
+  (elle rendait la question triviale) ; l'`explanation` la révèle maintenant.
+- `divis-005` : piège nommé (croire que $1$ est premier).
+- `divis-006` : deux distracteurs artificiels remplacés par $(b+c)\mid a$ (sens inversé) et
+  $a^2\mid(b+c)$ (sur-généralisation), tous deux avec contre-exemple concret dans le `why`.
+- `divis-008` (Défi) : converti de flash à qcm (HANDOFF §5).
+
+Re-vérifié (gate + relecture aveugle complète des 8 questions, SymPy) après application :
+**PASS**, aucune régression.

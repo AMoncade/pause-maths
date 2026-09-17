@@ -18,3 +18,13 @@ un venv temporaire hors dépôt, supprimé après usage.
 **Verdict global : PASS.** Aucune ambiguïté. Remarque non bloquante de l'agent : 007 et 001
 se recoupent en contenu (cas de base + étape inductive) — acceptable dans un pool de pratique
 avec répétition espacée, gardé tel quel.
+
+## Relecture Opus (docs/reviews/relecture-opus/mat1500.md) — corrections appliquées
+
+- `induc-004` (ÉLEVÉE) : `explanation` corrigée — $0! = 1 = 2^0$ est une égalité (donc l'inégalité
+  $n!\ge2^n$ est VRAIE à $n=0$, pas fausse comme l'affirmait le texte précédent) ; elle est hors
+  de la portée annoncée ($n\ge4$), ce qui reste la bonne raison de rejeter ce cas de base.
+- `induc-008` (Défi) : converti de flash à qcm (HANDOFF §5).
+
+Re-vérifié (gate + relecture aveugle complète des 8 questions, SymPy) après application :
+**PASS**, aucune régression ; valeurs de $n!$ et $2^n$ reconfirmées pour $n=0..4$.

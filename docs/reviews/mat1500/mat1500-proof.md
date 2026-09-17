@@ -16,3 +16,13 @@ de $\sqrt2$) dans un venv temporaire hors dépôt, supprimé après usage.
 | mat1500-proof-008 (flash, défi) | preuve $\sqrt2$ irrationnel | haute | algèbre confirmée par SymPy (`ask(Q.irrational(sqrt(2)))`) | conforme |
 
 **Verdict global : PASS.** Aucune ambiguïté, aucune correction nécessaire.
+
+## Relecture Opus (docs/reviews/relecture-opus/mat1500.md) — corrections appliquées
+
+- `proof-008` (ÉLEVÉE) : `explanation` corrigée — sans pgcd$(p,q)=1$, on peut toujours dériver
+  que $p$ et $q$ sont pairs, mais ce fait cesse d'être une contradiction (l'erreur initiale disait
+  qu'on ne pouvait plus dériver la parité, ce qui est faux). Converti de flash à qcm (HANDOFF §5).
+
+Re-vérifié (gate + relecture aveugle complète des 8 questions, SymPy) après application :
+**PASS**, aucune régression ; les distracteurs de 008 (circularité, confusion $p$/$q$, inversion
+de sens) confirmés chacun faux pour une raison distincte.

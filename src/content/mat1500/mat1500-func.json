@@ -5,12 +5,15 @@
     "topic": "mat1500-func",
     "difficulty": 1,
     "prompt": "Une fonction $f$ est dite injective lorsque...",
-    "explanation": "L'injectivité dit que des entrées distinctes donnent des sorties distinctes : $f(a) = f(b) \\Rightarrow a = b$. C'est différent de la surjectivité, qui parle de couvrir tout le codomaine.",
+    "explanation": "L'injectivité dit que des entrées distinctes donnent des sorties distinctes : $f(a) = f(b) \\Rightarrow a = b$. C'est différent de la surjectivité, qui parle de couvrir tout l'ensemble d'arrivée.",
     "type": "qcm",
     "choices": [
-      { "text": "$f(a) = f(b)$ entraîne $a = b$", "correct": true },
       {
-        "text": "tout élément du codomaine est atteint par $f$",
+        "text": "$f(a) = f(b)$ entraîne $a = b$",
+        "correct": true
+      },
+      {
+        "text": "tout élément de l'ensemble d'arrivée est atteint par $f$",
         "correct": false,
         "why": "C'est la définition de la surjectivité, pas de l'injectivité : ces deux notions sont indépendantes."
       },
@@ -22,7 +25,7 @@
       {
         "text": "$f$ possède une fonction réciproque",
         "correct": false,
-        "why": "Avoir une réciproque exige d'être bijective (injective **et** surjective), pas seulement injective."
+        "why": "Avoir une réciproque exige d'être bijective (injective et surjective), pas seulement injective."
       }
     ]
   },
@@ -31,15 +34,18 @@
     "course": "MAT1500",
     "topic": "mat1500-func",
     "difficulty": 1,
-    "prompt": "Que vaut $\\lfloor -3.2 \\rfloor$ (la fonction plancher) ?",
-    "explanation": "Le plancher donne le plus grand entier **inférieur ou égal** au nombre. Pour un nombre négatif, cela signifie s'éloigner de zéro : $-4 \\le -3.2$, alors que $-3 > -3.2$ ne convient pas. L'erreur classique est de tronquer vers zéro (donnant $-3$) au lieu d'arrondir vers le bas.",
+    "prompt": "Que vaut $\\lfloor -3{,}2 \\rfloor$ (la fonction plancher) ?",
+    "explanation": "Le plancher donne le plus grand entier inférieur ou égal au nombre. Pour un nombre négatif, cela signifie s'éloigner de zéro : $-4 \\le -3{,}2$, alors que $-3 > -3{,}2$ ne convient pas. L'erreur classique est de tronquer vers zéro (donnant $-3$) au lieu d'arrondir vers le bas.",
     "type": "qcm",
     "choices": [
-      { "text": "$-4$", "correct": true },
+      {
+        "text": "$-4$",
+        "correct": true
+      },
       {
         "text": "$-3$",
         "correct": false,
-        "why": "C'est la troncature vers zéro, pas le plancher : $-3 > -3.2$, donc $-3$ n'est pas inférieur ou égal à $-3.2$."
+        "why": "C'est la troncature vers zéro, pas le plancher : $-3 > -3{,}2$, donc $-3$ n'est pas inférieur ou égal à $-3{,}2$."
       },
       {
         "text": "$3$",
@@ -47,9 +53,9 @@
         "why": "Ce résultat ignore le signe négatif du nombre de départ."
       },
       {
-        "text": "$-3.2$",
+        "text": "$-4{,}2$",
         "correct": false,
-        "why": "Le plancher renvoie toujours un entier, jamais le nombre lui-même (sauf s'il était déjà entier)."
+        "why": "On descend bien d'une unité, mais le plancher est toujours un entier : c'est $-4$, pas $-4{,}2$."
       }
     ]
   },
@@ -59,7 +65,7 @@
     "topic": "mat1500-func",
     "difficulty": 2,
     "prompt": "Toute fonction injective est automatiquement bijective.",
-    "explanation": "Faux : être bijective demande d'être à la fois injective **et** surjective. Une fonction peut être injective sans que tout le codomaine soit atteint — par exemple $f : \\mathbb{Z} \\to \\mathbb{Z}$, $f(x) = 2x$ est injective mais n'atteint jamais les nombres impairs, donc pas surjective.",
+    "explanation": "Faux : être bijective demande d'être à la fois injective et surjective. Une fonction peut être injective sans que tout l'ensemble d'arrivée soit atteint — par exemple $f : \\mathbb{Z} \\to \\mathbb{Z}$, $f(x) = 2x$ est injective mais n'atteint jamais les nombres impairs, donc pas surjective.",
     "type": "vf",
     "answer": false
   },
@@ -72,7 +78,10 @@
     "explanation": "$(f \\circ g)(x) = f(g(x))$ : on applique d'abord $g$, puis $f$ sur le résultat. Ici $g(3) = 6$, puis $f(6) = 7$. Confondre l'ordre donnerait $(g \\circ f)(3) = g(4) = 8$, une réponse différente.",
     "type": "qcm",
     "choices": [
-      { "text": "$7$", "correct": true },
+      {
+        "text": "$7$",
+        "correct": true
+      },
       {
         "text": "$8$",
         "correct": false,
@@ -84,9 +93,9 @@
         "why": "C'est seulement $g(3)$ ; il manque l'application de $f$ par-dessus."
       },
       {
-        "text": "$9$",
+        "text": "$10$",
         "correct": false,
-        "why": "Ceci correspondrait à appliquer $g$ deux fois ($g(g(3))$), pas à composer avec $f$."
+        "why": "C'est $f(3)+g(3) = 4+6$ : les deux fonctions ont été additionnées au lieu d'être composées."
       }
     ]
   },
@@ -95,8 +104,8 @@
     "course": "MAT1500",
     "topic": "mat1500-func",
     "difficulty": 2,
-    "prompt": "Soit $f : \\mathbb{Z} \\rightarrow \\mathbb{Z}$ définie par $f(x) = 2x$. $f$ est-elle surjective ?",
-    "explanation": "Non : le codomaine annoncé est $\\mathbb{Z}$ tout entier, mais l'image de $f$ ne contient que les entiers pairs. Un nombre impair comme $3$ n'a aucun antécédent entier, donc $f$ n'atteint pas tout le codomaine.",
+    "prompt": "$f : \\mathbb{Z} \\rightarrow \\mathbb{Z}$, $f(x) = 2x$, est surjective.",
+    "explanation": "Faux : l'ensemble d'arrivée annoncé est $\\mathbb{Z}$ tout entier, mais l'image de $f$ ne contient que les entiers pairs. Un nombre impair comme $3$ n'a aucun antécédent entier, donc $f$ n'atteint pas tout l'ensemble d'arrivée.",
     "type": "vf",
     "answer": false
   },
@@ -105,8 +114,8 @@
     "course": "MAT1500",
     "topic": "mat1500-func",
     "difficulty": 2,
-    "prompt": "Pour une fonction $f : A \\rightarrow B$ quelconque, le codomaine $B$ et l'image (l'ensemble des valeurs réellement atteintes) sont toujours égaux.",
-    "explanation": "Faux en général : le codomaine est l'ensemble d'arrivée déclaré, alors que l'image ne contient que les valeurs effectivement atteintes par $f$. Les deux coïncident exactement quand $f$ est surjective.",
+    "prompt": "Pour une fonction $f : A \\rightarrow B$ quelconque, l'ensemble d'arrivée $B$ et l'image (l'ensemble des valeurs réellement atteintes) sont toujours égaux.",
+    "explanation": "Faux en général : l'ensemble d'arrivée est l'ensemble déclaré pour les valeurs de sortie, alors que l'image ne contient que les valeurs effectivement atteintes par $f$. Les deux coïncident exactement quand $f$ est surjective.",
     "type": "vf",
     "answer": false
   },
@@ -116,11 +125,11 @@
     "topic": "mat1500-func",
     "difficulty": 1,
     "prompt": "En tes propres mots, que signifie « $f : A \\rightarrow B$ est surjective » ?",
-    "explanation": "La surjectivité porte sur la couverture du codomaine, pas sur l'unicité des antécédents (ça, c'est l'injectivité) : chaque $b \\in B$ doit avoir au moins un antécédent, mais peut en avoir plusieurs.",
+    "explanation": "La surjectivité porte sur la couverture de l'ensemble d'arrivée, pas sur l'unicité des antécédents (ça, c'est l'injectivité) : chaque $b \\in B$ doit avoir au moins un antécédent, mais peut en avoir plusieurs.",
     "type": "flash",
-    "answer": "Pour tout $b \\in B$, il existe au moins un $a \\in A$ tel que $f(a) = b$ : chaque élément du codomaine est atteint.",
+    "answer": "Pour tout $b \\in B$, il existe au moins un $a \\in A$ tel que $f(a) = b$ : chaque élément de l'ensemble d'arrivée est atteint.",
     "keyPoints": [
-      "Chaque élément de $B$ a **au moins un** antécédent dans $A$",
+      "Chaque élément de $B$ a au moins un antécédent dans $A$",
       "Ne dit rien sur l'unicité de cet antécédent (à ne pas confondre avec l'injectivité)"
     ]
   },
@@ -129,15 +138,112 @@
     "course": "MAT1500",
     "topic": "mat1500-func",
     "difficulty": 3,
-    "prompt": "Prouve que $f : \\mathbb{R} \\rightarrow \\mathbb{R}$, $f(x) = 2x + 1$, est une bijection.",
+    "prompt": "Dans la preuve que $f(x) = 2x+1$ est bijective sur $\\mathbb{R}$, quelle construction montre correctement la surjectivité ?",
     "explanation": "Une preuve de bijection complète doit établir séparément l'injectivité et la surjectivité ; oublier l'une des deux moitiés est l'erreur la plus fréquente.",
     "challenge": true,
-    "type": "flash",
-    "answer": "$f(x) = 2x + 1$ est bijective sur $\\mathbb{R}$.",
-    "keyPoints": [
-      "Injectivité : $f(a) = f(b) \\Rightarrow 2a+1 = 2b+1 \\Rightarrow a = b$",
-      "Surjectivité : pour tout $y \\in \\mathbb{R}$, poser $x = (y-1)/2 \\in \\mathbb{R}$ donne $f(x) = y$"
+    "type": "qcm",
+    "choices": [
+      { "text": "pour tout $y \\in \\mathbb{R}$, poser $x = (y-1)/2$ ; alors $f(x)=y$", "correct": true },
+      {
+        "text": "pour tout $y \\in \\mathbb{R}$, poser $x = 2y+1$ ; alors $f(x)=y$",
+        "correct": false,
+        "why": "$f(2y+1) = 2(2y+1)+1 = 4y+3 \\ne y$ en général : ceci n'inverse pas correctement $f$."
+      },
+      {
+        "text": "pour tout $y \\in \\mathbb{R}$, poser $x = y-1$ ; alors $f(x)=y$",
+        "correct": false,
+        "why": "$f(y-1) = 2(y-1)+1 = 2y-1 \\ne y$ en général."
+      },
+      {
+        "text": "il suffit de vérifier que $f(0)=1$ et $f(1)=3$",
+        "correct": false,
+        "why": "Vérifier quelques valeurs particulières ne prouve rien pour tout $y \\in \\mathbb{R}$ ; il faut un témoin explicite pour un $y$ arbitraire."
+      }
     ],
     "solution": "**Injectivité.** Supposons $f(a) = f(b)$, c'est-à-dire $2a + 1 = 2b + 1$. En soustrayant 1 puis en divisant par 2, on obtient $a = b$. Donc $f$ est injective.\n\n**Surjectivité.** Soit $y \\in \\mathbb{R}$ quelconque. Posons $x = \\dfrac{y - 1}{2}$, qui est bien un réel. Alors $f(x) = 2 \\cdot \\dfrac{y-1}{2} + 1 = (y - 1) + 1 = y$. Donc tout $y \\in \\mathbb{R}$ a un antécédent : $f$ est surjective.\n\nÉtant injective et surjective, $f$ est bijective."
+  },
+  {
+    "id": "mat1500-func-009",
+    "course": "MAT1500",
+    "topic": "mat1500-func",
+    "difficulty": 2,
+    "prompt": "Que vaut $\\lceil -3{,}2 \\rceil$ (la fonction plafond) ?",
+    "explanation": "Le plafond donne le plus petit entier supérieur ou égal au nombre. Pour $-3{,}2$, le plus petit entier qui convient est $-3$ (puisque $-3 \\ge -3{,}2$), pas $-4$ (qui est plus petit que $-3{,}2$). Confondre plancher et plafond sur un nombre négatif inverse la direction de l'arrondi.",
+    "type": "qcm",
+    "choices": [
+      {
+        "text": "$-3$",
+        "correct": true
+      },
+      {
+        "text": "$-4$",
+        "correct": false,
+        "why": "C'est $\\lfloor -3{,}2 \\rfloor$ (le plancher), pas le plafond : $-4 < -3{,}2$, donc $-4$ ne peut pas être le plus petit entier supérieur ou égal à $-3{,}2$."
+      },
+      {
+        "text": "$3$",
+        "correct": false,
+        "why": "Ce résultat ignore le signe négatif du nombre de départ."
+      },
+      {
+        "text": "$4$",
+        "correct": false,
+        "why": "Ni le plancher ni le plafond de $-3{,}2$ ne peuvent être positifs : les deux arrondis restent proches de $-3{,}2$."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-func-010",
+    "course": "MAT1500",
+    "topic": "mat1500-func",
+    "difficulty": 1,
+    "prompt": "Une fonction $f : A \\rightarrow B$ possède une fonction réciproque $f^{-1} : B \\rightarrow A$ si et seulement si $f$ est bijective.",
+    "explanation": "Vrai : l'injectivité seule garantit une réciproque définie sur l'image de $f$, mais pour qu'elle soit définie sur tout $B$ (comme l'exige $f^{-1} : B \\rightarrow A$), il faut aussi la surjectivité — donc la bijectivité complète.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1500-func-011",
+    "course": "MAT1500",
+    "topic": "mat1500-func",
+    "difficulty": 2,
+    "prompt": "Soit $f(x) = x^2$ et $A = \\{-2, -1, 0, 1, 2\\}$. Quel est l'ensemble image $f(A)$ ?",
+    "explanation": "L'image d'un ensemble est elle-même un ensemble : les valeurs répétées ne comptent qu'une fois. Ici $f(-2)=f(2)=4$ et $f(-1)=f(1)=1$, donc $f(A) = \\{0, 1, 4\\}$ (3 éléments), pas 5, même si $A$ en a 5.",
+    "type": "qcm",
+    "choices": [
+      {
+        "text": "$\\{0, 1, 4\\}$",
+        "correct": true
+      },
+      {
+        "text": "$(4, 1, 0, 1, 4)$ — la liste des valeurs sans les fusionner",
+        "correct": false,
+        "why": "L'image d'un ensemble est elle-même un ensemble : les doublons $4$ et $1$ doivent être fusionnés, donnant $\\{0,1,4\\}$, pas gardés comme une liste ordonnée."
+      },
+      {
+        "text": "$\\{-2,-1,0,1,2\\}$",
+        "correct": false,
+        "why": "Ceci est l'ensemble de départ $A$ lui-même, pas son image par $f$ ; il faut appliquer $f$ à chaque élément."
+      },
+      {
+        "text": "$\\{0, 1, 2, 4\\}$",
+        "correct": false,
+        "why": "$2$ n'est image d'aucun élément de $A$ par $f(x)=x^2$ (il faudrait $x = \\sqrt{2} \\notin A$) ; seuls $0, 1, 4$ sont effectivement atteints."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-func-012",
+    "course": "MAT1500",
+    "topic": "mat1500-func",
+    "difficulty": 2,
+    "prompt": "Explique pourquoi une fonction strictement croissante sur $\\mathbb{R}$ est toujours injective.",
+    "explanation": "Le lien entre monotonie stricte et injectivité est un argument standard : la stricte croissance empêche deux entrées distinctes de partager la même sortie, car l'une des deux devrait forcément dépasser l'autre.",
+    "type": "flash",
+    "answer": "Si $a \\ne b$, disons $a < b$ sans perte de généralité, alors la stricte croissance donne $f(a) < f(b)$, donc $f(a) \\ne f(b)$. Ainsi des entrées distinctes ont toujours des sorties distinctes : $f$ est injective.",
+    "keyPoints": [
+      "$a \\ne b \\Rightarrow$ (sans perte de généralité) $a < b \\Rightarrow f(a) < f(b) \\Rightarrow f(a) \\ne f(b)$",
+      "La stricte inégalité est essentielle : une fonction seulement croissante (non stricte) peut être constante sur un intervalle et perdre l'injectivité"
+    ]
   }
 ]

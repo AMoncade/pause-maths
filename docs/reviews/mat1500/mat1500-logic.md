@@ -24,3 +24,17 @@ dépôt, supprimé après usage. Trois passes de relecture : 001-005 (jalon 1), 
 passe : parenthèses explicites ajoutées au choix D de `mat1500-logic-009` pour éviter toute
 dépendance à la priorité des opérateurs (le choix restait faux, seule la lisibilité était en
 cause).
+
+## Relecture Opus (docs/reviews/relecture-opus/mat1500.md) — corrections appliquées
+
+- `logic-001` : `why` du distracteur $p\vee\neg q$ précisé ($\equiv q\to p$, la réciproque).
+- `logic-004` : distracteur « ni $p$ ni $q$ » remplacé par « $p$ et $q$ sont tous les deux vrais ».
+- `logic-005` (Défi) : converti de flash à qcm (HANDOFF §5 : Défi = 4 choix + solution).
+  `explanation` réécrite pour refléter les distracteurs qcm (relu par sous-agent, corrigé après
+  un reliquat détecté).
+- `logic-009` : parenthèses explicites ajoutées au choix D (clarté, pas de correction
+  mathématique).
+- `**gras**` retiré partout hors `solution` (MathText n'interprète pas le Markdown hors formule).
+
+Re-vérifié (gate + relecture aveugle complète des 12 questions, SymPy) après application :
+**PASS**, aucune régression.
