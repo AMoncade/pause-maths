@@ -130,7 +130,7 @@
     "course": "MAT1400",
     "topic": "mat1400-grad",
     "difficulty": 2,
-    "prompt": "La dérivée directionnelle de $f$ en direction faisant un angle de $60°$ avec $\\nabla f$ (avec $\\|\\nabla f\\|=4$) vaut...",
+    "prompt": "La dérivée directionnelle de $f$ dans une direction faisant un angle de $60°$ avec $\\nabla f$ (avec $\\|\\nabla f\\|=4$) vaut...",
     "explanation": "$D_{\\hat u}f=\\|\\nabla f\\|\\cos\\theta=4\\cos60°=4(1/2)=2$.",
     "type": "qcm",
     "choices": [
