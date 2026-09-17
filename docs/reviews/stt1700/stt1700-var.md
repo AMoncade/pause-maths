@@ -109,3 +109,21 @@ prescrit explicitement de réessayer une fois puis de faire le travail soi-même
 timeout — suivi ici. Conséquence : pas de mesure de taux gardé/produit pour ce jalon (rien
 produit par agy à mesurer) ; toutes les 12 questions et leurs distracteurs ont été vérifiés
 en fractions exactes avant l'import, comme pour un brouillon agy.
+
+## Jalon 4 (densification, 5 questions : 013-017)
+
+Brouillon via `agy`, un seul essai, succès en 79 s (voir `docs/reviews/stt1700/stt1700-descr.md`
+pour la méthode complète) — contrairement au jalon 3, où le même modèle avait expiré deux fois
+de suite sur une tâche de rédaction équivalente ; hypothèse retenue : donner à `agy` les bonnes
+réponses déjà calculées (au lieu de lui demander de les dériver) réduit le travail de
+raisonnement et le risque de timeout d'impression. Contenu ciblé : $E(X)=np$ pour la binomiale
+isolé de sa variance, évaluation numérique de $F(x)$, combinaison linéaire à 3 variables
+indépendantes (au lieu de 2 aux jalons précédents), contrainte de somme à 1 de la loi
+multinomiale, fonction de masse binomiale comme formule. Les 3 bonnes réponses numériques
+vérifiées en fractions exactes : `var-013` ($12\times0{,}3=3{,}6$), `var-014`
+($0{,}2+0{,}5=0{,}7$), `var-015` ($1^2\times2+(-2)^2\times5+3^2\times1=31$) — 0 erreur.
+
+Gate (`npm test`, `npm run build`) : 0 erreur. Relecture aveugle via `scripts/blind-review.ts`
+(seed 21164, même passage que `stt1700-descr` et `stt1700-prob`, 14 questions au total) : les 5
+de ce thème toutes confirmées, confiance 5/5, aucun désaccord, aucune question signalée
+ambiguë.

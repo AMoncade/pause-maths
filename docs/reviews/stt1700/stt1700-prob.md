@@ -110,3 +110,19 @@ au jalon 1 : le prompt donné à `agy` cette fois listait explicitement le conte
 (axiomes, formules, pièges attendus) au lieu de laisser `agy` dériver ce contenu seul depuis
 le PDF brut, et demandait une distribution de types/difficulté précise dès le départ — mais
 avec un échantillon de 2 jalons, ce n'est pas encore une conclusion établie.
+
+## Jalon 4 (densification, 5 questions : 013-017)
+
+Brouillon via `agy` (Antigravity CLI, `claude-opus-4-6-thinking`, un seul essai, 79 s,
+succès — voir `docs/reviews/stt1700/stt1700-descr.md` pour le détail de la méthode et la
+seule correction faite avant import, sur une question de `stt1700-descr`). Contenu ciblé :
+axiomes de Kolmogorov ($\Pr(\emptyset)=0$), complément ($\Pr(A^c)=1-\Pr(A)$), règle de
+multiplication, monotonie ($A\subseteq B\Rightarrow\Pr(A)\le\Pr(B)$), indépendance
+mutuelle à 3 événements — tous absents des 12 questions des jalons 1-2. Les 2 bonnes
+réponses numériques vérifiées en fractions exactes : `prob-014` ($1-0{,}35=0{,}65$),
+`prob-017` ($0{,}5\times0{,}4\times0{,}25=0{,}05$) — 0 erreur.
+
+Gate (`npm test`, `npm run build`) : 0 erreur. Relecture aveugle via
+`scripts/blind-review.ts` (seed 21164, même passage que `stt1700-descr` et `stt1700-var`,
+14 questions au total) : les 5 de ce thème toutes confirmées, confiance 5/5, aucun
+désaccord, aucune question signalée ambiguë.

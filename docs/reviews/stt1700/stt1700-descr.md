@@ -119,3 +119,22 @@ incohérence interne entre un texte et son chiffre). Sans le script de vérifica
 règle ne vérifie qu'une covariance correspond à des données données en exemple) et
 n'aurait été détectée qu'à la relecture aveugle humaine — plus tard et à plus grand
 risque de publication.
+
+## Jalon 4 (densification, 4 questions : 011-014)
+
+Brouillon via `agy` (Antigravity CLI, `claude-opus-4-6-thinking`), premier essai réussi
+en 79 s (contrairement au jalon 3 où deux essais sur `stt1700-var` avaient expiré) — le
+prompt donnait cette fois les réponses correctes déjà calculées et demandait seulement le
+formatage JSON + l'invention des distracteurs/`why`, ce qui a probablement réduit le risque
+de timeout. Une erreur trouvée avant l'import : le distracteur `$24$` de `descr-014` (censé
+représenter $b\times s_x\times s_y$) était arithmétiquement faux ($2\times3\times8=48$, pas
+$24$) et le champ `why` généré par `agy` admettait lui-même l'incohérence ("...= 48$… ou
+plutôt $24$...") — corrigé en `$48$` avant le gate. Les 4 bonnes réponses vérifiées en
+fractions exactes (Python, hors dépôt) : `descr-012` ($s_y=|-2|\times6=12$), `descr-014`
+($r_{xy}=2\times3/8=0{,}75$) — 0 autre erreur.
+
+Gate (`npm test`, `npm run build`) : 0 erreur. Relecture aveugle via
+`scripts/blind-review.ts` (seed 21164, clé dans le scratchpad de session, jamais montrée au
+relecteur), sous-agent **Haiku** frais sur les 14 nouvelles questions (descr+prob+var
+ensemble, un seul passage) : les 4 de ce thème toutes confirmées, confiance 5/5, aucun
+désaccord, aucune question signalée ambiguë.
