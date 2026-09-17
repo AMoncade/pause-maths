@@ -2,6 +2,18 @@
 
 Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute la sienne dans son worktree ; l'admin fusionne.
 
+## 2026-09-17 — MAT1600 (tour 2) : vérification contre le vrai matériel StudiUM (lot mat1600)
+
+- Brief `docs/regie/briefs/tour2-mat1600-verif.md`. `D:\Math\MAT1600` (lecture seule) comparé aux 101 questions et à `src/content/mat1600/index.ts`. Détail complet : `docs/sources/mat1600.md`, `docs/reviews/mat1600/verification-studium.md`.
+- **Calendrier** : intra le 16 octobre couvre officiellement 4 thèmes (systèmes linéaires, matrices/déterminants, espaces vectoriels, **transformations linéaires**) — matière citée mot pour mot sur la page StudiUM. `mat1600-det` avait `defaultOn: false` alors que sa théorie (séance 3, 14 sept) avait déjà eu lieu au 17 sept : corrigé à `true`.
+- **Thème manquant trouvé et ajouté** : « Transformations linéaires » (séance 5) est un des 4 thèmes officiels de l'intra et n'existait ni comme thème ni comme question. Ajouté `mat1600-trans` (`exam: 'intra'`, 8 questions).
+- **15/20 questions `mat1600-esp` étaient hors intra** (dimension, base, rang — matière de séance 6-7, après le 16 octobre) alors que classées `intra` (badge trompeur pour une révision ciblée). Déplacées vers un nouveau thème `mat1600-dim` (« Bases, dimension et rang », `exam: 'final'`) ; 15 ids à retirer listés dans le rapport de review (fichier admin `src/content/retired-ids.json`, pas modifié ici).
+- **Notation corrigée** (coquille, id conservé pour ce qui reste en `mat1600-esp`) : le cours utilise `Ker(A)`/`Im(A)`, jamais `Nul(A)`/`Col(A)` du manuel Lay — confirmé sur les diapos de séance 4 et 5. Corrigé partout où l'ancienne notation apparaissait.
+- **Gap réel comblé** : factorisation LU + matrices élémentaires (séance 2, 2 suppléments PDF dédiés, exercices numérotés) n'avaient 0 question → ajouté 3 (`mat1600-matr-021` à `-023`). +3 sur `mat1600-esp` (séance 4, sous-espace/Ker/Im, pas dimension) pour respecter le minimum de 8 questions/thème intra (`tests/bank-stats.test.ts`, déclenché car la banque dépasse 40 questions intra).
+- Relecture aveugle des 14 nouvelles questions (`scripts/blind-review.ts`, seed 7, clé jamais montrée) par un sous-agent **Haiku** frais : 14/14 confirmées, 0 désaccord.
+- `mat1600-esp` renommé « Espaces vectoriels, noyau et image » (les notes réelles de séance 4 ne couvrent ni base ni dimension) ; ordre pédagogique de la liste des thèmes corrigé (orthogonalité avant diagonalisation).
+- **Compte mesuré : 101 → 115 questions MAT1600** (+14, 0 retirée). `npm test` : 363 tests verts, `npm run build` : OK.
+
 ## 2026-09-17 — STT1700 : thèmes dérivés du matériel, jalon 1 (10 questions `stt1700-descr`) (lot stt1700)
 
 - `D:\Math\STT1700` est rempli (lot A) : lu `01 Plan de cours/StudiUM - structure STT1700-A-A26.md` (contient le calendrier semaine par semaine, pas seulement le plan PDF manquant), `INDEX.md`, et les PDF des sections 1-3 (`02 Notes de cours/`). **Matière de l'intra 1 (7 octobre) confirmée par le matériel, pas une hypothèse** : sections 1 (statistique descriptive), 2 (probabilités), 3 (variables aléatoires discrètes) — section 4 (lois continues) commence la semaine suivant l'intra. Détail dans `docs/sources/stt1700.md`.

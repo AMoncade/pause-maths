@@ -1,0 +1,114 @@
+[
+  {
+    "id": "mat1600-trans-001",
+    "course": "MAT1600",
+    "topic": "mat1600-trans",
+    "difficulty": 1,
+    "prompt": "Laquelle de ces applications $T:\\mathbb R^2\\to\\mathbb R$ est une transformation linéaire ?",
+    "explanation": "Le piège classique : un terme constant ou un produit/carré de variables brise la linéarité, même quand l'expression semble simple.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$T(x,y)=3x-2y$", "correct": true },
+      { "text": "$T(x,y)=x+y+1$", "correct": false, "why": "Le terme constant $+1$ brise $T(0,0)=0$ (on obtient $1$) : toute transformation linéaire doit envoyer $(0,0)$ sur $0$." },
+      { "text": "$T(x,y)=xy$", "correct": false, "why": "Le produit $xy$ n'est pas préservé par l'addition : $T(u+v)\\ne T(u)+T(v)$ en général, à cause du terme croisé." },
+      { "text": "$T(x,y)=x^2+y$", "correct": false, "why": "Le terme $x^2$ n'est pas linéaire en $x$ : $T(2u)\\ne2T(u)$ en général à cause du carré." }
+    ]
+  },
+  {
+    "id": "mat1600-trans-002",
+    "course": "MAT1600",
+    "topic": "mat1600-trans",
+    "difficulty": 1,
+    "prompt": "Toute transformation linéaire $T:V\\to W$ vérifie $T(0_V)=0_W$.",
+    "explanation": "Vrai : $T(0_V)=T(0\\cdot0_V)=0\\cdot T(0_V)=0_W$ découle directement de la propriété $T(cu)=cT(u)$, ce n'est pas une condition à vérifier séparément.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1600-trans-003",
+    "course": "MAT1600",
+    "topic": "mat1600-trans",
+    "difficulty": 2,
+    "prompt": "Soit $T:\\mathbb R^2\\to\\mathbb R^2$ définie par $T(x,y)=(2x+3y,\\,x-y)$. Quelle est la matrice canonique de $T$ ?",
+    "explanation": "La ligne $i$ de la matrice canonique contient les coefficients de la $i$-ème composante de $T(x,y)$ : le piège est d'inverser lignes et colonnes, ou de perdre un signe en recopiant.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$\\begin{pmatrix}2&3\\\\1&-1\\end{pmatrix}$", "correct": true },
+      { "text": "$\\begin{pmatrix}2&1\\\\3&-1\\end{pmatrix}$", "correct": false, "why": "Ceci transpose la matrice attendue : la première ligne doit contenir les coefficients de la première composante $2x+3y$, pas une colonne." },
+      { "text": "$\\begin{pmatrix}2&3\\\\1&1\\end{pmatrix}$", "correct": false, "why": "Erreur de signe sur la deuxième ligne : la deuxième composante est $x-y$, donc le coefficient de $y$ est $-1$, pas $1$." },
+      { "text": "$\\begin{pmatrix}3&2\\\\-1&1\\end{pmatrix}$", "correct": false, "why": "Les coefficients de chaque ligne sont inversés et un signe est changé : la première ligne doit être $(2,3)$ dans cet ordre, pas $(3,2)$." }
+    ]
+  },
+  {
+    "id": "mat1600-trans-004",
+    "course": "MAT1600",
+    "topic": "mat1600-trans",
+    "difficulty": 2,
+    "prompt": "Si $T:\\mathbb R^3\\to\\mathbb R^2$ est linéaire et $\\text{Ker}(T)=\\{(t,-t,0): t\\in\\mathbb R\\}$, $T$ est-elle injective ?",
+    "explanation": "Le théorème central est : $T$ injective $\\iff$ $\\text{Ker}(T)=\\{0\\}$. Le piège est de confondre « préserver le vecteur nul » (toujours vrai) avec « n'avoir que le vecteur nul dans le noyau » (la vraie condition d'injectivité).",
+    "type": "qcm",
+    "choices": [
+      { "text": "Non : $\\text{Ker}(T)$ contient des vecteurs non nuls, comme $(1,-1,0)$", "correct": true },
+      { "text": "Oui, car $T(0,0,0)=(0,0)$", "correct": false, "why": "Préserver le vecteur nul est vrai pour TOUTE transformation linéaire ; ça ne dit rien sur l'injectivité, qui exige que $\\text{Ker}(T)$ ne contienne AUCUN autre vecteur." },
+      { "text": "On ne peut pas savoir sans connaître $\\text{Im}(T)$", "correct": false, "why": "L'injectivité se lit entièrement sur $\\text{Ker}(T)$, sans avoir besoin de $\\text{Im}(T)$." },
+      { "text": "Oui, car $\\text{Ker}(T)$ est un sous-espace vectoriel", "correct": false, "why": "$\\text{Ker}(T)$ est toujours un sous-espace vectoriel, injective ou pas : ce fait seul ne permet aucune conclusion sur l'injectivité." }
+    ]
+  },
+  {
+    "id": "mat1600-trans-005",
+    "course": "MAT1600",
+    "topic": "mat1600-trans",
+    "difficulty": 2,
+    "prompt": "Que signifie que $T:V\\to W$ est surjective ?",
+    "explanation": "Le piège est de confondre surjectivité (tout vecteur de $W$ est atteint) et injectivité (chaque vecteur atteint l'est par un seul antécédent) : ce sont deux conditions indépendantes.",
+    "type": "flash",
+    "answer": "Tout vecteur de $W$ est l'image d'au moins un vecteur de $V$, c'est-à-dire $\\text{Im}(T)=W$.",
+    "keyPoints": [
+      "Équivalent à $\\text{Im}(T)=W$ en entier, pas seulement une partie de $W$",
+      "Ne dit rien sur l'unicité de l'antécédent, contrairement à l'injectivité",
+      "Pour $T:\\mathbb R^n\\to\\mathbb R^m$ donnée par $T(u)=Au$ : équivaut à dire que les colonnes de $A$ engendrent $\\mathbb R^m$"
+    ]
+  },
+  {
+    "id": "mat1600-trans-006",
+    "course": "MAT1600",
+    "topic": "mat1600-trans",
+    "difficulty": 3,
+    "challenge": true,
+    "solution": "1) La matrice canonique est $A=\\begin{pmatrix}1&2\\\\2&4\\end{pmatrix}$, car $T(x,y)=(x+2y,\\,2x+4y)=A\\begin{pmatrix}x\\\\y\\end{pmatrix}$.\n\n2) $\\text{Ker}(T)=\\text{Ker}(A)$ : résoudre $x+2y=0$ (la deuxième équation $2x+4y=0$ est exactement le double de la première, donc redondante).\n\n3) $x=-2y$ avec $y$ libre, donc $\\text{Ker}(T)=\\{(-2t,t): t\\in\\mathbb R\\}$, qui contient des vecteurs non nuls (par exemple $t=1$ donne $(-2,1)$).\n\n4) $\\text{Ker}(T)\\ne\\{(0,0)\\}$ $\\Rightarrow$ $T$ n'est pas injective $\\Rightarrow$ $T$ n'est pas un isomorphisme, peu importe la surjectivité.",
+    "prompt": "Soit $T:\\mathbb R^2\\to\\mathbb R^2$, $T(x,y)=(x+2y,\\,2x+4y)$. $T$ est-elle un isomorphisme ?",
+    "explanation": "Le piège est d'appliquer la mauvaise conclusion sur le déterminant nul, ou de vérifier seulement que $T(0,0)=(0,0)$ sans chercher si $\\text{Ker}(T)$ contient d'autres vecteurs.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Non : $\\text{Ker}(T)\\ne\\{(0,0)\\}$, par exemple $T(-2,1)=(0,0)$", "correct": true },
+      { "text": "Oui, car $T(0,0)=(0,0)$", "correct": false, "why": "Préserver le vecteur nul est nécessaire mais pas suffisant pour l'injectivité : il faut qu'AUCUN autre vecteur n'aille sur $0$, ce qui échoue ici." },
+      { "text": "Oui, car $\\det(A)=1\\times4-2\\times2=0$ signifie que $T$ est bijective", "correct": false, "why": "C'est l'inverse : $\\det(A)=0$ signifie que $A$ n'est PAS inversible, donc $T$ n'est PAS bijective — pas le contraire." },
+      { "text": "On ne peut pas savoir sans connaître $\\text{Im}(T)$", "correct": false, "why": "Le calcul de $\\text{Ker}(T)$ suffit déjà à conclure que $T$ n'est pas injective, donc pas un isomorphisme, sans avoir besoin de $\\text{Im}(T)$." }
+    ]
+  },
+  {
+    "id": "mat1600-trans-007",
+    "course": "MAT1600",
+    "topic": "mat1600-trans",
+    "difficulty": 1,
+    "prompt": "$T:\\mathbb R^2\\to\\mathbb R^2$ définie par $T(x,y)=(2x-y,\\,x+3y)$ est une transformation linéaire.",
+    "explanation": "Vrai : chaque composante est une combinaison linéaire pure de $x$ et $y$, sans terme constant ni produit de variables — le test rapide de linéarité pour une formule polynomiale simple.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1600-trans-008",
+    "course": "MAT1600",
+    "topic": "mat1600-trans",
+    "difficulty": 2,
+    "prompt": "Soit $A$ la matrice canonique d'une transformation linéaire $T:\\mathbb R^3\\to\\mathbb R^2$. Quelle est la taille de $A$ ?",
+    "explanation": "Le piège classique est d'inverser les deux dimensions : les lignes de $A$ correspondent à l'espace d'ARRIVÉE (le nombre de composantes de $T(u)$), les colonnes à l'espace de DÉPART (le nombre de variables de $u$).",
+    "type": "qcm",
+    "choices": [
+      { "text": "$2\\times3$", "correct": true },
+      { "text": "$3\\times2$", "correct": false, "why": "Les dimensions sont inversées : les lignes viennent de l'espace d'arrivée ($\\mathbb R^2$), les colonnes de l'espace de départ ($\\mathbb R^3$)." },
+      { "text": "$3\\times3$", "correct": false, "why": "Ceci utilise deux fois la dimension de l'espace de départ, en oubliant que l'espace d'arrivée est $\\mathbb R^2$, pas $\\mathbb R^3$." },
+      { "text": "$2\\times2$", "correct": false, "why": "Ceci utilise deux fois la dimension de l'espace d'arrivée, en oubliant que l'espace de départ est $\\mathbb R^3$, pas $\\mathbb R^2$." }
+    ]
+  }
+]

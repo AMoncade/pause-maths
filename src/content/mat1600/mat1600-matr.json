@@ -277,5 +277,50 @@
       "La trace n'est définie que pour une matrice carrée",
       "$\\text{tr}(A)$ ne dépend que des entrées diagonales, jamais des entrées hors diagonale"
     ]
+  },
+  {
+    "id": "mat1600-matr-021",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 1,
+    "prompt": "Dans la factorisation $A=LU$ d'une matrice carrée, quelle propriété caractérise $L$ ?",
+    "explanation": "Le piège est de confondre $L$ et $U$, ou d'oublier la condition sur la diagonale de $L$ (des $1$, pas n'importe quelle valeur).",
+    "type": "qcm",
+    "choices": [
+      { "text": "Triangulaire inférieure avec des $1$ sur la diagonale", "correct": true },
+      { "text": "Triangulaire supérieure avec des $1$ sur la diagonale", "correct": false, "why": "C'est la description de $U$ inversée : $U$ est triangulaire supérieure (mais sans condition de $1$ sur sa diagonale), $L$ est triangulaire inférieure." },
+      { "text": "Triangulaire inférieure, sans condition particulière sur la diagonale", "correct": false, "why": "La condition des $1$ sur la diagonale de $L$ est essentielle : sans elle, la factorisation $A=LU$ ne serait pas unique." },
+      { "text": "La matrice identité", "correct": false, "why": "$L$ est triangulaire inférieure avec des $1$ sur la diagonale, mais elle a en général des entrées non nulles sous la diagonale — ce n'est pas l'identité." }
+    ]
+  },
+  {
+    "id": "mat1600-matr-022",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 2,
+    "prompt": "Pour éliminer l'entrée $(2,1)$ de $A=\\begin{pmatrix}3&1\\\\6&4\\end{pmatrix}$ par la méthode de factorisation LU, quel multiplicateur $m_{21}$ utilise-t-on ?",
+    "explanation": "$m_{21}=a_{21}/a_{11}$ : le piège classique est d'inverser ce rapport, ou d'oublier carrément la division par le pivot $a_{11}$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$2$", "correct": true },
+      { "text": "$\\tfrac12$", "correct": false, "why": "C'est le rapport inversé $a_{11}/a_{21}=3/6$ : la formule est $m_{21}=a_{21}/a_{11}$, pas son inverse." },
+      { "text": "$3$", "correct": false, "why": "C'est $a_{11}$ seul, sans diviser par lui : $m_{21}$ est un rapport, pas une entrée de $A$ prise directement." },
+      { "text": "$6$", "correct": false, "why": "C'est $a_{21}$ seul, sans diviser par $a_{11}$ : il manque la division $6/3=2$." }
+    ]
+  },
+  {
+    "id": "mat1600-matr-023",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 1,
+    "prompt": "Que représente une matrice élémentaire $E$ associée à une opération sur les lignes ?",
+    "explanation": "Le piège est de croire qu'une matrice élémentaire est une notion abstraite séparée des opérations sur les lignes déjà connues : c'est exactement la même opération, appliquée à $I$ puis reportée par multiplication.",
+    "type": "flash",
+    "answer": "C'est la matrice obtenue en appliquant cette opération élémentaire à la matrice identité $I$ ; multiplier $A$ à gauche par $E$ (c.-à-d. $EA$) applique la même opération à $A$.",
+    "keyPoints": [
+      "Chaque opération élémentaire (échange, multiplication par un scalaire non nul, addition d'un multiple d'une ligne à une autre) a sa propre matrice élémentaire",
+      "L'inverse d'une matrice élémentaire est elle-même une matrice élémentaire (celle qui annule l'opération)",
+      "La factorisation LU s'obtient en accumulant les inverses des matrices élémentaires utilisées pour échelonner $A$"
+    ]
   }
 ]
