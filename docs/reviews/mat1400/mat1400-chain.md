@@ -19,3 +19,5 @@ implicite). Verdicts comparés à la clé : accord total (8/8).
 Aucune correction ni retrait.
 
 **Suite à la relecture Opus** (`docs/reviews/relecture-opus/mat1400.md`) : chain-002 précise maintenant $z=f(x,y)$ ; chain-007 reformulé pour ne plus télégraphier la réponse ; chain-001 utilise $z_x,z_y$ au lieu de $f_x,f_y$ (pas de $f$ défini dans l'énoncé) ; chain-003, chain-004 ont une phrase "Le piège : …" ajoutée. Aucun changement de réponse ni de structure de choix, pas de nouvelle relecture aveugle nécessaire. Voir `reponse-relecture-opus.md`.
+
+**Ronde 2** (moyenne) : chain-010, le `why` du distracteur $\cos(1)$ était contradictoire (oublier le facteur $2t$ donne $2\cos(1)$, pas $\cos(1)$) ; corrigé pour dire que c'est le terme ENTIER $z_y\cdot dy/dt$ qui a été oublié. chain-011 : précise que $f(0,0)=0$ est posé par convention dans le contre-exemple $xy/(x^2+y^2)$. Réponses inchangées, pas de nouvelle relecture aveugle nécessaire.
