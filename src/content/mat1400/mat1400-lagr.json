@@ -4,29 +4,14 @@
     "course": "MAT1400",
     "topic": "mat1400-lagr",
     "difficulty": 2,
-    "prompt": "Pour maximiser $f(x,y)=xy$ sous la contrainte $x+y=10$, le système $\\nabla f=\\lambda\\nabla g$ donne...",
-    "explanation": "$\\nabla f=(y,x)$ et $\\nabla g=(1,1)$, donc $y=\\lambda$ et $x=\\lambda$, ce qui force $x=y$.",
-    "type": "qcm",
-    "choices": [
-      { "text": "$y=\\lambda,\\ x=\\lambda$ (donc $x=y$)", "correct": true },
-      { "text": "$y=\\lambda x,\\ x=\\lambda y$", "correct": false, "why": "Le gradient de $g(x,y)=x+y$ est $(1,1)$, pas $(y,x)$ : cette version mélange $\\nabla f$ et $\\nabla g$." },
-      { "text": "$x=\\lambda,\\ y=\\lambda$ avec $x\\ne y$ nécessairement", "correct": false, "why": "Le système impose justement $x=y$ (les deux égalent $\\lambda$) : conclure $x\\ne y$ contredit directement les équations." },
-      { "text": "$xy=\\lambda(x+y)$", "correct": false, "why": "Les deux équations du système ($f_x=\\lambda g_x$ et $f_y=\\lambda g_y$) ont été combinées en une seule au lieu d'être traitées séparément." }
-    ]
-  },
-  {
-    "id": "mat1400-lagr-002",
-    "course": "MAT1400",
-    "topic": "mat1400-lagr",
-    "difficulty": 2,
-    "prompt": "Avec $x=y=5$ (issu du système de Lagrange), la valeur maximale de $f(x,y)=xy$ sous $x+y=10$ est...",
-    "explanation": "$f(5,5)=5\\times5=25$.",
+    "prompt": "Quelle est la valeur maximale de $f(x,y)=xy$ sous la contrainte $x+y=10$ ?",
+    "explanation": "Le système $\\nabla f=\\lambda\\nabla g$ donne $y=\\lambda$, $x=\\lambda$ (car $\\nabla f=(y,x)$, $\\nabla g=(1,1)$), donc $x=y$. Avec $x+y=10$ : $x=y=5$. La valeur maximale est $f(5,5)=5\\times5=25$. Comme $x+y=10$ est une droite non bornée, ce point critique donne directement le maximum absolu, sans frontière à vérifier.",
     "type": "qcm",
     "choices": [
       { "text": "$25$", "correct": true },
       { "text": "$10$", "correct": false, "why": "C'est la valeur de la contrainte $x+y$, pas de $f(x,y)=xy$." },
-      { "text": "$50$", "correct": false, "why": "Le produit $5\\times5=25$ a été doublé par erreur (confusion possible avec $2xy$)." },
-      { "text": "$5$", "correct": false, "why": "C'est la valeur de $x$ (ou de $y$) seule, pas le produit $xy$." }
+      { "text": "$50$", "correct": false, "why": "Le produit $5\\times5=25$ a été doublé par erreur." },
+      { "text": "$0$", "correct": false, "why": "Suppose à tort qu'il faut vérifier une frontière (comme $x=0$ ou $y=0$) ; ici $x+y=10$ est une droite non bornée, sans frontière à examiner séparément." }
     ]
   },
   {
@@ -73,8 +58,8 @@
     "course": "MAT1400",
     "topic": "mat1400-lagr",
     "difficulty": 2,
-    "prompt": "Pour minimiser $f(x,y)=x^2+y^2$ sous $xy=1$, le système de Lagrange mène à $y=\\pm x$, puis avec $xy=1$ on trouve $(1,1)$ ou $(-1,-1)$. La valeur minimale de $f$ à ces points est...",
-    "explanation": "$f(1,1)=1^2+1^2=2$ (et $f(-1,-1)=2$ aussi, par symétrie).",
+    "prompt": "Quelle est la valeur MINIMALE de $f(x,y)=x^2+y^2$ sous la contrainte $xy=1$ ?",
+    "explanation": "$\\nabla f=(2x,2y)=\\lambda(y,x)$ donne $2x=\\lambda y$, $2y=\\lambda x$. En multipliant : $4xy=\\lambda^2xy$, et comme $xy=1\\ne0$, $\\lambda^2=4$. Pour $\\lambda=2$ : $x=y$, et $xy=1\\Rightarrow x=y=\\pm1$. Pour $\\lambda=-2$ : $x=-y$, et $xy=1\\Rightarrow-x^2=1$, aucune solution réelle. Les candidats sont $(1,1)$ et $(-1,-1)$, tous deux avec $f=1^2+1^2=2$.",
     "type": "qcm",
     "choices": [
       { "text": "$2$", "correct": true },
@@ -130,28 +115,44 @@
     "course": "MAT1400",
     "topic": "mat1400-lagr",
     "difficulty": 2,
-    "prompt": "Pour maximiser $f(x,y,z)=xyz$ sous $x+y+z=12$ (avec $x,y,z>0$), le système $\\nabla f=\\lambda\\nabla g$ donne...",
-    "explanation": "$\\nabla f=(yz,xz,xy)$, $\\nabla g=(1,1,1)$, donc $yz=xz=xy=\\lambda$. Puisque $x,y,z>0$ : de $yz=xz$ on tire $y=x$ ; de $xz=xy$ on tire $z=y$. Donc $x=y=z$.",
+    "prompt": "Quelle est la valeur maximale de $f(x,y,z)=xyz$ sous la contrainte $x+y+z=12$ (avec $x,y,z>0$) ?",
+    "explanation": "Le système $\\nabla f=\\lambda\\nabla g$ donne $yz=xz=xy$ (car $\\nabla f=(yz,xz,xy)$, $\\nabla g=(1,1,1)$), ce qui force $x=y=z$ (puisque $x,y,z>0$). Avec $x+y+z=12$ : $x=y=z=4$. La valeur maximale est $f(4,4,4)=4\\times4\\times4=64$.",
     "type": "qcm",
     "choices": [
-      { "text": "$yz=xz=xy$, ce qui force $x=y=z$", "correct": true },
-      { "text": "$y=x,\\ z=x$, mais seulement si $\\lambda=0$", "correct": false, "why": "L'égalité $x=y=z$ découle du fait que $x,y,z\\ne0$ (donné), pas d'une condition sur la valeur de $\\lambda$." },
-      { "text": "$x+y+z=\\lambda$", "correct": false, "why": "C'est la contrainte elle-même, pas une équation du système $\\nabla f=\\lambda\\nabla g$." },
-      { "text": "$xyz=\\lambda(x+y+z)$", "correct": false, "why": "Les trois équations composantes du système ont été multipliées entre elles au lieu d'être comparées terme à terme." }
+      { "text": "$64$", "correct": true },
+      { "text": "$12$", "correct": false, "why": "C'est la valeur de la contrainte $x+y+z$, pas de $f(x,y,z)=xyz$." },
+      { "text": "$48$", "correct": false, "why": "Erreur de calcul : $4\\times4\\times4=64$, pas $48$." },
+      { "text": "$16$", "correct": false, "why": "Seulement deux des trois variables ont été multipliées ($4\\times4$), la troisième a été oubliée." }
     ]
   },
   {
-    "id": "mat1400-lagr-011",
+    "id": "mat1400-lagr-013",
     "course": "MAT1400",
     "topic": "mat1400-lagr",
     "difficulty": 2,
-    "prompt": "Avec $x=y=z=4$ (issu du système précédent), la valeur maximale de $f(x,y,z)=xyz$ sous $x+y+z=12$ est...",
-    "explanation": "$f(4,4,4)=4\\times4\\times4=64$.",
-    "type": "flash",
-    "answer": "$64$",
-    "keyPoints": [
-      "Substituer le point trouvé dans $f$, pas dans la contrainte",
-      "$4\\times4\\times4=64$"
+    "prompt": "Minimiser $f(x,y)=x+y$ sous la contrainte $xy=16$ (avec $x,y>0$) : quelle est la valeur minimale ?",
+    "explanation": "$\\nabla f=(1,1)=\\lambda(y,x)$ donne $1=\\lambda y$ et $1=\\lambda x$, donc $x=y$ (les deux valent $1/\\lambda$). Avec $xy=16$ : $x^2=16 \\Rightarrow x=y=4$ (racine positive, car $x,y>0$). La valeur minimale est $f(4,4)=4+4=8$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$8$", "correct": true },
+      { "text": "$16$", "correct": false, "why": "C'est la valeur de la contrainte $xy$, pas de $f(x,y)=x+y$." },
+      { "text": "$4$", "correct": false, "why": "Une seule des deux variables ($x=4$ ou $y=4$) a été gardée, l'autre oubliée dans la somme." },
+      { "text": "$32$", "correct": false, "why": "Le produit $xy=16$ a été compté deux fois ($16+16$) au lieu d'additionner $x+y$." }
+    ]
+  },
+  {
+    "id": "mat1400-lagr-014",
+    "course": "MAT1400",
+    "topic": "mat1400-lagr",
+    "difficulty": 2,
+    "prompt": "La condition de Lagrange s'écrit $\\nabla f=\\lambda\\nabla g$. Pourquoi pas directement $f=\\lambda g$ (les fonctions elles-mêmes, sans leurs gradients) ?",
+    "explanation": "$\\nabla f=\\lambda\\nabla g$ exprime que les gradients de $f$ et $g$ sont parallèles à l'extremum — une condition GÉOMÉTRIQUE sur des directions. $f=\\lambda g$ contraindrait plutôt les VALEURS des fonctions, ce qui n'a aucun lien avec cette géométrie.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$\\nabla f=\\lambda\\nabla g$ exprime que les gradients (perpendiculaires aux courbes de niveau) sont parallèles entre eux à l'extremum", "correct": true },
+      { "text": "$f=\\lambda g$ serait équivalent, seule la notation change", "correct": false, "why": "Les deux ne sont pas équivalents : $f=\\lambda g$ contraint les valeurs des fonctions, pas l'orientation de leurs gradients — ce sont deux conditions mathématiques différentes." },
+      { "text": "$\\nabla f=\\lambda\\nabla g$ est juste une écriture plus compacte de $f=\\lambda g$", "correct": false, "why": "Ce n'est pas une reformulation de l'autre : dériver ne préserve pas l'égalité $f=\\lambda g$ en général." },
+      { "text": "$f=\\lambda g$ est la bonne condition ; $\\nabla f=\\lambda\\nabla g$ est une erreur de notation courante", "correct": false, "why": "C'est l'inverse : $\\nabla f=\\lambda\\nabla g$ EST la véritable condition de Lagrange, pas une erreur." }
     ]
   },
   {
