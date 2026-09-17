@@ -159,7 +159,7 @@
     "topic": "mat1500-modul",
     "difficulty": 3,
     "prompt": "Dans la preuve que $a\\equiv b$ et $c\\equiv d \\pmod n$ impliquent $a+c\\equiv b+d \\pmod n$, après avoir écrit $a-b=nk_1$ et $c-d=nk_2$, quelle est la bonne étape finale ?",
-    "explanation": "La preuve utilise directement la définition de la congruence en termes de divisibilité ; l'erreur fréquente est de manipuler les congruences comme de simples égalités sans revenir à leur définition ($n \\mid (a-b)$) quand une justification rigoureuse est demandée.",
+    "explanation": "Le piège le plus tentant : soustraire les deux égalités au lieu de les additionner. $(a-b)-(c-d)$ se simplifie en $(a-c)-(b-d)$, ce qui prouverait $a-c\\equiv b-d$ (un fait vrai, mais différent) — pas $a+c\\equiv b+d$, qui exige d'additionner.",
     "challenge": true,
     "type": "qcm",
     "choices": [
@@ -181,5 +181,98 @@
       }
     ],
     "solution": "Par définition, $a \\equiv b \\pmod n$ signifie $n \\mid (a - b)$, c'est-à-dire qu'il existe un entier $k_1$ tel que $a - b = n k_1$. De même, $c \\equiv d \\pmod n$ donne un entier $k_2$ tel que $c - d = n k_2$.\n\nEn additionnant les deux égalités : $(a - b) + (c - d) = n k_1 + n k_2 = n(k_1 + k_2)$.\n\nEn réarrangeant le membre de gauche : $(a + c) - (b + d) = n(k_1 + k_2)$.\n\nComme $k_1 + k_2$ est un entier, ceci montre que $n \\mid ((a+c) - (b+d))$, c'est-à-dire $a + c \\equiv b + d \\pmod n$."
+  },
+  {
+    "id": "mat1500-modul-009",
+    "course": "MAT1500",
+    "topic": "mat1500-modul",
+    "difficulty": 2,
+    "prompt": "Que vaut $3^4 \\bmod 5$ ?",
+    "explanation": "$3^4 = 81$, et $81 = 16 \\times 5 + 1$, donc $3^4 \\bmod 5 = 1$. Une erreur fréquente est de laisser le résultat sous forme non réduite ($81$) au lieu de le ramener dans $\\{0,\\ldots,4\\}$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$1$", "correct": true },
+      {
+        "text": "$81$",
+        "correct": false,
+        "why": "C'est $3^4$ non réduit ; il faut encore prendre le reste de la division par $5$."
+      },
+      {
+        "text": "$4$",
+        "correct": false,
+        "why": "Ne correspond à aucun calcul correct de $3^4 \\bmod 5$ ; peut-être confondu avec $3^1 \\bmod 5$."
+      },
+      {
+        "text": "$3$",
+        "correct": false,
+        "why": "C'est la base $3$ elle-même, sans avoir effectué l'exponentiation."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-modul-010",
+    "course": "MAT1500",
+    "topic": "mat1500-modul",
+    "difficulty": 2,
+    "prompt": "Un entier $a$ possède un inverse multiplicatif modulo $n$ si et seulement si $\\text{pgcd}(a,n) = 1$.",
+    "explanation": "Vrai : c'est le critère fondamental d'inversibilité modulo $n$. Par exemple, $2$ n'a pas d'inverse modulo $6$ car $\\text{pgcd}(2,6)=2\\ne1$ — aucun $x$ ne satisfait $2x\\equiv1\\pmod6$.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1500-modul-011",
+    "course": "MAT1500",
+    "topic": "mat1500-modul",
+    "difficulty": 2,
+    "prompt": "Quel est l'inverse de $3$ modulo $7$ (c'est-à-dire l'entier $x \\in \\{1,\\ldots,6\\}$ tel que $3x \\equiv 1 \\pmod 7$) ?",
+    "explanation": "$3 \\times 5 = 15 = 2\\times7+1$, donc $3\\times5\\equiv1\\pmod7$ : l'inverse de $3$ est $5$. Puisque $\\text{pgcd}(3,7)=1$, cet inverse existe et est unique modulo $7$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$5$", "correct": true },
+      {
+        "text": "$3$",
+        "correct": false,
+        "why": "$3\\times3=9\\equiv2\\pmod7$, pas $1$ : $3$ n'est pas son propre inverse ici."
+      },
+      {
+        "text": "$2$",
+        "correct": false,
+        "why": "$3\\times2=6\\equiv6\\pmod7$, pas $1$."
+      },
+      {
+        "text": "$4$",
+        "correct": false,
+        "why": "$3\\times4=12\\equiv5\\pmod7$, pas $1$."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-modul-012",
+    "course": "MAT1500",
+    "topic": "mat1500-modul",
+    "difficulty": 3,
+    "prompt": "L'équation $2x \\equiv 4 \\pmod 6$ a plusieurs solutions non congrues modulo $6$, car $\\text{pgcd}(2,6)=2\\ne1$ (on ne peut pas « diviser par 2 » directement). Quel est l'ensemble complet des solutions modulo $6$ ?",
+    "explanation": "L'erreur classique est de diviser les deux côtés par $2$ pour conclure à tort que $x\\equiv2\\pmod6$ est l'unique solution — cette simplification n'est valide que si le facteur retiré est inversible modulo $n$, ce qui n'est pas le cas ici.",
+    "challenge": true,
+    "type": "qcm",
+    "choices": [
+      { "text": "$\\{2, 5\\}$", "correct": true },
+      {
+        "text": "$\\{2\\}$",
+        "correct": false,
+        "why": "C'est le résultat d'une simplification invalide (diviser par $2$, qui n'est pas inversible mod $6$) : elle manque la seconde solution $x=5$ ($2\\times5=10\\equiv4\\pmod6$)."
+      },
+      {
+        "text": "$\\{2, 4\\}$",
+        "correct": false,
+        "why": "$2\\times4=8\\equiv2\\pmod6$, pas $4$ : $x=4$ ne vérifie pas l'équation."
+      },
+      {
+        "text": "$\\{1, 4\\}$",
+        "correct": false,
+        "why": "$2\\times1=2\\not\\equiv4\\pmod6$ et $2\\times4=8\\equiv2\\not\\equiv4\\pmod6$ : ni $1$ ni $4$ ne conviennent."
+      }
+    ],
+    "solution": "$2x\\equiv4\\pmod6$ signifie $6\\mid(2x-4)$, soit $3\\mid(x-2)$ (en divisant par $\\text{pgcd}(2,6)=2$ des deux côtés, y compris du module).\n\nCeci donne $x\\equiv2\\pmod3$, c'est-à-dire $x\\in\\{2,5\\}$ modulo $6$ (deux solutions distinctes, car le module effectif $3$ est deux fois plus petit que $6$).\n\nVérification : $2\\times2=4\\equiv4\\pmod6$ ✓ et $2\\times5=10\\equiv4\\pmod6$ ✓. Les deux solutions conviennent."
   }
 ]

@@ -2,6 +2,21 @@
 
 Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute la sienne dans son worktree ; l'admin fusionne.
 
+## 2026-09-16 — MAT1500 : relecture Opus (b) appliquée, 96 questions inchangées (lot mat1500)
+
+- Applique `docs/reviews/relecture-opus/mat1500-b.md` (29 questions relues : les 22 nouvelles de
+  logic/quant/func/sets + les 7 premiers Défi convertis) : 1 ÉLEVÉE (quant-011, `why` affirmait
+  une implication fausse), 6 MOYENNES (logic-005 réponse dans l'énoncé ; sets-012 encore en
+  flash ; calibration/explanation des Défi convertis ; sets-008 réponse repérable à sa longueur ;
+  quant-008 option contredisant le domaine de l'énoncé ; func-011 choix auto-diagnostiqué),
+  8 BASSES (distracteurs artificiels, redondances, pièges non nommés, notation $\oplus$ de Rosen
+  pour la différence symétrique).
+- Aucun rejet : tous les points étaient fondés et vérifiés.
+- Gate vert (`npm test`, 363 tests) et relecture aveugle ciblée (SymPy/Python/force brute) sur
+  les 24 items touchés : PASS partout.
+- Compte inchangé : 96 questions (le contenu, pas le nombre, a changé dans ce lot).
+- Suite : rien en attente côté MAT1500 intra, sauf nouvelle relecture demandée par l'admin.
+
 ## 2026-09-16 — Engine : test d'équilibre de la banque (lot Engine)
 
 - `tests/bank-stats.test.ts` : par cours, sur les thèmes `exam:'intra'`, Défi entre 5 % et 15 %, qcm entre 50 % et 70 %, au moins 8 questions par thème ayant des questions. Une seule règle de seuil (décision de l'admin) : rien n'est vérifié tant que le cours a moins de 40 questions intra. Message d'échec avec les chiffres.
@@ -96,6 +111,19 @@ Points 9-13/17-21 : tous appliqués (aucun jugé non fondé). `npm test` (354 te
   rejet net).
 
 ## 2026-09-16 — MAT1600 : esp et matr étendus à 20, extension à 20/thème complète (lot mat1600)
+## 2026-09-16 — MAT1500 : jalon 2 complet, 96 questions (lot mat1500)
+
+- `divis`, `modul`, `proof`, `induc` complétés de 8 à 12 questions chacun (pgcd/ppcm et lemme
+  d'Euclide ; exponentiation modulaire et inverses ; vérité par vacuité et existence non
+  constructive ; divisibilité par récurrence et induction forte). Gate vert (`npm test`, 316
+  tests) et relecture aveugle (SymPy/Python, venv hors dépôt) des 16 nouvelles questions : PASS
+  sur les 4 thèmes, une correction mineure de distracteur (`induc-012`).
+- Les 9 questions Défi créées dans ce complément sont qcm dès le départ (conversion des 5
+  premières faite dans l'entrée précédente ; leçon retenue, appliquée directement ici).
+- **Compte mesuré final MAT1500 (8 thèmes intra) : 96 questions**, 12 par thème. Dénombrement et
+  graphes restent à 0 question (`exam:'final'`, hors périmètre de ce jalon).
+- Suite : rien en attente côté contenu MAT1500 intra ; matière finale (ch. 4-5, 7) à ouvrir plus
+  tard, sur signal de l'admin.
 
 ## 2026-09-16 — MAT1500 : relecture Opus appliquée + logic/quant à 12 (lot mat1500)
 

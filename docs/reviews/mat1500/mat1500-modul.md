@@ -37,3 +37,19 @@ l'agent correspondait déjà à la valeur existante.
 Re-vérifié (gate + relecture aveugle complète des 8 questions, Python) après application :
 **PASS**, aucune régression. Le distracteur $a-c\equiv d-b$ confirmé faux par contre-exemple
 concret.
+
+## Complément à 12 questions (jalon 2, cible ~12/thème)
+
+| id | réponse retenue | confiance | vérification | verdict |
+|---|---|---|---|---|
+| mat1500-modul-009 | $1$ | haute | `pow(3,4,5)==1` | conforme |
+| mat1500-modul-010 | Vrai (critère d'inversibilité) | haute | 6 cas testés (pgcd=1 vs pgcd>1) | conforme |
+| mat1500-modul-011 | $5$ | haute | $3\times5=15\equiv1\pmod7$ | conforme |
+| mat1500-modul-012 (défi) | $\{2,5\}$ | haute | brute force sur les 6 résidus mod 6 | conforme |
+
+**Verdict : PASS.** Aucune ambiguïté. Total du thème : 12 questions.
+
+## Relecture Opus (b) (docs/reviews/relecture-opus/mat1500-b.md) — correction appliquée
+
+- `modul-008` (Défi) : `explanation` alignée sur le distracteur le plus tentant (soustraire au
+  lieu d'additionner les deux congruences).

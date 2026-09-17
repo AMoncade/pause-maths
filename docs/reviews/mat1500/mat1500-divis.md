@@ -31,3 +31,21 @@ distracteur A demande plus qu'un rappel direct) — aucune correction nécessair
 
 Re-vérifié (gate + relecture aveugle complète des 8 questions, SymPy) après application :
 **PASS**, aucune régression.
+
+## Complément à 12 questions (jalon 2, cible ~12/thème)
+
+| id | réponse retenue | confiance | vérification | verdict |
+|---|---|---|---|---|
+| mat1500-divis-009 | $36$ | haute | `sympy.lcm(12,18)==36`, `pgcd*ppcm=a*b` | conforme |
+| mat1500-divis-010 | Vrai (lemme d'Euclide) | haute | vérifié sur plusieurs triplets premiers/composés | conforme |
+| mat1500-divis-011 | $\text{pgcd}(12,6)$ | haute | trace complète de l'algorithme d'Euclide | conforme |
+| mat1500-divis-012 (défi) | contradiction via $N \bmod p_i = 1$ | haute | vérifié sur 4 listes de premiers différentes | conforme |
+
+**Verdict : PASS.** Aucune ambiguïté. Total du thème : 12 questions.
+
+## Relecture Opus (b) (docs/reviews/relecture-opus/mat1500-b.md) — correction appliquée
+
+- `divis-008` (Défi) : distracteur artificiel remplacé par une confusion réelle avec la preuve
+  additive du thème ($a(k_1+k_2)$ au lieu du produit $a(k_1k_2)$), `explanation` alignée.
+
+Re-vérifié (SymPy, venv hors dépôt) : **PASS**.

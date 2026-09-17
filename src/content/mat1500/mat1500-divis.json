@@ -130,15 +130,15 @@
     "topic": "mat1500-divis",
     "difficulty": 3,
     "prompt": "Dans la preuve que $a \\mid b$ et $b \\mid c$ impliquent $a \\mid c$, après avoir écrit $b=ak_1$ et $c=bk_2$, quelle substitution termine correctement la preuve ?",
-    "explanation": "La preuve directe demande d'écrire $b$ et $c$ en fonction des définitions ($b = ak_1$, $c = bk_2$) puis de substituer : l'erreur fréquente est de supposer la conclusion ou de ne pas exhiber explicitement l'entier qui témoigne de $a \\mid c$.",
+    "explanation": "Le piège le plus tentant : confondre avec la preuve « $a\\mid b$ et $a\\mid c$ $\\Rightarrow$ $a\\mid(b+c)$ » vue au thème divisibilité, où les témoins s'additionnent. Ici $c$ s'obtient en substituant $b=ak_1$ dans $c=bk_2$, ce qui donne un produit $k_1k_2$, pas une somme $k_1+k_2$.",
     "challenge": true,
     "type": "qcm",
     "choices": [
       { "text": "$c = bk_2 = (ak_1)k_2 = a(k_1k_2)$, donc $a\\mid c$ avec le témoin $k_1k_2$", "correct": true },
       {
-        "text": "$c = bk_2 = a + k_1k_2$, donc $a\\mid c$",
+        "text": "$c = a(k_1+k_2)$, donc $a\\mid c$ avec le témoin $k_1+k_2$",
         "correct": false,
-        "why": "Cette expression additionne $a$ au lieu de le multiplier ; substituer $b=ak_1$ dans $c=bk_2$ donne un produit, pas une somme."
+        "why": "Cette expression vient d'une confusion avec la preuve additive « $a\\mid b, a\\mid c \\Rightarrow a\\mid(b+c)$ » ; ici la substitution de $b=ak_1$ dans $c=bk_2$ produit un produit $k_1k_2$, pas une somme $k_1+k_2$."
       },
       {
         "text": "$c = k_1+k_2$, donc $a\\mid c$ car $a\\mid k_1$",
@@ -152,5 +152,98 @@
       }
     ],
     "solution": "Par définition, $a \\mid b$ signifie qu'il existe un entier $k_1$ tel que $b = a k_1$. De même, $b \\mid c$ signifie qu'il existe un entier $k_2$ tel que $c = b k_2$.\n\nEn substituant la première égalité dans la seconde : $c = b k_2 = (a k_1) k_2 = a (k_1 k_2)$.\n\nComme $k_1 k_2$ est un entier (produit de deux entiers), on a exhibé un témoin pour $a \\mid c$ : donc $a \\mid c$."
+  },
+  {
+    "id": "mat1500-divis-009",
+    "course": "MAT1500",
+    "topic": "mat1500-divis",
+    "difficulty": 2,
+    "prompt": "Sachant que $\\text{pgcd}(12, 18) = 6$, que vaut $\\text{ppcm}(12, 18)$ ?",
+    "explanation": "La formule $\\text{pgcd}(a,b) \\times \\text{ppcm}(a,b) = a \\times b$ donne $\\text{ppcm}(12,18) = \\dfrac{12 \\times 18}{6} = 36$. Confondre cette formule avec une simple multiplication ou addition est l'erreur la plus fréquente.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$36$", "correct": true },
+      {
+        "text": "$216$",
+        "correct": false,
+        "why": "C'est $12 \\times 18$ sans diviser par le pgcd : la formule exige de diviser le produit par $\\text{pgcd}(a,b)$."
+      },
+      {
+        "text": "$30$",
+        "correct": false,
+        "why": "C'est $12 + 18$ : le ppcm ne s'obtient jamais par addition."
+      },
+      {
+        "text": "$72$",
+        "correct": false,
+        "why": "Ce serait $12 \\times 18 / 3$, en divisant par un mauvais diviseur commun ($3$ au lieu de $6$, le pgcd réel)."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-divis-010",
+    "course": "MAT1500",
+    "topic": "mat1500-divis",
+    "difficulty": 2,
+    "prompt": "Si $p$ est premier et $p \\mid (ab)$, alors $p \\mid a$ ou $p \\mid b$.",
+    "explanation": "Vrai : c'est le lemme d'Euclide, une propriété clé des nombres premiers (elle est d'ailleurs fausse pour un nombre composé : $4 \\mid (2 \\times 6)$ mais $4 \\nmid 2$ et $4 \\nmid 6$, ce qui montre que la primalité de $p$ est essentielle).",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1500-divis-011",
+    "course": "MAT1500",
+    "topic": "mat1500-divis",
+    "difficulty": 2,
+    "prompt": "L'algorithme d'Euclide calcule $\\text{pgcd}(48, 18)$ en répétant $\\text{pgcd}(a,b) = \\text{pgcd}(b, a \\bmod b)$. Après $\\text{pgcd}(48,18) = \\text{pgcd}(18, 12)$, quelle est l'étape suivante ?",
+    "explanation": "$48 \\bmod 18 = 12$ (première étape), puis $18 \\bmod 12 = 6$, donnant $\\text{pgcd}(18,12) = \\text{pgcd}(12, 6)$. L'erreur classique est de recalculer avec les mauvais nombres ou d'oublier de prendre le reste (pas le quotient).",
+    "type": "qcm",
+    "choices": [
+      { "text": "$\\text{pgcd}(12, 6)$", "correct": true },
+      {
+        "text": "$\\text{pgcd}(18, 1)$",
+        "correct": false,
+        "why": "$18 \\div 12 = 1$ reste $6$, pas reste $1$ : le quotient $1$ a été pris au lieu du reste $6$."
+      },
+      {
+        "text": "$\\text{pgcd}(12, 18)$",
+        "correct": false,
+        "why": "Ceci reviendrait en arrière sans progresser : l'algorithme doit toujours utiliser le reste d'une étape antérieure, jamais recycler les nombres de départ."
+      },
+      {
+        "text": "$\\text{pgcd}(6, 12)$",
+        "correct": false,
+        "why": "Les deux nombres sont inversés : la convention est $\\text{pgcd}(b, a \\bmod b)$, donc $\\text{pgcd}(12, 6)$, pas $\\text{pgcd}(6,12)$ (même si le résultat final serait le même, l'ordre standard doit être respecté pour poursuivre correctement l'algorithme)."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-divis-012",
+    "course": "MAT1500",
+    "topic": "mat1500-divis",
+    "difficulty": 3,
+    "prompt": "Dans la preuve classique qu'il existe une infinité de nombres premiers (par contradiction), on suppose une liste finie $p_1, \\ldots, p_n$ de tous les premiers et on pose $N = p_1 p_2 \\cdots p_n + 1$. Quelle est la bonne conclusion sur $N$ ?",
+    "explanation": "L'erreur fréquente est de croire que $N$ est nécessairement premier ; la preuve n'exige que l'existence d'un facteur premier de $N$ absent de la liste, pas la primalité de $N$ lui-même.",
+    "challenge": true,
+    "type": "qcm",
+    "choices": [
+      { "text": "$N$ n'est divisible par aucun $p_i$ de la liste, donc son plus petit facteur premier n'est pas dans la liste — contradiction", "correct": true },
+      {
+        "text": "$N$ est nécessairement premier, ce qui contredit directement la liste finie",
+        "correct": false,
+        "why": "$N$ n'est pas forcément premier (il pourrait avoir un facteur premier non listé) ; seule l'existence d'un facteur premier absent de la liste est nécessaire à la contradiction."
+      },
+      {
+        "text": "$N$ est divisible par $p_1$, ce qui contredit la construction",
+        "correct": false,
+        "why": "Au contraire : diviser $N = p_1\\cdots p_n + 1$ par $p_1$ donne toujours un reste de $1$, donc $p_1 \\nmid N$."
+      },
+      {
+        "text": "$N$ doit être pair, ce qui contredit l'hypothèse si $2$ est dans la liste",
+        "correct": false,
+        "why": "Rien n'oblige $N$ à être pair ; par exemple si $p_1=2$, alors $N$ est impair (produit pair $+1$)."
+      }
+    ],
+    "solution": "Supposons par contradiction qu'il n'existe qu'un nombre fini de nombres premiers $p_1, p_2, \\ldots, p_n$.\n\nPosons $N = p_1 p_2 \\cdots p_n + 1$. Comme $N > 1$, $N$ a au moins un facteur premier $q$ (tout entier $>1$ a un facteur premier).\n\nPour chaque $p_i$ de la liste : diviser $N$ par $p_i$ donne toujours un reste de $1$ (puisque $N - 1 = p_1\\cdots p_n$ est un multiple de $p_i$), donc $p_i \\nmid N$. Ainsi $q$ ne peut être égal à aucun $p_i$.\n\nMais $q$ est un nombre premier, donc il devrait figurer dans la liste $p_1,\\ldots,p_n$ (supposée contenir TOUS les premiers). Contradiction.\n\nDonc l'hypothèse de départ était fausse : il existe une infinité de nombres premiers."
   }
 ]

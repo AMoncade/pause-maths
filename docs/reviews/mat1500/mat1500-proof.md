@@ -26,3 +26,19 @@ de $\sqrt2$) dans un venv temporaire hors dépôt, supprimé après usage.
 Re-vérifié (gate + relecture aveugle complète des 8 questions, SymPy) après application :
 **PASS**, aucune régression ; les distracteurs de 008 (circularité, confusion $p$/$q$, inversion
 de sens) confirmés chacun faux pour une raison distincte.
+
+## Complément à 12 questions (jalon 2, cible ~12/thème)
+
+| id | réponse retenue | confiance | vérification | verdict |
+|---|---|---|---|---|
+| mat1500-proof-009 | toujours vrai (vacuité) | haute | analyse conceptuelle | conforme |
+| mat1500-proof-010 | Faux (preuve non constructive possible) | haute | cohérent avec 012 | conforme |
+| mat1500-proof-011 | $P(x)$ faux pour tout $x$ | haute | négation de quantificateur | conforme |
+| mat1500-proof-012 (défi) | disjonction de cas sur $\sqrt2^{\sqrt2}$ | haute | algèbre vérifiée : $(\sqrt2^{\sqrt2})^{\sqrt2}=2$ | conforme |
+
+**Verdict : PASS.** Aucune ambiguïté. Total du thème : 12 questions.
+
+## Relecture Opus (b) (docs/reviews/relecture-opus/mat1500-b.md) — correction appliquée
+
+- `proof-008` (Défi) : distracteur artificiel « $p^2$ pair donc $p$ impair » remplacé par
+  « $p^2$ pair donc $p=2$ » (confondre « pair » avec « égal à 2 »), une vraie erreur d'étudiant.

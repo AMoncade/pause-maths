@@ -146,25 +146,25 @@
     "topic": "mat1500-sets",
     "difficulty": 3,
     "prompt": "Dans la preuve de $A \\subseteq B \\iff A \\cap B = A$, quelle affirmation complète correctement le sens ($\\Rightarrow$) ?",
-    "explanation": "L'erreur fréquente est de ne prouver qu'un seul sens de l'équivalence (souvent seulement « si $A \\subseteq B$ alors $A \\cap B = A$ ») en oubliant que « si et seulement si » exige les deux implications.",
+    "explanation": "Le piège : montrer une seule des deux inclusions ne suffit pas. $A \\cap B \\subseteq A$ est toujours vraie, avec ou sans l'hypothèse $A \\subseteq B$ ; il faut aussi l'inclusion inverse $A \\subseteq A \\cap B$, qui elle dépend vraiment de l'hypothèse, pour conclure à l'égalité.",
     "challenge": true,
     "type": "qcm",
     "choices": [
-      { "text": "Supposons $A \\subseteq B$ ; pour tout $x \\in A$, $x \\in B$ aussi, donc $x \\in A \\cap B$ ; avec $A \\cap B \\subseteq A$ toujours vrai, on conclut $A \\cap B = A$", "correct": true },
+      { "text": "pour $x \\in A$, $x \\in B$ aussi, donc $x \\in A \\cap B$ ; avec $A \\cap B \\subseteq A$, égalité", "correct": true },
       {
-        "text": "Supposons $A \\subseteq B$ ; alors $A \\cap B \\subseteq B$ directement donne $A \\cap B = A$",
+        "text": "$A \\subseteq B$ donc $A \\cap B \\subseteq B$, d'où $A \\cap B = A$",
         "correct": false,
         "why": "$A \\cap B \\subseteq B$ est vrai mais ne dit rien sur l'égalité avec $A$ ; il faut montrer les deux inclusions $A \\cap B \\subseteq A$ et $A \\subseteq A \\cap B$."
       },
       {
-        "text": "Supposons $A \\subseteq B$ ; alors $B \\subseteq A \\cap B$, donc $A = B$",
+        "text": "pour $x \\in A \\cap B$, $x \\in A$ ; donc $A \\cap B = A$",
         "correct": false,
-        "why": "Rien ne permet de déduire $B \\subseteq A \\cap B$ à partir de $A \\subseteq B$ ; cela mènerait même à tort à $A=B$, plus fort que ce qui est demandé."
+        "why": "Cette inclusion ($A \\cap B \\subseteq A$) est toujours vraie, avec ou sans l'hypothèse $A \\subseteq B$ : elle ne suffit pas seule à conclure l'égalité, il manque l'inclusion inverse."
       },
       {
-        "text": "Supposons $A \\subseteq B$ ; alors $A \\cap B = \\emptyset$ car $A$ et $B$ n'ont rien en commun",
+        "text": "$A \\subseteq B$ et $A \\cap B \\subseteq A$ sont la même affirmation, donc immédiat",
         "correct": false,
-        "why": "$A \\subseteq B$ signifie au contraire que tout $A$ est inclus dans $B$, donc $A \\cap B = A$, pas $\\emptyset$."
+        "why": "Ce sont deux affirmations différentes : $A \\cap B \\subseteq A$ est toujours vraie sans aucune hypothèse, alors que $A \\subseteq B$ est l'hypothèse de départ ; les confondre ne prouve rien de nouveau."
       }
     ],
     "solution": "($\\Rightarrow$) Supposons $A \\subseteq B$. Comme $A \\cap B \\subseteq A$ est toujours vrai, il suffit de montrer $A \\subseteq A \\cap B$. Soit $x \\in A$ : par hypothèse $x \\in B$ aussi, donc $x \\in A \\cap B$. Ainsi $A \\subseteq A \\cap B$, d'où $A \\cap B = A$.\n\n($\\Leftarrow$) Supposons $A \\cap B = A$. Soit $x \\in A$ : alors $x \\in A \\cap B$ (puisque $A = A \\cap B$), donc en particulier $x \\in B$. Ainsi $A \\subseteq B$."
@@ -185,9 +185,9 @@
         "why": "C'est $|A|+|B|$ sans soustraire l'intersection : les éléments communs à $A$ et $B$ sont alors comptés deux fois."
       },
       {
-        "text": "$2$",
+        "text": "$3$",
         "correct": false,
-        "why": "C'est seulement $|A \\cap B|$, pas la taille de l'union, qui doit inclure tous les éléments d'au moins un des deux ensembles."
+        "why": "C'est $|A|-|A\\cap B|$ : seulement les éléments propres à $A$ (absents de $B$), pas la taille de toute l'union."
       },
       {
         "text": "$11$",
@@ -202,7 +202,7 @@
     "topic": "mat1500-sets",
     "difficulty": 1,
     "prompt": "Pour tous ensembles $A$ et $B$, on a toujours $A \\cap B \\subseteq A$.",
-    "explanation": "Vrai : tout élément de $A \\cap B$ doit, par définition de l'intersection, appartenir à la fois à $A$ et à $B$ — donc en particulier à $A$. C'est vrai indépendamment de la relation entre $A$ et $B$.",
+    "explanation": "Vrai : tout élément de $A \\cap B$ doit, par définition de l'intersection, appartenir à la fois à $A$ et à $B$ — donc en particulier à $A$. C'est vrai indépendamment de la relation entre $A$ et $B$. Le piège : croire que $A \\subseteq A \\cap B$ aussi, ce qui n'est vrai que si $A \\subseteq B$ (pas en général).",
     "type": "vf",
     "answer": true
   },
@@ -211,8 +211,8 @@
     "course": "MAT1500",
     "topic": "mat1500-sets",
     "difficulty": 2,
-    "prompt": "La différence symétrique $A \\triangle B$ est définie comme...",
-    "explanation": "$A \\triangle B = (A - B) \\cup (B - A)$ : les éléments qui sont dans exactement un des deux ensembles, jamais dans les deux à la fois. C'est l'analogue ensembliste du ou exclusif $\\oplus$.",
+    "prompt": "La différence symétrique $A \\oplus B$ (notation de Rosen) est définie comme...",
+    "explanation": "$A \\oplus B = (A - B) \\cup (B - A)$ : les éléments qui sont dans exactement un des deux ensembles, jamais dans les deux à la fois — l'analogue ensembliste du ou exclusif logique, d'où la même notation $\\oplus$.",
     "type": "qcm",
     "choices": [
       { "text": "$(A - B) \\cup (B - A)$", "correct": true },
@@ -238,14 +238,27 @@
     "course": "MAT1500",
     "topic": "mat1500-sets",
     "difficulty": 3,
-    "prompt": "Prouve, en nommant chaque étape, que $A \\cup (A \\cap B) = A$ (loi d'absorption pour les ensembles).",
-    "explanation": "Comme pour la version logique de l'absorption, l'erreur fréquente est d'essayer de distribuer d'abord plutôt que de raisonner directement par double inclusion.",
+    "prompt": "Dans la preuve par double inclusion que $A \\cup (A \\cap B) = A$, quelle justification montre correctement $A \\cup (A \\cap B) \\subseteq A$ ?",
+    "explanation": "Le piège : ne montrer que $A \\subseteq A \\cup (A \\cap B)$ (l'inclusion inverse, toujours vraie et triviale) en croyant avoir couvert les deux sens, alors que $A \\cup (A \\cap B) \\subseteq A$ demande de traiter séparément le cas $x \\in A \\cap B$.",
     "challenge": true,
-    "type": "flash",
-    "answer": "$A \\cup (A \\cap B) = A$.",
-    "keyPoints": [
-      "($\\subseteq$) $A \\subseteq A$ toujours, et $A \\cap B \\subseteq A$ toujours ; donc leur union est aussi $\\subseteq A$",
-      "($\\supseteq$) $A \\subseteq A \\cup (A \\cap B)$ toujours, car $A$ est l'un des deux membres de l'union"
+    "type": "qcm",
+    "choices": [
+      { "text": "soit $x \\in A \\cup (A \\cap B)$ ; si $x \\in A \\cap B$ alors $x \\in A$ (car $A \\cap B \\subseteq A$) ; dans les deux cas possibles, $x \\in A$", "correct": true },
+      {
+        "text": "$A \\subseteq A \\cup (A \\cap B)$ est toujours vraie, donc l'égalité suit immédiatement",
+        "correct": false,
+        "why": "C'est l'inclusion inverse (triviale, $A$ est un des membres de l'union) : elle ne prouve pas $A \\cup (A \\cap B) \\subseteq A$, l'autre sens requis pour l'égalité."
+      },
+      {
+        "text": "$A \\cap B \\subseteq A \\cup B$, donc $A \\cup (A \\cap B) \\subseteq A \\cup B \\subseteq A$",
+        "correct": false,
+        "why": "$A \\cup B \\subseteq A$ est faux en général (seulement si $B \\subseteq A$) : cette chaîne d'inclusions ne tient pas."
+      },
+      {
+        "text": "$A$ et $A \\cap B$ ont le même nombre d'éléments, donc leur union vaut $A$",
+        "correct": false,
+        "why": "$A$ et $A \\cap B$ n'ont pas nécessairement le même nombre d'éléments (ils sont égaux seulement si $A \\subseteq B$) ; l'argument par cardinalité ne s'applique pas ici."
+      }
     ],
     "solution": "($\\subseteq$) Soit $x \\in A \\cup (A \\cap B)$. Alors $x \\in A$ ou $x \\in A \\cap B$. Dans les deux cas, $x \\in A$ (le second cas donne $x \\in A$ directement, puisque $A \\cap B \\subseteq A$). Donc $A \\cup (A \\cap B) \\subseteq A$.\n\n($\\supseteq$) Soit $x \\in A$. Alors $x \\in A \\cup (A \\cap B)$ trivialement, puisque $A$ est l'un des deux ensembles de cette union. Donc $A \\subseteq A \\cup (A \\cap B)$.\n\nPar double inclusion, $A \\cup (A \\cap B) = A$."
   }
