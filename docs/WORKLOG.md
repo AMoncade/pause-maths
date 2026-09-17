@@ -2,6 +2,13 @@
 
 Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute la sienne dans son worktree ; l'admin fusionne.
 
+## 2026-09-16 — Engine : test d'équilibre de la banque (lot Engine)
+
+- `tests/bank-stats.test.ts` : par cours, sur les thèmes `exam:'intra'`, Défi entre 5 % et 15 %, qcm entre 50 % et 70 %, au moins 8 questions par thème ayant des questions. Une seule règle de seuil (décision de l'admin) : rien n'est vérifié tant que le cours a moins de 40 questions intra. Message d'échec avec les chiffres.
+- Mesuré avant de fixer les bornes (main@13600b0) : MAT1400 96 questions, 8,3 % Défi, 61,5 % qcm, 12 par thème ; MAT1500 80, 12,5 %, 58,8 %, min 8 ; MAT1600 77, 9,1 %, 61,0 %, min 8 ; STT1700 0 (non vérifié).
+- Contrôle : chaque borne lève sur un cas synthétique, bornes incluses testées, rien sous 40.
+- `npm test` : 363 verts ; `tsc --noEmit` : OK.
+
 ## 2026-09-16 — Engine : import `--renumber`, KaTeX strict dans le gate (lot Engine)
 
 - `npm run import -- <fichier.json> --renumber` : avant validation, chaque question reçoit le prochain numéro libre de son thème (ordre du fichier conservé, préfixe = `topic`). Libre = au-dessus du plus grand numéro du thème dans la banque, en sautant les ids retirés et ceux déjà attribués dans le lot ; les trous ne sont jamais réutilisés (un ancien id peut rester dans la progression d'un utilisateur). La correspondance ancien → nouveau est imprimée, même si l'import est refusé. Sans l'option : comportement inchangé. Option inconnue : usage, code 2. `renumberQuestions` exportée et testée.
