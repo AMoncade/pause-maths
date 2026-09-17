@@ -277,7 +277,7 @@
       {
         "text": "appliquer l'hypothèse d'induction (simple, pas forte) au rang $n-1$",
         "correct": false,
-        "why": "$a$ n'est pas nécessairement égal à $n-1$ ; c'est précisément pour couvrir un $a$ quelconque entre $2$ et $n-1$ que l'induction **forte** est nécessaire, pas l'induction simple limitée au rang précédent."
+        "why": "$a$ n'est pas nécessairement égal à $n-1$ ; c'est précisément pour couvrir un $a$ quelconque entre $2$ et $n-1$ que l'induction forte est nécessaire, pas l'induction simple limitée au rang précédent."
       },
       {
         "text": "affirmer que l'hypothèse d'induction forte ne s'applique pas à $a$, car rien ne garantit que $2 \\le a$",

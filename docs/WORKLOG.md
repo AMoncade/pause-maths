@@ -65,6 +65,19 @@ Points 9-13/17-21 : tous appliqués (aucun jugé non fondé). `npm test` (354 te
 - Gate : KaTeX en `strict: 'error'` ; une lettre accentuée en mode math (paire de « $ » littéraux non échappés) est refusée, `\text{…}` accentué reste permis. Vérifié d'abord sur la vraie banque (MAT1400, MAT1500, MAT1600) : aucune question ne casse. Cas ajouté dans `broken.json`.
 - `scripts/import-questions.ts` et `tests/import.test.ts` contenaient un BOM littéral (U+FEFF) au lieu d'un code : remplacé par `0xfeff`. `tests/source-hygiene.test.ts` refuse désormais aussi les caractères invisibles (BOM, espaces de largeur nulle) dans tous les sources Engine et tests (contrôle : il trouve le BOM dans l'ancienne version).
 - `npm test` : 354 verts ; `tsc --noEmit` : OK.
+## 2026-09-16 — MAT1500 : jalon 2 complet, 96 questions (lot mat1500)
+
+- `divis`, `modul`, `proof`, `induc` complétés de 8 à 12 questions chacun (pgcd/ppcm et lemme
+  d'Euclide ; exponentiation modulaire et inverses ; vérité par vacuité et existence non
+  constructive ; divisibilité par récurrence et induction forte). Gate vert (`npm test`, 316
+  tests) et relecture aveugle (SymPy/Python, venv hors dépôt) des 16 nouvelles questions : PASS
+  sur les 4 thèmes, une correction mineure de distracteur (`induc-012`).
+- Les 9 questions Défi créées dans ce complément sont qcm dès le départ (conversion des 5
+  premières faite dans l'entrée précédente ; leçon retenue, appliquée directement ici).
+- **Compte mesuré final MAT1500 (8 thèmes intra) : 96 questions**, 12 par thème. Dénombrement et
+  graphes restent à 0 question (`exam:'final'`, hors périmètre de ce jalon).
+- Suite : rien en attente côté contenu MAT1500 intra ; matière finale (ch. 4-5, 7) à ouvrir plus
+  tard, sur signal de l'admin.
 
 ## 2026-09-16 — MAT1500 : relecture Opus appliquée + logic/quant à 12 (lot mat1500)
 
