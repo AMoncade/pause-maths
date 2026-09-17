@@ -8,7 +8,7 @@ Relire les questions d'intra STT1700 (3 thèmes : descr, prob, var) comme les re
 
 ## Livrable
 - `docs/reviews/relecture-opus/stt1700.md` : par question relue, verdict ; liste des points élevés/moyens/bas avec la correction proposée (texte exact) ; proportions mesurées.
-- Commit sur `lot/stt1700-relecture` depuis `C:/Users/adrie/pause-maths-wt/ui` ? NON : utiliser le worktree `C:/Users/adrie/pause-maths-wt/ui` renommé n'est pas prévu — créer `git worktree add ../pause-maths-wt/relecture -b lot/relecture main` depuis le dépôt principal, y écrire le fichier, `git add` explicite, push `lot/relecture`.
+- Worktree dédié, créé depuis le dépôt principal : `git worktree add ../pause-maths-wt/relecture -b lot/relecture main`. Y écrire le fichier, `git add` explicite, push `lot/relecture`.
 - Rapport à adrie-59 : SHA, nombre de questions relues, points élevés/moyens/bas, ce qui n'a pas été relu.
 
 ## Périmètre
