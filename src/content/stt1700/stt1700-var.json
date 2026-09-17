@@ -270,5 +270,123 @@
       "L'espérance est toujours linéaire, même si $X$ et $Y$ sont dépendantes — contrairement à la variance.",
       "Aucune hypothèse d'indépendance n'est nécessaire ici."
     ]
+  },
+  {
+    "id": "stt1700-var-013",
+    "course": "STT1700",
+    "topic": "stt1700-var",
+    "difficulty": 1,
+    "type": "qcm",
+    "prompt": "$X\\sim\\mathrm{Bin}(12,0{,}3)$. Que vaut $E(X)$ ?",
+    "explanation": "Pour une binomiale, $E(X)=np$. Le piège est de confondre avec la variance $np(1-p)$ ou de recopier $p$.",
+    "choices": [
+      {
+        "text": "$3{,}6$",
+        "correct": true
+      },
+      {
+        "text": "$2{,}52$",
+        "correct": false,
+        "why": "Calcule la variance $np(1-p)=12\\times0{,}3\\times0{,}7=2{,}52$ au lieu de l'espérance $np$."
+      },
+      {
+        "text": "$0{,}3$",
+        "correct": false,
+        "why": "Recopie le paramètre $p=0{,}3$ sans multiplier par $n$."
+      },
+      {
+        "text": "$8{,}4$",
+        "correct": false,
+        "why": "Calcule $n(1-p)=12\\times0{,}7=8{,}4$, le nombre moyen d'échecs au lieu de succès."
+      }
+    ]
+  },
+  {
+    "id": "stt1700-var-014",
+    "course": "STT1700",
+    "topic": "stt1700-var",
+    "difficulty": 2,
+    "type": "qcm",
+    "prompt": "Une v.a. discrète $X$ a pour support $\\{0,1,2\\}$ avec $p(0)=0{,}2$, $p(1)=0{,}5$, $p(2)=0{,}3$. Que vaut $F(1)=\\Pr(X\\le1)$ ?",
+    "explanation": "La fonction de répartition cumule les probabilités : $F(1)=p(0)+p(1)$. Le piège est de donner seulement $p(1)$ sans cumuler.",
+    "choices": [
+      {
+        "text": "$0{,}7$",
+        "correct": true
+      },
+      {
+        "text": "$0{,}5$",
+        "correct": false,
+        "why": "Donne seulement $p(1)=0{,}5$ sans additionner $p(0)$ : confond fonction de masse et fonction de répartition."
+      },
+      {
+        "text": "$1$",
+        "correct": false,
+        "why": "Calcule $F(2)=p(0)+p(1)+p(2)=1$ au lieu de $F(1)$ : se trompe de borne."
+      },
+      {
+        "text": "$0{,}2$",
+        "correct": false,
+        "why": "Donne seulement $p(0)=0{,}2$, en oubliant de cumuler avec $p(1)$."
+      }
+    ]
+  },
+  {
+    "id": "stt1700-var-015",
+    "course": "STT1700",
+    "topic": "stt1700-var",
+    "difficulty": 3,
+    "type": "qcm",
+    "prompt": "$X_1$, $X_2$, $X_3$ sont trois v.a. indépendantes avec $\\mathrm{var}(X_1)=2$, $\\mathrm{var}(X_2)=5$, $\\mathrm{var}(X_3)=1$. Que vaut $\\mathrm{var}(X_1-2X_2+3X_3)$ ?",
+    "explanation": "Sous indépendance, $\\mathrm{var}(\\sum a_iX_i)=\\sum a_i^2\\,\\mathrm{var}(X_i)$. Le piège principal est d'oublier d'élever les coefficients au carré.",
+    "choices": [
+      {
+        "text": "$31$",
+        "correct": true
+      },
+      {
+        "text": "$-5$",
+        "correct": false,
+        "why": "Utilise les coefficients sans les élever au carré : $1\\times2-2\\times5+3\\times1=-5$ — une variance ne peut pas être négative."
+      },
+      {
+        "text": "$15$",
+        "correct": false,
+        "why": "Utilise les coefficients en valeur absolue sans les élever au carré : $1\\times2+2\\times5+3\\times1=15$."
+      },
+      {
+        "text": "$22$",
+        "correct": false,
+        "why": "Oublie le terme $3^2\\,\\mathrm{var}(X_3)=9$ : $1^2\\times2+(-2)^2\\times5=22$."
+      }
+    ]
+  },
+  {
+    "id": "stt1700-var-016",
+    "course": "STT1700",
+    "topic": "stt1700-var",
+    "difficulty": 2,
+    "type": "flash",
+    "prompt": "Pour une loi multinomiale à $K$ classes de probabilités $p_1,\\dots,p_K$ (un seul essai réparti entre les classes), à quoi ces probabilités doivent-elles sommer ?",
+    "explanation": "Le piège est de croire que les probabilités peuvent sommer à une valeur autre que 1, comme pour des événements non exhaustifs.",
+    "answer": "$\\sum_{i=1}^K p_i = 1$",
+    "keyPoints": [
+      "Chaque essai tombe dans exactement une des $K$ classes, donc les probabilités s'épuisent complètement.",
+      "Même contrainte que pour toute fonction de masse valide d'une v.a. discrète à un seul support."
+    ]
+  },
+  {
+    "id": "stt1700-var-017",
+    "course": "STT1700",
+    "topic": "stt1700-var",
+    "difficulty": 2,
+    "type": "flash",
+    "prompt": "Quelle est la fonction de masse $p(x)=\\Pr(X=x)$ d'une v.a. $X\\sim\\mathrm{Bin}(n,p)$ ?",
+    "explanation": "Le piège est d'oublier le coefficient binomial $\\binom{n}{x}$ ou d'inverser les exposants de $p$ et $1-p$.",
+    "answer": "$p(x) = \\binom{n}{x} p^x (1-p)^{n-x}$",
+    "keyPoints": [
+      "$\\binom{n}{x}$ compte le nombre de façons d'obtenir $x$ succès parmi $n$ essais.",
+      "Valide pour $x=0,1,\\dots,n$."
+    ]
   }
 ]

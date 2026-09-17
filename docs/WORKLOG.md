@@ -2,6 +2,16 @@
 
 Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute la sienne dans son worktree ; l'admin fusionne.
 
+## 2026-09-17 — STT1700 : jalon 4, densification (34 → 48 questions) (lot stt1700)
+
+- Brief `docs/regie/briefs/tour2-stt1700-j4.md`. Worktree avancé sur `main` (`git merge --ff-only`, jusqu'à `fe575ab`) avant de commencer.
+- Sous-sujets non couverts par les 34 questions existantes listés dans `docs/reviews/stt1700/jalon4-densification.md` (comparaison contenu retenu par thème vs questions déjà écrites) : diagrammes/transformation affine/asymétrie/lien $r_{xy}=b s_x/s_y$ pour `descr` ; axiomes de Kolmogorov/complément/monotonie/indépendance mutuelle à 3 événements pour `prob` ; $E(X)=np$ isolé/évaluation de $F(x)$/combinaison à 3 v.a./contrainte multinomiale/fonction de masse binomiale pour `var`.
+- **`agy` réussi au premier essai** (79 s, `claude-opus-4-6-thinking`), contrairement au jalon 3 où le même modèle avait expiré deux fois sur une rédaction comparable — hypothèse : donner à `agy` les bonnes réponses déjà calculées et ne lui demander que le formatage JSON + les distracteurs a réduit le risque de timeout d'impression. **1 erreur trouvée avant import** : le distracteur `$24$` de `descr-014` (censé être $b\times s_x\times s_y$) était faux ($2\times3\times8=48$, pas $24$) — `agy` avait lui-même halluciné sur son propre calcul dans le champ `why` ; corrigé en `$48$`. Les 5 bonnes réponses numériques revérifiées indépendamment en fractions exactes (Python, hors dépôt) : **0 autre erreur**.
+- Import (`npm run import -- ... --renumber`, ids déjà corrects donc aucun renumérotage effectif), gate vert (`npm test` 363 tests, `npm run build`). Relecture aveugle (`scripts/blind-review.ts`, seed 21164, clé jamais montrée, sous-agent interdit de lire le dépôt) par un sous-agent **Haiku** frais sur les 14 nouvelles questions en un seul passage : **14/14 confirmées, 0 désaccord, aucune ambiguïté signalée**.
+- `defaultOn` inchangés (règle du jalon 2 toujours active : `stt1700-prob` bascule à/après le 2026-09-21, `stt1700-var` à/après le 2026-09-28).
+- **Compte mesuré STT1700 : 34 → 48 questions** (+4 `stt1700-descr` → 14, +5 `stt1700-prob` → 17, +5 `stt1700-var` → 17). Types : 21 qcm/8 vf/5 flash → **28 qcm/11 vf/9 flash** (+7 qcm/+3 vf/+4 flash) ; Défi 4 → **6** (12,5 %). `tests/bank-stats.test.ts` applique maintenant ses bornes réelles (seuil 40 franchi) et passe : Défi 6/48 = 12,5 % (bornes 5–15 %), qcm 28/48 = 58,3 % (bornes 50–70 %), chaque thème ≥ 8 questions (14/17/17).
+- Suite : les 7 thèmes des sections 4-10 (hors intra 1) restent à écrire pour l'intra 2 / le final ; repasser `stt1700-prob.defaultOn` et `stt1700-var.defaultOn` à `true` au premier push à/après leurs seuils respectifs.
+
 ## 2026-09-17 — MAT1500 (tour 2) : vérification contre le vrai matériel StudiUM (lot mat1500)
 
 - Brief `docs/regie/briefs/tour2-mat1500-verif.md`. `D:\Math\MAT1500` (lecture seule) comparé aux 96 questions et à `src/content/mat1500/index.ts`. Détail complet : `docs/sources/mat1500.md`, `docs/reviews/mat1500/verification-studium.md`.

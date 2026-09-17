@@ -269,5 +269,101 @@
       "$\\Pr(B)$ se développe souvent par probabilités totales : $\\Pr(B) = \\Pr(B\\mid A)\\Pr(A) + \\Pr(B\\mid A^c)\\Pr(A^c)$.",
       "Exige $\\Pr(B) \\neq 0$."
     ]
+  },
+  {
+    "id": "stt1700-prob-013",
+    "course": "STT1700",
+    "topic": "stt1700-prob",
+    "difficulty": 1,
+    "type": "vf",
+    "prompt": "Selon les axiomes de Kolmogorov, $\\Pr(\\emptyset) = 0$.",
+    "explanation": "Conséquence directe des axiomes : $\\emptyset = \\Omega^c$, donc $\\Pr(\\emptyset) = 1 - \\Pr(\\Omega) = 1 - 1 = 0$.",
+    "answer": true
+  },
+  {
+    "id": "stt1700-prob-014",
+    "course": "STT1700",
+    "topic": "stt1700-prob",
+    "difficulty": 1,
+    "type": "qcm",
+    "prompt": "Si $\\Pr(A)=0{,}35$, que vaut $\\Pr(A^c)$ ?",
+    "explanation": "Le complément donne $\\Pr(A^c)=1-\\Pr(A)$. Le piège est de recopier $\\Pr(A)$ ou de mal appliquer la soustraction.",
+    "choices": [
+      {
+        "text": "$0{,}65$",
+        "correct": true
+      },
+      {
+        "text": "$0{,}35$",
+        "correct": false,
+        "why": "Recopie $\\Pr(A)$ au lieu de calculer $1-\\Pr(A)$ : confond $A$ et $A^c$."
+      },
+      {
+        "text": "$1{,}35$",
+        "correct": false,
+        "why": "Additionne $1+0{,}35=1{,}35$ au lieu de soustraire — une probabilité ne peut pas dépasser 1."
+      },
+      {
+        "text": "$-0{,}35$",
+        "correct": false,
+        "why": "Calcule $0-0{,}35=-0{,}35$ au lieu de $1-0{,}35$ — une probabilité ne peut pas être négative."
+      }
+    ]
+  },
+  {
+    "id": "stt1700-prob-015",
+    "course": "STT1700",
+    "topic": "stt1700-prob",
+    "difficulty": 2,
+    "type": "flash",
+    "prompt": "Comment exprimer $\\Pr(A\\cap B)$ à partir de la probabilité conditionnelle $\\Pr(A\\mid B)$ ?",
+    "explanation": "Le piège est de confondre $\\Pr(A\\cap B)$ avec $\\Pr(A\\mid B)$ directement, en oubliant de multiplier par $\\Pr(B)$.",
+    "answer": "$\\Pr(A\\cap B) = \\Pr(A\\mid B)\\,\\Pr(B)$",
+    "keyPoints": [
+      "C'est la règle de multiplication, obtenue en isolant $\\Pr(A\\cap B)$ dans la définition de $\\Pr(A\\mid B)$.",
+      "Utile pour calculer une intersection à partir d'une conditionnelle connue (tirages successifs sans remise)."
+    ]
+  },
+  {
+    "id": "stt1700-prob-016",
+    "course": "STT1700",
+    "topic": "stt1700-prob",
+    "difficulty": 2,
+    "type": "vf",
+    "prompt": "Si $A\\subseteq B$, alors $\\Pr(A)\\le\\Pr(B)$.",
+    "explanation": "$B=A\\cup(B\\setminus A)$ est une union disjointe, donc $\\Pr(B)=\\Pr(A)+\\Pr(B\\setminus A)\\ge\\Pr(A)$.",
+    "answer": true
+  },
+  {
+    "id": "stt1700-prob-017",
+    "course": "STT1700",
+    "topic": "stt1700-prob",
+    "difficulty": 3,
+    "type": "qcm",
+    "challenge": true,
+    "prompt": "$A$, $B$ et $C$ sont mutuellement indépendants avec $\\Pr(A)=0{,}5$, $\\Pr(B)=0{,}4$ et $\\Pr(C)=0{,}25$. Que vaut $\\Pr(A\\cap B\\cap C)$ ?",
+    "explanation": "L'indépendance mutuelle permet de factoriser l'intersection en produit des probabilités marginales. Le piège est d'additionner au lieu de multiplier, ou d'oublier un facteur.",
+    "choices": [
+      {
+        "text": "$0{,}05$",
+        "correct": true
+      },
+      {
+        "text": "$1{,}15$",
+        "correct": false,
+        "why": "Additionne les trois probabilités $0{,}5+0{,}4+0{,}25=1{,}15$ au lieu de les multiplier — donne d'ailleurs un résultat impossible (supérieur à 1)."
+      },
+      {
+        "text": "$0{,}2$",
+        "correct": false,
+        "why": "Multiplie seulement $\\Pr(A)\\times\\Pr(B)=0{,}5\\times0{,}4=0{,}2$ en oubliant de multiplier par $\\Pr(C)$."
+      },
+      {
+        "text": "$0{,}45$",
+        "correct": false,
+        "why": "Mélange produit et somme : $\\Pr(A)\\Pr(B)+\\Pr(C)=0{,}2+0{,}25=0{,}45$ au lieu de multiplier les trois."
+      }
+    ],
+    "solution": "1. Par indépendance mutuelle, $\\Pr(A\\cap B\\cap C)=\\Pr(A)\\times\\Pr(B)\\times\\Pr(C)$.\n2. $\\Pr(A)\\times\\Pr(B)=0{,}5\\times0{,}4=0{,}2$.\n3. $0{,}2\\times\\Pr(C)=0{,}2\\times0{,}25=0{,}05$.\n4. Vérification : $0{,}05\\le\\min(0{,}5;\\,0{,}4;\\,0{,}25)=0{,}25$. ✓"
   }
 ]

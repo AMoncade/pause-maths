@@ -244,5 +244,91 @@
       }
     ],
     "solution": "1. On calcule la pente : $b = \\frac{c_{xy}}{s_x^2} = \\frac{20}{10} = 2$.\n2. On calcule l'ordonnée à l'origine : $a = \\bar{y} - b\\bar{x} = 11 - 2 \\times 5 = 1$.\n3. L'équation est donc $\\hat{y} = 1 + 2x$.\n4. Vérification : la droite passe par $(\\bar{x}, \\bar{y}) = (5, 11)$ car $1 + 2\\times5 = 11$. ✓"
+  },
+  {
+    "id": "stt1700-descr-011",
+    "course": "STT1700",
+    "topic": "stt1700-descr",
+    "difficulty": 1,
+    "type": "flash",
+    "prompt": "Quel type de diagramme représente une variable qualitative : diagramme à bâtons, histogramme ou tige-feuilles ?",
+    "explanation": "Le piège est de confondre histogramme et diagramme à bâtons — l'histogramme s'applique aux variables quantitatives continues regroupées en classes, pas aux catégories.",
+    "answer": "Diagramme à bâtons",
+    "keyPoints": [
+      "L'histogramme sert aux variables quantitatives continues regroupées en classes.",
+      "Le diagramme tige-feuilles conserve les valeurs individuelles d'une variable quantitative."
+    ]
+  },
+  {
+    "id": "stt1700-descr-012",
+    "course": "STT1700",
+    "topic": "stt1700-descr",
+    "difficulty": 2,
+    "type": "qcm",
+    "prompt": "Si $Y=-2X+5$ et $s_x=6$, quelle est $s_y$ ?",
+    "explanation": "L'écart-type se transforme par $s_y=|b|s_x$ : le signe de $b$ disparaît grâce à la valeur absolue et la constante n'affecte pas la dispersion.",
+    "choices": [
+      {
+        "text": "$12$",
+        "correct": true
+      },
+      {
+        "text": "$24$",
+        "correct": false,
+        "why": "Applique la formule de la variance $b^2 s_x$ au lieu de l'écart-type $|b|s_x$ : $(-2)^2 \\times 6 = 24$."
+      },
+      {
+        "text": "$-12$",
+        "correct": false,
+        "why": "Garde le signe négatif de $b$ au lieu de prendre la valeur absolue — un écart-type ne peut jamais être négatif."
+      },
+      {
+        "text": "$6$",
+        "correct": false,
+        "why": "Oublie de multiplier par $|b|$ et recopie simplement $s_x$."
+      }
+    ]
+  },
+  {
+    "id": "stt1700-descr-013",
+    "course": "STT1700",
+    "topic": "stt1700-descr",
+    "difficulty": 2,
+    "type": "vf",
+    "prompt": "Dans une distribution asymétrique à droite (étalée vers les valeurs élevées), la moyenne est généralement supérieure à la médiane.",
+    "explanation": "La queue à droite tire la moyenne vers le haut, tandis que la médiane résiste mieux aux valeurs extrêmes.",
+    "answer": true
+  },
+  {
+    "id": "stt1700-descr-014",
+    "course": "STT1700",
+    "topic": "stt1700-descr",
+    "difficulty": 3,
+    "type": "qcm",
+    "challenge": true,
+    "prompt": "Si la pente des moindres carrés est $b=2$, $s_x=3$ et $s_y=8$, que vaut le coefficient de corrélation $r_{xy}$ ?",
+    "explanation": "La formule $r_{xy}=b\\,s_x/s_y$ relie la pente à la corrélation. Le piège est d'inverser $s_x$ et $s_y$ ou de confondre $r_{xy}$ avec $b$.",
+    "choices": [
+      {
+        "text": "$0{,}75$",
+        "correct": true
+      },
+      {
+        "text": "$\\frac{16}{3}$",
+        "correct": false,
+        "why": "Inverse $s_x$ et $s_y$ dans la formule : calcule $b\\,s_y/s_x = 2 \\times 8/3 = 16/3$ au lieu de $b\\,s_x/s_y$."
+      },
+      {
+        "text": "$2$",
+        "correct": false,
+        "why": "Répond directement la pente $b$ sans la convertir en corrélation par le rapport des écarts-types."
+      },
+      {
+        "text": "$48$",
+        "correct": false,
+        "why": "Multiplie les trois valeurs $b \\times s_x \\times s_y = 2 \\times 3 \\times 8 = 48$ au lieu de diviser $b\\,s_x$ par $s_y$."
+      }
+    ],
+    "solution": "1. La relation entre pente et corrélation est $r_{xy} = b\\,\\frac{s_x}{s_y}$.\n2. On substitue : $r_{xy} = 2 \\times \\frac{3}{8} = \\frac{6}{8} = 0{,}75$.\n3. Vérification : $|r_{xy}| \\le 1$, ce qui est cohérent.\n4. On peut aussi retrouver cette formule à partir de $b = r_{xy}\\,s_y/s_x$, d'où $r_{xy} = b\\,s_x/s_y$."
   }
 ]
