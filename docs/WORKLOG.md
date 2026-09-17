@@ -2,6 +2,15 @@
 
 Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute la sienne dans son worktree ; l'admin fusionne.
 
+## 2026-09-17 — STT1700 : thèmes dérivés du matériel, jalon 1 (10 questions `stt1700-descr`) (lot stt1700)
+
+- `D:\Math\STT1700` est rempli (lot A) : lu `01 Plan de cours/StudiUM - structure STT1700-A-A26.md` (contient le calendrier semaine par semaine, pas seulement le plan PDF manquant), `INDEX.md`, et les PDF des sections 1-3 (`02 Notes de cours/`). **Matière de l'intra 1 (7 octobre) confirmée par le matériel, pas une hypothèse** : sections 1 (statistique descriptive), 2 (probabilités), 3 (variables aléatoires discrètes) — section 4 (lois continues) commence la semaine suivant l'intra. Détail dans `docs/sources/stt1700.md`.
+- `src/content/stt1700/index.ts` : 10 thèmes (un par section des notes), `stt1700-descr`/`stt1700-prob`/`stt1700-var` en intra (`defaultOn: true`, demandé par le brief), les 7 thèmes de sections 4-10 en final (`defaultOn: false`). **Écart signalé à l'admin** : le contrat de `defaultOn` dans `src/lib/types.ts` dit "déjà vu en classe à la date du build" (ex. MAT1600 n'active que 3/5 thèmes intra) ; ici les 3 sont actives comme demandé, mais on ne sait pas avec certitude combien de semaines de cours sont passées au 2026-09-17 — à trancher si la sémantique stricte doit s'appliquer aussi à STT1700.
+- **Essai d'économie du tour 2 :** brouillon initial des 10 questions `stt1700-descr` via `agy` (Antigravity CLI, `claude-opus-4-6-thinking`, quota Google) à partir de `docs/PROCESSUS_QUESTIONS.md` et des PDF de la section 1. **Mesure : 10 produites, 10 gardées (7 inchangées, 3 corrigées), 0 rejetée** — mais les 3 corrections étaient des erreurs réelles (backslash LaTeX doublé deux fois dans tout le fichier, une covariance donnée qui ne correspondait pas aux données de l'énoncé dans le Défi, deux distracteurs de la question quartile avec un chiffre incohérent avec leur propre `why`), toutes invisibles sans vérification numérique (`fractions.Fraction` en Python, hors dépôt). Détail dans `docs/reviews/stt1700/stt1700-descr.md`.
+- Import (`npm run import`, aucun `--renumber` nécessaire), gate vert (`npm test` 363 tests, `npm run build`). Relecture aveugle (`scripts/blind-review.ts`, seed 217, clé jamais montrée) par un sous-agent **Haiku** frais, vérification Python indépendante pour chaque calcul : **10/10 confirmées, 0 désaccord**.
+- **Compte mesuré STT1700 : 10 questions** (7 qcm / 2 vf / 1 flash, 1 Défi) sur le seul thème `stt1700-descr`. `npm test` (363 tests) : les bornes de `bank-stats.test.ts` ne s'appliquent qu'à partir de 40 questions intra par cours, donc pas encore vérifiées ici.
+- Suite : thèmes `stt1700-prob` et `stt1700-var` (10 questions chacun visé, à confirmer par l'admin) une fois ce jalon revu.
+
 ## 2026-09-17 — Lot PWA (tour 2) : projet Vercel, Blob store, premier déploiement prod
 
 - `npx vercel link --yes --project pause-maths --scope am-oncade-s-projects` : projet créé, Vite auto-détecté, dépôt GitHub `AMoncade/pause-maths` connecté (auto-deploy sur push `main`). `npx vercel git connect` confirme la connexion.
