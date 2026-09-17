@@ -28,3 +28,17 @@ avec répétition espacée, gardé tel quel.
 
 Re-vérifié (gate + relecture aveugle complète des 8 questions, SymPy) après application :
 **PASS**, aucune régression ; valeurs de $n!$ et $2^n$ reconfirmées pour $n=0..4$.
+
+## Complément à 12 questions (jalon 2, cible ~12/thème)
+
+| id | réponse retenue | confiance | vérification | verdict |
+|---|---|---|---|---|
+| mat1500-induc-009 | $n=0$ | haute | $0^3-0=0$, $3\mid0$ | conforme |
+| mat1500-induc-010 | $(k^3-k)+3(k^2+k)$ | haute | expansion symbolique de $(k+1)^3-(k+1)$ | conforme |
+| mat1500-induc-011 | cas premier / composé | haute | analyse conceptuelle | conforme |
+| mat1500-induc-012 (défi) | appliquer l'HI forte à $a$ | haute | analyse conceptuelle | conforme |
+
+**Verdict : PASS.** Correction mineure appliquée suite à la relecture : choix distracteur A de
+`mat1500-induc-012` reformulé pour ne plus être défendable même par un lecteur très littéral
+(affirmait à tort que rien ne garantit $2 \le a$, alors que $a>1$ entier l'implique
+automatiquement). Total du thème : 12 questions.

@@ -181,5 +181,98 @@
       }
     ],
     "solution": "Supposons par contradiction que $\\sqrt{2}$ est rationnel : $\\sqrt{2} = p/q$ pour des entiers $p, q$ avec $q \\ne 0$ et $\\text{pgcd}(p,q) = 1$ (fraction irréductible).\n\nEn élevant au carré : $2 = p^2/q^2$, donc $p^2 = 2q^2$.\n\nAinsi $p^2$ est pair, ce qui force $p$ à être pair (si $p$ était impair, $p^2$ serait impair). Écrivons $p = 2m$ pour un entier $m$.\n\nEn substituant : $(2m)^2 = 2q^2$, soit $4m^2 = 2q^2$, soit $q^2 = 2m^2$. Donc $q^2$ est pair, ce qui force $q$ à être pair aussi.\n\nMais alors $p$ et $q$ sont tous deux pairs, donc $2$ divise leur pgcd — ce qui contredit $\\text{pgcd}(p,q) = 1$.\n\nCette contradiction montre que l'hypothèse de départ était fausse : $\\sqrt{2}$ n'est pas rationnel."
+  },
+  {
+    "id": "mat1500-proof-009",
+    "course": "MAT1500",
+    "topic": "mat1500-proof",
+    "difficulty": 2,
+    "prompt": "L'énoncé $\\forall x \\in \\emptyset, P(x)$ (pour un prédicat $P$ quelconque) est...",
+    "explanation": "Toujours vrai par « vacuité » : $\\forall x \\in \\emptyset, P(x)$ affirme que tout élément de $\\emptyset$ satisfait $P$, mais comme $\\emptyset$ n'a aucun élément, il n'y a rien à vérifier — l'énoncé ne peut pas être mis en défaut, peu importe $P$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "toujours vrai, quel que soit $P$", "correct": true },
+      {
+        "text": "toujours faux, quel que soit $P$",
+        "correct": false,
+        "why": "C'est l'inverse : un énoncé universel sur l'ensemble vide est vrai par vacuité, jamais faux."
+      },
+      {
+        "text": "vrai seulement si $P(x)$ est vrai pour au moins un $x$",
+        "correct": false,
+        "why": "Cette condition n'a aucun sens ici : $\\emptyset$ n'a aucun élément, donc « $P(x)$ vrai pour au moins un $x$ » ne peut jamais se produire, et pourtant l'énoncé reste vrai."
+      },
+      {
+        "text": "indéterminé sans connaître $P$",
+        "correct": false,
+        "why": "Le contenu de $P$ n'a aucune importance ici : la vérité vient uniquement du fait que le domaine de quantification est vide."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-proof-010",
+    "course": "MAT1500",
+    "topic": "mat1500-proof",
+    "difficulty": 2,
+    "prompt": "Pour prouver $\\exists x, P(x)$, il est toujours nécessaire d'exhiber explicitement un $x$ qui satisfait $P$.",
+    "explanation": "Faux : une preuve d'existence peut aussi être non constructive, par exemple en montrant que supposer $\\forall x, \\neg P(x)$ mène à une contradiction, sans jamais identifier explicitement de témoin $x$.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1500-proof-011",
+    "course": "MAT1500",
+    "topic": "mat1500-proof",
+    "difficulty": 2,
+    "prompt": "Pour réfuter l'énoncé $\\exists x, P(x)$ (c'est-à-dire prouver $\\forall x, \\neg P(x)$), que doit-on montrer ?",
+    "explanation": "Réfuter un énoncé existentiel demande de couvrir TOUS les cas (montrer que $P$ échoue partout), contrairement à réfuter un énoncé universel qui ne demande qu'un seul contre-exemple. C'est l'exact contraire de la situation vue pour les énoncés universels.",
+    "type": "qcm",
+    "choices": [
+      { "text": "que $P(x)$ est faux pour absolument tout $x$", "correct": true },
+      {
+        "text": "qu'il existe un seul $x$ pour lequel $P(x)$ est faux",
+        "correct": false,
+        "why": "Ceci suffirait à réfuter un énoncé universel $\\forall x, P(x)$, pas un énoncé existentiel : $\\exists x, P(x)$ peut rester vrai même si $P$ échoue pour certains $x$."
+      },
+      {
+        "text": "que $P(x)$ est vrai pour au moins un $x$",
+        "correct": false,
+        "why": "Ceci confirmerait l'énoncé existentiel au lieu de le réfuter."
+      },
+      {
+        "text": "que $P$ n'est défini pour aucune valeur de $x$",
+        "correct": false,
+        "why": "La réfutation porte sur la valeur de vérité de $P(x)$ pour tout $x$ du domaine, pas sur le fait que $P$ soit défini ou non."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-proof-012",
+    "course": "MAT1500",
+    "topic": "mat1500-proof",
+    "difficulty": 3,
+    "prompt": "Dans la preuve non constructive qu'il existe des irrationnels $a,b$ tels que $a^b$ soit rationnel (via $\\sqrt2^{\\sqrt2}$), quelle est l'idée clé ?",
+    "explanation": "L'erreur fréquente est de croire qu'il faut déterminer laquelle des deux possibilités est vraie ; la force de l'argument non constructif est justement de conclure sans trancher.",
+    "challenge": true,
+    "type": "qcm",
+    "choices": [
+      { "text": "distinguer deux cas ($\\sqrt2^{\\sqrt2}$ rationnel ou irrationnel) et exhiber une paire $(a,b)$ qui fonctionne dans chacun, sans savoir lequel se produit", "correct": true },
+      {
+        "text": "montrer que $\\sqrt2^{\\sqrt2}$ est nécessairement irrationnel, puis conclure",
+        "correct": false,
+        "why": "La preuve n'a pas besoin de trancher cette question (en fait difficile) : elle fonctionne dans les deux cas possibles, sans déterminer lequel est vrai."
+      },
+      {
+        "text": "calculer numériquement $\\sqrt2^{\\sqrt2}$ pour vérifier qu'il est rationnel",
+        "correct": false,
+        "why": "Un calcul numérique approché ne peut jamais prouver qu'un nombre est rationnel ou irrationnel avec certitude."
+      },
+      {
+        "text": "utiliser l'induction sur les puissances de $\\sqrt2$",
+        "correct": false,
+        "why": "Aucune induction n'intervient dans cette preuve ; elle repose sur une disjonction de cas exhaustive, pas sur une récurrence."
+      }
+    ],
+    "solution": "Considérons le nombre $\\sqrt2^{\\sqrt2}$. Il est soit rationnel, soit irrationnel — ces deux cas épuisent toutes les possibilités.\n\n**Cas 1 : $\\sqrt2^{\\sqrt2}$ est rationnel.** Alors on a trouvé notre paire : $a=\\sqrt2$, $b=\\sqrt2$, tous deux irrationnels, avec $a^b=\\sqrt2^{\\sqrt2}$ rationnel par hypothèse de ce cas.\n\n**Cas 2 : $\\sqrt2^{\\sqrt2}$ est irrationnel.** Posons alors $a=\\sqrt2^{\\sqrt2}$ (irrationnel par hypothèse de ce cas) et $b=\\sqrt2$ (irrationnel). Alors $a^b = \\left(\\sqrt2^{\\sqrt2}\\right)^{\\sqrt2} = \\sqrt2^{\\sqrt2\\cdot\\sqrt2} = \\sqrt2^2 = 2$, qui est rationnel.\n\nDans les deux cas, on a exhibé des irrationnels $a,b$ avec $a^b$ rationnel — sans jamais déterminer dans lequel des deux cas on se trouve réellement."
   }
 ]
