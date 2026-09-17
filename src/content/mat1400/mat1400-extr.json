@@ -43,7 +43,7 @@
     "id": "mat1400-extr-004",
     "course": "MAT1400",
     "topic": "mat1400-extr",
-    "difficulty": 2,
+    "difficulty": 1,
     "prompt": "Pour $f(x,y)=x^2+y^2$ à l'origine, $D=4>0$ et $f_{xx}=2>0$. Il s'agit donc d'un...",
     "explanation": "Règle du test : $D>0$ et $f_{xx}>0$ signifient minimum local (la surface se courbe vers le haut dans toutes les directions).",
     "type": "qcm",
@@ -92,7 +92,7 @@
     "explanation": "$f_x=2x+2y=0$, $f_y=2x+6y=0$ donnent $(0,0)$. $f_{xx}=2$, $f_{yy}=6$, $f_{xy}=2$. $D=2(6)-2^2=12-4=8>0$, $f_{xx}=2>0$ : minimum local.",
     "type": "qcm",
     "choices": [
-      { "text": "Minimum local ($D=8>0$, $f_{xx}=2>0$)", "correct": true },
+      { "text": "Minimum local", "correct": true },
       { "text": "Point-selle", "correct": false, "why": "La présence d'un terme croisé $xy$ ne rend pas automatiquement le point une selle : c'est le signe de $D$ qui décide, et ici $D=8>0$." },
       { "text": "Maximum local", "correct": false, "why": "$D>0$ est correct, mais $f_{xx}=2>0$ indique un minimum, pas un maximum." },
       { "text": "Non concluant", "correct": false, "why": "$D=8\\ne0$ : le test est parfaitement concluant, il ne faut pas confondre la présence d'un terme croisé avec un cas $D=0$." }
@@ -146,7 +146,7 @@
     "topic": "mat1400-extr",
     "difficulty": 2,
     "prompt": "La fonction $f(x,y)=x^2-y^2$ définie sur TOUT $\\mathbb R^2$ (non borné) possède un maximum absolu.",
-    "explanation": "Faux : le long de l'axe des $x$ ($y=0$), $f=x^2\\to+\\infty$ : $f$ n'est pas bornée supérieurement sur $\\mathbb R^2$ tout entier. Le théorème des valeurs extrêmes exige un domaine FERMÉ ET BORNÉ, ce que $\\mathbb R^2$ n'est pas.",
+    "explanation": "Faux : le long de l'axe des $x$ ($y=0$), $f=x^2\\to+\\infty$ : $f$ n'est pas bornée supérieurement sur $\\mathbb R^2$ tout entier. Le théorème des valeurs extrêmes exige un domaine BORNÉ (en plus d'être fermé) ; $\\mathbb R^2$ est fermé mais n'est PAS borné, donc le théorème ne s'applique pas.",
     "type": "vf",
     "answer": false
   },

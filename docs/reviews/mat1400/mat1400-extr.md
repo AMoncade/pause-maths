@@ -20,3 +20,5 @@ comparés à la clé : accord total (8/8).
 | mat1400-extr-012 | confirmé | $D=-12<0$ malgré $f_{xx}>0$ : point-selle |
 
 Aucune correction ni retrait.
+
+**Ronde 2** : extr-004, difficulté surévaluée, $2\to1$. extr-007, le choix correct affichait "(D=8>0, f_xx=2>0)" en clair alors qu'aucun distracteur n'avait d'annotation équivalente — retiré du texte du choix (le calcul reste dans l'`explanation`) pour ne plus se distinguer par sa longueur/son détail. extr-011, précisé que $\mathbb R^2$ est fermé mais pas borné (et non "ni fermé ni borné", ce qui était inexact). Réponses inchangées, pas de nouvelle relecture aveugle nécessaire.
