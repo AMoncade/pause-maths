@@ -15,7 +15,9 @@ PWA de quiz rapides (français) sur MAT1400, MAT1500, MAT1600, STT1700 (UdeM, au
 
 ## URL de production
 
-(à remplir par le lot PWA après le premier déploiement Vercel)
+https://pause-maths.vercel.app — projet Vercel `pause-maths` (équipe am-oncade-s-projects), auto-deploy sur push `main`, Blob store privé `pause-maths-sync`. Premier déploiement : 2026-09-17 (`main@2d9cb50`).
+
+**Règle des ids, active depuis ce premier déploiement** (HANDOFF §7) : une correction de coquille garde son id ; un changement de sens ou de réponse prend un **nouvel id** et l'ancien va dans `src/content/retired-ids.json`. Une progression utilisateur peut maintenant exister.
 
 ## Périmètres (régie du 2026-09-16)
 

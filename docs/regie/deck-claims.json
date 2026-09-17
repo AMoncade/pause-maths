@@ -5,21 +5,42 @@
     {
       "session": "adrie-1f",
       "task": "Lot PWA tour 2: projet Vercel, Blob store, déploiement prod, vérifs curl, ifMatch réel",
-      "files": ["vite.config.ts", "vercel.json", "api/**", "public/**", "src/lib/sync.ts", "src/lib/pwa.ts", "index.html", "tests/api/**", "package.json", "package-lock.json", "docs/reviews/code/pwa-sync.md", "docs/WORKLOG.md"],
+      "files": [
+        "vite.config.ts",
+        "vercel.json",
+        "api/**",
+        "public/**",
+        "src/lib/sync.ts",
+        "src/lib/pwa.ts",
+        "index.html",
+        "tests/api/**",
+        "package.json",
+        "package-lock.json",
+        "docs/reviews/code/pwa-sync.md",
+        "docs/WORKLOG.md"
+      ],
       "worktree": "C:/Users/adrie/pause-maths-wt/pwa",
       "branch": "lot/pwa",
       "assignedAt": "2026-09-17T17:44:43Z",
-      "status": "en cours"
+      "status": "clos",
+      "closedAt": "2026-09-17T18:07:54Z",
+      "result": "2d9cb50, https://pause-maths.vercel.app"
     },
     {
       "session": "adrie-7e",
       "task": "Lot A tour 2: StudiUM → D:/Math (STT1700, MAT1600, MAT1400, MAT1500) via skill studium-sync",
-      "files": ["D:/Math/**", "C:/Users/adrie/.claude/skills/studium-sync/**"],
+      "files": [
+        "D:/Math/**",
+        "C:/Users/adrie/.claude/skills/studium-sync/**"
+      ],
       "worktree": null,
       "branch": null,
       "assignedAt": "2026-09-17T17:44:43Z",
       "status": "en cours",
-      "exclusive": ["chrome", "Downloads"]
+      "exclusive": [
+        "chrome",
+        "Downloads"
+      ]
     }
   ]
 }
