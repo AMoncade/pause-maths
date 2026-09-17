@@ -110,5 +110,172 @@
       { "text": "$c=2$", "correct": false, "why": "Le coefficient $2$ devant $c$ dans l'entrée $(2,2)$ a été oublié : $-1+2c=1$ donne $c=1$, pas $-1+c=1$." },
       { "text": "$c=0$", "correct": false, "why": "La première ligne de $AB$ ne dépend pas de $c$, mais cela ne veut pas dire que $c$ peut être n'importe quoi : la deuxième ligne impose bien $c=1$." }
     ]
+  },
+  {
+    "id": "mat1600-matr-009",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 1,
+    "prompt": "Peut-on calculer $A+B$ si $A$ est de taille $2\\times3$ et $B$ de taille $3\\times2$ ?",
+    "explanation": "Non : l'addition matricielle exige que les deux matrices aient exactement la même taille (même nombre de lignes et de colonnes), pas seulement des dimensions compatibles pour un produit.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Non, les deux matrices doivent avoir exactement la même taille", "correct": true },
+      { "text": "Oui, le résultat est $2\\times2$", "correct": false, "why": "L'addition entrée par entrée n'a de sens que si les deux matrices ont la même forme ; ici $2\\times3$ et $3\\times2$ ne correspondent pas." },
+      { "text": "Oui, le résultat est $3\\times3$", "correct": false, "why": "Aucune règle d'addition ne produit une taille différente de celle des deux matrices de départ ; de toute façon, l'opération n'est pas définie ici." },
+      { "text": "Oui, à condition de transposer l'une des deux", "correct": false, "why": "Transposer changerait le problème posé : la question demande si $A+B$ est calculable telles quelles, et ce n'est pas le cas." }
+    ]
+  },
+  {
+    "id": "mat1600-matr-010",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 1,
+    "prompt": "$(A+B)^T=A^T+B^T$ pour toutes matrices $A,B$ de même taille.",
+    "explanation": "Vrai : contrairement à la transposée d'un produit, la transposée d'une somme ne change pas l'ordre — l'addition matricielle se fait entrée par entrée, tout comme la transposition.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1600-matr-011",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 2,
+    "prompt": "Calculer $2A-B$ pour $A=\\begin{pmatrix}1&2\\\\3&0\\end{pmatrix}$ et $B=\\begin{pmatrix}0&1\\\\1&2\\end{pmatrix}$.",
+    "explanation": "$2A=\\begin{pmatrix}2&4\\\\6&0\\end{pmatrix}$, donc $2A-B=\\begin{pmatrix}2&3\\\\5&-2\\end{pmatrix}$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$\\begin{pmatrix}2&3\\\\5&-2\\end{pmatrix}$", "correct": true },
+      { "text": "$\\begin{pmatrix}2&5\\\\7&2\\end{pmatrix}$", "correct": false, "why": "Ceci additionne $B$ au lieu de le soustraire : il faut $2A-B$, pas $2A+B$." },
+      { "text": "$\\begin{pmatrix}1&1\\\\2&-2\\end{pmatrix}$", "correct": false, "why": "Le facteur $2$ devant $A$ a été oublié : c'est $2A$ qu'il faut calculer d'abord, pas $A$ seul." },
+      { "text": "$\\begin{pmatrix}2&3\\\\5&2\\end{pmatrix}$", "correct": false, "why": "Erreur de signe sur l'entrée $(2,2)$ : $2\\cdot0-2=-2$, pas $2$." }
+    ]
+  },
+  {
+    "id": "mat1600-matr-012",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 2,
+    "prompt": "Si $AB=AC$ et $A\\ne0$, alors nécessairement $B=C$.",
+    "explanation": "Faux : contrairement aux nombres réels, on ne peut pas « simplifier » par $A$ en général — cela ne fonctionne que si $A$ est inversible. Sinon, $A(B-C)=0$ n'implique pas $B-C=0$.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1600-matr-013",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 2,
+    "prompt": "Pourquoi ne peut-on pas toujours « simplifier » par $A$ dans une égalité $AB=AC$ ?",
+    "explanation": "Simplifier par $A$ reviendrait à multiplier les deux côtés par $A^{-1}$, ce qui n'est possible que si $A$ est inversible. Si $A$ n'est pas inversible, $AB=AC$ n'entraîne pas $B=C$.",
+    "type": "flash",
+    "answer": "Parce que cela reviendrait à multiplier par $A^{-1}$, qui n'existe que si $A$ est inversible. Si $A$ est singulière, $AB=AC$ peut être vrai même si $B\\ne C$.",
+    "keyPoints": [
+      "La « division » par une matrice n'existe pas : seule la multiplication par $A^{-1}$ (si elle existe) en tient lieu",
+      "$A(B-C)=0$ avec $A$ non inversible n'implique pas $B-C=0$",
+      "Cette simplification est toujours valide si on sait d'avance que $A$ est inversible"
+    ]
+  },
+  {
+    "id": "mat1600-matr-014",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 2,
+    "prompt": "Laquelle de ces matrices vérifie $A^2=I$ sans être égale à $I$ ni à $-I$ ?",
+    "explanation": "$\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}^2=\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}=I$. Le piège classique : croire que $A^2=I$ force $A=I$ ou $A=-I$, alors que d'autres matrices (comme celle-ci) le vérifient aussi.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$\\begin{pmatrix}0&1\\\\1&0\\end{pmatrix}$", "correct": true },
+      { "text": "$\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}$", "correct": false, "why": "Cette matrice au carré donne $\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}\\ne I$." },
+      { "text": "$\\begin{pmatrix}2&0\\\\0&2\\end{pmatrix}$", "correct": false, "why": "Cette matrice au carré donne $\\begin{pmatrix}4&0\\\\0&4\\end{pmatrix}\\ne I$." },
+      { "text": "$\\begin{pmatrix}0&1\\\\-1&0\\end{pmatrix}$", "correct": false, "why": "Cette matrice au carré donne $\\begin{pmatrix}-1&0\\\\0&-1\\end{pmatrix}=-I$, pas $I$." }
+    ]
+  },
+  {
+    "id": "mat1600-matr-015",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 1,
+    "prompt": "Que vaut $A^2$ (au sens de la multiplication matricielle $A\\cdot A$) pour $A=\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$ ?",
+    "explanation": "$A^2=A\\cdot A=\\begin{pmatrix}4&0\\\\5&9\\end{pmatrix}$. Le piège : élever chaque entrée au carré individuellement donnerait à tort $\\begin{pmatrix}4&0\\\\1&9\\end{pmatrix}$, ce qui n'est pas la même chose.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$\\begin{pmatrix}4&0\\\\5&9\\end{pmatrix}$", "correct": true },
+      { "text": "$\\begin{pmatrix}4&0\\\\1&9\\end{pmatrix}$", "correct": false, "why": "Ceci élève chaque entrée au carré individuellement, ce qui n'est pas ce que signifie $A^2$ : il faut multiplier la matrice par elle-même." },
+      { "text": "$\\begin{pmatrix}4&0\\\\2&9\\end{pmatrix}$", "correct": false, "why": "Erreur de calcul sur l'entrée $(2,1)$ : $1\\cdot2+3\\cdot1=5$, pas $2$." },
+      { "text": "$\\begin{pmatrix}2&0\\\\1&3\\end{pmatrix}$", "correct": false, "why": "Ceci suppose à tort que $A^2=A$, ce qui n'est vrai que pour des matrices particulières (comme $I$), pas en général." }
+    ]
+  },
+  {
+    "id": "mat1600-matr-016",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 1,
+    "prompt": "Pourquoi $A^2$ ne signifie-t-il pas « élever chaque entrée de $A$ au carré » ?",
+    "explanation": "$A^2$ est une notation pour $A\\cdot A$, le produit matriciel de $A$ par elle-même, qui combine les rangées et les colonnes — pas une opération entrée par entrée comme le carré des nombres réels.",
+    "type": "flash",
+    "answer": "Parce que $A^2$ signifie $A\\cdot A$ (multiplication matricielle), qui mélange les rangées et les colonnes, contrairement à une opération terme à terme.",
+    "keyPoints": [
+      "Toute puissance de matrice ($A^2, A^3,\\dots$) se définit par multiplication matricielle répétée",
+      "Élever chaque entrée au carré donne en général une matrice différente de $A\\cdot A$",
+      "Les deux calculs ne coïncident que dans des cas particuliers (par exemple $A$ diagonale)"
+    ]
+  },
+  {
+    "id": "mat1600-matr-017",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 3,
+    "challenge": true,
+    "solution": "1) On sait que $A^{-1}=\\begin{pmatrix}1&-2\\\\0&1\\end{pmatrix}$.\n\n2) Multiplier les deux côtés de $AX=B$ à gauche par $A^{-1}$ : $X=A^{-1}B$.\n\n3) $X=\\begin{pmatrix}1&-2\\\\0&1\\end{pmatrix}\\begin{pmatrix}3\\\\1\\end{pmatrix}=\\begin{pmatrix}1\\cdot3+(-2)\\cdot1\\\\0\\cdot3+1\\cdot1\\end{pmatrix}=\\begin{pmatrix}1\\\\1\\end{pmatrix}$.",
+    "prompt": "Résoudre $AX=B$ pour $A=\\begin{pmatrix}1&2\\\\0&1\\end{pmatrix}$, $B=\\begin{pmatrix}3\\\\1\\end{pmatrix}$, sachant que $A^{-1}=\\begin{pmatrix}1&-2\\\\0&1\\end{pmatrix}$.",
+    "explanation": "Comme $A$ est inversible, $X=A^{-1}B$ (dans cet ordre) $=\\begin{pmatrix}1\\\\1\\end{pmatrix}$.",
+    "type": "qcm",
+    "choices": [
+      { "text": "$\\begin{pmatrix}1\\\\1\\end{pmatrix}$", "correct": true },
+      { "text": "$\\begin{pmatrix}3\\\\1\\end{pmatrix}$", "correct": false, "why": "Ceci recopie $B$ directement, sans multiplier par $A^{-1}$." },
+      { "text": "$\\begin{pmatrix}5\\\\1\\end{pmatrix}$", "correct": false, "why": "Erreur de signe : $1\\cdot3+2\\cdot1=5$ utilise $A$ au lieu de $A^{-1}$ (dont l'entrée est $-2$, pas $2$)." },
+      { "text": "$\\begin{pmatrix}-1\\\\1\\end{pmatrix}$", "correct": false, "why": "Erreur de signe sur la première composante : $1\\cdot3+(-2)\\cdot1=1$, pas $-1$." }
+    ]
+  },
+  {
+    "id": "mat1600-matr-018",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 1,
+    "prompt": "Pour résoudre $AX=B$ avec $A$ inversible, il suffit de calculer $X=A^{-1}B$ (dans cet ordre, pas $BA^{-1}$).",
+    "explanation": "Vrai : multiplier les deux côtés de $AX=B$ à gauche par $A^{-1}$ donne $A^{-1}AX=A^{-1}B$, soit $X=A^{-1}B$. Multiplier à droite par $A^{-1}$ ne simplifierait pas l'équation de la même façon.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1600-matr-019",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 1,
+    "prompt": "Une matrice $A$ de taille $2\\times3$ peut-elle être inversible ?",
+    "explanation": "Non : seules les matrices carrées peuvent être inversibles, car $AA^{-1}=A^{-1}A=I$ exige que les produits soient définis dans les deux sens, ce qui force $A$ à être carrée.",
+    "type": "qcm",
+    "choices": [
+      { "text": "Non, seules les matrices carrées peuvent être inversibles", "correct": true },
+      { "text": "Oui, si elle est de rang maximal", "correct": false, "why": "Un rang maximal (ici $2$) ne suffit pas : la définition même de l'inverse exige que $A$ soit carrée, peu importe son rang." },
+      { "text": "Oui, son inverse serait de taille $3\\times2$", "correct": false, "why": "Une matrice non carrée n'a pas d'inverse au sens usuel : $AA^{-1}=I$ et $A^{-1}A=I$ ne peuvent pas être simultanément définis si $A$ n'est pas carrée." },
+      { "text": "Cela dépend du déterminant", "correct": false, "why": "Le déterminant n'est même pas défini pour une matrice non carrée : la question ne se pose pas." }
+    ]
+  },
+  {
+    "id": "mat1600-matr-020",
+    "course": "MAT1600",
+    "topic": "mat1600-matr",
+    "difficulty": 1,
+    "prompt": "Qu'est-ce que la trace d'une matrice carrée $A$ ?",
+    "explanation": "La trace est la somme des entrées de la diagonale principale de $A$ ; c'est une notion différente du déterminant, même si les deux se calculent à partir de la diagonale dans le cas d'une matrice triangulaire.",
+    "type": "flash",
+    "answer": "C'est la somme des entrées de la diagonale principale de $A$, notée $\\text{tr}(A)$.",
+    "keyPoints": [
+      "La trace additionne les entrées diagonales ; le déterminant d'une triangulaire les multiplie — ne pas confondre les deux",
+      "La trace n'est définie que pour une matrice carrée",
+      "$\\text{tr}(A)$ ne dépend que des entrées diagonales, jamais des entrées hors diagonale"
+    ]
   }
 ]

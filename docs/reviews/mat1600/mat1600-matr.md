@@ -78,5 +78,17 @@ Relecture aveugle ciblée (seed 201/305) sur les 4 questions modifiées/remplac�
 0 désaccord, chaque distracteur vérifié par SymPy comme correspondant à une erreur de
 calcul distincte et identifiable.
 
-**Résultat final : 8/8 publiables, 0 correction nécessaire, 0 désaccord. Extension à
-20/thème en cours.**
+**Résultat (jalon 1-2, 1-8) : 8/8 publiables, 0 correction nécessaire, 0 désaccord.**
+
+## mat1600-matr-009 à 020 (extension à 20/thème)
+
+Relecture aveugle (seed 601) sur les 12 nouvelles : $2A-B$ confirmé par SymPy pour
+{011} ; contre-exemple concret ($A$ singulière non nulle) construit pour {012}
+($AB=AC$ sans $B=C$) ; les 4 candidats de {014} vérifiés un par un (seule la matrice
+d'échange donne $A^2=I$) ; produit matriciel vs carré entrée par entrée distingués
+numériquement pour {015} ; résolution $X=A^{-1}B$ confirmée pour le Défi {017}.
+Concepts (009, 010, 013, 016, 018, 019, 020) confirmés par raisonnement dans le cadre
+du cours (matr-019 : inverse à sens unique hors programme, noté explicitement). 0
+désaccord.
+
+**Résultat final : 20/20 publiables, 0 correction nécessaire, 0 désaccord.**
