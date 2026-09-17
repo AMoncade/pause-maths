@@ -2,6 +2,21 @@
 
 Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute la sienne dans son worktree ; l'admin fusionne.
 
+## 2026-09-16 — MAT1500 : relecture Opus (b) appliquée, 96 questions inchangées (lot mat1500)
+
+- Applique `docs/reviews/relecture-opus/mat1500-b.md` (29 questions relues : les 22 nouvelles de
+  logic/quant/func/sets + les 7 premiers Défi convertis) : 1 ÉLEVÉE (quant-011, `why` affirmait
+  une implication fausse), 6 MOYENNES (logic-005 réponse dans l'énoncé ; sets-012 encore en
+  flash ; calibration/explanation des Défi convertis ; sets-008 réponse repérable à sa longueur ;
+  quant-008 option contredisant le domaine de l'énoncé ; func-011 choix auto-diagnostiqué),
+  8 BASSES (distracteurs artificiels, redondances, pièges non nommés, notation $\oplus$ de Rosen
+  pour la différence symétrique).
+- Aucun rejet : tous les points étaient fondés et vérifiés.
+- Gate vert (`npm test`, 363 tests) et relecture aveugle ciblée (SymPy/Python/force brute) sur
+  les 24 items touchés : PASS partout.
+- Compte inchangé : 96 questions (le contenu, pas le nombre, a changé dans ce lot).
+- Suite : rien en attente côté MAT1500 intra, sauf nouvelle relecture demandée par l'admin.
+
 ## 2026-09-16 — Engine : test d'équilibre de la banque (lot Engine)
 
 - `tests/bank-stats.test.ts` : par cours, sur les thèmes `exam:'intra'`, Défi entre 5 % et 15 %, qcm entre 50 % et 70 %, au moins 8 questions par thème ayant des questions. Une seule règle de seuil (décision de l'admin) : rien n'est vérifié tant que le cours a moins de 40 questions intra. Message d'échec avec les chiffres.
