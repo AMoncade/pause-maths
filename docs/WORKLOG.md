@@ -81,6 +81,25 @@ Points 9-13/17-21 : tous appliqués (aucun jugé non fondé). `npm test` (354 te
 - Compte mesuré (`src/content/mat1500/*.json`) : logic 12, quant 12, sets 12, func 12, divis 8,
   modul 8, proof 8, induc 8 = **80 questions**.
 - Suite : compléter divis, modul, proof, induc à 12 chacun (cible ~96 au total).
+## 2026-09-16 — MAT1600 : esp et matr étendus à 20, extension à 20/thème complète (lot mat1600)
+
+- `mat1600-esp` +12 (8→20) : test de sous-espace (fermeture, exemple positif),
+  intersection (vrai) vs union (faux) de sous-espaces, théorème du rang sur un
+  $3\times4$ et un $5\times3$, espace ligne, Défi (dépendance $v_3=v_1+v_2$ dans
+  $\mathbb R^3$), borne de dimension d'un sous-espace, trace vs déterminant déjà vu.
+  Relecture aveugle (seed 501) : 12/12, 0 désaccord.
+- `mat1600-matr` +12 (8→20, correction : l'entrée précédente du WORKLOG annonçait à
+  tort `matr` à 20, c'était encore à 8) : addition (tailles identiques requises),
+  $(A+B)^T=A^T+B^T$, calcul $2A-B$, $AB=AC$ n'implique pas $B=C$ (contre-exemple),
+  $A^2=I$ sans $A=\pm I$, $A^2$ (produit) vs carré entrée par entrée, Défi (résoudre
+  $AX=B$ via $A^{-1}$), matrice non carrée jamais inversible, trace. Relecture aveugle
+  (seed 601) : 12/12, 0 désaccord.
+- Gate `npm test` vert (316 tests) après chaque extension.
+- **Extension à 20/thème terminée sur les 5 thèmes intra** : `syst` 21, `vect` 20,
+  `matr` 20, `det` 20, `esp` 20 = **101 questions**, toutes gate-vertes et relues à
+  l'aveugle (0 désaccord au global). Journaux à jour dans `docs/reviews/mat1600/`.
+- Suite : en attente de directive de l'admin (thèmes finaux `diag`/`orth`, ou
+  approfondissement supplémentaire d'un thème existant).
 
 ## 2026-09-16 — Lot UI : checklist §11 « App in Chrome » (lot/ui)
 

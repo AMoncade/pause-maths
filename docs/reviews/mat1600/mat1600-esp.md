@@ -73,5 +73,15 @@ reconfirmée par SymPy, les 3 distracteurs (dont le nouveau, vérifié comme n'�
 pas dans $\mathbb R^3$) tous réfutés individuellement. esp-007 confiance 5/5, théorème
 de la base (forme duale) confirmé par raisonnement + exemple concret. 0 désaccord.
 
-**Résultat final : 8/8 publiables, 0 correction nécessaire, 0 désaccord. Extension à
-20/thème en cours (nouvelles questions non encore relues).**
+**Résultat (jalon 2, 1-8) : 8/8 publiables, 0 correction nécessaire, 0 désaccord.**
+
+## mat1600-esp-009 à 020 (extension à 20/thème)
+
+Relecture aveugle (seed 501) sur les 12 nouvelles : fermeture sous addition/multiplication
+scalaire de {009} vérifiée numériquement ; intersection (010) et union (011) de
+sous-espaces vérifiées par exemples concrets (contre-exemple $x$-axe/$y$-axe pour
+l'union) ; théorème du rang confirmé pour {012} et {015} avec des matrices concrètes ;
+$v_3=v_1+v_2$ confirmé exactement pour le Défi {014} (rang $2<3$). Concepts (013, 016,
+017, 018, 019, 020) confirmés par raisonnement. 0 désaccord.
+
+**Résultat final : 20/20 publiables, 0 correction nécessaire, 0 désaccord.**
