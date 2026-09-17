@@ -2,6 +2,57 @@
 
 Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute la sienne dans son worktree ; l'admin fusionne.
 
+## 2026-09-16 — Part D : 21 points de la relecture Opus appliqués (lot Part D)
+
+Réponse à `docs/reviews/code/part-d.md` (Opus 5, `main@3bab630`), sur les 3 fichiers du
+périmètre. Vérifié à chaque étape avec les vrais `src/lib/gate.ts`/`schema.ts` et
+`scripts/import-questions.ts` du main rebasé (`--renumber` et KaTeX `strict:'error'` inclus).
+
+**`docs/PROCESSUS_QUESTIONS.md` :**
+- (1, Élevée) numérotation : garde "commence à 001", ajoute que les collisions sont réglées par
+  l'import (`--renumber`), jamais bloquantes pour le modèle.
+- (2, Élevée) table `id | libellé | intra/final` régénérée pour les 3 cours à jour
+  (`src/content/*/index.ts` : 12 thèmes MAT1400, 10 MAT1500, 7 MAT1600 — auparavant 7/8/7 sans
+  libellés). STT1700 toujours vide, marqué explicitement.
+- (3, Élevée) exemple Défi déterminant : les deux `why` faux en arithmétique corrigés (l'exemple
+  a changé pour Lagrange, plus simple à vérifier ; nouveau calcul confirmé par import réel).
+- (4) mode KaTeX strict documenté (lettre accentuée hors `\text{}` refusée, pas un avertissement).
+- (5) règle de ligne unique (saut de ligne interdit hors `solution`) ajoutée au tableau des champs.
+- (6) section "KaTeX n'est pas LaTeX" ajoutée (délimiteurs, `\text{}`, `aligned`/`pmatrix` en bloc
+  seulement, pas de `\newcommand`/`\textsc`).
+- (7) schéma strict documenté (clé inconnue refusée, `challenge` : `true` ou absent, jamais `false`).
+- (8) sous-ensemble Markdown de `solution` nommé.
+- (9) neuf exemples (3 par type dont 1 Défi), tous dans un seul tableau, ids `-901` volontairement
+  hors numérotation réelle ; **vérifiés en conditions réelles** : import direct → accepté (9/9,
+  aucun problème), rejeu avec collision volontaire → `id-unique` puis `--renumber` → accepté et
+  renumérote correctement, `blind-review.ts` → Markdown et clé corrects.
+- (10) une seule règle de difficulté Défi (toujours 3, plus de contradiction "en général").
+- (11) piège du backslash complété (échappement JSON valide vs invalide vs `\u`).
+- (12) précisé : la limite de 280 caractères compte la source JSON, pas le rendu.
+- (13) note ajoutée : le gate ne vérifie pas qu'un `why` existe sur chaque mauvais choix.
+
+**`.claude/skills/ajouter-questions/SKILL.md` :**
+- (14) étape "relecture aveugle" pointée sur le fichier du scratchpad (pas le fichier fusionné
+  de `src/content`) ; le script utilise maintenant `parsePasted` (voir 18), donc la clôture
+  ```` ```json ```` ne le fait plus échouer.
+- (15) ajout de la marche à suivre par règle de refus (`id-unique` → `--renumber`, sinon corriger
+  et réimporter) ; retiré la mention obsolète "si le script n'existe pas encore" et la description
+  fausse d'un import partiel (c'est tout ou rien).
+- (16) distingue retrait pré-commit (enlever du fichier routé, jamais toucher `retired-ids.json`)
+  et retrait post-publication (fichier de l'admin).
+- (17) ajout de l'entrée `docs/WORKLOG.md` datée et de `npm run build` au gate, comme `CLAUDE.md`
+  l'exige avant un push vers `main`.
+
+**`scripts/blind-review.ts` :**
+- (18) lit maintenant les fichiers avec `parsePasted` (exporté par `scripts/import-questions.ts`)
+  au lieu d'un simple `JSON.parse` : accepte BOM et clôture ```` ```json ````.
+- (19) `mulberry32` importé de `src/lib/scheduler.ts` au lieu d'être recopié.
+- (20) chaque question affiche maintenant une ligne `<COURS> · <idDuThème>` sous son titre.
+- Testé à la main : fichier entouré de ```` ```json ````, dossier, fichier seul, `--seed`/`--key`.
+
+Points 9-13/17-21 : tous appliqués (aucun jugé non fondé). `npm test` (354 tests) et
+`tsc --noEmit` propres après rebase sur main (Engine `--renumber` + KaTeX strict inclus).
+
 ## 2026-09-16 — Engine : import `--renumber`, KaTeX strict dans le gate (lot Engine)
 
 - `npm run import -- <fichier.json> --renumber` : avant validation, chaque question reçoit le prochain numéro libre de son thème (ordre du fichier conservé, préfixe = `topic`). Libre = au-dessus du plus grand numéro du thème dans la banque, en sautant les ids retirés et ceux déjà attribués dans le lot ; les trous ne sont jamais réutilisés (un ancien id peut rester dans la progression d'un utilisateur). La correspondance ancien → nouveau est imprimée, même si l'import est refusé. Sans l'option : comportement inchangé. Option inconnue : usage, code 2. `renumberQuestions` exportée et testée.
