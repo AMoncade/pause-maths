@@ -102,7 +102,9 @@
       "worktree": "C:/Users/adrie/pause-maths-wt/mat1500",
       "branch": "lot/mat1500",
       "assignedAt": "2026-09-17T19:30:21Z",
-      "status": "en cours"
+      "status": "clos",
+      "closedAt": "2026-09-17T19:46:24Z",
+      "result": "283f93d, 102 questions"
     }
   ]
 }
