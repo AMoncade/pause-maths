@@ -56,7 +56,7 @@
       "worktree": "C:/Users/adrie/pause-maths-wt/stt1700",
       "branch": "lot/stt1700",
       "assignedAt": "2026-09-17T18:10:06Z",
-      "status": "jalon 2 clos (c1019f2) — jalon 3 en attente du /clear"
+      "status": "jalon 3 en cours (stt1700-var)"
     },
     {
       "session": "adrie-18",
@@ -89,6 +89,20 @@
       "status": "clos",
       "closedAt": "2026-09-17T19:28:06Z",
       "result": "67fdcf1, 107 questions"
+    },
+    {
+      "session": "adrie-d7",
+      "task": "Lot MAT1500 tour 2: vérification contre le matériel StudiUM (intra 29 oct, chap. 1-3)",
+      "files": [
+        "src/content/mat1500/**",
+        "docs/sources/mat1500.md",
+        "docs/reviews/mat1500/**",
+        "docs/WORKLOG.md"
+      ],
+      "worktree": "C:/Users/adrie/pause-maths-wt/mat1500",
+      "branch": "lot/mat1500",
+      "assignedAt": "2026-09-17T19:30:21Z",
+      "status": "en cours"
     }
   ]
 }
