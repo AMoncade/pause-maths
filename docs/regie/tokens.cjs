@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Où partent les jetons : somme l'usage par session Claude Code à partir des transcripts locaux.
-// Usage : node docs/regie/tokens.js [heures=36]
+// Usage : node docs/regie/tokens.cjs [heures=36]
 // Lit ~/.claude/sessions/*.json (noms) et ~/.claude/projects/*/*.jsonl (usage par message).
 // Le coût réel est dominé par cacheRead : chaque appel relit tout le contexte de la session.
 const fs = require('fs');

@@ -119,7 +119,7 @@ seulement, entrée `docs/WORKLOG.md`, compte rendu mesuré (SHA + comptes) à l'
 
 ## 4 bis. Économie de jetons — règles du tour 2 (mesuré, pas deviné)
 
-Mesure du tour 1 avec `node docs/regie/tokens.js` (36 h, 10 sessions) : **1,76 milliard de jetons relus
+Mesure du tour 1 avec `node docs/regie/tokens.cjs` (36 h, 10 sessions) : **1,76 milliard de jetons relus
 en cache, 6,1 M produits, 5 092 appels**. Répartition : MAT1500 460 M, MAT1600 360 M, UI 228 M,
 Engine 204 M, MAT1400 159 M, admin 141 M, lot A 58 M, PWA 54 M, STT1700 41 M. Le coût est dominé par la
 **relecture du contexte à chaque appel** (450 k de contexte × 1 000 appels pour une session de contenu),
@@ -129,7 +129,7 @@ pas par ce qui est écrit. Conséquences, à appliquer sans exception :
 2. **`/clear` après chaque tâche finie.** Une session de contenu écrit UN thème (≈12 questions), passe le
    gate, la relecture aveugle, pousse, rend compte, puis l'utilisateur fait `/clear` dans ce terminal avant
    le thème suivant. Une session ne doit jamais dépasser ~150 k de contexte ; l'admin le vérifie avec
-   `tokens.js` (colonne `ctx_k_par_appel`) et demande le `/clear`.
+   `tokens.cjs` (colonne `ctx_k_par_appel`) et demande le `/clear`.
 3. **Aucun message qui ne change rien** : pas d'accusé de réception, pas de « où en es-tu » tant qu'un
    jalon n'est pas dû, pas de `notify_when_idle` systématique. Un exécutant écrit à l'admin à la fin d'un
    jalon, point. Chaque message reçu coûte à la session tout son contexte.
@@ -142,7 +142,7 @@ pas par ce qui est écrit. Conséquences, à appliquer sans exception :
 6. **L'admin aussi** : cette session a coûté 141 M pour 527 appels. Démarrer chaque tour dans une session
    admin **neuve** depuis ce fichier, et la `/clear` quand le tour est clos ; ne pas la garder ouverte
    comme tableau de bord.
-7. **Mesurer, pas supposer** : `node docs/regie/tokens.js 6` toutes les heures de régie ; noter le total
+7. **Mesurer, pas supposer** : `node docs/regie/tokens.cjs 6` toutes les heures de régie ; noter le total
    dans le journal ; si une session dépasse 30 M en cache relu, la faire `/clear`.
 
 ## 5. Non vérifié à la fin de ce tour
