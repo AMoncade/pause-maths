@@ -22,3 +22,5 @@ Verdicts comparés à la clé : accord total.
 Aucune correction ni retrait.
 
 **Suite à la relecture Opus** (`docs/reviews/relecture-opus/mat1400.md`) : fonc-001 (`why` corrigé, $\sqrt{x^2+y^2}\ne x+y$), fonc-006 (distracteur "$1$" remplacé par deux distracteurs ciblés : chemins qui donnent en fait la même valeur ici, et confusion "non défini au point" / "pas de limite"), fonc-007 (reformulé pour ne plus télégraphier la réponse, aucun changement de fond). Relecture aveugle refaite (nouveau seed) sur fonc-006 : reconfirmée contre la nouvelle clé. fonc-001 et fonc-007 non re-testées (changements de formulation seulement, réponse inchangée).
+
+**Ronde 2** : fonc-009 (Défi) — distracteur "Vaut $1$" jugé bouche-trou (pas une vraie erreur) ; remplacé par une confusion réelle (traiter $x^3+y^3$ comme $x^2+y^2$ par erreur de degré, donnant $1$). fonc-012 remplacé entièrement (redondant avec fonc-005, même piège d'inégalité stricte) : nouveau domaine $\ln(4-x^2-y^2)$, disque ouvert $x^2+y^2<4$, explicitement mis en contraste avec fonc-001 (racine, bord inclus). Relecture aveugle refaite sur fonc-012 : voir résultat ci-dessous.

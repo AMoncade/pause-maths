@@ -120,7 +120,7 @@
     "choices": [
       { "text": "Existe et vaut $0$", "correct": true },
       { "text": "N'existe pas", "correct": false, "why": "Généralise à tort le comportement de $xy/(x^2+y^2)$ (thème précédent) : ici le numérateur est de degré 3, ce qui borne l'expression et force la convergence." },
-      { "text": "Vaut $1$", "correct": false, "why": "Aucun chemin standard ni l'encadrement polaire ne donne cette valeur." },
+      { "text": "Vaut $1$", "correct": false, "why": "Confond $x^3+y^3$ avec $x^2+y^2$ au numérateur (erreur de degré) : cela donnerait à tort $\\dfrac{x^2+y^2}{x^2+y^2}=1$." },
       { "text": "Dépend de l'angle $\\theta$, donc n'existe pas", "correct": false, "why": "Le facteur $\\cos^3\\theta+\\sin^3\\theta$ dépend bien de $\\theta$, mais il reste BORNÉ (entre $-2$ et $2$) et est multiplié par $r\\to0$ : la limite existe malgré la dépendance angulaire du facteur borné." }
     ],
     "solution": "1. Passer en coordonnées polaires : $x=r\\cos\\theta$, $y=r\\sin\\theta$.\n2. Numérateur : $x^3+y^3=r^3(\\cos^3\\theta+\\sin^3\\theta)$. Dénominateur : $x^2+y^2=r^2$.\n3. L'expression devient $r(\\cos^3\\theta+\\sin^3\\theta)$.\n4. Comme $|\\cos^3\\theta+\\sin^3\\theta|\\le2$ pour tout $\\theta$, on a $|f(x,y)|\\le2r\\to0$ quand $r\\to0$, peu importe $\\theta$.\n5. Par le théorème d'encadrement, la limite existe et vaut $0$."
@@ -154,15 +154,15 @@
     "id": "mat1400-fonc-012",
     "course": "MAT1400",
     "topic": "mat1400-fonc",
-    "difficulty": 1,
-    "prompt": "Domaine de $f(x,y)=\\dfrac{1}{\\sqrt{x-y}}$ ?",
-    "explanation": "Il faut $x-y>0$ STRICTEMENT : la racine exige $x-y\\ge0$, mais la division exige en plus que le dénominateur ne soit pas nul, donc $x-y\\ne0$. Les deux ensemble forcent $x>y$.",
+    "difficulty": 2,
+    "prompt": "Quel est le domaine de $f(x,y)=\\ln(4-x^2-y^2)$ ?",
+    "explanation": "Contrairement à fonc-001 (racine carrée, bord inclus), le logarithme exige une inégalité STRICTE : $4-x^2-y^2>0 \\Rightarrow x^2+y^2<4$, le disque OUVERT de rayon $2$ (bord exclu, sinon $\\ln(0)$ n'est pas défini).",
     "type": "qcm",
     "choices": [
-      { "text": "$x>y$", "correct": true },
-      { "text": "$x\\ge y$", "correct": false, "why": "À $x=y$, le dénominateur $\\sqrt{x-y}=\\sqrt0=0$ : la division par $0$ n'est pas définie, même si la racine l'est." },
-      { "text": "$x\\le y$", "correct": false, "why": "Le sens de l'inégalité est inversé : il faut un argument positif sous la racine." },
-      { "text": "$x\\ne y$", "correct": false, "why": "Permettrait $x<y$, où $x-y<0$ et la racine carrée d'un nombre négatif n'est même pas définie (dans les réels)." }
+      { "text": "$x^2+y^2<4$", "correct": true },
+      { "text": "$x^2+y^2\\le4$", "correct": false, "why": "Sur le bord $x^2+y^2=4$, l'argument du log est $0$ et $\\ln(0)$ n'est pas défini : l'inégalité doit être stricte, contrairement au cas d'une racine carrée." },
+      { "text": "$x^2+y^2>4$", "correct": false, "why": "Le sens de l'inégalité est inversé : il faut que l'argument du log soit positif, pas négatif." },
+      { "text": "$x+y<2$", "correct": false, "why": "Confond $x^2+y^2$ avec $(x+y)^2$ : ce ne sont pas la même expression." }
     ]
   }
 ]
