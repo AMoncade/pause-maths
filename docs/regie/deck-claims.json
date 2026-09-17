@@ -41,6 +41,20 @@
         "chrome",
         "Downloads"
       ]
+    },
+    {
+      "session": "adrie-8f",
+      "task": "Lot STT1700 tour 2: thèmes dérivés des PDF + jalon 10 questions",
+      "files": [
+        "src/content/stt1700/**",
+        "docs/sources/stt1700.md",
+        "docs/reviews/stt1700/**",
+        "docs/WORKLOG.md"
+      ],
+      "worktree": "C:/Users/adrie/pause-maths-wt/stt1700",
+      "branch": "lot/stt1700",
+      "assignedAt": "2026-09-17T18:10:06Z",
+      "status": "en cours"
     }
   ]
 }
