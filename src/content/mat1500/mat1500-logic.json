@@ -109,7 +109,10 @@
     "challenge": true,
     "type": "qcm",
     "choices": [
-      { "text": "$p \\wedge \\neg q$", "correct": true },
+      {
+        "text": "$p \\wedge \\neg q$",
+        "correct": true
+      },
       {
         "text": "$\\neg p \\wedge \\neg q$",
         "correct": false,
@@ -202,7 +205,7 @@
     "topic": "mat1500-logic",
     "difficulty": 1,
     "prompt": "$p \\vee \\text{Vrai}$ est toujours vraie, peu importe la valeur de $p$ (loi de domination).",
-    "explanation": "Vrai : dès qu'un « ou » contient une proposition toujours vraie, le résultat est toujours vrai, sans égard à l'autre membre. Le piège : confondre avec $p \\vee \\text{Faux} \\equiv p$, qui elle dépend bel et bien de $p$.",
+    "explanation": "Vrai : dès qu'un « ou » contient une proposition toujours vraie, le résultat est toujours vrai, sans égard à l'autre membre. Le piège : confondre avec $p \\vee \\text{Faux} \\equiv p$, qui elle dépend bel et bien de $p$. (Le tableau des équivalences du manuel note ces deux constantes $V$ et $F$.)",
     "type": "vf",
     "answer": true
   },
@@ -248,6 +251,111 @@
     "keyPoints": [
       "Si $p$ est vrai, toute l'expression est vraie ; si $p$ est faux, $p \\wedge q$ l'est aussi, donc l'expression vaut $p$ dans les deux cas",
       "Le résultat est $p$, pas $p \\wedge q$ : il n'y a pas de « simplification par $p$ » valide entre $\\vee$ et $\\wedge$"
+    ]
+  },
+  {
+    "id": "mat1500-logic-013",
+    "course": "MAT1500",
+    "topic": "mat1500-logic",
+    "difficulty": 1,
+    "prompt": "Laquelle de ces phrases est une proposition (une phrase déclarative qui est soit vraie, soit fausse) ?",
+    "explanation": "Une proposition est une phrase déclarative à laquelle on peut attribuer exactement une valeur de vérité. Le piège : une phrase qui contient une variable libre est un prédicat, pas une proposition — elle ne prend une valeur de vérité qu'une fois la variable fixée ou quantifiée.",
+    "type": "qcm",
+    "choices": [
+      {
+        "text": "« Tout nombre premier plus grand que $2$ est impair. »",
+        "correct": true
+      },
+      {
+        "text": "« $3n$ est un multiple de $6$. »",
+        "correct": false,
+        "why": "La valeur de vérité dépend de $n$ ($n=2$ donne vrai, $n=1$ donne faux) : c'est un prédicat, pas une proposition."
+      },
+      {
+        "text": "« Quelle est la valeur de $\\pi$ ? »",
+        "correct": false,
+        "why": "Une question n'affirme rien : on ne peut pas lui attribuer « vrai » ou « faux »."
+      },
+      {
+        "text": "« Soit $n$ un entier positif. »",
+        "correct": false,
+        "why": "Cette phrase pose une convention d'écriture pour la suite, elle n'affirme rien qui puisse être vrai ou faux."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-logic-014",
+    "course": "MAT1500",
+    "topic": "mat1500-logic",
+    "difficulty": 1,
+    "prompt": "Quelle est la différence entre une proposition et un prédicat ?",
+    "explanation": "Le piège : une phrase qui n'affirme rien (un ordre, une question, une convention) n'est ni l'une ni l'autre. Et un prédicat devient une proposition dès qu'on quantifie ses variables ou qu'on leur donne une valeur.",
+    "type": "flash",
+    "answer": "Une proposition est une phrase déclarative qui est soit vraie, soit fausse (ex. « $7$ est premier »). Un prédicat contient une ou plusieurs variables libres et n'a de valeur de vérité qu'une fois ces variables fixées ou quantifiées (ex. « $n$ est premier »).",
+    "keyPoints": [
+      "Proposition : une valeur de vérité, tout de suite",
+      "Prédicat : une valeur de vérité seulement après avoir fixé ou quantifié ses variables libres",
+      "« $n$ est premier » est un prédicat ; « $\\exists n, n$ est premier » est une proposition"
+    ]
+  },
+  {
+    "id": "mat1500-logic-015",
+    "course": "MAT1500",
+    "topic": "mat1500-logic",
+    "difficulty": 2,
+    "prompt": "Pourquoi l'écriture « $p \\wedge q \\vee r$ », sans parenthèses, est-elle à proscrire ?",
+    "explanation": "Le piège : croire qu'une convention de priorité, comme celle de $\\times$ sur $+$ en algèbre, rend la lecture unique. Un seul jeu de valeurs suffit à montrer le contraire : avec $p$ et $q$ faux et $r$ vrai, $(p \\wedge q) \\vee r$ est vraie et $p \\wedge (q \\vee r)$ est fausse.",
+    "type": "qcm",
+    "choices": [
+      {
+        "text": "parce que $(p \\wedge q) \\vee r$ et $p \\wedge (q \\vee r)$ ne sont pas équivalentes",
+        "correct": true
+      },
+      {
+        "text": "parce que les deux lectures sont équivalentes, mais que l'usage veut qu'on parenthèse quand même",
+        "correct": false,
+        "why": "Elles ne sont pas équivalentes : avec $p$ et $q$ faux et $r$ vrai, la première est vraie et la seconde est fausse."
+      },
+      {
+        "text": "parce qu'une même expression ne peut pas contenir à la fois $\\wedge$ et $\\vee$",
+        "correct": false,
+        "why": "Rien ne l'interdit : les lois de distributivité mêlent précisément les deux connecteurs. C'est l'ordre d'évaluation qu'il faut rendre explicite."
+      },
+      {
+        "text": "parce qu'il faudrait écrire $p \\wedge q \\wedge r$ ou $p \\vee q \\vee r$",
+        "correct": false,
+        "why": "Uniformiser le connecteur change l'énoncé ; c'est le parenthésage, pas l'uniformisation, qui lève l'ambiguïté."
+      }
+    ]
+  },
+  {
+    "id": "mat1500-logic-016",
+    "course": "MAT1500",
+    "topic": "mat1500-logic",
+    "difficulty": 2,
+    "prompt": "À quoi est équivalente $\\neg(p \\leftrightarrow q)$ ?",
+    "explanation": "$\\neg(p \\leftrightarrow q)$ est vraie exactement quand $p$ et $q$ ont des valeurs de vérité différentes : c'est le ou exclusif $p \\oplus q$. Le piège : nier chaque membre séparément, alors que $\\neg p \\leftrightarrow \\neg q$ est équivalente à $p \\leftrightarrow q$, donc à l'énoncé de départ et non à sa négation.",
+    "type": "qcm",
+    "choices": [
+      {
+        "text": "$(p \\wedge \\neg q) \\vee (\\neg p \\wedge q)$",
+        "correct": true
+      },
+      {
+        "text": "$\\neg p \\leftrightarrow \\neg q$",
+        "correct": false,
+        "why": "Nier les deux membres ne nie pas le biconditionnel : $\\neg p \\leftrightarrow \\neg q$ est équivalente à $p \\leftrightarrow q$ lui-même."
+      },
+      {
+        "text": "$(p \\wedge q) \\vee (\\neg p \\wedge \\neg q)$",
+        "correct": false,
+        "why": "Ce sont les deux cas où $p$ et $q$ ont la même valeur : c'est $p \\leftrightarrow q$ développé, pas sa négation."
+      },
+      {
+        "text": "$\\neg p \\wedge \\neg q$",
+        "correct": false,
+        "why": "Ceci n'est vrai que dans la ligne où $p$ et $q$ sont tous deux faux — une ligne où $p \\leftrightarrow q$ est vraie, donc où sa négation est fausse."
+      }
     ]
   }
 ]
