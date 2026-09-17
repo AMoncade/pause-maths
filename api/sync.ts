@@ -6,9 +6,14 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { get, put, BlobError, BlobPreconditionFailedError } from '@vercel/blob';
 import type { Progress } from '../src/lib/types';
-import { ProgressSchema } from '../src/lib/schema';
-import { migrate } from '../src/lib/progress';
-import { merge } from '../src/lib/merge';
+// Extension .js explicite : Vercel transpile ce fichier isolément (pas de bundle),
+// et le loader ESM de Node en production n'ajoute pas d'extension automatiquement
+// (contrairement à Vite/tsc en mode bundler) — sans elle, "Cannot find module"
+// au runtime alors même que le .js compilé existe. Vite/tsc "bundler" acceptent
+// un import .js qui résout vers le .ts source, donc ça marche aussi en local.
+import { ProgressSchema } from '../src/lib/schema.js';
+import { migrate } from '../src/lib/progress.js';
+import { merge } from '../src/lib/merge.js';
 
 const MAX_BODY_BYTES = 200_000;
 const KEY_RE = /^[0-9a-f]{64}$/;

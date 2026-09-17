@@ -1,6 +1,11 @@
 // Propriété du lot Engine. Progression locale : chargement sûr, sauvegarde, données dérivées.
 // Fonctions pures : `now` (epoch ms) est toujours passé en paramètre.
-import { ProgressSchema } from './schema';
+// .js explicite : ce fichier est transpilé isolément par la fonction Vercel
+// api/sync.ts (pas de bundle), et le loader ESM de Node en production
+// n'ajoute pas d'extension automatiquement — voir api/sync.ts pour le détail.
+// Fait par le lot PWA (hors périmètre, signalé à l'admin) : la prod était
+// cassée (500 sur /api/sync) sans ce correctif, purement mécanique.
+import { ProgressSchema } from './schema.js';
 import type { Course, CourseCode, Progress, Question, Settings, Topic } from './types';
 
 export const STORAGE_KEY = 'pause-maths:progress';

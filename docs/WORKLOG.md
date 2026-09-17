@@ -2,6 +2,26 @@
 
 Une entrée datée par tâche finie. La plus récente en haut. Chaque lot ajoute la sienne dans son worktree ; l'admin fusionne.
 
+## 2026-09-17 — Lot PWA (tour 2) : projet Vercel, Blob store, premier déploiement prod
+
+- `npx vercel link --yes --project pause-maths --scope am-oncade-s-projects` : projet créé, Vite auto-détecté, dépôt GitHub `AMoncade/pause-maths` connecté (auto-deploy sur push `main`). `npx vercel git connect` confirme la connexion.
+- `npx vercel blob create-store pause-maths-sync --access private --yes` (le CLI 59.20 le sait faire, la commande exacte est `create-store`, pas `store add` comme supposé dans le brief) : store privé créé et lié au projet. `BLOB_READ_WRITE_TOKEN` confirmé présent (Production/Preview/Development) via `npx vercel env ls` — **aucun geste dashboard nécessaire côté utilisateur**, tout fait en CLI.
+- **Bug de prod trouvé et corrigé : `/api/sync` renvoyait 500 (`FUNCTION_INVOCATION_FAILED`) sur le premier déploiement.** Logs (`npx vercel logs`) : `ERR_MODULE_NOT_FOUND` sur `/var/task/src/lib/schema`. Cause : Vercel (TypeScript 7.0.2 "local user-provided", pas de bundle) trace et transpile chaque fichier `.ts` importé individuellement (confirmé avec `npx vercel build` en local + inspection de `.vercel/output/functions/api/sync.func/`) mais **ne réécrit pas les spécificateurs d'import sans extension** ; le loader ESM de Node en production, contrairement à Vite/tsc en mode `bundler`, n'ajoute pas d'extension automatiquement. `schema.js`/`progress.js`/`merge.js` existaient bien dans le paquet de la fonction, juste introuvables sous les noms importés.
+  - Corrigé dans `api/sync.ts` (mon fichier) : les 3 imports de valeur vers `src/lib/{schema,progress,merge}` prennent `.js` explicite.
+  - **Corrigé aussi dans `src/lib/progress.ts` (lot Engine, hors périmètre, signalé) :** `import { ProgressSchema } from './schema'` → `'./schema.js'`. Seul endroit de la chaîne encore cassé (`schema.ts` et `merge.ts` n'importent que des types, effacés à la compilation, donc sans risque). Changement mécanique d'une ligne, aucun changement de comportement ; laissé en l'état si l'admin/Engine préfère une autre convention, mais nécessaire pour que la prod fonctionne. `gate.ts`, `scheduler.ts`, `ui-*.ts`, `MathText.tsx` ont le même import relatif sans extension mais ne sont pas tracés par une fonction Vercel : pas touchés, pas nécessaire pour ce déploiement.
+  - Revérifié en local (`npx vercel build`) : la chaîne complète résout avant tout redéploiement.
+- **Déployé en prod :** `npx vercel --prod --yes` (après feu vert explicite de l'utilisateur — action bloquée une fois par le classificateur auto-mode de la session, action publique/difficile à annuler). URL de production : **https://pause-maths.vercel.app**. Pas de protection de déploiement sur cette URL (200 sans mur d'auth, vérifié par curl).
+- **Mesures `curl -sI` (prod)** :
+  - `/` → 200, `Cache-Control: public, max-age=0, must-revalidate` (pas `no-cache` : la racine `/` n'est pas explicitement matchée par la règle `vercel.json` sur `/index.html`, seulement le chemin direct — voir plus bas)
+  - `/index.html` (chemin direct) → 200, `Cache-Control: no-cache` — conforme
+  - `/sw.js` → 200, `Cache-Control: no-cache` — conforme
+  - `/manifest.webmanifest` → 200, `Cache-Control: no-cache`, `Content-Type: application/manifest+json` — conforme
+  - `/api/sync` sans clé → 400 ; clé bien formée mais inconnue → 404 (plus de 500)
+  - **Écart mineur signalé :** `start_url` du manifest est `/`, qui hérite du cache par défaut de Vercel plutôt que la règle `no-cache` de `vercel.json` (laquelle ne cible que `/index.html` littéral). Effet pratique proche (`max-age=0, must-revalidate` revalide aussi à chaque fois), mais pas identique. Pas corrigé ici (périmètre `vercel.json` touché seulement si l'admin confirme vouloir une règle `/` explicite).
+- **Test de synchro sans Chrome (deux "profils" via un script Node jetable, hors dépôt, contre le vrai `/api/sync`)** : clé mal formée → 400 ; code inconnu → 404 ; écriture puis lecture → identique ; corps invalide → 400 ; **deux PUT réellement concurrents (Promise.all) sur la même clé → conflit `ifMatch` réel côté service, résolu par la nouvelle tentative, aucune carte perdue** (comportement identique à `tests/api/sync.test.ts`, aucune divergence trouvée, donc rien à corriger côté test). Quelques blobs de test restent dans le store (clés dérivées de codes de test aléatoires, privés, coût négligible) — pas nettoyés, pas gênant.
+- `npm run typecheck`, `npm test` (363 verts), `npm run build` : OK après les deux corrections.
+- **Non fait :** rien d'autre demandé par le brief tour 2 n'est resté ouvert.
+
 ## 2026-09-16 — MAT1500 : troisième passe relecture Opus (lot mat1500)
 
 - Applique la section complémentaire de `docs/reviews/relecture-opus/mat1500-b.md` (16
