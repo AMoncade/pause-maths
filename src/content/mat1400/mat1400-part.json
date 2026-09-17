@@ -8,10 +8,25 @@
     "explanation": "En traitant $x$ comme une constante : $f_y=3x^2-6y^2$. Dériver par rapport à $y$ veut dire que tout ce qui ne dépend que de $x$ est traité comme une constante.",
     "type": "qcm",
     "choices": [
-      { "text": "$3x^2-6y^2$", "correct": true },
-      { "text": "$6xy$", "correct": false, "why": "C'est $f_x$ : les rôles de $x$ et $y$ ont été inversés." },
-      { "text": "$3x^2-2y^3$", "correct": false, "why": "Le second terme $-2y^3$ n'a pas été dérivé du tout, il a été recopié tel quel." },
-      { "text": "$6x-6y^2$", "correct": false, "why": "Le terme $3x^2y$ a été dérivé comme si $x$ variait aussi (donnant $6x$), alors qu'il doit être traité comme une constante pour $f_y$." }
+      {
+        "text": "$3x^2-6y^2$",
+        "correct": true
+      },
+      {
+        "text": "$6xy$",
+        "correct": false,
+        "why": "C'est $f_x$ : les rôles de $x$ et $y$ ont été inversés."
+      },
+      {
+        "text": "$3x^2-2y^3$",
+        "correct": false,
+        "why": "Le second terme $-2y^3$ n'a pas été dérivé du tout, il a été recopié tel quel."
+      },
+      {
+        "text": "$6x-6y^2$",
+        "correct": false,
+        "why": "Le terme $3x^2y$ a été dérivé comme si $x$ variait aussi (donnant $6x$), alors qu'il doit être traité comme une constante pour $f_y$."
+      }
     ]
   },
   {
@@ -23,10 +38,25 @@
     "explanation": "$f_x=2x$, $f_y=2y$, donc au point $(1,2)$ : $f_x=2$, $f_y=4$. Plan tangent : $z=f(1,2)+f_x(x-1)+f_y(y-2)=5+2(x-1)+4(y-2)=2x+4y-5$.",
     "type": "qcm",
     "choices": [
-      { "text": "$z=2x+4y-5$", "correct": true },
-      { "text": "$z=2x+4y+5$", "correct": false, "why": "Erreur de signe en combinant les constantes : $5-2-8=-5$, pas $+5$." },
-      { "text": "$z=x^2+y^2$", "correct": false, "why": "C'est l'équation de la surface elle-même, pas celle du plan tangent (qui doit être LINÉAIRE en $x,y$)." },
-      { "text": "$z=2(x-1)+4(y-2)$", "correct": false, "why": "La valeur de la fonction au point, $f(1,2)=5$, a été oubliée : il manque la constante de hauteur." }
+      {
+        "text": "$z=2x+4y-5$",
+        "correct": true
+      },
+      {
+        "text": "$z=2x+4y+5$",
+        "correct": false,
+        "why": "Erreur de signe en combinant les constantes : $5-2-8=-5$, pas $+5$."
+      },
+      {
+        "text": "$z=x^2+y^2$",
+        "correct": false,
+        "why": "C'est l'équation de la surface elle-même, pas celle du plan tangent (qui doit être LINÉAIRE en $x,y$)."
+      },
+      {
+        "text": "$z=2(x-1)+4(y-2)$",
+        "correct": false,
+        "why": "La valeur de la fonction au point, $f(1,2)=5$, a été oubliée : il manque la constante de hauteur."
+      }
     ]
   },
   {
@@ -62,10 +92,25 @@
     "explanation": "$f_x=2xy^3$. À $(1,2)$ : $2(1)(2^3)=2\\cdot8=16$.",
     "type": "qcm",
     "choices": [
-      { "text": "$16$", "correct": true },
-      { "text": "$12$", "correct": false, "why": "C'est $f_y=3x^2y^2$ évalué en $(1,2)$, pas $f_x$ : mauvaise dérivée partielle." },
-      { "text": "$8$", "correct": false, "why": "Le coefficient $2$ de $f_x=2xy^3$ a été oublié : $xy^3=8$ au lieu de $2xy^3=16$." },
-      { "text": "$4$", "correct": false, "why": "Les coordonnées du point ont été substituées dans le mauvais ordre : $f_x(2,1)=2(2)(1)^3=4$ au lieu de $f_x(1,2)$." }
+      {
+        "text": "$16$",
+        "correct": true
+      },
+      {
+        "text": "$12$",
+        "correct": false,
+        "why": "C'est $f_y=3x^2y^2$ évalué en $(1,2)$, pas $f_x$ : mauvaise dérivée partielle."
+      },
+      {
+        "text": "$8$",
+        "correct": false,
+        "why": "Le coefficient $2$ de $f_x=2xy^3$ a été oublié : $xy^3=8$ au lieu de $2xy^3=16$."
+      },
+      {
+        "text": "$4$",
+        "correct": false,
+        "why": "Les coordonnées du point ont été substituées dans le mauvais ordre : $f_x(2,1)=2(2)(1)^3=4$ au lieu de $f_x(1,2)$."
+      }
     ]
   },
   {
@@ -77,10 +122,25 @@
     "explanation": "Le plan tangent est $z=f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)$ : il est horizontal (sans termes en $x,y$) exactement quand les DEUX pentes $f_x$ et $f_y$ s'annulent.",
     "type": "qcm",
     "choices": [
-      { "text": "$f_x(a,b)=f_y(a,b)=0$", "correct": true },
-      { "text": "$f_x(a,b)=0$ seulement", "correct": false, "why": "Il faut aussi $f_y(a,b)=0$ : une seule pente nulle laisse le plan incliné dans l'autre direction." },
-      { "text": "$f(a,b)=0$", "correct": false, "why": "Ceci fixe seulement la HAUTEUR du plan tangent (il passerait par $z=0$), pas son inclinaison." },
-      { "text": "$f_{xy}(a,b)=0$", "correct": false, "why": "La dérivée seconde mixte ne détermine pas l'inclinaison du plan tangent, seules les dérivées premières $f_x,f_y$ le font." }
+      {
+        "text": "$f_x(a,b)=f_y(a,b)=0$",
+        "correct": true
+      },
+      {
+        "text": "$f_x(a,b)=0$ seulement",
+        "correct": false,
+        "why": "Il faut aussi $f_y(a,b)=0$ : une seule pente nulle laisse le plan incliné dans l'autre direction."
+      },
+      {
+        "text": "$f(a,b)=0$",
+        "correct": false,
+        "why": "Ceci fixe seulement la HAUTEUR du plan tangent (il passerait par $z=0$), pas son inclinaison."
+      },
+      {
+        "text": "$f_{xy}(a,b)=0$",
+        "correct": false,
+        "why": "La dérivée seconde mixte ne détermine pas l'inclinaison du plan tangent, seules les dérivées premières $f_x,f_y$ le font."
+      }
     ]
   },
   {
@@ -102,10 +162,25 @@
     "explanation": "$f_x$ est la notation indicielle standard pour $\\partial f/\\partial x$. Le piège classique : écrire $f'$, une notation réservée aux fonctions d'une seule variable.",
     "type": "qcm",
     "choices": [
-      { "text": "$f_x$", "correct": true },
-      { "text": "$f'$", "correct": false, "why": "La notation prime $f'$ est réservée aux fonctions d'UNE seule variable ; pour plusieurs variables elle est ambiguë (dérivée par rapport à laquelle ?)." },
-      { "text": "$\\nabla f$", "correct": false, "why": "C'est le vecteur gradient COMPLET $(f_x,f_y)$, pas une seule dérivée partielle." },
-      { "text": "$df$", "correct": false, "why": "C'est la différentielle totale de $f$, une combinaison de toutes les dérivées partielles, pas une seule d'entre elles." }
+      {
+        "text": "$f_x$",
+        "correct": true
+      },
+      {
+        "text": "$f'$",
+        "correct": false,
+        "why": "La notation prime $f'$ est réservée aux fonctions d'UNE seule variable ; pour plusieurs variables elle est ambiguë (dérivée par rapport à laquelle ?)."
+      },
+      {
+        "text": "$\\nabla f$",
+        "correct": false,
+        "why": "C'est le vecteur gradient COMPLET $(f_x,f_y)$, pas une seule dérivée partielle."
+      },
+      {
+        "text": "$df$",
+        "correct": false,
+        "why": "C'est la différentielle totale de $f$, une combinaison de toutes les dérivées partielles, pas une seule d'entre elles."
+      }
     ]
   },
   {
@@ -118,10 +193,25 @@
     "explanation": "Pour une surface implicite $F(x,y,z)=0$, la normale au plan tangent est $\\nabla F$ évalué au point ; on simplifie ensuite l'équation obtenue de façon cohérente (coefficients ET constante).",
     "type": "qcm",
     "choices": [
-      { "text": "$2x+2y+z=9$", "correct": true },
-      { "text": "$2x+2y+z=18$", "correct": false, "why": "Les coefficients ont été divisés par $2$ mais la constante ($18$) ne l'a pas été : simplification incohérente." },
-      { "text": "$4x+4y+z=18$", "correct": false, "why": "Seul le coefficient de $z$ a été divisé par $2$, pas ceux de $x$ et $y$ : simplification incomplète." },
-      { "text": "$2x+2y-z=9$", "correct": false, "why": "Erreur de signe sur la composante $z$ de $\\nabla F=(2x,2y,2z)$." }
+      {
+        "text": "$2x+2y+z=9$",
+        "correct": true
+      },
+      {
+        "text": "$2x+2y+z=18$",
+        "correct": false,
+        "why": "Les coefficients ont été divisés par $2$ mais la constante ($18$) ne l'a pas été : simplification incohérente."
+      },
+      {
+        "text": "$4x+4y+z=18$",
+        "correct": false,
+        "why": "Seul le coefficient de $z$ a été divisé par $2$, pas ceux de $x$ et $y$ : simplification incomplète."
+      },
+      {
+        "text": "$2x+2y-z=9$",
+        "correct": false,
+        "why": "Erreur de signe sur la composante $z$ de $\\nabla F=(2x,2y,2z)$."
+      }
     ],
     "solution": "1. Vérifier que le point est sur la surface : $2^2+2^2+1^2=4+4+1=9$. ✓\n2. Poser $F(x,y,z)=x^2+y^2+z^2-9$. $\\nabla F=(2x,2y,2z)$, donc $\\nabla F(2,2,1)=(4,4,2)$.\n3. Plan tangent : $4(x-2)+4(y-2)+2(z-1)=0 \\Rightarrow 4x+4y+2z-18=0 \\Rightarrow 4x+4y+2z=18$.\n4. Simplifier en divisant TOUT par $2$ : $2x+2y+z=9$."
   },
@@ -134,10 +224,25 @@
     "explanation": "$f(3,4)=5$. $f_x=x/\\sqrt{x^2+y^2}=3/5$, $f_y=y/\\sqrt{x^2+y^2}=4/5$. Avec $\\Delta x=0{,}02$, $\\Delta y=-0{,}01$ : $f\\approx5+0{,}6(0{,}02)+0{,}8(-0{,}01)=5+0{,}012-0{,}008=5{,}004$.",
     "type": "qcm",
     "choices": [
-      { "text": "$5{,}004$", "correct": true },
-      { "text": "$5{,}02$", "correct": false, "why": "$\\Delta x$ a été ajouté directement sans le multiplier par $f_x$, et la contribution de $y$ a été ignorée." },
-      { "text": "$4{,}996$", "correct": false, "why": "Le déplacement a été inversé : $\\Delta x=-0{,}02$ et $\\Delta y=+0{,}01$ ont été utilisés (comme si on repartait du point cible vers le point de référence), au lieu de $\\Delta x=+0{,}02$ et $\\Delta y=-0{,}01$." },
-      { "text": "$5$", "correct": false, "why": "Les termes de correction $f_x\\Delta x+f_y\\Delta y$ ont été complètement oubliés, gardant seulement $f(3,4)$." }
+      {
+        "text": "$5{,}004$",
+        "correct": true
+      },
+      {
+        "text": "$5{,}02$",
+        "correct": false,
+        "why": "$\\Delta x$ a été ajouté directement sans le multiplier par $f_x$, et la contribution de $y$ a été ignorée."
+      },
+      {
+        "text": "$4{,}996$",
+        "correct": false,
+        "why": "Le déplacement a été inversé : $\\Delta x=-0{,}02$ et $\\Delta y=+0{,}01$ ont été utilisés (comme si on repartait du point cible vers le point de référence), au lieu de $\\Delta x=+0{,}02$ et $\\Delta y=-0{,}01$."
+      },
+      {
+        "text": "$5$",
+        "correct": false,
+        "why": "Les termes de correction $f_x\\Delta x+f_y\\Delta y$ ont été complètement oubliés, gardant seulement $f(3,4)$."
+      }
     ]
   },
   {
@@ -163,10 +268,109 @@
     "explanation": "$f_x=3x^2y^2$ (le terme $\\cos y$ disparaît, il ne dépend pas de $x$). $f_{xx}=\\dfrac{\\partial}{\\partial x}(3x^2y^2)=6xy^2$.",
     "type": "qcm",
     "choices": [
-      { "text": "$6xy^2$", "correct": true },
-      { "text": "$3x^2y^2$", "correct": false, "why": "C'est $f_x$ : une seule dérivation a été effectuée, pas les deux nécessaires pour $f_{xx}$." },
-      { "text": "$6xy^2-\\sin y$", "correct": false, "why": "Le terme $\\cos y$ ne dépend pas de $x$ : il disparaît déjà dans $f_x$ et ne peut pas réapparaître dans $f_{xx}$." },
-      { "text": "$6x^2y$", "correct": false, "why": "C'est $f_{xy}=\\partial_y(f_x)$, pas $f_{xx}=\\partial_x(f_x)$ : mauvaise variable de dérivation pour la seconde étape." }
+      {
+        "text": "$6xy^2$",
+        "correct": true
+      },
+      {
+        "text": "$3x^2y^2$",
+        "correct": false,
+        "why": "C'est $f_x$ : une seule dérivation a été effectuée, pas les deux nécessaires pour $f_{xx}$."
+      },
+      {
+        "text": "$6xy^2-\\sin y$",
+        "correct": false,
+        "why": "Le terme $\\cos y$ ne dépend pas de $x$ : il disparaît déjà dans $f_x$ et ne peut pas réapparaître dans $f_{xx}$."
+      },
+      {
+        "text": "$6x^2y$",
+        "correct": false,
+        "why": "C'est $f_{xy}=\\partial_y(f_x)$, pas $f_{xx}=\\partial_x(f_x)$ : mauvaise variable de dérivation pour la seconde étape."
+      }
+    ]
+  },
+  {
+    "id": "mat1400-part-013",
+    "course": "MAT1400",
+    "topic": "mat1400-part",
+    "difficulty": 2,
+    "prompt": "Soit $f(x,y)=\\dfrac{xy}{x^2+y^2}$ si $(x,y)\\ne(0,0)$, et $f(0,0)=0$. Que vaut $f_x(0,0)$ ?",
+    "explanation": "Par définition, $f_x(0,0)=\\lim_{h\\to0}\\dfrac{f(h,0)-f(0,0)}{h}$. Or $f(h,0)=\\dfrac{0}{h^2}=0$, donc la limite vaut $0$. Le piège : croire qu'une fonction discontinue en un point ne peut pas y avoir de dérivées partielles.",
+    "type": "qcm",
+    "choices": [
+      {
+        "text": "$0$",
+        "correct": true
+      },
+      {
+        "text": "N'existe pas, car $f$ n'est pas continue en $(0,0)$",
+        "correct": false,
+        "why": "La continuité n'est pas requise : la limite de la définition ne regarde que l'axe $y=0$, où $f$ vaut identiquement $0$. C'est précisément le contre-exemple qui montre que « partielles existent » n'implique pas « continue »."
+      },
+      {
+        "text": "$\\dfrac12$",
+        "correct": false,
+        "why": "C'est la valeur de $f$ le long de $y=x$. Ce chemin n'intervient pas dans $f_x(0,0)$, qui se calcule uniquement le long de $y=0$."
+      },
+      {
+        "text": "N'existe pas, car $f(0,0)$ est posé par convention",
+        "correct": false,
+        "why": "La valeur $f(0,0)=0$ est donnée par l'énoncé et entre telle quelle dans la définition : rien n'empêche la limite d'exister."
+      }
+    ]
+  },
+  {
+    "id": "mat1400-part-014",
+    "course": "MAT1400",
+    "topic": "mat1400-part",
+    "difficulty": 2,
+    "prompt": "Une fonction peut avoir ses deux dérivées partielles en $(0,0)$ sans y être continue.",
+    "explanation": "Vrai : $f(x,y)=xy/(x^2+y^2)$ avec $f(0,0)=0$ a $f_x(0,0)=f_y(0,0)=0$, mais n'a pas de limite en $(0,0)$. Les dérivées partielles ne sondent que deux directions (les axes) ; la continuité exige TOUS les chemins.",
+    "type": "vf",
+    "answer": true
+  },
+  {
+    "id": "mat1400-part-015",
+    "course": "MAT1400",
+    "topic": "mat1400-part",
+    "difficulty": 2,
+    "prompt": "Critère de différentiabilité de $f$ en $\\vec x_0$, écrit comme une limite ?",
+    "explanation": "Différentiable veut dire que le plan tangent approche $f$ à un ordre meilleur que linéaire : l'erreur doit tendre vers $0$ plus vite que la distance au point. Le piège : mettre une seule composante du déplacement au dénominateur au lieu de sa norme.",
+    "type": "flash",
+    "answer": "$\\dfrac{f(\\vec x)-\\big(f(\\vec x_0)+\\nabla f(\\vec x_0)\\cdot(\\vec x-\\vec x_0)\\big)}{\\lVert\\vec x-\\vec x_0\\rVert}\\to0$ quand $\\vec x\\to\\vec x_0$",
+    "keyPoints": [
+      "Le numérateur est l'erreur commise par la linéarisation $f(\\vec x_0)+\\nabla f(\\vec x_0)\\cdot(\\vec x-\\vec x_0)$",
+      "Le dénominateur est la NORME du déplacement, pas une seule de ses composantes"
+    ]
+  },
+  {
+    "id": "mat1400-part-016",
+    "course": "MAT1400",
+    "topic": "mat1400-part",
+    "difficulty": 2,
+    "prompt": "Si $f_x$ et $f_y$ existent près de $(a,b)$ ET y sont continues, que peut-on conclure ?",
+    "explanation": "C'est la condition SUFFISANTE de différentiabilité : ajouter la continuité des dérivées partielles à leur simple existence suffit à garantir que $f$ est différentiable en $(a,b)$.",
+    "type": "qcm",
+    "choices": [
+      {
+        "text": "$f$ est différentiable en $(a,b)$",
+        "correct": true
+      },
+      {
+        "text": "$f$ est continue en $(a,b)$, sans qu'on puisse dire mieux",
+        "correct": false,
+        "why": "Conclusion trop faible : la continuité de $f$ découle de la différentiabilité, qui est bien la conclusion du théorème."
+      },
+      {
+        "text": "$f_{xy}(a,b)=f_{yx}(a,b)$",
+        "correct": false,
+        "why": "C'est la conclusion du théorème de Clairaut, qui porte sur la continuité des dérivées SECONDES, pas des premières."
+      },
+      {
+        "text": "Rien : l'existence des dérivées partielles ne donne jamais la différentiabilité",
+        "correct": false,
+        "why": "C'est l'existence SEULE qui ne suffit pas ; l'hypothèse ajoute ici la continuité des dérivées partielles, ce qui change tout."
+      }
     ]
   }
 ]

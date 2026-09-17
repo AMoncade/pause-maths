@@ -8,10 +8,25 @@
     "explanation": "$\\vec u \\cdot \\vec v = 1(4)+2(-1)+(-3)(2) = 4-2-6=-4$. Il faut garder le signe de chaque composante tout au long du calcul.",
     "type": "qcm",
     "choices": [
-      { "text": "$-4$", "correct": true },
-      { "text": "$0$", "correct": false, "why": "Erreur de signe sur le terme du milieu : $2\\times(-1)=-2$, pas $+2$." },
-      { "text": "$2$", "correct": false, "why": "Le dernier terme $(-3)(2)=-6$ a été oublié dans la somme." },
-      { "text": "$5$", "correct": false, "why": "Ce n'est pas le produit scalaire : les composantes ont été additionnées entre elles plutôt que multipliées terme à terme." }
+      {
+        "text": "$-4$",
+        "correct": true
+      },
+      {
+        "text": "$0$",
+        "correct": false,
+        "why": "Erreur de signe sur le terme du milieu : $2\\times(-1)=-2$, pas $+2$."
+      },
+      {
+        "text": "$2$",
+        "correct": false,
+        "why": "Le dernier terme $(-3)(2)=-6$ a été oublié dans la somme."
+      },
+      {
+        "text": "$5$",
+        "correct": false,
+        "why": "Ce n'est pas le produit scalaire : les composantes ont été additionnées entre elles plutôt que multipliées terme à terme."
+      }
     ]
   },
   {
@@ -47,10 +62,25 @@
     "explanation": "$\\det=ad-bc=3(4)-1(2)=12-2=10$. Le déterminant $2\\times2$ soustrait le produit des diagonales, il ne les additionne pas.",
     "type": "qcm",
     "choices": [
-      { "text": "$10$", "correct": true },
-      { "text": "$14$", "correct": false, "why": "C'est $ad+bc$ : les deux produits diagonaux ont été additionnés au lieu d'être soustraits." },
-      { "text": "$-10$", "correct": false, "why": "C'est $bc-ad$ : les deux termes ont été inversés, ce qui change le signe." },
-      { "text": "$7$", "correct": false, "why": "C'est la trace $a+d=3+4=7$ (la somme des éléments diagonaux), pas le déterminant $ad-bc$." }
+      {
+        "text": "$10$",
+        "correct": true
+      },
+      {
+        "text": "$14$",
+        "correct": false,
+        "why": "C'est $ad+bc$ : les deux produits diagonaux ont été additionnés au lieu d'être soustraits."
+      },
+      {
+        "text": "$-10$",
+        "correct": false,
+        "why": "C'est $bc-ad$ : les deux termes ont été inversés, ce qui change le signe."
+      },
+      {
+        "text": "$7$",
+        "correct": false,
+        "why": "C'est la trace $a+d=3+4=7$ (la somme des éléments diagonaux), pas le déterminant $ad-bc$."
+      }
     ]
   },
   {
@@ -62,10 +92,25 @@
     "explanation": "$\\vec u \\times \\vec v = (0\\cdot0-0\\cdot1,\\ 0\\cdot0-1\\cdot0,\\ 1\\cdot1-0\\cdot0)=(0,0,1)$. Le produit vectoriel n'est pas commutatif : inverser l'ordre change le signe du résultat.",
     "type": "qcm",
     "choices": [
-      { "text": "$(0,0,1)$", "correct": true },
-      { "text": "$(0,0,-1)$", "correct": false, "why": "C'est $\\vec v \\times \\vec u$ : le produit vectoriel est anticommutatif, l'ordre des vecteurs compte." },
-      { "text": "$(1,1,0)$", "correct": false, "why": "C'est $\\vec u+\\vec v$ (l'addition des deux vecteurs), pas leur produit vectoriel." },
-      { "text": "$(0,0,0)$", "correct": false, "why": "C'est le critère du produit SCALAIRE nul pour l'orthogonalité, pas celui du produit vectoriel : deux vecteurs orthogonaux ont un produit vectoriel non nul (sauf si l'un est nul)." }
+      {
+        "text": "$(0,0,1)$",
+        "correct": true
+      },
+      {
+        "text": "$(0,0,-1)$",
+        "correct": false,
+        "why": "C'est $\\vec v \\times \\vec u$ : le produit vectoriel est anticommutatif, l'ordre des vecteurs compte."
+      },
+      {
+        "text": "$(1,1,0)$",
+        "correct": false,
+        "why": "C'est $\\vec u+\\vec v$ (l'addition des deux vecteurs), pas leur produit vectoriel."
+      },
+      {
+        "text": "$(0,0,0)$",
+        "correct": false,
+        "why": "C'est le critère du produit SCALAIRE nul pour l'orthogonalité, pas celui du produit vectoriel : deux vecteurs orthogonaux ont un produit vectoriel non nul (sauf si l'un est nul)."
+      }
     ]
   },
   {
@@ -87,10 +132,25 @@
     "explanation": "$\\vec{AB}=B-A=(3-1,\\ 4-0,\\ 2-2)=(2,4,0)$. Il faut toujours soustraire les coordonnées du point de départ à celles du point d'arrivée, dans cet ordre.",
     "type": "qcm",
     "choices": [
-      { "text": "$(2,4,0)$", "correct": true },
-      { "text": "$(-2,-4,0)$", "correct": false, "why": "C'est $\\vec{BA}$, l'ordre des points est inversé." },
-      { "text": "$(4,4,4)$", "correct": false, "why": "Les coordonnées de $A$ et $B$ ont été additionnées au lieu d'être soustraites." },
-      { "text": "$(2,4,4)$", "correct": false, "why": "La dernière composante a été additionnée ($2+2=4$) au lieu d'être soustraite ($2-2=0$)." }
+      {
+        "text": "$(2,4,0)$",
+        "correct": true
+      },
+      {
+        "text": "$(-2,-4,0)$",
+        "correct": false,
+        "why": "C'est $\\vec{BA}$, l'ordre des points est inversé."
+      },
+      {
+        "text": "$(4,4,4)$",
+        "correct": false,
+        "why": "Les coordonnées de $A$ et $B$ ont été additionnées au lieu d'être soustraites."
+      },
+      {
+        "text": "$(2,4,4)$",
+        "correct": false,
+        "why": "La dernière composante a été additionnée ($2+2=4$) au lieu d'être soustraite ($2-2=0$)."
+      }
     ]
   },
   {
@@ -117,10 +177,25 @@
     "explanation": "On construit deux vecteurs directeurs du plan, puis leur produit vectoriel donne une normale ; il reste à utiliser un des trois points pour fixer la constante.",
     "type": "qcm",
     "choices": [
-      { "text": "$x+2y+3z=5$", "correct": true },
-      { "text": "$x-2y+3z=-3$", "correct": false, "why": "Erreur de signe sur la composante $y$ de la normale : la formule du produit vectoriel exige un signe négatif sur ce terme, oublié ici." },
-      { "text": "$x+2y+3z=3$", "correct": false, "why": "En substituant le point $A(1,2,0)$ pour trouver la constante, le coefficient $2$ de $y$ a été oublié : $1+2+0=3$ au lieu de $1+2(2)+3(0)=5$." },
-      { "text": "$x-3y-2z=-5$", "correct": false, "why": "Le vecteur $\\vec{AC}$ a été mal calculé : les coordonnées de $C$ ont été utilisées directement au lieu de $C-A$." }
+      {
+        "text": "$x+2y+3z=5$",
+        "correct": true
+      },
+      {
+        "text": "$x-2y+3z=-3$",
+        "correct": false,
+        "why": "Erreur de signe sur la composante $y$ de la normale : la formule du produit vectoriel exige un signe négatif sur ce terme, oublié ici."
+      },
+      {
+        "text": "$x+2y+3z=3$",
+        "correct": false,
+        "why": "En substituant le point $A(1,2,0)$ pour trouver la constante, le coefficient $2$ de $y$ a été oublié : $1+2+0=3$ au lieu de $1+2(2)+3(0)=5$."
+      },
+      {
+        "text": "$x-3y-2z=-5$",
+        "correct": false,
+        "why": "Le vecteur $\\vec{AC}$ a été mal calculé : les coordonnées de $C$ ont été utilisées directement au lieu de $C-A$."
+      }
     ],
     "solution": "1. Vecteurs directeurs du plan : $\\vec{AB}=B-A=(-1,-1,1)$ et $\\vec{AC}=C-A=(1,-2,1)$.\n2. Normale : $\\vec n=\\vec{AB}\\times\\vec{AC}=((-1)(1)-(1)(-2),\\ (1)(1)-(-1)(1),\\ (-1)(-2)-(-1)(1))=(1,2,3)$.\n3. Équation avec le point $A$ : $1(x-1)+2(y-2)+3(z-0)=0 \\Rightarrow x+2y+3z-5=0 \\Rightarrow x+2y+3z=5$.\n4. Vérification : $B(0,1,1)$ donne $0+2+3=5$ ✓ ; $C(2,0,1)$ donne $2+0+3=5$ ✓."
   },
@@ -133,10 +208,25 @@
     "explanation": "Projection scalaire $=\\dfrac{\\vec u\\cdot\\vec v}{\\|\\vec v\\|}=\\dfrac{3(1)+4(0)}{1}=3$.",
     "type": "qcm",
     "choices": [
-      { "text": "$3$", "correct": true },
-      { "text": "$4$", "correct": false, "why": "C'est la composante de $\\vec u$ projetée sur l'axe des $y$, pas sur $\\vec v=(1,0)$ (l'axe des $x$)." },
-      { "text": "$5$", "correct": false, "why": "C'est $\\|\\vec u\\|=\\sqrt{3^2+4^2}$, la norme de $\\vec u$ lui-même, pas sa projection sur $\\vec v$." },
-      { "text": "$\\dfrac{3}{5}$", "correct": false, "why": "La division a été faite par $\\|\\vec u\\|=5$ au lieu de $\\|\\vec v\\|=1$ : mauvais vecteur normalisé." }
+      {
+        "text": "$3$",
+        "correct": true
+      },
+      {
+        "text": "$4$",
+        "correct": false,
+        "why": "C'est la composante de $\\vec u$ projetée sur l'axe des $y$, pas sur $\\vec v=(1,0)$ (l'axe des $x$)."
+      },
+      {
+        "text": "$5$",
+        "correct": false,
+        "why": "C'est $\\|\\vec u\\|=\\sqrt{3^2+4^2}$, la norme de $\\vec u$ lui-même, pas sa projection sur $\\vec v$."
+      },
+      {
+        "text": "$\\dfrac{3}{5}$",
+        "correct": false,
+        "why": "La division a été faite par $\\|\\vec u\\|=5$ au lieu de $\\|\\vec v\\|=1$ : mauvais vecteur normalisé."
+      }
     ]
   },
   {
@@ -162,5 +252,151 @@
       "$\\cos\\theta=\\dfrac{\\vec u\\cdot\\vec v}{\\|\\vec u\\|\\|\\vec v\\|}$",
       "Diviser par le produit des DEUX normes, pas seulement normaliser un vecteur"
     ]
+  },
+  {
+    "id": "mat1400-vect-013",
+    "course": "MAT1400",
+    "topic": "mat1400-vect",
+    "difficulty": 1,
+    "prompt": "Équations paramétriques de la droite passant par $P(2,-1,4)$ et de vecteur directeur $\\vec v=(3,0,-2)$ ?",
+    "explanation": "$\\vec r(t)=\\vec r_0+t\\vec v$ donne $x=2+3t$, $y=-1+0t=-1$, $z=4-2t$. Le piège : croire que chaque coordonnée doit contenir un $t$ — une composante nulle du vecteur directeur laisse la coordonnée constante.",
+    "type": "qcm",
+    "choices": [
+      {
+        "text": "$x=2+3t,\\ y=-1,\\ z=4-2t$",
+        "correct": true
+      },
+      {
+        "text": "$x=3+2t,\\ y=-t,\\ z=-2+4t$",
+        "correct": false,
+        "why": "Le point et le vecteur directeur ont échangé leurs rôles : le point de base donne les constantes, le vecteur directeur les coefficients de $t$."
+      },
+      {
+        "text": "$x=2+3t,\\ y=-1+t,\\ z=4-2t$",
+        "correct": false,
+        "why": "La deuxième composante de $\\vec v$ vaut $0$, donc $y$ reste constant : ajouter un $t$ change la direction de la droite."
+      },
+      {
+        "text": "$x=2+3t,\\ y=-1,\\ z=4+2t$",
+        "correct": false,
+        "why": "Erreur de signe sur la troisième composante de $\\vec v$ : c'est $-2$, donc $z=4-2t$."
+      }
+    ]
+  },
+  {
+    "id": "mat1400-vect-014",
+    "course": "MAT1400",
+    "topic": "mat1400-vect",
+    "difficulty": 2,
+    "prompt": "Dans $\\mathbb R^3$, deux droites qui ne sont pas parallèles se coupent nécessairement en un point.",
+    "explanation": "Faux : dans l'espace, deux droites non parallèles peuvent être gauches, c'est-à-dire ne jamais se rencontrer tout en n'ayant pas la même direction. C'est l'intuition du plan ($\\mathbb R^2$) transposée à tort à $\\mathbb R^3$ : pour conclure à une intersection, il faut résoudre le système et vérifier qu'un couple $(t,s)$ satisfait les TROIS équations.",
+    "type": "vf",
+    "answer": false
+  },
+  {
+    "id": "mat1400-vect-015",
+    "course": "MAT1400",
+    "topic": "mat1400-vect",
+    "difficulty": 2,
+    "prompt": "Lequel de ces points appartient à la droite $x=1+2t,\\ y=3-t,\\ z=t$ ?",
+    "explanation": "Un point est sur la droite seulement si une MÊME valeur de $t$ satisfait les trois équations. Pour $(5,1,2)$ : $t=2$ donne $x=5$, $y=1$ et $z=2$ simultanément.",
+    "type": "qcm",
+    "choices": [
+      {
+        "text": "$(5,1,2)$",
+        "correct": true
+      },
+      {
+        "text": "$(5,1,3)$",
+        "correct": false,
+        "why": "$t=2$ donne bien $x=5$ et $y=1$, mais alors $z=t=2$, pas $3$ : la troisième équation doit utiliser le même $t$ que les deux autres."
+      },
+      {
+        "text": "$(2,-1,1)$",
+        "correct": false,
+        "why": "C'est le vecteur directeur $(2,-1,1)$, pas un point de la droite : il faut l'ajouter au point de base $(1,3,0)$, pas l'utiliser seul."
+      },
+      {
+        "text": "$(1,3,1)$",
+        "correct": false,
+        "why": "Mélange deux valeurs de $t$ : $x$ et $y$ correspondent à $t=0$ (le point de base $(1,3,0)$) alors que $z=1$ exige $t=1$."
+      }
+    ]
+  },
+  {
+    "id": "mat1400-vect-016",
+    "course": "MAT1400",
+    "topic": "mat1400-vect",
+    "difficulty": 2,
+    "prompt": "En quel point la droite $x=-1+2t,\\ y=3+t,\\ z=6-3t$ perce-t-elle le plan $xy$ ?",
+    "explanation": "Le plan $xy$ est le plan d'équation $z=0$ : on résout $6-3t=0$, ce qui donne $t=2$, puis on reporte dans $x$ et $y$. Le piège : poser $x=0$ ou $y=0$ en croyant que « plan $xy$ » annule $x$ et $y$, alors que c'est la variable ABSENTE du nom du plan qui s'annule.",
+    "type": "flash",
+    "answer": "$(3,5,0)$",
+    "keyPoints": [
+      "Plan $xy \\Leftrightarrow z=0$ : résoudre $z(t)=0$ pour trouver $t$",
+      "Reporter ce $t$ dans $x(t)$ et $y(t)$ ; la troisième coordonnée du point vaut $0$"
+    ]
+  },
+  {
+    "id": "mat1400-vect-017",
+    "course": "MAT1400",
+    "topic": "mat1400-vect",
+    "difficulty": 2,
+    "prompt": "Angle entre deux droites de vecteurs directeurs $\\vec v_1=(1,1,0)$ et $\\vec v_2=(0,1,1)$ ?",
+    "explanation": "L'angle entre deux droites est celui de leurs vecteurs directeurs : $\\cos\\theta=\\dfrac{\\vec v_1\\cdot\\vec v_2}{\\|\\vec v_1\\|\\|\\vec v_2\\|}=\\dfrac{1}{\\sqrt2\\cdot\\sqrt2}=\\dfrac12$, donc $\\theta=\\pi/3$.",
+    "type": "qcm",
+    "choices": [
+      {
+        "text": "$\\pi/3$ (60°)",
+        "correct": true
+      },
+      {
+        "text": "$\\pi/4$ (45°)",
+        "correct": false,
+        "why": "Correspondrait à $\\cos\\theta=1/\\sqrt2$ : une seule des deux normes $\\sqrt2$ a été mise au dénominateur."
+      },
+      {
+        "text": "$\\pi/2$ (90°)",
+        "correct": false,
+        "why": "Les vecteurs ne sont pas orthogonaux : $\\vec v_1\\cdot\\vec v_2=0+1+0=1\\ne0$."
+      },
+      {
+        "text": "$\\pi/6$ (30°)",
+        "correct": false,
+        "why": "$\\cos(\\pi/6)=\\sqrt3/2$, pas $1/2$ : c'est $\\cos(\\pi/3)$ qui vaut $1/2$, les deux angles ont été intervertis."
+      }
+    ]
+  },
+  {
+    "id": "mat1400-vect-018",
+    "course": "MAT1400",
+    "topic": "mat1400-vect",
+    "difficulty": 3,
+    "challenge": true,
+    "prompt": "Équation du plan qui contient le point $A(1,0,2)$ et la droite $d: x=t,\\ y=1+t,\\ z=-t$ ?",
+    "explanation": "Le plan contient la direction de $d$ ET un vecteur reliant $d$ à $A$ : leur produit vectoriel donne la normale. Le piège : prendre directement $\\vec{BA}$ comme normale, alors que ce vecteur est DANS le plan, pas perpendiculaire à lui.",
+    "type": "qcm",
+    "choices": [
+      {
+        "text": "$x-3y-2z=-3$",
+        "correct": true
+      },
+      {
+        "text": "$x-y+2z=5$",
+        "correct": false,
+        "why": "Le vecteur $\\vec{BA}=(1,-1,2)$ a été pris comme normale : il appartient au plan, il faut le combiner au vecteur directeur de $d$ par un produit vectoriel."
+      },
+      {
+        "text": "$x+3y-2z=-3$",
+        "correct": false,
+        "why": "Le signe négatif imposé à la deuxième composante du produit vectoriel a été oublié : elle vaut $-3$, pas $+3$."
+      },
+      {
+        "text": "$x-3y-2z=1$",
+        "correct": false,
+        "why": "La normale est bonne, mais la constante a été calculée en substituant $\\vec{BA}$ (un vecteur) au lieu d'un vrai point du plan comme $A$ ou $B$."
+      }
+    ],
+    "solution": "1. Un point de $d$ : à $t=0$, $B(0,1,0)$. Vecteur directeur de $d$ : $\\vec v=(1,1,-1)$.\n2. Deuxième vecteur du plan : $\\vec{BA}=A-B=(1,-1,2)$.\n3. Normale : $\\vec n=\\vec v\\times\\vec{BA}=\\big(1(2)-(-1)(-1),\\ (-1)(1)-1(2),\\ 1(-1)-1(1)\\big)=(1,-3,-2)$.\n4. Plan par $B(0,1,0)$ : $1(x-0)-3(y-1)-2(z-0)=0 \\Rightarrow x-3y-2z=-3$.\n5. Vérification : $A(1,0,2)$ donne $1-0-4=-3$ ✓ ; $d$ à $t=1$, soit $(1,2,-1)$, donne $1-6+2=-3$ ✓."
   }
 ]

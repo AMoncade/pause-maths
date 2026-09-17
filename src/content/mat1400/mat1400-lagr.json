@@ -8,10 +8,25 @@
     "explanation": "Le système $\\nabla f=\\lambda\\nabla g$ donne $y=\\lambda$, $x=\\lambda$ (car $\\nabla f=(y,x)$, $\\nabla g=(1,1)$), donc $x=y$. Avec $x+y=10$ : $x=y=5$. La valeur maximale est $f(5,5)=5\\times5=25$. Comme $x+y=10$ est une droite non bornée, ce point critique donne directement le maximum absolu, sans frontière à vérifier.",
     "type": "qcm",
     "choices": [
-      { "text": "$25$", "correct": true },
-      { "text": "$10$", "correct": false, "why": "C'est la valeur de la contrainte $x+y$, pas de $f(x,y)=xy$." },
-      { "text": "$50$", "correct": false, "why": "Le produit $5\\times5=25$ a été doublé par erreur." },
-      { "text": "$0$", "correct": false, "why": "Suppose à tort qu'il faut vérifier une frontière (comme $x=0$ ou $y=0$) ; ici $x+y=10$ est une droite non bornée, sans frontière à examiner séparément." }
+      {
+        "text": "$25$",
+        "correct": true
+      },
+      {
+        "text": "$10$",
+        "correct": false,
+        "why": "C'est la valeur de la contrainte $x+y$, pas de $f(x,y)=xy$."
+      },
+      {
+        "text": "$50$",
+        "correct": false,
+        "why": "Le produit $5\\times5=25$ a été doublé par erreur."
+      },
+      {
+        "text": "$0$",
+        "correct": false,
+        "why": "Suppose à tort qu'il faut vérifier une frontière (comme $x=0$ ou $y=0$) ; ici $x+y=10$ est une droite non bornée, sans frontière à examiner séparément."
+      }
     ]
   },
   {
@@ -33,10 +48,25 @@
     "explanation": "Si $x=0$ est une solution possible, diviser par $x$ l'élimine silencieusement du système : il faut traiter séparément le cas $x=0$ et le cas $x\\ne0$.",
     "type": "qcm",
     "choices": [
-      { "text": "$x$ pourrait valoir $0$, un cas à traiter séparément", "correct": true },
-      { "text": "$\\lambda$ est toujours nul de toute façon", "correct": false, "why": "Rien dans l'équation n'impose que $\\lambda=0$ ; c'est une affirmation sans fondement ici." },
-      { "text": "Diviser change la valeur de $f$", "correct": false, "why": "Une manipulation algébrique sur l'équation du système ne change jamais la valeur de $f$, seulement la façon de résoudre le système." },
-      { "text": "Il faut plutôt diviser par $\\lambda$", "correct": false, "why": "Ça ne règle rien : $\\lambda$ pourrait tout aussi bien être nul, et le risque de perdre la solution $x=0$ demeure." }
+      {
+        "text": "$x$ pourrait valoir $0$, un cas à traiter séparément",
+        "correct": true
+      },
+      {
+        "text": "$\\lambda$ est toujours nul de toute façon",
+        "correct": false,
+        "why": "Rien dans l'équation n'impose que $\\lambda=0$ ; c'est une affirmation sans fondement ici."
+      },
+      {
+        "text": "Diviser change la valeur de $f$",
+        "correct": false,
+        "why": "Une manipulation algébrique sur l'équation du système ne change jamais la valeur de $f$, seulement la façon de résoudre le système."
+      },
+      {
+        "text": "Il faut plutôt diviser par $\\lambda$",
+        "correct": false,
+        "why": "Ça ne règle rien : $\\lambda$ pourrait tout aussi bien être nul, et le risque de perdre la solution $x=0$ demeure."
+      }
     ]
   },
   {
@@ -62,10 +92,25 @@
     "explanation": "$\\nabla f=(2x,2y)=\\lambda(y,x)$ donne $2x=\\lambda y$, $2y=\\lambda x$. En multipliant : $4xy=\\lambda^2xy$, et comme $xy=1\\ne0$, $\\lambda^2=4$. Pour $\\lambda=2$ : $x=y$, et $xy=1\\Rightarrow x=y=\\pm1$. Pour $\\lambda=-2$ : $x=-y$, et $xy=1\\Rightarrow-x^2=1$, aucune solution réelle. Les candidats sont $(1,1)$ et $(-1,-1)$, tous deux avec $f=1^2+1^2=2$.",
     "type": "qcm",
     "choices": [
-      { "text": "$2$", "correct": true },
-      { "text": "$1$", "correct": false, "why": "C'est la valeur de la contrainte $xy=1$ évaluée au point, pas celle de $f(x,y)=x^2+y^2$." },
-      { "text": "$4$", "correct": false, "why": "C'est $(x+y)^2=(1+1)^2$, pas $x^2+y^2$ : ce ne sont pas la même expression." },
-      { "text": "$0$", "correct": false, "why": "$(1,1)$ et $(-1,-1)$ ont été combinés à tort comme s'ils s'annulaient ; il faut évaluer $f$ à CHAQUE point séparément." }
+      {
+        "text": "$2$",
+        "correct": true
+      },
+      {
+        "text": "$1$",
+        "correct": false,
+        "why": "C'est la valeur de la contrainte $xy=1$ évaluée au point, pas celle de $f(x,y)=x^2+y^2$."
+      },
+      {
+        "text": "$4$",
+        "correct": false,
+        "why": "C'est $(x+y)^2=(1+1)^2$, pas $x^2+y^2$ : ce ne sont pas la même expression."
+      },
+      {
+        "text": "$0$",
+        "correct": false,
+        "why": "$(1,1)$ et $(-1,-1)$ ont été combinés à tort comme s'ils s'annulaient ; il faut évaluer $f$ à CHAQUE point séparément."
+      }
     ]
   },
   {
@@ -87,10 +132,25 @@
     "explanation": "C'est l'interprétation clé de Lagrange : les courbes de niveau de $f$ et la courbe de contrainte $g=k$ sont tangentes en un extremum, donc leurs gradients (perpendiculaires à ces courbes) sont parallèles.",
     "type": "qcm",
     "choices": [
-      { "text": "$\\nabla f$ et $\\nabla g$ sont parallèles (colinéaires) en ce point", "correct": true },
-      { "text": "$\\nabla f$ et $\\nabla g$ sont perpendiculaires en ce point", "correct": false, "why": "C'est l'inverse : la condition de Lagrange dit qu'ils sont PARALLÈLES, pas perpendiculaires." },
-      { "text": "$f$ et $g$ sont égales en ce point", "correct": false, "why": "La condition porte sur les GRADIENTS (proportionnalité), pas sur les valeurs des fonctions elles-mêmes." },
-      { "text": "$\\nabla f=\\vec0$ en ce point", "correct": false, "why": "C'est la condition d'un extremum NON contraint (chapitre précédent) ; sous contrainte, $\\nabla f$ n'a en général pas besoin d'être nul." }
+      {
+        "text": "$\\nabla f$ et $\\nabla g$ sont parallèles (colinéaires) en ce point",
+        "correct": true
+      },
+      {
+        "text": "$\\nabla f$ et $\\nabla g$ sont perpendiculaires en ce point",
+        "correct": false,
+        "why": "C'est l'inverse : la condition de Lagrange dit qu'ils sont PARALLÈLES, pas perpendiculaires."
+      },
+      {
+        "text": "$f$ et $g$ sont égales en ce point",
+        "correct": false,
+        "why": "La condition porte sur les GRADIENTS (proportionnalité), pas sur les valeurs des fonctions elles-mêmes."
+      },
+      {
+        "text": "$\\nabla f=\\vec0$ en ce point",
+        "correct": false,
+        "why": "C'est la condition d'un extremum NON contraint (chapitre précédent) ; sous contrainte, $\\nabla f$ n'a en général pas besoin d'être nul."
+      }
     ]
   },
   {
@@ -103,10 +163,25 @@
     "explanation": "Le système de Lagrange se scinde en deux CAS ($x=0$ ou $\\lambda=1$), tous deux à explorer sans en écarter aucun ; il faut ensuite vérifier que chaque candidat satisfait bien la contrainte avant d'évaluer $f$.",
     "type": "qcm",
     "choices": [
-      { "text": "min $=1$ en $(0,\\pm1)$, max $=4$ en $(\\pm2,0)$", "correct": true },
-      { "text": "min $=0$ en $(0,0)$, max $=4$ en $(\\pm2,0)$", "correct": false, "why": "$(0,0)$ ne satisfait PAS la contrainte $x^2+4y^2=4$ (elle donnerait $0\\ne4$) : ce point n'est même pas un candidat valide." },
-      { "text": "min $=1$ en $(0,\\pm1)$, max $=16$ en $(\\pm2,0)$", "correct": false, "why": "$f(2,0)=2^2+0^2=4$, pas $16$ : $16$ viendrait de $4^2$, une confusion entre évaluer $f$ et élever la coordonnée au carré une seconde fois." },
-      { "text": "Un seul extremum, en $(2,0)$", "correct": false, "why": "Le cas $x=0$ du système (à ne jamais écarter en divisant par $x$ sans vérifier ce cas séparément) a été oublié, perdant les points $(0,\\pm1)$." }
+      {
+        "text": "min $=1$ en $(0,\\pm1)$, max $=4$ en $(\\pm2,0)$",
+        "correct": true
+      },
+      {
+        "text": "min $=0$ en $(0,0)$, max $=4$ en $(\\pm2,0)$",
+        "correct": false,
+        "why": "$(0,0)$ ne satisfait PAS la contrainte $x^2+4y^2=4$ (elle donnerait $0\\ne4$) : ce point n'est même pas un candidat valide."
+      },
+      {
+        "text": "min $=1$ en $(0,\\pm1)$, max $=16$ en $(\\pm2,0)$",
+        "correct": false,
+        "why": "$f(2,0)=2^2+0^2=4$, pas $16$ : $16$ viendrait de $4^2$, une confusion entre évaluer $f$ et élever la coordonnée au carré une seconde fois."
+      },
+      {
+        "text": "Un seul extremum, en $(2,0)$",
+        "correct": false,
+        "why": "Le cas $x=0$ du système (à ne jamais écarter en divisant par $x$ sans vérifier ce cas séparément) a été oublié, perdant les points $(0,\\pm1)$."
+      }
     ],
     "solution": "1. $\\nabla f=(2x,2y)=\\lambda\\nabla g=\\lambda(2x,8y)$.\n2. Composante $x$ : $2x=2\\lambda x \\Rightarrow x(1-\\lambda)=0 \\Rightarrow x=0$ ou $\\lambda=1$ (ne pas diviser par $x$ directement !).\n3. **Cas $x=0$** : la contrainte donne $4y^2=4 \\Rightarrow y=\\pm1$. Points $(0,1)$, $(0,-1)$, $f=1$.\n4. **Cas $\\lambda=1$** : composante $y$ donne $2y=8y \\Rightarrow y=0$. Contrainte : $x^2=4 \\Rightarrow x=\\pm2$. Points $(2,0)$, $(-2,0)$, $f=4$.\n5. Comparer : minimum $=1$ en $(0,\\pm1)$, maximum $=4$ en $(\\pm2,0)$."
   },
@@ -119,40 +194,25 @@
     "explanation": "Le système $\\nabla f=\\lambda\\nabla g$ donne $yz=xz=xy$ (car $\\nabla f=(yz,xz,xy)$, $\\nabla g=(1,1,1)$), ce qui force $x=y=z$ (puisque $x,y,z>0$). Avec $x+y+z=12$ : $x=y=z=4$. La valeur maximale est $f(4,4,4)=4\\times4\\times4=64$.",
     "type": "qcm",
     "choices": [
-      { "text": "$64$", "correct": true },
-      { "text": "$12$", "correct": false, "why": "C'est la valeur de la contrainte $x+y+z$, pas de $f(x,y,z)=xyz$." },
-      { "text": "$48$", "correct": false, "why": "Erreur de calcul : $4\\times4\\times4=64$, pas $48$." },
-      { "text": "$16$", "correct": false, "why": "Seulement deux des trois variables ont été multipliées ($4\\times4$), la troisième a été oubliée." }
-    ]
-  },
-  {
-    "id": "mat1400-lagr-013",
-    "course": "MAT1400",
-    "topic": "mat1400-lagr",
-    "difficulty": 2,
-    "prompt": "Minimiser $f(x,y)=x+y$ sous la contrainte $xy=16$ (avec $x,y>0$) : quelle est la valeur minimale ?",
-    "explanation": "$\\nabla f=(1,1)=\\lambda(y,x)$ donne $1=\\lambda y$ et $1=\\lambda x$, donc $x=y$ (les deux valent $1/\\lambda$). Avec $xy=16$ : $x^2=16 \\Rightarrow x=y=4$ (racine positive, car $x,y>0$). La valeur minimale est $f(4,4)=4+4=8$.",
-    "type": "qcm",
-    "choices": [
-      { "text": "$8$", "correct": true },
-      { "text": "$16$", "correct": false, "why": "C'est la valeur de la contrainte $xy$, pas de $f(x,y)=x+y$." },
-      { "text": "$4$", "correct": false, "why": "Une seule des deux variables ($x=4$ ou $y=4$) a été gardée, l'autre oubliée dans la somme." },
-      { "text": "$32$", "correct": false, "why": "Le produit $xy=16$ a été compté deux fois ($16+16$) au lieu d'additionner $x+y$." }
-    ]
-  },
-  {
-    "id": "mat1400-lagr-014",
-    "course": "MAT1400",
-    "topic": "mat1400-lagr",
-    "difficulty": 2,
-    "prompt": "La condition de Lagrange s'écrit $\\nabla f=\\lambda\\nabla g$. Pourquoi pas directement $f=\\lambda g$ (les fonctions elles-mêmes, sans leurs gradients) ?",
-    "explanation": "$\\nabla f=\\lambda\\nabla g$ exprime que les gradients de $f$ et $g$ sont parallèles à l'extremum — une condition GÉOMÉTRIQUE sur des directions. $f=\\lambda g$ contraindrait plutôt les VALEURS des fonctions, ce qui n'a aucun lien avec cette géométrie.",
-    "type": "qcm",
-    "choices": [
-      { "text": "$\\nabla f=\\lambda\\nabla g$ exprime que les gradients (perpendiculaires aux courbes de niveau) sont parallèles entre eux à l'extremum", "correct": true },
-      { "text": "$f=\\lambda g$ serait équivalent, seule la notation change", "correct": false, "why": "Les deux ne sont pas équivalents : $f=\\lambda g$ contraint les valeurs des fonctions, pas l'orientation de leurs gradients — ce sont deux conditions mathématiques différentes." },
-      { "text": "$\\nabla f=\\lambda\\nabla g$ est juste une écriture plus compacte de $f=\\lambda g$", "correct": false, "why": "Ce n'est pas une reformulation de l'autre : dériver ne préserve pas l'égalité $f=\\lambda g$ en général." },
-      { "text": "$f=\\lambda g$ est la bonne condition ; $\\nabla f=\\lambda\\nabla g$ est une erreur de notation courante", "correct": false, "why": "C'est l'inverse : $\\nabla f=\\lambda\\nabla g$ EST la véritable condition de Lagrange, pas une erreur." }
+      {
+        "text": "$64$",
+        "correct": true
+      },
+      {
+        "text": "$12$",
+        "correct": false,
+        "why": "C'est la valeur de la contrainte $x+y+z$, pas de $f(x,y,z)=xyz$."
+      },
+      {
+        "text": "$48$",
+        "correct": false,
+        "why": "Erreur de calcul : $4\\times4\\times4=64$, pas $48$."
+      },
+      {
+        "text": "$16$",
+        "correct": false,
+        "why": "Seulement deux des trois variables ont été multipliées ($4\\times4$), la troisième a été oubliée."
+      }
     ]
   },
   {
@@ -164,5 +224,95 @@
     "explanation": "Vrai : $\\lambda$ peut être positif, négatif ou nul selon le problème. Trouver un $\\lambda$ négatif n'indique pas une erreur de calcul en soi ; ce qui compte, c'est que le point candidat satisfasse bien le système ET la contrainte.",
     "type": "vf",
     "answer": true
+  },
+  {
+    "id": "mat1400-lagr-013",
+    "course": "MAT1400",
+    "topic": "mat1400-lagr",
+    "difficulty": 2,
+    "prompt": "Minimiser $f(x,y)=x+y$ sous la contrainte $xy=16$ (avec $x,y>0$) : quelle est la valeur minimale ?",
+    "explanation": "$\\nabla f=(1,1)=\\lambda(y,x)$ donne $1=\\lambda y$ et $1=\\lambda x$, donc $x=y$ (les deux valent $1/\\lambda$). Avec $xy=16$ : $x^2=16 \\Rightarrow x=y=4$ (racine positive, car $x,y>0$). La valeur minimale est $f(4,4)=4+4=8$.",
+    "type": "qcm",
+    "choices": [
+      {
+        "text": "$8$",
+        "correct": true
+      },
+      {
+        "text": "$16$",
+        "correct": false,
+        "why": "C'est la valeur de la contrainte $xy$, pas de $f(x,y)=x+y$."
+      },
+      {
+        "text": "$4$",
+        "correct": false,
+        "why": "Une seule des deux variables ($x=4$ ou $y=4$) a été gardée, l'autre oubliée dans la somme."
+      },
+      {
+        "text": "$32$",
+        "correct": false,
+        "why": "Le produit $xy=16$ a été compté deux fois ($16+16$) au lieu d'additionner $x+y$."
+      }
+    ]
+  },
+  {
+    "id": "mat1400-lagr-014",
+    "course": "MAT1400",
+    "topic": "mat1400-lagr",
+    "difficulty": 2,
+    "prompt": "La condition de Lagrange s'écrit $\\nabla f=\\lambda\\nabla g$. Pourquoi pas directement $f=\\lambda g$ (les fonctions elles-mêmes, sans leurs gradients) ?",
+    "explanation": "$\\nabla f=\\lambda\\nabla g$ exprime que les gradients de $f$ et $g$ sont parallèles à l'extremum — une condition GÉOMÉTRIQUE sur des directions. $f=\\lambda g$ contraindrait plutôt les VALEURS des fonctions, ce qui n'a aucun lien avec cette géométrie.",
+    "type": "qcm",
+    "choices": [
+      {
+        "text": "$\\nabla f=\\lambda\\nabla g$ exprime que les gradients (perpendiculaires aux courbes de niveau) sont parallèles entre eux à l'extremum",
+        "correct": true
+      },
+      {
+        "text": "$f=\\lambda g$ serait équivalent, seule la notation change",
+        "correct": false,
+        "why": "Les deux ne sont pas équivalents : $f=\\lambda g$ contraint les valeurs des fonctions, pas l'orientation de leurs gradients — ce sont deux conditions mathématiques différentes."
+      },
+      {
+        "text": "$\\nabla f=\\lambda\\nabla g$ est juste une écriture plus compacte de $f=\\lambda g$",
+        "correct": false,
+        "why": "Ce n'est pas une reformulation de l'autre : dériver ne préserve pas l'égalité $f=\\lambda g$ en général."
+      },
+      {
+        "text": "$f=\\lambda g$ est la bonne condition ; $\\nabla f=\\lambda\\nabla g$ est une erreur de notation courante",
+        "correct": false,
+        "why": "C'est l'inverse : $\\nabla f=\\lambda\\nabla g$ EST la véritable condition de Lagrange, pas une erreur."
+      }
+    ]
+  },
+  {
+    "id": "mat1400-lagr-015",
+    "course": "MAT1400",
+    "topic": "mat1400-lagr",
+    "difficulty": 2,
+    "prompt": "Optimiser $f$ sous la contrainte $g(\\vec x)=0$ revient à chercher les points critiques de quelle fonction auxiliaire ?",
+    "explanation": "Avec $F=f-\\lambda g$ et $\\lambda$ traité comme une variable de plus, $\\nabla F=\\vec0$ redonne $\\nabla f=\\lambda\\nabla g$, et $\\partial F/\\partial\\lambda=0$ redonne la contrainte $g=0$ : c'est la même méthode, écrite en une seule fonction.",
+    "type": "qcm",
+    "choices": [
+      {
+        "text": "$F(\\vec x)=f(\\vec x)-\\lambda g(\\vec x)$, avec $\\lambda$ comme variable supplémentaire",
+        "correct": true
+      },
+      {
+        "text": "$F(\\vec x)=f(\\vec x)\\cdot g(\\vec x)$",
+        "correct": false,
+        "why": "Un produit n'encode pas la proportionnalité des gradients : ses points critiques n'ont pas de lien avec les extrema sous contrainte."
+      },
+      {
+        "text": "$F(\\vec x)=f(\\vec x)+g(\\vec x)$",
+        "correct": false,
+        "why": "Le multiplicateur $\\lambda$ manque : sans lui, impossible d'ajuster le rapport entre $\\nabla f$ et $\\nabla g$, et la contrainte ne ressort pas du système."
+      },
+      {
+        "text": "$F(\\vec x)=f(\\vec x)-\\lambda$",
+        "correct": false,
+        "why": "La contrainte $g$ a disparu : $\\nabla F=\\nabla f$ redonnerait la condition d'un extremum NON contraint."
+      }
+    ]
   }
 ]
